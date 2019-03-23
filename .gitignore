@@ -1,0 +1,14 @@
+
+\.idea/
+
+*.bin
+
+cmake-build-debug/CMakeFiles/
+
+bin/
+
+cmake-build-debug/
+
+firmware/
+
+include/
