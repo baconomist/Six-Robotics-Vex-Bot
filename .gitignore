@@ -9,6 +9,4 @@ bin/
 
 cmake-build-debug/
 
-firmware/
 
-include/

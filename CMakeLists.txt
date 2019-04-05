@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION ${VERSION})
 project(VexRobot CXX)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c11 -Wall")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
 
 # Headers/include path
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -22,6 +22,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c")
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
+file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp")
 # IMPORTANT ^^^^^^^^^^^^^^^^^^^ .CPP for c++ etc...
 
 set (INCLUDE_DIRS "")
