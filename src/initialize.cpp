@@ -18,9 +18,17 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	pros::lcd::set_text(1, "  ____ ");
+	pros::lcd::set_text(2, " / ___|");
+	pros::lcd::set_text(3, "/ /__ ");
+	pros::lcd::set_text(4, "| ___ \\ ");
+	pros::lcd::set_text(5, "| \\_/ |");
+	pros::lcd::set_text(6, "\\___/");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+	pros::Controller master(pros::E_CONTROLLER_MASTER);
+	master.rumble("- - ---");
+
 }
 
 /**
