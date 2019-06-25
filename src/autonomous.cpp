@@ -14,33 +14,13 @@ using namespace okapi;
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
- //1,9 L
- //2,10 R
- const auto WHEEL_DIAMETER = 4_in;
- const auto CHASSIS_WIDTH = 13.5_in;
 
- MotorGroup lD({2, 10});
- MotorGroup rD({-1, -9});
+//1,9 L
+//2,10 R
+const auto WHEEL_DIAMETER = 4_in;
+const auto CHASSIS_WIDTH = 13.5_in;
 
-auto chassis = ChassisControllerFactory::create(
-  lD, rD,
-  AbstractMotor::gearset::red,
-  {WHEEL_DIAMETER, CHASSIS_WIDTH}
-
-);
-auto profileController = AsyncControllerFactory::motionProfile(
-  1.5,  // Maximum linear velocity of the Chassis in m/s
-  1.0,  // Maximum linear acceleration of the Chassis in m/s/s
-  5.0, // Maximum linear jerk of the Chassis in m/s/s/s
-  chassis // Chassis Controller
-);
-
-void autonomous() {
-    Rate rate;
-    rate.delayUntil(1000);
-    profileController.generatePath({Point{0_ft, 0_ft, 0_deg}, Point{3_ft, 0_ft, 0_deg}}, "A");
-    profileController.setTarget("A");
-
-
-
+void autonomous()
+{
+    
 }
