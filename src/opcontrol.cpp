@@ -1,7 +1,7 @@
 #include "main.h"
-#include "okapi/api.hpp"
+//#include "okapi/api.hpp"
 
-using namespace okapi;
+//using namespace okapi;
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -16,10 +16,15 @@ using namespace okapi;
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
- MotorGroup leftDrive({2, 10});
- MotorGroup rightDrive({-1, -9});
- pros::Motor trayLeft(4, pros::E_MOTOR_GEARSET_18, 1, pros::E_MOTOR_ENCODER_DEGREES);
- pros::Motor trayRight(5, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+
+pros::Motor trayLeft(4, pros::E_MOTOR_GEARSET_18, 1, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor trayRight(5, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+
+pros::Motor frontLeftDrive(1, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor frontRightDrive(2, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor backLeftDrive(9, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor backRightDrive(10, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+
 
 
 void opcontrol() {
@@ -35,11 +40,27 @@ void opcontrol() {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
-		int left = master.get_analog(ANALOG_LEFT_Y);
-		int right = master.get_analog(ANALOG_RIGHT_Y);
 
-        leftDrive.moveVelocity(left*100);
-		rightDrive.moveVelocity(right*100);
+        // Mechanum drive
+        int frontLeft = 0;
+        int frontRight = 0;
+        int backLeft = 0;
+        int backRight = 0;
+
+        int turn = master.get_analog(ANALOG_RIGHT_X);
+        int forward = master.get_analog(ANALOG_LEFT_Y);
+        int sideways = master.get_analog(ANALOG_LEFT_X);
+
+        frontLeft = turn + forward + sideways;
+        backLeft = turn + forward - sideways;
+        frontRight = forward - turn - sideways;
+        backRight = turn - forward + sideways;
+
+        frontLeftDrive.move_velocity(frontLeft * 100);
+        backLeftDrive.move_velocity(backLeft * 100);
+        frontRightDrive.move_velocity(frontRight * 100);
+        backRightDrive.move_velocity(backRight * 100);
+
 		pros::delay(20);
 	}
 }
