@@ -18,17 +18,26 @@ using namespace okapi;
  */
  MotorGroup leftDrive({2, 10});
  MotorGroup rightDrive({-1, -9});
+ pros::Motor trayLeft(4, pros::E_MOTOR_GEARSET_18, 1, pros::E_MOTOR_ENCODER_DEGREES);
+ pros::Motor trayRight(5, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+
 
 void opcontrol() {
+    bool set_up = false;
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	while (true) {
+        if ((trayLeft.get_position() >= 595) && (trayLeft.get_position() <= 605)) {
+    		trayLeft.move_absolute(0, 200);
+    		trayRight.move_absolute(0, 200);
+    	}
+
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 		int left = master.get_analog(ANALOG_LEFT_Y);
 		int right = master.get_analog(ANALOG_RIGHT_Y);
 
-		leftDrive.moveVelocity(left*100);
+        leftDrive.moveVelocity(left*100);
 		rightDrive.moveVelocity(right*100);
 		pros::delay(20);
 	}

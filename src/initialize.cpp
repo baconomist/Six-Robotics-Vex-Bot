@@ -16,6 +16,10 @@ void on_center_button() {
  * All other competition modes are blocked by initialize; it is recommended
  * to keep execution time for this mode under a few seconds.
  */
+
+ pros::Motor iTrayLeft(4, pros::E_MOTOR_GEARSET_18, 1, pros::E_MOTOR_ENCODER_DEGREES);
+ pros::Motor iTrayRight(5, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+
 void initialize() {
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "  ____ ");
@@ -27,8 +31,9 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	master.rumble("- - ---");
-
+	// master.rumble("- - ---");
+	iTrayLeft.move_absolute(600, 200);
+	iTrayRight.move_absolute(600, 200);
 }
 
 /**
