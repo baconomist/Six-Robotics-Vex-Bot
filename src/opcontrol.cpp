@@ -41,20 +41,25 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 
-        // Mechanum drive
-        int frontLeft = 0;
-        int frontRight = 0;
-        int backLeft = 0;
-        int backRight = 0;
+        trayLeft.move_velocity(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
+        trayRight.move_velocity(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
+
 
         int turn = master.get_analog(ANALOG_RIGHT_X);
-        int forward = master.get_analog(ANALOG_LEFT_Y);
-        int sideways = master.get_analog(ANALOG_LEFT_X);
+        int forward = master.get_analog(ANALOG_RIGHT_Y);
+        int sideways = 0;
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+            sideways = -127;
+            // Controller analog ranges from -127 to 127
+        }
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+            sideways = 127;
+        }
 
-        frontLeft = turn + forward + sideways;
-        backLeft = turn + forward - sideways;
-        frontRight = forward - turn - sideways;
-        backRight = turn - forward + sideways;
+        int frontLeft = turn + forward + sideways;
+        int backLeft = turn + forward - sideways;
+        int frontRight = forward - turn - sideways;
+        int backRight = turn - forward + sideways;
 
         frontLeftDrive.move_velocity(frontLeft * 100);
         backLeftDrive.move_velocity(backLeft * 100);
