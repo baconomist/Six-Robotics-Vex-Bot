@@ -23,12 +23,13 @@ using namespace okapi;
 
 
 void opcontrol() {
-    bool set_up = false;
+    bool setting_up = true;
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	while (true) {
-        if ((trayLeft.get_position() >= 595) && (trayLeft.get_position() <= 605)) {
+        if ((trayLeft.get_position() >= 595) && (trayLeft.get_position() <= 605) && setting_up) {
     		trayLeft.move_absolute(0, 200);
     		trayRight.move_absolute(0, 200);
+            setting_up = false;
     	}
 
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
