@@ -30,6 +30,8 @@ pros::Motor backRightDrive(10, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODE
 void opcontrol() {
     bool setting_up = true;
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
+    trayLeft.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    trayRight.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	while (true) {
         if ((trayLeft.get_position() >= 595) && (trayLeft.get_position() <= 605) && setting_up) {
     		trayLeft.move_absolute(0, 200);
@@ -45,6 +47,7 @@ void opcontrol() {
         trayRight.move_velocity(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y));
 
 
+        // Mechanum drive
         int turn = master.get_analog(ANALOG_RIGHT_X);
         int forward = master.get_analog(ANALOG_RIGHT_Y);
         int sideways = 0;
