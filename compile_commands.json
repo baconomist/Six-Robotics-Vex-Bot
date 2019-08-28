@@ -28,11 +28,11 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "C:/Users/Lucas/AppData/Local/Temp/tmp9tt_wx31/autonomous.cpp.o",
-            "src\\autonomous.cpp"
+            "bin/opcontrol.cpp.o",
+            "src\\opcontrol.cpp"
         ],
-        "directory": "C:\\Users\\Lucas\\Desktop\\Six-Robotics-Vex-Bot",
-        "file": "src\\autonomous.cpp"
+        "directory": "C:\\Users\\Lucas\\Desktop\\Projects\\Six-Robotics-Vex-Bot",
+        "file": "src\\opcontrol.cpp"
     },
     {
         "arguments": [
@@ -63,10 +63,10 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "C:/Users/Lucas/AppData/Local/Temp/tmp9tt_wx31/initialize.cpp.o",
+            "bin/initialize.cpp.o",
             "src\\initialize.cpp"
         ],
-        "directory": "C:\\Users\\Lucas\\Desktop\\Six-Robotics-Vex-Bot",
+        "directory": "C:\\Users\\Lucas\\Desktop\\Projects\\Six-Robotics-Vex-Bot",
         "file": "src\\initialize.cpp"
     },
     {
@@ -98,10 +98,10 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "bin/opcontrol.cpp.o",
-            "src\\opcontrol.cpp"
+            "bin/autonomous.cpp.o",
+            "src\\autonomous.cpp"
         ],
-        "directory": "C:\\Users\\Lucas\\Desktop\\Six-Robotics-Vex-Bot",
-        "file": "src\\opcontrol.cpp"
+        "directory": "C:\\Users\\Lucas\\Desktop\\Projects\\Six-Robotics-Vex-Bot",
+        "file": "src\\autonomous.cpp"
     }
 ]

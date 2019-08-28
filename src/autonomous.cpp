@@ -1,7 +1,7 @@
 #include "main.h"
-#include "okapi/api.hpp"
+#include "../src/motor_gearsets.h"
 
-using namespace okapi;
+using namespace pros::c;
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -15,12 +15,51 @@ using namespace okapi;
  * from where it left off.
  */
 
-//1,9 L
-//2,10 R
-const auto WHEEL_DIAMETER = 4_in;
-const auto CHASSIS_WIDTH = 13.5_in;
-
 void autonomous()
 {
-    
+
+    motor_set_gearing(1, MOTOR_GEARSET_BLUE);
+
+    motor_set_encoder_units(1, pros::E_MOTOR_ENCODER_DEGREES);
+
+
+
+   /*while(1)
+    {
+        motor_move_absolute (1, 360, 127);
+        motor_set_zero_position(1, 0);
+        delay(1000);
+    }*/
+
+    pros::lcd::initialize();
+
+    double speed = 20;
+
+    double start = millis(); 
+
+    char buffer [50];
+
+    pros::Controller master(pros::E_CONTROLLER_MASTER);
+
+    while(1)
+    {
+        motor_move(1, speed);
+
+        if(millis() - start >= 100){
+            start = millis();
+            speed++;
+
+            //pros::lcd::clear();
+           /* pros::lcd::set_text(0, "HIHIHIIHIIH");
+            pros::lcd::set_text(7, buffer);
+            */
+
+            sprintf (buffer, "%f", motor_get_temperature(1));
+            master.set_text(2, 2, buffer);
+
+        }
+
+        printf("%f \n", motor_get_temperature(1));
+    }
+
 }

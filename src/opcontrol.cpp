@@ -1,7 +1,4 @@
 #include "main.h"
-#include "okapi/api.hpp"
-
-using namespace okapi;
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -16,11 +13,10 @@ using namespace okapi;
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
- MotorGroup leftDrive({2, 10});
- MotorGroup rightDrive({-1, -9});
 
 void opcontrol() {
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
+	autonomous();
+	/*pros::Controller master(pros::E_CONTROLLER_MASTER);
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
@@ -28,8 +24,6 @@ void opcontrol() {
 		int left = master.get_analog(ANALOG_LEFT_Y);
 		int right = master.get_analog(ANALOG_RIGHT_Y);
 
-		leftDrive.moveVelocity(left*100);
-		rightDrive.moveVelocity(right*100);
 		pros::delay(20);
-	}
+	}*/
 }

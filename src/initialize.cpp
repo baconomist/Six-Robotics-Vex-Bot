@@ -17,7 +17,7 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
+	/* pros::lcd::initialize();
 	pros::lcd::set_text(1, "  ____ ");
 	pros::lcd::set_text(2, " / ___|");
 	pros::lcd::set_text(3, "/ /__ ");
@@ -27,7 +27,7 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	master.rumble("- - ---");
+	master.rumble("- - ---");*/
 
 }
 
