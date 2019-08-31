@@ -17,10 +17,12 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 
- pros::Motor iTrayLeft(4, pros::E_MOTOR_GEARSET_18, 1, pros::E_MOTOR_ENCODER_DEGREES);
- pros::Motor iTrayRight(5, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+
+pros::Motor iTrayLeft = pros::Motor(4, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor iTrayRight(5, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 void initialize() {
+
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "  ____ ");
 	pros::lcd::set_text(2, " / ___|");
@@ -34,6 +36,12 @@ void initialize() {
 	// master.rumble("- - ---");
 	iTrayLeft.move_absolute(600, 200);
 	iTrayRight.move_absolute(600, 200);
+	
+	driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
+    transB.set_brake_mode(MOTOR_BRAKE_BRAKE);
 }
 
 /**
