@@ -39,11 +39,11 @@ void arcade()
     arcade joystick control + strafe
     */
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
-    int velLY = min(127, master.get_analog(ANALOG_LEFT_Y)) * 200 /
+    int velLY = min(127, master.get_analog(ANALOG_LEFT_Y)) * get_gearset_rpm(driveLB.get_gearing()) /
                 127;//scaling the values to 200 to match the internal gearset for move_velocity
-    int velRY = min(127, master.get_analog(ANALOG_RIGHT_Y)) * 200 / 127;//^^
-    int velLX = min(127, master.get_analog(ANALOG_LEFT_X)) * 200 / 127;//^^
-    int velRX = master.get_analog(ANALOG_RIGHT_X) * 200 / 127;//^^
+    int velRY = min(127, master.get_analog(ANALOG_RIGHT_Y)) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
+    int velLX = min(127, master.get_analog(ANALOG_LEFT_X)) * get_gearset_rpm(driveLB.get_gearing()) / 127;//^^
+    int velRX = master.get_analog(ANALOG_RIGHT_X) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
 
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
