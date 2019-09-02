@@ -3,7 +3,7 @@
 #include "headers/motors.h"
 #include "headers/controllers.h"
 #define _min(a,b) (((a) < (b)) ? (a) : (b))
-
+using namespace std;
 void tank(){
     int deadZone = 15;
     int velLY = master.get_analog(ANALOG_LEFT_Y);
@@ -20,9 +20,9 @@ void arcade(){
     arcade joystick control + strafe
     */
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
-    int velLY = _min(127, master.get_analog(ANALOG_LEFT_Y)) * get_gearset_rpm(driveLB.get_gearing()) / 127;//scaling the values to 200 to match the internal gearset for move_velocity
-    int velRY = _min(127, master.get_analog(ANALOG_RIGHT_Y)) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
-    int velLX = _min(127, master.get_analog(ANALOG_LEFT_X)) * get_gearset_rpm(driveLB.get_gearing()) / 127;//^^
+    int velLY = min<int>(127, master.get_analog(ANALOG_LEFT_Y)) * get_gearset_rpm(driveLB.get_gearing()) / 127;//scaling the values to 200 to match the internal gearset for move_velocity
+    int velRY = min<int>(127, master.get_analog(ANALOG_RIGHT_Y)) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
+    int velLX = min<int>(127, master.get_analog(ANALOG_LEFT_X)) * get_gearset_rpm(driveLB.get_gearing()) / 127;//^^
     int velRX = master.get_analog(ANALOG_RIGHT_X) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
 
 
