@@ -5,7 +5,7 @@
 #include <api.h>
 #include "motor_gearsets.h"
 
-int get_gearset_rpm(pros::motor_gearset_e gearset)
+int get_gearset_rpm(motor_gearset_e gearset)
 {
     switch (gearset){
         case MOTOR_GEARSET_RED:
@@ -15,8 +15,7 @@ int get_gearset_rpm(pros::motor_gearset_e gearset)
         case MOTOR_GEARSET_BLUE:
             return MOTOR_GEARSET_BLUE_RPM
 
-        case pros::E_MOTOR_GEARSET_INVALID:break;
+        case E_MOTOR_GEARSET_INVALID:break;
     }
     return 0;
 }
-
