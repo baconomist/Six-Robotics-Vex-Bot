@@ -1,10 +1,8 @@
 
 #include "main.h"
-#include "motor_gearsets.h"
-#include "kalman_filter.h"
-#include "motors.h"
-
-using namespace pros::c;
+#include "headers/motor_gearsets.h"
+#include "headers/kalman_filter.h"
+#include "headers/motors.h"
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -18,7 +16,7 @@ using namespace pros::c;
  * from where it left off.
  */
 
-
+using namespace pros::c;
 float get_measurement(){
     return motor_get_position(1);
 }
@@ -55,9 +53,9 @@ void autonomous(){
             speed++;
 
             //pros::lcd::clear();
-            /* pros::lcd::set_text(0, "HIHIHIIHIIH");
-             pros::lcd::set_text(7, buffer);
-             */
+            //pros::lcd::set_text(0, "HIHIHIIHIIH");
+             //pros::lcd::set_text(7, buffer);
+
 
             sprintf(buffer, "%f", motor_get_temperature(1));
             master.set_text(2, 2, buffer);

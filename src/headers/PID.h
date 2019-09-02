@@ -4,6 +4,7 @@
 
 // Prevent's integral buildup before integral really comes into effect,
 // without this the robot may overshoot its target
+
 const float MIN_ERROR_FOR_INTEGRAL = 500;
 
 // Constants used for scaling, range(0, 1)

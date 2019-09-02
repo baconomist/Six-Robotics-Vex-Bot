@@ -5,7 +5,9 @@
 // http://smithcsrobot.weebly.com/uploads/6/0/9/5/60954939/pid_control_document.pdf
 
 #include "main.h"
-#include "PID.h"
+#include "headers/PID.h"
+
+
 
 void P(float (*get_sensor_value)(), float end, float (*yield_return)(float speed)){
     // Error is the distance to target

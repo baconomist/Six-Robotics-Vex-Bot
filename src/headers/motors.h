@@ -1,0 +1,13 @@
+//
+// Created by Lucas on 8/31/2019.
+//
+
+#include "motor_gearsets.h"
+#include "motor_ports.h"
+
+Motor driveLF(LEFT_FRONT, MOTOR_GEARSET_GREEN, false, E_MOTOR_ENCODER_DEGREES);
+Motor driveLB(LEFT_BACK, MOTOR_GEARSET_GREEN, false, E_MOTOR_ENCODER_DEGREES);
+Motor driveRF(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true, E_MOTOR_ENCODER_DEGREES);//reserved
+Motor driveRB(RIGHT_BACK, MOTOR_GEARSET_GREEN, true, E_MOTOR_ENCODER_DEGREES);//reversed
+Motor transT(TRANSMISSION_BOTTOM, MOTOR_GEARSET_RED, false, E_MOTOR_ENCODER_DEGREES);
+Motor transB(TRANSMISSION_TOP, MOTOR_GEARSET_RED, true, E_MOTOR_ENCODER_DEGREES);//reversed
