@@ -2,6 +2,7 @@
 #include "main.h"
 #include "motor_gearsets.h"
 #include "kalman_filter.h"
+#include "motors.h"
 
 using namespace pros::c;
 
@@ -17,13 +18,12 @@ using namespace pros::c;
  * from where it left off.
  */
 
-float get_measurement()
-{
+
+float get_measurement(){
     return motor_get_position(1);
 }
 
-void autonomous()
-{
+void autonomous(){
     motor_set_gearing(1, MOTOR_GEARSET_BLUE);
 
     motor_set_encoder_units(1, pros::E_MOTOR_ENCODER_DEGREES);

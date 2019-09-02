@@ -6,8 +6,7 @@
 
 using namespace std;
 
-void tank()
-{
+void tank(){
     int deadZone = 15;
     int velLY = master.get_analog(ANALOG_LEFT_Y);
     int strafe = 90 * (master.get_digital(DIGITAL_RIGHT) - master.get_digital(DIGITAL_LEFT));
@@ -18,8 +17,7 @@ void tank()
     driveRF.move_velocity(velRY + strafe);
 }
 
-void arcade()
-{
+void arcade(){
     /*
     arcade joystick control + strafe
     */

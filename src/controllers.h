@@ -3,5 +3,5 @@
 //
 
 #include <api.h>
-
-pros::Controller master(pros::E_CONTROLLER_MASTER);
+#include "main.h"
+Controller master(E_CONTROLLER_MASTER);
