@@ -1,5 +1,15 @@
+
 #include "main.h"
 #include "headers/motors.h"
+#include "headers/motor_gearsets.h"
+#include "headers/motor_ports.h"
+
+Motor* driveLB;
+Motor* driveLF;
+Motor* driveRB;
+Motor* driveRF;
+Motor* transB;
+Motor* transT;
 
 void on_center_button()
 {
@@ -23,11 +33,20 @@ void on_center_button()
 
 void setup_motors()
 {
-    driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-    driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-    transB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+
+    driveLF = new pros::Motor(LEFT_FRONT, MOTOR_GEARSET_GREEN, false, E_MOTOR_ENCODER_DEGREES);
+    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, false, E_MOTOR_ENCODER_DEGREES);
+    driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true, E_MOTOR_ENCODER_DEGREES);//reserved
+    driveRB = new pros::Motor(RIGHT_BACK, MOTOR_GEARSET_GREEN, true, E_MOTOR_ENCODER_DEGREES);//reversed
+    transT = new pros::Motor(TRANSMISSION_BOTTOM, MOTOR_GEARSET_RED, false, E_MOTOR_ENCODER_DEGREES);
+    transB = new pros::Motor(TRANSMISSION_TOP, MOTOR_GEARSET_RED, true, E_MOTOR_ENCODER_DEGREES);//reversed
+
+
+    driveLF->set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLB->set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
+    driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
+    transB->set_brake_mode(MOTOR_BRAKE_BRAKE);
 }
 
 void initialize()

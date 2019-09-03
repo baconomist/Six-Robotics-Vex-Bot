@@ -2,12 +2,14 @@
 // Created by Lucas on 8/31/2019.
 //
 
-#include "motor_gearsets.h"
-#include "motor_ports.h"
+#ifndef VEXROBOT_MOTORS_H // Only compile if this macro is not yet defined
+#define VEXROBOT_MOTORS_H
 
-Motor driveLF(LEFT_FRONT, MOTOR_GEARSET_GREEN, false, E_MOTOR_ENCODER_DEGREES);
-Motor driveLB(LEFT_BACK, MOTOR_GEARSET_GREEN, false, E_MOTOR_ENCODER_DEGREES);
-Motor driveRF(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true, E_MOTOR_ENCODER_DEGREES);//reserved
-Motor driveRB(RIGHT_BACK, MOTOR_GEARSET_GREEN, true, E_MOTOR_ENCODER_DEGREES);//reversed
-Motor transT(TRANSMISSION_BOTTOM, MOTOR_GEARSET_RED, false, E_MOTOR_ENCODER_DEGREES);
-Motor transB(TRANSMISSION_TOP, MOTOR_GEARSET_RED, true, E_MOTOR_ENCODER_DEGREES);//reversed
+extern Motor* driveLB;
+extern Motor* driveLF;
+extern Motor* driveRB;
+extern Motor* driveRF;
+extern Motor* transB;
+extern Motor* transT;
+
+#endif //VEXROBOT_MOTORS_H
