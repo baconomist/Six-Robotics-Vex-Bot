@@ -4,8 +4,9 @@
 #include "headers/motors.h"
 #include "headers/controllers.h"
 #include "headers/motor_gearsets.h"
+#include "headers/misc.h"
+#include "headers/encoders.h"
 
-#define VISION_PORT 1
 // Colors in order from top-bottom orange, purple, green
 #define ORANGE_SIG 1
 #define PURPLE_SIG 2
@@ -125,7 +126,7 @@ void opcontrol()
             average_count = 0;
             memset(values, 0, sizeof values);
         }
-
+        std::cout << "encoder  " << LeftXEncoder.get_value() << "\n";
        // arcade();
        // transmission();
        object = vision_sensor.get_by_sig(0, 2);
