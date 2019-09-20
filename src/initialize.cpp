@@ -3,6 +3,7 @@
 #include "headers/motors.h"
 #include "headers/motor_gearsets.h"
 #include "headers/motor_ports.h"
+#include "main.h"
 #include "headers/encoders.h"
 
 // Motor* driveLB;

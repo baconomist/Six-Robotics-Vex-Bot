@@ -1,7 +1,7 @@
-// Miscellaneous devices
+// Miscellaneous device ports
 
-#ifndef VEXBOT_MISC_H
-#define VEXBOT_MISC_H
+#ifndef VEXBOT_ENCODERS_H
+#define VEXBOT_ENCODERS_H
 // Legacy Ports (1=A, 2=B, etc.)
 #define LEFT_X_ENCODER_TOP 1
 #define LEFT_X_ENCODER_BOTTOM 2

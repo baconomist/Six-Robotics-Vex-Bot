@@ -1,5 +1,6 @@
 
 #include <algorithm>
+#include <math.h>
 #include "main.h"
 #include "headers/motors.h"
 #include "headers/controllers.h"
@@ -90,6 +91,19 @@ void transmission()
     }
 }
 
+float xPosition, yPosition;
+void findPosition()
+{
+  float wheelDiameter = 3;
+  // Distance the bot moves per degree of tracking wheel turn
+  float distPerDegree = (wheelDiameter * M_PI) / 360;
+  // Average of the two X tracking wheels
+  int xRotation = (RightXEncoder.get_value() + LeftXEncoder.get_value()) / 2;
+  int yRotation = YEncoder.get_value();
+  xPosition = distPerDegree * xRotation;
+  yPosition = distPerDegree * yRotation;
+}
+
 /* At 1m:
  * w 36px h 34px
  * x 156px y 124px
@@ -120,17 +134,17 @@ void opcontrol()
 
         if(millis() - timer >= average_time)
         {
-            std::cout << "The average is: " << average_total / average_count << " " << *max_element(values, values + 999) << "\n";
+            // std::cout << "The average is: " << average_total / average_count << " " << *max_element(values, values + 999) << "\n";
             timer = millis();
             average_total = 0;
             average_count = 0;
             memset(values, 0, sizeof values);
         }
         std::cout << "encoder  " << LeftXEncoder.get_value() << "\n";
-       // arcade();
-       // transmission();
-       object = vision_sensor.get_by_sig(0, 2);
-       //std::cout << object.width << "\n";
-       delay(50);
+        arcade();
+        // transmission();
+        // object = vision_sensor.get_by_sig(0, 2);
+        //std::cout << object.width << "\n";
+        delay(50);
     }
 }
