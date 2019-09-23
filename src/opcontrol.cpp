@@ -98,7 +98,7 @@ vision_object_s_t object;
 void opcontrol()
 {
     float distance_to_robot_edge = 0;
-    float y= 0;
+    float y = 0;
     float fov_in = 0; // To be calculated using cube_px_width_in_view / cube_px_width_1m_away
     float d = (fov_in / 400)*y + distance_to_robot_edge;
 
@@ -109,7 +109,7 @@ void opcontrol()
 
     float values[999];
 
-    pros::Vision vision_sensor(VISION_PORT);
+    Vision vision_sensor(VISION_PORT);
     while (true)
     {
         float x = vision_sensor.get_by_sig(0, 3).width;
@@ -123,7 +123,7 @@ void opcontrol()
             timer = millis();
             average_total = 0;
             average_count = 0;
-            memset(values, 0, sizeof values);
+            memset(values, 0, sizeof(values));
         }
 
        // arcade();

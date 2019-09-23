@@ -37,6 +37,7 @@
 #include "api.h"
 
 using namespace pros;
+using namespace pros::literals;
 // using namespace okapi;
 //
 // #define driveLF pros::Motor(20,E_MOTOR_GEARSET_18, false)

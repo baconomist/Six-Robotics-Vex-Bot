@@ -2,7 +2,6 @@
 #include "main.h"
 #include "headers/motors.h"
 #include "headers/motor_gearsets.h"
-#include "headers/motor_ports.h"
 
 // Motor* driveLB;
 // Motor* driveLF;

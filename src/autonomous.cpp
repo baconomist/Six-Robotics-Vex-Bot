@@ -24,7 +24,7 @@ float get_measurement(){
 void autonomous(){
     motor_set_gearing(1, MOTOR_GEARSET_BLUE);
 
-    motor_set_encoder_units(1, pros::E_MOTOR_ENCODER_DEGREES);
+    motor_set_encoder_units(1, E_MOTOR_ENCODER_DEGREES);
 
     /*while(1)
      {

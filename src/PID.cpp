@@ -15,7 +15,7 @@ void P(float (*get_sensor_value)(), float end, float (*yield_return)(float speed
     float speed;
 
     error = end - get_sensor_value();
-    while (error > 0)
+    while (std::abs(error) > MIN_ERROR_RANGE)
     {
         error = end - get_sensor_value();
         speed = error * Kp;
@@ -35,17 +35,16 @@ void PI(float (*get_sensor_value)(), float end, float (*yield_return)(float spee
 
     float dT = 0;
     float last_frame_time = pros::millis();
-    while (error > 0)
+    while (std::abs(error) > MIN_ERROR_RANGE)
     {
         dT = pros::millis() - last_frame_time;
 
         error = end - get_sensor_value();
-
         if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
             integral = integral + error * dT;
 
         // When we've reached our destination, reset the integral to prevent from continuing to move
-        if (error == 0)
+        if (error < 0)
             integral = 0;
 
         speed = error * Kp + integral * Ki;
@@ -70,7 +69,7 @@ void PID(float (*get_sensor_value)(), float end, float (*yield_return)(float spe
 
     float dT = 0;
     float last_frame_time = pros::millis();
-    while (error > 0)
+    while (std::abs(error) > MIN_ERROR_RANGE)
     {
         dT = pros::millis() - last_frame_time;
 
