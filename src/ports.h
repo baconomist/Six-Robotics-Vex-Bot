@@ -1,3 +1,6 @@
+#ifndef VEXBOT_PORTS_H
+#define VEXBOT_PORTS_H
+
 #define VISION_PORT 5
 
 // Drive
@@ -16,3 +19,5 @@
 #define RIGHT_X_ENCODER_BOTTOM 4
 #define Y_ENCODER_TOP 5
 #define Y_ENCODER_BOTTOM 6
+
+#endif
