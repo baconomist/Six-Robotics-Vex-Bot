@@ -33,7 +33,7 @@ endforeach()
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 
-add_executable(VexRobot ${SOURCES} src/motor_gearsets.h src/kalman_filter.cpp src/kalman_filter.h src/PID.cpp src/motor_ports.h src/motors.h src/controllers.h src/PID.h src/motor_gearsets.cpp)
+add_executable(VexRobot ${SOURCES} src/drive.cpp src/drive.h src/utils/vector2.cpp src/utils/vector2.h)
 target_include_directories(VexRobot PRIVATE ${INCLUDE_DIRS})
 
 # Tell pros to build the project

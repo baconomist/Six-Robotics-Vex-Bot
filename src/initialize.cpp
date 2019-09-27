@@ -1,10 +1,10 @@
 
 #include "main.h"
-#include "headers/motors.h"
-#include "headers/motor_gearsets.h"
-#include "headers/motor_ports.h"
+#include "motors.h"
+#include "motor_gearsets.h"
+#include "motor_ports.h"
 #include "main.h"
-#include "headers/encoders.h"
+#include "encoders.h"
 
 // Motor* driveLB;
 // Motor* driveLF;

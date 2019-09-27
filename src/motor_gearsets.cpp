@@ -2,7 +2,7 @@
 // Created by Lucas on 8/31/2019.
 //
 
-#include "headers/motor_gearsets.h"
+#include "motor_gearsets.h"
 
 int get_gearset_rpm(motor_gearset_e gearset)
 {
