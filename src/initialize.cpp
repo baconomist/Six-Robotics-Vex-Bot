@@ -12,9 +12,7 @@
 // Motor* transB;
 // Motor* transT;
 
-pros::ADIEncoder LeftXEncoder(LEFT_X_ENCODER_TOP, LEFT_X_ENCODER_BOTTOM);
-pros::ADIEncoder RightXEncoder(RIGHT_X_ENCODER_TOP, RIGHT_X_ENCODER_BOTTOM);
-pros::ADIEncoder YEncoder(Y_ENCODER_TOP, Y_ENCODER_BOTTOM);
+
 
 void on_center_button()
 {

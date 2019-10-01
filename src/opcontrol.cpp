@@ -14,6 +14,15 @@
 #define GREEN_SIG 3
 
 using namespace std;
+
+/**
+ * Scales the speed value to match the motors get_gearing
+ * This function is to assist with the Motor::motor.move_velocity(int velocity) function
+ */
+int scale(int speed, Motor motor){
+  int scaledSpeed = get_gearset_rpm(motor.get_gearing())/127;
+  return speed* scaledSpeed;
+}
 void tank()
 {
     int deadZone = 15;
@@ -27,15 +36,15 @@ void tank()
     driveRF.move_velocity(velRY + strafe);
 }
 
+/**
+ * Arcade joystick control + strafe
+ */
 void arcade(){
-    /*
-    arcade joystick control + strafe
-    */
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
-    int velLY = master.get_analog(ANALOG_LEFT_Y) * get_gearset_rpm(driveLB.get_gearing()) / 127;//scaling the values to 200 to match the internal gearset for move_velocity
-    int velRY = master.get_analog(ANALOG_RIGHT_Y) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
-    int velLX = master.get_analog(ANALOG_LEFT_X) * get_gearset_rpm(driveLB.get_gearing()) / 127;//^^
-    int velRX = master.get_analog(ANALOG_RIGHT_X) * get_gearset_rpm(driveRB.get_gearing()) / 127;//^^
+    int velLY = scale(master.get_analog(ANALOG_LEFT_Y), driveLB);//scaling the joystick values to 200 to match the internal gearset for move_velocity
+    int velRY = scale(master.get_analog(ANALOG_RIGHT_Y),driveRB);//^^
+    int velLX = scale(master.get_analog(ANALOG_LEFT_X), driveLB);//^^
+    int velRX = scale(master.get_analog(ANALOG_RIGHT_X),driveRB);//^^
 
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
@@ -64,13 +73,13 @@ void arcade(){
 
 void transmission()
 {
-    /*
-    uses 2 motors to control lift + tray
-    tray = transB(hold) and transT(+- power)
-    lift = transB(+-power) and transT(-+ power)
-    */
+    /**
+     * uses 2 motors to control lift + tray
+     * tray = transB(hold) and transT(+- power)
+     * lift = transB(+-power) and transT(-+ power)
+     */
     int tilt = 100 * (master.get_digital(DIGITAL_R1) - master.get_digital(
-            DIGITAL_R2));//sets tilit speed to 50 * the direction, scaled to match internal gearset
+            DIGITAL_R2));//sets tilt speed to speed * the direction, scaled to match internal gearset
     int lift = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(
             DIGITAL_L2));//sets lift speed to 100 * the direction, scaled to match internal gearset
     if (tilt)
