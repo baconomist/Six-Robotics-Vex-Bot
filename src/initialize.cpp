@@ -1,6 +1,8 @@
 
 #include "main.h"
-#include "motors.h"
+#include "robot/robot.h"
+
+#include "robot/motors.h"
 #include "motor_gearsets.h"
 #include "motor_ports.h"
 #include "main.h"
@@ -58,7 +60,7 @@ void setup_motors()
 void initialize()
 {
     setup_motors();
-
+    robot->initialize();
 }
 
 /**
