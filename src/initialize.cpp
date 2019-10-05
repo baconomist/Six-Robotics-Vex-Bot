@@ -1,9 +1,15 @@
 
 #include "main.h"
+<<<<<<< HEAD
 #include "headers/motors.h"
 #include "headers/motor_gearsets.h"
+=======
+#include "motors.h"
+#include "motor_gearsets.h"
+#include "motor_ports.h"
+>>>>>>> 579c78d10837498831bb3418ffacbbccc40f5f0e
 #include "main.h"
-#include "headers/encoders.h"
+#include "encoders.h"
 
 // Motor* driveLB;
 // Motor* driveLF;

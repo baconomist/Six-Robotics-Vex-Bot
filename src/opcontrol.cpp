@@ -2,11 +2,11 @@
 #include <algorithm>
 #include <math.h>
 #include "main.h"
-#include "headers/motors.h"
-#include "headers/controllers.h"
-#include "headers/motor_gearsets.h"
-#include "headers/misc.h"
-#include "headers/encoders.h"
+#include "motors.h"
+#include "controllers.h"
+#include "motor_gearsets.h"
+#include "ports.h"
+#include "encoders.h"
 
 // Colors in order from top-bottom orange, purple, green
 #define ORANGE_SIG 1
