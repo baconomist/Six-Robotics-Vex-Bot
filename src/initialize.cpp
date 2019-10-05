@@ -1,13 +1,10 @@
 
 #include "main.h"
-<<<<<<< HEAD
-#include "headers/motors.h"
-#include "headers/motor_gearsets.h"
-=======
+
 #include "motors.h"
 #include "motor_gearsets.h"
-#include "motor_ports.h"
->>>>>>> 579c78d10837498831bb3418ffacbbccc40f5f0e
+#include "ports.h"
+
 #include "main.h"
 #include "encoders.h"
 

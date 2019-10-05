@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "ports.h"
 #ifndef VEXBOT_ENCODERS_H
 #define VEXBOT_ENCODERS_H
 extern pros::ADIEncoder LeftXEncoder;
