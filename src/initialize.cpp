@@ -4,9 +4,9 @@
 
 #include "robot/motors.h"
 #include "motor_gearsets.h"
-#include "motor_ports.h"
 #include "main.h"
 #include "encoders.h"
+#include "ports.h"
 
 // Motor* driveLB;
 // Motor* driveLF;
@@ -18,6 +18,8 @@
 pros::ADIEncoder LeftXEncoder(LEFT_X_ENCODER_TOP, LEFT_X_ENCODER_BOTTOM);
 pros::ADIEncoder RightXEncoder(RIGHT_X_ENCODER_TOP, RIGHT_X_ENCODER_BOTTOM);
 pros::ADIEncoder YEncoder(Y_ENCODER_TOP, Y_ENCODER_BOTTOM);
+
+Robot* robot;
 
 void on_center_button()
 {
@@ -59,6 +61,8 @@ void setup_motors()
 
 void initialize()
 {
+    robot = new Robot();
+
     setup_motors();
     robot->initialize();
 }

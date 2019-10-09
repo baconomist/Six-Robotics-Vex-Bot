@@ -19,5 +19,5 @@ void MotionTracker::initialize()
 
 void calculate_rotation()
 {
-    float left_difference
+    float left_difference;
 }
