@@ -12,5 +12,5 @@
 #define DRIVE_LB 10
 #define DRIVE_RF 11
 #define DRIVE_RB 1
-#define TRANS_F 2
-#define TRANS_B 9
+#define TRANS_F 9
+#define TRANS_B 2
