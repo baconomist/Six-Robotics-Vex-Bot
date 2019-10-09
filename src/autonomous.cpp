@@ -3,7 +3,7 @@
 #include "headers/motor_gearsets.h"
 #include "headers/kalman_filter.h"
 #include "headers/motors.h"
-
+#include "headers/controllers.h"
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -40,8 +40,6 @@ void autonomous(){
     double start = millis();
 
     char buffer[50];
-
-    pros::Controller master(pros::E_CONTROLLER_MASTER);
 
     std::cout << kalmanFilter(get_measurement(), 1, &get_measurement, 1, 2);
 
