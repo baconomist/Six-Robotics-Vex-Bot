@@ -1,13 +1,18 @@
 
 #include "main.h"
 <<<<<<< HEAD
-#include "headers/motors.h"
-#include "headers/motor_gearsets.h"
-=======
+
 #include "motors.h"
 #include "motor_gearsets.h"
+#include "ports.h"
+
+=======
+#include "robot/robot.h"
+
+#include "robot/motors.h"
+#include "motor_gearsets.h"
 #include "motor_ports.h"
->>>>>>> 579c78d10837498831bb3418ffacbbccc40f5f0e
+>>>>>>> 00bdc5eee96d27480474277298b8b5d35b9dda71
 #include "main.h"
 #include "encoders.h"
 
@@ -61,7 +66,7 @@ void setup_motors()
 void initialize()
 {
     setup_motors();
-
+    robot->initialize();
 }
 
 /**
