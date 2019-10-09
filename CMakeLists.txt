@@ -30,10 +30,11 @@ foreach (_headerFile ${HEADERS})
     get_filename_component(_dir ${_headerFile} PATH)
     list (APPEND INCLUDE_DIRS ${_dir})
 endforeach()
+
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 
-add_executable(VexRobot ${SOURCES} src/drive.cpp src/drive.h src/utils/vector2.cpp src/utils/vector2.h)
+add_executable(VexRobot ${SOURCES} ${HEADERS})
 target_include_directories(VexRobot PRIVATE ${INCLUDE_DIRS})
 
 # Tell pros to build the project
