@@ -11,10 +11,14 @@
 
 #include "robot/motors.h"
 #include "motor_gearsets.h"
+<<<<<<< HEAD
 #include "motor_ports.h"
 >>>>>>> 00bdc5eee96d27480474277298b8b5d35b9dda71
+=======
+>>>>>>> 64b9b0542630b924e2c23b999a43ea2a301c5b72
 #include "main.h"
 #include "encoders.h"
+#include "ports.h"
 
 // Motor* driveLB;
 // Motor* driveLF;
@@ -24,6 +28,8 @@
 // Motor* transT;
 
 
+
+Robot* robot;
 
 void on_center_button()
 {
@@ -65,6 +71,8 @@ void setup_motors()
 
 void initialize()
 {
+    robot = new Robot();
+
     setup_motors();
     robot->initialize();
 }

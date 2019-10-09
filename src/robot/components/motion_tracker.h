@@ -19,7 +19,7 @@ public:
     void initialize();
     void update();
 
-
+    float calculate_rotation_from_motion();
 
 };
 
