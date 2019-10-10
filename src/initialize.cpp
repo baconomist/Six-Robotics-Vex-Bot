@@ -1,21 +1,9 @@
 
 #include "main.h"
-<<<<<<< HEAD
-
-#include "motors.h"
-#include "motor_gearsets.h"
-#include "ports.h"
-
-=======
 #include "robot/robot.h"
 
 #include "robot/motors.h"
 #include "motor_gearsets.h"
-<<<<<<< HEAD
-#include "motor_ports.h"
->>>>>>> 00bdc5eee96d27480474277298b8b5d35b9dda71
-=======
->>>>>>> 64b9b0542630b924e2c23b999a43ea2a301c5b72
 #include "main.h"
 #include "encoders.h"
 #include "ports.h"

@@ -24,6 +24,7 @@ void Robot::start_mainloop()
     while(this->runningMainloop)
     {
         this->drive->update();
+        printf("Hello");
     }
 }
 

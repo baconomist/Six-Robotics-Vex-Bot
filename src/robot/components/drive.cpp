@@ -82,8 +82,8 @@ void Drive::transmission()
     if (tilt)
     {
         //moves the tray forwards and backwards
-        transB.move_velocity(0);//uses motor brake(hold) to prevent motor from turning
-        transT.move_velocity(-tilt);//rotates about transB
+        transB.move_velocity(tilt);//uses motor brake(hold) to prevent motor from turning
+        transT.move_velocity(tilt);//rotates about transB
     } else if (lift)
     {
         //moves lift
@@ -104,4 +104,3 @@ void Drive::update()
     else if (this->driveMode == ARCADE)
         arcade();
 }
-
