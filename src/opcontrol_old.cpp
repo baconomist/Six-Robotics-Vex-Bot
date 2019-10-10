@@ -1,17 +1,14 @@
-
+/*
 #include <algorithm>
 #include <math.h>
 #include "main.h"
 #include "robot/motors.h"
 #include "motor_gearsets.h"
-<<<<<<< HEAD
 #include "ports.h"
-=======
 #include "misc.h"
->>>>>>> 95060a54a5ec3de0f672fe8f0fcdab3cfe85301b
 #include "encoders.h"
 
-/*
+
 
 // Colors in order from top-bottom orange, purple, green
 #define ORANGE_SIG 1
@@ -77,8 +74,4 @@ void opcontrol()
     }
 }
 
-<<<<<<< HEAD
 */
-=======
-*/
->>>>>>> 95060a54a5ec3de0f672fe8f0fcdab3cfe85301b
