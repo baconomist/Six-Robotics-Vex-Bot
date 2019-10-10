@@ -6,6 +6,8 @@
 #define VEXROBOT_AUTON_PATH_PARSER_H
 
 #include "main.h"
+// #include "json.h"
+#include <fstream>
 
 class AutonPathNode
 {
@@ -15,12 +17,11 @@ class AutonPathNode
 class AutonPathParser
 {
 public:
-    AutonPathParser(FILE* sd_auton_file);
+    AutonPathParser(std::string file_path);
 
 
 private:
     void parseFile();
-
 };
 
 #endif //VEXROBOT_AUTON_PATH_PARSER_H
