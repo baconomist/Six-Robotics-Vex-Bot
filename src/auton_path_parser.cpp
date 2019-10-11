@@ -2,19 +2,57 @@
 // Created by Lucas on 9/20/2019.
 //
 
+#include "main.h"
 #include "auton_path_parser.h"
+#include <stdio.h>
+#include "stdlib.h"
 
-nlohmann::json data;
-AutonPathParser::AutonPathParser (std::string file_path) {
-  std::ifstream readfile(file_path);
-  readfile >> data;
-  parseFile();
+// nlohmann::json data;
+AutonPathParser::AutonPathParser (char* file_path) {
+  std::string STRING;
+  std::ifstream infile;
+  infile.open("/usd/path.json");
+  while(!infile.eof())
+  {
+    getline(infile, STRING);
+    std::cout << STRING;
+  }
+  infile.close();
+
+  /*FILE * readfile;
+  readfile = fopen("/usd/path.json", "r");
+  fseek(readfile, 0, SEEK_END);
+  int filesize = ftell(readfile);
+  char buf[filesize];
+  fread(buf, filesize, 1, readfile);
+
+  // std::cout << filesize << "\n";
+  // printf("%s", buf);
+
+  char c = fgetc(readfile);
+  while (c != EOF)
+  {
+      printf("%u\n", c);
+      c = fgetc(readfile);
+  }
+
+  fclose(readfile);*/
+
+
+  // data = nlohmann::json::parse(readfile);
+  // parseFile();
 }
 
+/**
+* Turns JSON data into a vector of points
+*/
 void AutonPathParser::parseFile () {
-
+  // std::cout << data[0];
 }
 
+/**
+* Turns vector of points into bot drive instructions
+*/
 void AutonPathParser::dataToInstructions(std::vector<Vector2> points) {
   std::vector<double> lengths;
   std::vector<double> turns;
@@ -25,6 +63,9 @@ void AutonPathParser::dataToInstructions(std::vector<Vector2> points) {
   }
 }
 
+/**
+* Gets the turn angle on the middle point of given points
+*/
 double getAngle(Vector2 p1, Vector2 p2, Vector2 p3) {
   Vector2 v1 = p1 - p2;
   Vector2 v2 = p3 - p2;
