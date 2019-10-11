@@ -1,9 +1,15 @@
 
 #include "main.h"
+
+#include "motors.h"
+#include "motor_gearsets.h"
+#include "ports.h"
+
 #include "robot/robot.h"
 
 #include "robot/motors.h"
 #include "motor_gearsets.h"
+#include "ports.h"
 #include "main.h"
 #include "encoders.h"
 #include "ports.h"
