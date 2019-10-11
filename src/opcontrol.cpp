@@ -87,10 +87,24 @@ void transmission(){
     }
 }
 
-
+/*
+  runs the intake in given direction
+*/
+void intake(){
+  int speed = 100 * (master.get_digital(DIGITAL_UP) - master.get_digital(DIGITAL_DOWN));
+  if(speed){
+    intakeL.move_velocity(speed);
+    intakeR.move_velocity(speed);
+  }
+  else{
+    intakeL.move_velocity(0);
+    intakeR.move_velocity(0);
+  }
+}
 void opcontrol(){
     while (true){
       arcade();
+      intake();
       transmission();
     }
 }

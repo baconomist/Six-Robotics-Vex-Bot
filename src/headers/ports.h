@@ -14,3 +14,5 @@
 #define DRIVE_RB 1
 #define TRANS_F 9
 #define TRANS_B 2
+#define INTAKE_L 5
+#define INTAKE_R 4

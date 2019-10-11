@@ -13,4 +13,7 @@
 
 #define transF pros::Motor(TRANS_F, E_MOTOR_GEARSET_36, false)
 #define transB pros::Motor(TRANS_B, E_MOTOR_GEARSET_36, true)//reversed
+
+#define intakeL pros::Motor(INTAKE_L, E_MOTOR_GEARSET_36, false)
+#define intakeR pros::Motor(INTAKE_R, E_MOTOR_GEARSET_36, false)
 #endif //VEXROBOT_MOTORS_H
