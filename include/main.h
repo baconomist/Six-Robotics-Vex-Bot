@@ -34,8 +34,8 @@
  */
 #define PROS_USE_LITERALS
 
-#include "api.h"
-
+#include "pros/apix.h"
+#include "display/lv_conf.h"
 using namespace pros;
 using namespace pros::literals;
 // using namespace okapi;

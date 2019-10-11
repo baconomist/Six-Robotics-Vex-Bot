@@ -63,6 +63,8 @@ void initialize()
 
     setup_motors();
     robot->initialize();
+    //pros::lcd::initialize();
+    //lv_init();
 }
 
 /**

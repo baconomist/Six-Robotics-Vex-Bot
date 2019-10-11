@@ -35,7 +35,6 @@ void autonomous(){
          delay(1000);
      }*/
 
-    pros::lcd::initialize();
 
     double speed = 20;
 

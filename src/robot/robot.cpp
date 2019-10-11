@@ -3,7 +3,7 @@
 //
 
 #include "robot.h"
-
+#include "main.h"
 Robot::Robot()
 {
     this->drive = new Drive();
@@ -16,7 +16,9 @@ Robot::Robot()
 void Robot::initialize()
 {
     this->motionTracker->initialize();
+    lv_init();
 }
+
 
 void Robot::start_mainloop()
 {
@@ -24,7 +26,7 @@ void Robot::start_mainloop()
     while(this->runningMainloop)
     {
         this->drive->update();
-        printf("Hello");
+        //lv_tutorial_hello_world();
     }
 }
 

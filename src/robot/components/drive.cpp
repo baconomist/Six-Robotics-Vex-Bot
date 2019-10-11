@@ -17,7 +17,9 @@ using namespace pros;
 
 
 Controller master(CONTROLLER_MASTER);
-
+/*
+  tank joystick control + strafe  
+*/
 void Drive::tank()
 {
     int deadZone = 15;
@@ -30,12 +32,11 @@ void Drive::tank()
     driveRB.move_velocity(velRY - strafe);
     driveRF.move_velocity(velRY + strafe);
 }
-
+/*
+arcade joystick control + strafe
+*/
 void Drive::arcade()
 {
-    /*
-    arcade joystick control + strafe
-    */
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
     int velLY = master.get_analog(ANALOG_LEFT_Y) * get_gearset_rpm(driveLB.get_gearing()) /
                 127;//scaling the values to 200 to match the internal gearset for move_velocity
@@ -67,14 +68,14 @@ void Drive::arcade()
         driveRB.move_velocity(velLY + velLX + velRX);
     }
 }
-
+/*
+uses 2 motors to control lift + tray
+tray = transB(hold) and transT(+- power)
+lift = transB(+-power) and transT(-+ power)
+*/
 void Drive::transmission()
 {
-    /*
-    uses 2 motors to control lift + tray
-    tray = transB(hold) and transT(+- power)
-    lift = transB(+-power) and transT(-+ power)
-    */
+
     int tilt = 100 * (master.get_digital(DIGITAL_R1) - master.get_digital(
             DIGITAL_R2));//sets tilit speed to 50 * the direction, scaled to match internal gearset
     int lift = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(
@@ -103,4 +104,5 @@ void Drive::update()
         tank();
     else if (this->driveMode == ARCADE)
         arcade();
+    transmission();
 }
