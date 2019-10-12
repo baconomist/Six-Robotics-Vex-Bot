@@ -60,7 +60,8 @@ void setup_motors()
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
-    transB.set_brake_mode(MOTOR_BRAKE_BRAKE);
+    transT.set_brake_mode(MOTOR_BRAKE_HOLD);
+    transB.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
 void initialize()
