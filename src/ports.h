@@ -12,6 +12,9 @@
 #define TRANSMISSION_BOTTOM 9
 #define TRANSMISSION_TOP 2
 
+#define INTAKE_LEFT 5
+#define INTAKE_RIGHT 4
+
 // Legacy Ports (A=1, B=2...)
 #define LEFT_X_ENCODER_TOP 1
 #define LEFT_X_ENCODER_BOTTOM 2
