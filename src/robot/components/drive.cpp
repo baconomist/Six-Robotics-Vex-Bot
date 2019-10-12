@@ -97,6 +97,12 @@ void Drive::transmission()
     }
 }
 
+void Drive::intake() {
+  int intakeSpeed = 127 * (master.get_digital(DIGITAL_UP) - master.get_digital(DIGITAL_DOWN));
+  intakeL.move_velocity(intakeSpeed);
+  intakeR.move_velocity(intakeSpeed);
+}
+
 void Drive::update()
 {
     if (this->driveMode == TANK)
@@ -104,4 +110,5 @@ void Drive::update()
     else if (this->driveMode == ARCADE)
         arcade();
     transmission();
+    intake();
 }
