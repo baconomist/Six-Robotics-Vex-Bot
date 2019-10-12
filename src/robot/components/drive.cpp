@@ -18,19 +18,19 @@ using namespace pros;
 
 Controller master(CONTROLLER_MASTER);
 /*
-  tank joystick control + strafe  
+  tank joystick control + strafe
 */
 void Drive::tank()
 {
     int deadZone = 15;
     int velLY = master.get_analog(ANALOG_LEFT_Y);
-    int strafe = 90 * (master.get_digital(DIGITAL_RIGHT) - master.get_digital(DIGITAL_LEFT));
+    int strafe = 127 * (master.get_digital(DIGITAL_RIGHT) - master.get_digital(DIGITAL_LEFT));
     int velRY = master.get_analog(ANALOG_RIGHT_Y);
 
     driveLB.move_velocity(velLY - strafe);
     driveLF.move_velocity(velLY + strafe);
-    driveRB.move_velocity(velRY - strafe);
-    driveRF.move_velocity(velRY + strafe);
+    driveRB.move_velocity(velRY + strafe);
+    driveRF.move_velocity(velRY - strafe);
 }
 /*
 arcade joystick control + strafe
@@ -98,6 +98,12 @@ void Drive::transmission()
     }
 }
 
+void Drive::intake() {
+  int intakeSpeed = 127 * (master.get_digital(DIGITAL_UP) - master.get_digital(DIGITAL_DOWN));
+  intakeL.move_velocity(intakeSpeed);
+  intakeR.move_velocity(intakeSpeed);
+}
+
 void Drive::update()
 {
     if (this->driveMode == TANK)
@@ -105,4 +111,5 @@ void Drive::update()
     else if (this->driveMode == ARCADE)
         arcade();
     transmission();
+    intake();
 }

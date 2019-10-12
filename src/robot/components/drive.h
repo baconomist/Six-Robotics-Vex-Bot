@@ -23,6 +23,8 @@ public:
 
     void transmission();
 
+    void intake();
+
     void update();
 };
 
