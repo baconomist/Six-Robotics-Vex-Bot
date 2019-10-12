@@ -7,25 +7,23 @@
 
 enum DriveMode
 {
-    TANK,
-    ARCADE
+  TANK,
+  ARCADE
 };
 
 
 class Drive
 {
 public:
-    DriveMode driveMode = TANK;
+  DriveMode driveMode = ARCADE;
 
-    void tank();
+  void tank();
 
-    void arcade();
+  void arcade();
 
-    void transmission();
+  void update();
 
-    void intake();
-
-    void update();
+  void initialize();
 };
 
 

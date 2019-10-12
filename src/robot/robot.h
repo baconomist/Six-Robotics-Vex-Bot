@@ -6,35 +6,38 @@
 #define VEXROBOT_ROBOT_H
 
 #include "components/drive.h"
-#include "components/motion_tracker.h"
+#include "components/mechanisms.h"
+#include "motion_control/motion_tracker.h"
 
 enum RobotMode
 {
-    AUTONOMOUS,
-    REMOTE_CONTROLLED
+  AUTONOMOUS,
+  REMOTE_CONTROLLED
 };
 
+//TODO: create an auton class
 class Robot
 {
 public:
-    Drive* drive;
-    MotionTracker* motionTracker;
-    RobotMode robotMode = AUTONOMOUS;
-    bool runningMainloop = false;
+  Drive* drive;
+  Mechanisms* mechanisms;
+  MotionTracker* motionTracker;
+  RobotMode robotMode = AUTONOMOUS;
+  bool runningMainloop = false;
 
-    Robot();
+  Robot();
 
-    void initialize();
+  void initialize();
 
-    void start_mainloop();
+  void start_mainloop();
 
-    void end_mainloop();
+  void end_mainloop();
 
-    void update();
+  void update();
 
-    void execute_next();
+  void execute_next();
 
-    void queue_action();
+  void queue_action();
 };
 
 extern Robot* robot;

@@ -32,15 +32,15 @@ AutonPathParser::AutonPathParser (char* file_path) {
   char c = fgetc(readfile);
   while (c != EOF)
   {
-      printf("%u\n", c);
-      c = fgetc(readfile);
-  }
+  printf("%u\n", c);
+  c = fgetc(readfile);
+}
 
-  fclose(readfile);*/
+fclose(readfile);*/
 
 
-  // data = nlohmann::json::parse(readfile);
-  // parseFile();
+// data = nlohmann::json::parse(readfile);
+// parseFile();
 }
 
 /**
@@ -71,12 +71,12 @@ double getAngle(Vector2 p1, Vector2 p2, Vector2 p3) {
   Vector2 v2 = p3 - p2;
   double angle = -(180/M_PI)*atan2(v1.x*v2.y - v1.y*v2.x,
     v1.x*v2.x + v1.y*v2.y);
-  return angle;
-}
+    return angle;
+  }
 
-double getDistance(Vector2 p1, Vector2 p2) {
-  double a = abs(p1.x - p2.x);
-  double b = abs(p1.y - p2.y);
-  double c = sqrt(a*a + b*b);
-  return c;
-}
+  double getDistance(Vector2 p1, Vector2 p2) {
+    double a = abs(p1.x - p2.x);
+    double b = abs(p1.y - p2.y);
+    double c = sqrt(a*a + b*b);
+    return c;
+  }

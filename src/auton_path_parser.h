@@ -21,15 +21,15 @@ class AutonPathNode
 class AutonPathParser
 {
 public:
-    AutonPathParser(char* file_path);
+  AutonPathParser(char* file_path);
 
 private:
-    void parseFile();
-    // NOTE: std::vector not to be confused with Vector2.
-    // std::vector is basically an array, Vector2 is a point.
-    void dataToInstructions(std::vector<Vector2> points);
-    double getAngle(Vector2, Vector2, Vector2);
-    double getDistance(Vector2, Vector2);
+  void parseFile();
+  // NOTE: std::vector not to be confused with Vector2.
+  // std::vector is basically an array, Vector2 is a point.
+  void dataToInstructions(std::vector<Vector2> points);
+  double getAngle(Vector2, Vector2, Vector2);
+  double getDistance(Vector2, Vector2);
 };
 
 #endif //VEXROBOT_AUTON_PATH_PARSER_H

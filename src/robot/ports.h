@@ -1,6 +1,7 @@
 #ifndef VEXBOT_PORTS_H
 #define VEXBOT_PORTS_H
 
+//Vision Sensor
 #define VISION_PORT 5
 
 // Drive
@@ -9,9 +10,11 @@
 #define RIGHT_FRONT 11
 #define RIGHT_BACK 1
 
+//Transmission
 #define TRANSMISSION_BOTTOM 9
 #define TRANSMISSION_TOP 2
 
+//Intake
 #define INTAKE_LEFT 5
 #define INTAKE_RIGHT 4
 
