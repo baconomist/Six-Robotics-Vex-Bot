@@ -3,8 +3,9 @@
 class Mechanisms
 {
 public:
-  void transmission();
-  void intake();
+  void tilter(int tilt);
+  void lifter(int lift);
+  void intake(int intakeSpeed);
   void update();
   void initialize();
 };
