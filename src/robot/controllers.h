@@ -3,4 +3,4 @@
 //
 
 #include "main.h"
-Controller master(E_CONTROLLER_MASTER);
+#define master pros::Controller(E_CONTROLLER_MASTER)

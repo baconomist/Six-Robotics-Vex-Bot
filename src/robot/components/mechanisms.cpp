@@ -2,6 +2,10 @@
 #include "../controllers.h"
 #include "../motors.h"
 
+/*
+  Controls the transmission
+
+*/
 void Mechanisms::transmission()
 {
   int tilt = 100 * (master.get_digital(DIGITAL_R1) - master.get_digital(DIGITAL_R2));//sets tilit speed to 100 * the direction, scaled to match internal gearset
