@@ -86,12 +86,17 @@ void Drive::tank()
 {
     int deadZone = 15;
     int velLY = master.get_analog(ANALOG_LEFT_Y);
-    int strafe = 127 * (master.get_digital(DIGITAL_RIGHT) - master.get_digital(DIGITAL_LEFT));
+    int velStrafe = 127 * (master.get_digital(DIGITAL_RIGHT) - master.get_digital(DIGITAL_LEFT));
     int velRY = master.get_analog(ANALOG_RIGHT_Y);
-    driveLB.move_velocity(velLY - strafe);
-    driveLF.move_velocity(velLY + strafe);
-    driveRB.move_velocity(velRY + strafe);
-    driveRF.move_velocity(velRY - strafe);
+    // driveLB.move_velocity(velLY - strafe);
+    // driveLF.move_velocity(velLY + strafe);
+    // driveRB.move_velocity(velRY + strafe);
+    // driveRF.move_velocity(velRY - strafe);
+
+    // scale all velocities to Left-Back drive(all drives will be same gearset)
+    move_left(scale(velLY, driveLB));
+    move_right(scale(velRY, driveLB));
+    strafe(scale(velStrafe, driveLB));
 }
 
 /*
