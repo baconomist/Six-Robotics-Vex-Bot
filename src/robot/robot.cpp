@@ -5,9 +5,9 @@
 #include "robot.h"
 Robot::Robot(float wheel_to_wheel_dist, float wheel_to_center_dist)
 {
-  this->drive = new Drive(wheel_to_wheel_dist, wheel_to_center_dist);
-  this->mechanisms = new Mechanisms();
-  this->motionTracker = new MotionTracker();
+    this->drive = new Drive(wheel_to_wheel_dist, wheel_to_center_dist);
+    this->mechanisms = new Mechanisms();
+    this->motionTracker = new MotionTracker(wheel_to_wheel_dist, wheel_to_center_dist);
 }
 
 /**
@@ -15,25 +15,26 @@ Robot::Robot(float wheel_to_wheel_dist, float wheel_to_center_dist)
 * **/
 void Robot::initialize()
 {
-  this->motionTracker->initialize();
-  this->drive->initialize();
-  this->mechanisms->initialize();
+    this->motionTracker->initialize();
+    this->drive->initialize();
+    this->mechanisms->initialize();
 }
 
 
 void Robot::start_mainloop()
 {
-  this->runningMainloop = true;
-  while(this->runningMainloop)
-  {
-    this->drive->update();
-    this->mechanisms->update();
-  }
+    this->runningMainloop = true;
+    while(this->runningMainloop)
+    {
+
+        this->drive->update();
+        this->mechanisms->update();
+    }
 }
 
 void Robot::end_mainloop()
 {
-  this->runningMainloop = false;
+    this->runningMainloop = false;
 }
 
 void Robot::update()

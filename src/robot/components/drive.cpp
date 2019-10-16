@@ -15,6 +15,10 @@ int scale(int speed, Motor motor){
     return speed * get_gearset_rpm(motor.get_gearing())/127.0f;
 }
 
+Drive::Drive(float wheel_to_wheel_dist, float wheel_to_center_dist){
+    this->wheel_to_wheel_dist = wheel_to_wheel_dist;
+    this->wheel_to_center_dist = wheel_to_center_dist;
+}
 /*
 moves the left side of the drive
 \param speed

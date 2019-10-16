@@ -5,9 +5,10 @@
 #include "motion_tracker.h"
 #include "../ports.h"
 
-MotionTracker::MotionTracker()
+MotionTracker::MotionTracker(float wheel_to_wheel_dist, float wheel_to_center_dist)
 {
-
+    this->wheel_to_wheel_dist = wheel_to_wheel_dist;
+    this->wheel_to_center_dist = wheel_to_center_dist;
 }
 
 void MotionTracker::initialize()
