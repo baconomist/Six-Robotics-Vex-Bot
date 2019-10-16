@@ -26,8 +26,8 @@ void on_center_button()
 
 void initialize()
 {
-    robot = new Robot(23,23);
-    robot->initialize();
+  robot = new Robot(23.0f, 23.0f);
+  robot->initialize();
 }
 
 /**

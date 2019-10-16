@@ -11,3 +11,8 @@ const int MIN_ERROR_RANGE = 10;
 float Kp = 0.5;
 float Ki = 0.2;
 float Kd = 0.1;
+
+void P(float (*get_sensor_value)(), float end, void (*yield_return)(float speed));
+void PI(float (*get_sensor_value)(), float end, void (*yield_return)(float speed));
+void PD(float (*get_sensor_value)(), float end, void (*yield_return)(float speed));
+void PID(float (*get_sensor_value)(), float end, void (*yield_return)(float speed));
