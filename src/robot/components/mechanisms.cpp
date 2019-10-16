@@ -14,8 +14,8 @@ void Mechanisms::tilter(int speed){
 moves the lift up or down
 */
 void Mechanisms::lifter(int speed){
-    transB.move_velocity(-speed);
-    transT.move_velocity(speed);
+    transB.move_velocity(speed);
+    transT.move_velocity(-speed);
 }
 
 /*
@@ -51,4 +51,5 @@ void Mechanisms::update(){
         tilter(0);
         lifter(0);
     }
+    intake(intakeSpeed);
 }

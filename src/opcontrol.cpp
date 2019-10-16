@@ -8,6 +8,9 @@
 
 void opcontrol()
 {
-  robot = new Robot();
   robot->robotMode = REMOTE_CONTROLLED;
+ // robot->start_mainloop();
+  while(true){
+      robot->update();
+  }
 }

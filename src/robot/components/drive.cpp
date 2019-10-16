@@ -107,7 +107,7 @@ void Drive::arcade()
     int velLY = scale(master.get_analog(ANALOG_LEFT_Y ), driveLB);
     int velRY = scale(master.get_analog(ANALOG_RIGHT_Y), driveLB);
     int velLX = scale(master.get_analog(ANALOG_LEFT_X ), driveLB);
-    int velRX = scale(master.get_analog(ANALOG_RIGHT_Y), driveLB);
+    int velRX = scale(master.get_analog(ANALOG_RIGHT_X), driveLB);
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
     {
@@ -126,10 +126,10 @@ void Drive::arcade()
     } else
     {
         //arcade control + strafe
-        driveLF.move_velocity(velLY - velLX + velRX);
-        driveLB.move_velocity(velLY - velLX - velRX);
-        driveRF.move_velocity(velLY + velLX - velRX);
-        driveRB.move_velocity(velLY + velLX + velRX);
+        driveLF.move_velocity(velLY + velLX + velRX);
+        driveLB.move_velocity(velLY + velLX - velRX);
+        driveRF.move_velocity(velLY - velLX - velRX);
+        driveRB.move_velocity(velLY - velLX + velRX);
     }
 }
 

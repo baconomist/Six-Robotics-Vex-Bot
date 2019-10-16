@@ -38,7 +38,10 @@ void Robot::end_mainloop()
 }
 
 void Robot::update()
-{}
+{
+    this->drive->update();
+    this->mechanisms->update();
+}
 
 void Robot::execute_next()
 {}
