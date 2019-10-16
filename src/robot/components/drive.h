@@ -7,23 +7,36 @@
 
 enum DriveMode
 {
-  TANK,
-  ARCADE
+    TANK,
+    ARCADE
 };
 
 
 class Drive
 {
 public:
-  DriveMode driveMode = ARCADE;
+    DriveMode driveMode = ARCADE;
 
-  void tank();
+    //constructor
+    Drive(float wheel_to_wheel_dist, float wheel_to_center_dist);
 
-  void arcade();
+    void move_left(int speed);
+    void move_right(int speed);
+    void move(int speed);
 
-  void update();
+    void turn_on_point(int speed);
+    void arc_turn(float radians, float outer_radius, int speed);
 
-  void initialize();
+    void strafe(int speed);
+
+    void tank();
+    void arcade();
+
+    void update();
+    void initialize();
+private:
+    float wheel_to_wheel_dist;
+    float wheel_to_center_dist;
 };
 
 

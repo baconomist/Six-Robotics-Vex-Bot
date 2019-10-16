@@ -3,9 +3,9 @@
 //
 
 #include "robot.h"
-Robot::Robot()
+Robot::Robot(float wheel_to_wheel_dist, float wheel_to_center_dist)
 {
-  this->drive = new Drive();
+  this->drive = new Drive(wheel_to_wheel_dist, wheel_to_center_dist);
   this->mechanisms = new Mechanisms();
   this->motionTracker = new MotionTracker();
 }

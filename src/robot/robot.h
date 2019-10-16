@@ -11,33 +11,35 @@
 
 enum RobotMode
 {
-  AUTONOMOUS,
-  REMOTE_CONTROLLED
+    AUTONOMOUS,
+    REMOTE_CONTROLLED
 };
 
 //TODO: create an auton class
 class Robot
 {
 public:
-  Drive* drive;
-  Mechanisms* mechanisms;
-  MotionTracker* motionTracker;
-  RobotMode robotMode = AUTONOMOUS;
-  bool runningMainloop = false;
+    Drive* drive;
+    Mechanisms* mechanisms;
+    MotionTracker* motionTracker;
+    RobotMode robotMode = AUTONOMOUS;
+    bool runningMainloop = false;
+    Robot(float wheel_to_wheel_dist, float wheel_to_center_dist);
 
-  Robot();
+    void initialize();
 
-  void initialize();
+    void start_mainloop();
 
-  void start_mainloop();
+    void end_mainloop();
 
-  void end_mainloop();
+    void update();
 
-  void update();
+    void execute_next();
 
-  void execute_next();
-
-  void queue_action();
+    void queue_action();
+private:
+    float wheel_to_wheel_dist;
+    float wheel_to_center_dist;
 };
 
 extern Robot* robot;

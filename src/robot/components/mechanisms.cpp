@@ -5,21 +5,25 @@
 /*
 moves the tray forwards and backwards
 */
-void Mechanisms::tilter(int tilt){
-    transB.move_velocity(tilt);//uses motor brake(hold) to prevent motor from turning
-    transT.move_velocity(tilt);//rotates about transB
+void Mechanisms::tilter(int speed){
+    transB.move_velocity(speed);
+    transT.move_velocity(speed);
 }
-void Mechanisms::lifter(int lift){
-    transB.move_velocity(-lift);
-    transT.move_velocity(lift);
+
+/*
+moves the lift up or down
+*/
+void Mechanisms::lifter(int speed){
+    transB.move_velocity(-speed);
+    transT.move_velocity(speed);
 }
 
 /*
 controls the intake
 */
-void Mechanisms::intake(int intakeSpeed) {
-    intakeL.move_velocity(intakeSpeed);
-    intakeR.move_velocity(intakeSpeed);
+void Mechanisms::intake(int speed) {
+    intakeL.move_velocity(speed);
+    intakeR.move_velocity(speed);
 }
 
 /*
@@ -31,6 +35,7 @@ void Mechanisms::initialize(){
     intakeL.set_brake_mode(MOTOR_BRAKE_HOLD);
     intakeR.set_brake_mode(MOTOR_BRAKE_HOLD);
 }
+
 /*
 updates the motors action
 */
@@ -46,6 +51,4 @@ void Mechanisms::update(){
         tilter(0);
         lifter(0);
     }
-
-
 }
