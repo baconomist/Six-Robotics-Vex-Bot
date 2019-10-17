@@ -7,8 +7,8 @@
 #include "main.h"
 #include "PID.h"
 float Kp = 0.5;
-float Kd =0.01;
-float Ki= 0.1;
+float Kd = 0.01;
+float Ki = 0.1;
 
 
 void P(float (*get_sensor_value)(), float end, float (*yield_return)(float speed)){

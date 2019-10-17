@@ -32,7 +32,6 @@ initializes all the motor's brake states
 void Mechanisms::initialize(){
     Motor transT(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, true);
     Motor transB(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, false);//reversed
-
     Motor intakeL(INTAKE_LEFT, E_MOTOR_GEARSET_18, false);
     Motor intakeR(INTAKE_RIGHT, E_MOTOR_GEARSET_18, true);
     transT.set_brake_mode(MOTOR_BRAKE_HOLD);
