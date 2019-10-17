@@ -34,6 +34,8 @@ public:
 
     void update();
     void initialize();
+
+    void stop_motors();
 private:
     float wheel_to_wheel_dist;
     float wheel_to_center_dist;

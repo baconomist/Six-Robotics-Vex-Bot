@@ -2,19 +2,19 @@
 #include "main.h"
 #include "robot/robot.h"
 
-Robot* robot;
+Robot *robot;
 
 void on_center_button()
 {
-  static bool pressed = false;
-  pressed = !pressed;
-  if (pressed)
-  {
-    lcd::set_text(2, "I was pressed!");
-  } else
-  {
-    lcd::clear_line(2);
-  }
+    static bool pressed = false;
+    pressed = !pressed;
+    if (pressed)
+    {
+        lcd::set_text(2, "I was pressed!");
+    } else
+    {
+        lcd::clear_line(2);
+    }
 }
 
 /**
@@ -26,7 +26,8 @@ void on_center_button()
 
 void initialize()
 {
-    robot = new Robot(23,23);
+    pros::lcd::initialize();
+    robot = new Robot(23.0f, 23.0f);
     robot->initialize();
 }
 
@@ -38,14 +39,14 @@ void initialize()
 void disabled()
 {}
 
-  /**
-  * Runs after initialize(), and before autonomous when connected to the Field
-  * Management System or the VEX Competition Switch. This is intended for
-  * competition-specific initialization routines, such as an autonomous selector
-  * on the LCD.
-  *
-  * This task will exit when the robot is enabled and autonomous or opcontrol
-  * starts.
-  */
-  void competition_initialize()
-  {}
+/**
+* Runs after initialize(), and before autonomous when connected to the Field
+* Management System or the VEX Competition Switch. This is intended for
+* competition-specific initialization routines, such as an autonomous selector
+* on the LCD.
+*
+* This task will exit when the robot is enabled and autonomous or opcontrol
+* starts.
+*/
+void competition_initialize()
+{}
