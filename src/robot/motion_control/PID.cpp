@@ -11,124 +11,8 @@
 #include "main.h"
 #include "PID.h"
 float Kp = 0.5;
-float Kd =0.01;
-float Ki= 0.1;
-
-void P(float (*get_sensor_value)(), float end, void (*yield_return)(float speed))
-{
-    // Error is the distance to target
-    float error = end - get_sensor_value();
-    float speed;
-
-    while (std::abs(error) > MIN_ERROR_RANGE)
-    {
-        error = end - get_sensor_value();
-        speed = error * Kp;
-
-        yield_return(speed);
-    }
-}
-
-void PI(float (*get_sensor_value)(), float end, void (*yield_return)(float speed))
-{
-    float error = end - get_sensor_value();
-    float speed;
-
-    // Integral is used for small error calculation, keep the motors moving to fix small errors
-    float integral = 0;
-
-    float dT = 0;
-    float last_frame_time = pros::millis();
-
-    while (std::abs(error) > MIN_ERROR_RANGE)
-    {
-        dT = pros::millis() - last_frame_time;
-
-        error = end - get_sensor_value();
-        if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
-            integral = integral + error * dT;
-
-        // When we've reached our destination, reset the integral to prevent from continuing to move
-        if (error < 0)
-            integral = 0;
-
-        speed = error * Kp + integral * Ki;
-
-        yield_return(speed);
-
-        last_frame_time = pros::millis();
-    }
-}
-
-void PD(float (*get_sensor_value)(), float end, void (*yield_return)(float speed))
-{
-    float error = end - get_sensor_value();
-
-    float previous_error = error;
-
-    // Predicts the future value for the error/distance, then adjust speed accordingly
-    float derivative = 0;
-
-    float speed;
-
-    float dT = 0;
-    float last_frame_time = pros::millis();
-    while (std::abs(error) > MIN_ERROR_RANGE)
-    {
-        dT = pros::millis() - last_frame_time;
-
-        error = end - get_sensor_value();
-
-        // derivative == the next error
-        derivative = (error - previous_error) / dT;
-
-        speed = error * Kp + derivative * Kd;
-
-        yield_return(speed);
-
-        last_frame_time = pros::millis();
-        previous_error = error;
-    }
-}
-//
-// void PID( float(*get_sensor_value)(), float end, float (*yield_return)(float speed))
-// {
-//     float error = end - get_sensor_value();
-//     float integral = 0;
-//
-//     float previous_error = error;
-//
-//     // Predicts the future value for the error/distance, then adjust speed accordingly
-//     float derivative = 0;
-//
-//     float speed;
-//
-//     float dT = 0;
-//     float last_frame_time = pros::millis();
-//     while (std::abs(error) > MIN_ERROR_RANGE)
-//     {
-//         dT = pros::millis() - last_frame_time;
-//
-//         error = end - get_sensor_value();
-//
-//         // derivative == the next error
-//         derivative = (error - previous_error) / dT;
-//
-//         if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
-//         integral = integral + error * dT;
-//
-//         // When we've reached our destination, reset the integral to prevent from continuing to move
-//         if (error == 0)
-//         integral = 0;
-//
-//         speed = error * Kp + integral * Ki + derivative * Kd;
-//
-//         yield_return(speed);
-//
-//         last_frame_time = pros::millis();
-//         previous_error = error;
-//     }
-// }
+float Kd = 0.01;
+float Ki = 0.1;
 
 void PID(float (*get_sensor_value)(), float end, void (*yield_return)(float speed))
 {
@@ -167,4 +51,115 @@ void PID(float (*get_sensor_value)(), float end, void (*yield_return)(float spee
         last_frame_time = pros::millis();
         previous_error = error;
     }
+}
+
+
+/**
+ * P class
+ * **/
+P::P(float (*get_sensor_value)(), float end, void (*callback)(float))
+{
+    this->get_sensor_value = get_sensor_value;
+    this->end = end;
+    this->callback = callback;
+
+    // Error is the distance to target
+    error = end - get_sensor_value();
+}
+
+void P::update()
+{
+    error = end - get_sensor_value();
+    speed = error * Kp;
+
+    callback(speed);
+}
+
+bool P::finished()
+{
+    return std::abs(error) < MIN_ERROR_RANGE;
+}
+
+/**
+ * PI class
+ * **/
+
+PI::PI(float (*get_sensor_value)(), float end, void (*callback)(float))
+{
+    this->get_sensor_value = get_sensor_value;
+    this->end = end;
+    this->callback = callback;
+
+    error = end - get_sensor_value();
+
+    // Integral is used for small error calculation, keep the motors moving to fix small errors
+    integral = 0;
+
+    dT = 0;
+    last_frame_time = pros::millis();
+}
+
+void PI::update()
+{
+    dT = pros::millis() - last_frame_time;
+
+    error = end - get_sensor_value();
+    if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
+        integral = integral + error * dT;
+
+    // When we've reached our destination, reset the integral to prevent from continuing to move
+    if (error < 0)
+        integral = 0;
+
+    speed = error * Kp + integral * Ki;
+
+    callback(speed);
+
+    last_frame_time = pros::millis();
+}
+
+bool PI::finished()
+{
+    return std::abs(error) < MIN_ERROR_RANGE;
+}
+
+/**
+ * PD class
+ * **/
+
+PD::PD(float (*get_sensor_value)(), float end, void (*callback)(float))
+{
+    this->get_sensor_value = get_sensor_value;
+    this->end = end;
+    this->callback = callback;
+
+    error = end - get_sensor_value();
+
+    // Integral is used for small error calculation, keep the motors moving to fix small errors
+    derivative = 0;
+
+    dT = 0;
+    last_frame_time = pros::millis();
+}
+
+void PD::update()
+{
+    dT = pros::millis() - last_frame_time;
+
+    error = end - get_sensor_value();
+
+    // derivative == the next error
+    derivative = (error - previous_error) / dT;
+
+    speed = error * Kp + derivative * Kd;
+
+    callback(speed);
+
+    last_frame_time = pros::millis();
+    previous_error = error;
+}
+
+bool PD::finished()
+{
+    return std::abs(error) < MIN_ERROR_RANGE;
 }
