@@ -192,6 +192,13 @@ void Drive::initialize()
 {
     driveLF.set_encoder_units(MOTOR_ENCODER_DEGREES);
 
+    Motor driveLF(LEFT_FRONT,E_MOTOR_GEARSET_18, false);
+    Motor driveLB(LEFT_BACK, E_MOTOR_GEARSET_18, false);
+    Motor driveRF(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
+    Motor driveRB(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
+
+
+
     driveLF.set_brake_mode(MOTOR_BRAKE_COAST);
     driveLB.set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF.set_brake_mode(MOTOR_BRAKE_COAST);
