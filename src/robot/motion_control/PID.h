@@ -77,7 +77,7 @@ private:
     // Predicts the future value for the error/distance, then adjust speed accordingly
     float derivative;
 
-    float previous_error = error;
+    float previous_error;
 
     float dT = 0;
     float last_frame_time = pros::millis();

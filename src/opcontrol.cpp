@@ -15,6 +15,8 @@ void opcontrol()
 
     while (true)
     {
+        robot->update();
+        /*
         if(master.get_digital(DIGITAL_Y))
             robot->update();
         else
@@ -49,7 +51,7 @@ void opcontrol()
 
         if (master.get_digital(DIGITAL_X))
             driveLF->tare_position();
-
+*/
         pros::delay(20);
     }
 }

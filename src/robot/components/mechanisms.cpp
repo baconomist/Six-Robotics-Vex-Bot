@@ -6,38 +6,35 @@
 moves the tray forwards and backwards
 */
 void Mechanisms::tilter(int speed){
-    transB.move_velocity(speed);
-    transT.move_velocity(speed);
+    transB->move_velocity(speed);
+    transT->move_velocity(speed);
 }
 
 /*
 moves the lift up or down
 */
 void Mechanisms::lifter(int speed){
-    transB.move_velocity(speed);
-    transT.move_velocity(-speed);
+    transB->move_velocity(speed);
+    transT->move_velocity(-speed);
 }
 
 /*
 controls the intake
 */
 void Mechanisms::intake(int speed) {
-    intakeL.move_velocity(speed);
-    intakeR.move_velocity(speed);
+    intakeL->move_velocity(speed);
+    intakeR->move_velocity(speed);
 }
 
 /*
 initializes all the motor's brake states
 */
 void Mechanisms::initialize(){
-    Motor transT(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, true);
-    Motor transB(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, false);//reversed
-    Motor intakeL(INTAKE_LEFT, E_MOTOR_GEARSET_18, false);
-    Motor intakeR(INTAKE_RIGHT, E_MOTOR_GEARSET_18, true);
-    transT.set_brake_mode(MOTOR_BRAKE_HOLD);
-    transB.set_brake_mode(MOTOR_BRAKE_HOLD);
-    intakeL.set_brake_mode(MOTOR_BRAKE_HOLD);
-    intakeR.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    transT->set_brake_mode(MOTOR_BRAKE_HOLD);
+    transB->set_brake_mode(MOTOR_BRAKE_HOLD);
+    intakeL->set_brake_mode(MOTOR_BRAKE_HOLD);
+    intakeR->set_brake_mode(MOTOR_BRAKE_HOLD);
 }
 
 /*

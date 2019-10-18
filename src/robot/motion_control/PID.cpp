@@ -107,7 +107,7 @@ void PI::update()
     if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
         integral = integral + error * dT;
 
-    // When we've reached our destination, reset the integral to prevent from continuing to move
+    // When we've reached our destination, reset the integral to prevent from continuing to accumalate
     if (error < 0)
         integral = 0;
 
@@ -134,6 +134,7 @@ PD::PD(float (*get_sensor_value)(), float end, void (*callback)(float))
     this->callback = callback;
 
     error = end - get_sensor_value();
+         previous_error = error;
 
     // Integral is used for small error calculation, keep the motors moving to fix small errors
     derivative = 0;

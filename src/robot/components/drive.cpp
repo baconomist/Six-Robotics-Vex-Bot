@@ -31,8 +31,9 @@ int scale(int speed, Motor* motor)
     return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
 }
 
-Drive::Drive(float wheel_to_wheel_dist, float wheel_to_center_dist)
+Drive::Drive(float wheel_diameter,float wheel_to_wheel_dist, float wheel_to_center_dist)
 {
+    this->wheel_diameter = wheel_diameter;
     this->wheel_to_wheel_dist = wheel_to_wheel_dist;
     this->wheel_to_center_dist = wheel_to_center_dist;
 }
@@ -163,14 +164,13 @@ void Drive::arcade()
     }
 }
 
-float ticks_to_in(int ticks)
+float Drive::ticks_to_inches(float ticks)
 {
-    return (ticks / 360.0f) * 4.125f * M_PI;
+    return (ticks / 360.0f) * this->wheel_diameter * M_PI;
 }
 
-float in_to_ticks(int in)
-{
-    return (in / (4.125f * M_PI)) * 360.0f;
+float Drive::inches_to_ticks(float inches){
+    return (inches / (this->wheel_diameter * M_PI)) * 360.0f;
 }
 
 void move_forward(float speed)
@@ -187,7 +187,7 @@ float get_bot_y_pos()
 }
 
 
-PD* pInstance;
+PD* pdInstance;
 /*
 updates the motors action
 */
@@ -198,7 +198,7 @@ void Drive::update()
     else if (this->driveMode == ARCADE)
         arcade();*/
 
-    pInstance->update();
+    pdInstance->update();
 }
 
 /*
@@ -212,7 +212,7 @@ void Drive::initialize()
     driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
 
-    pInstance = new PD(get_bot_y_pos, in_to_ticks(24*4), move_forward);
+    pdInstance = new PD(get_bot_y_pos, inches_to_ticks(24*4), move_forward);
     driveLF->set_encoder_units(MOTOR_ENCODER_DEGREES);
 
     driveLF->set_brake_mode(MOTOR_BRAKE_COAST);

@@ -24,7 +24,7 @@ public:
     MotionTracker* motionTracker;
     RobotMode robotMode = AUTONOMOUS;
     bool runningMainloop = false;
-    Robot(float wheel_to_wheel_dist, float wheel_to_center_dist);
+    Robot(float wheel_diameter,float wheel_to_wheel_dist, float wheel_to_center_dist);
 
     void initialize();
 
@@ -37,9 +37,6 @@ public:
     void execute_next();
 
     void queue_action();
-private:
-    float wheel_to_wheel_dist;
-    float wheel_to_center_dist;
 };
 
 extern Robot* robot;
