@@ -27,7 +27,7 @@ void on_center_button()
 void initialize()
 {
     pros::lcd::initialize();
-    robot = new Robot(4.125f,23.0f, 23.0f);
+    robot = new Robot(4.125, 23.0, 23.0);
     robot->initialize();
 }
 
