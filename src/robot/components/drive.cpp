@@ -1,6 +1,7 @@
 //
 // Created by Lucas on 9/27/2019.
 //
+#include "../robot.h"
 #include "main.h"
 #include "drive.h"
 #include "../motors.h"
@@ -26,17 +27,12 @@ int scale(int speed, Motor motor)
     return speed * get_gearset_rpm(motor.get_gearing()) / 127.0f;
 }
 
-int scale(int speed, Motor* motor)
+int scale(int speed, Motor *motor)
 {
     return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
 }
 
-Drive::Drive(float wheel_diameter,float wheel_to_wheel_dist, float wheel_to_center_dist)
-{
-    this->wheel_diameter = wheel_diameter;
-    this->wheel_to_wheel_dist = wheel_to_wheel_dist;
-    this->wheel_to_center_dist = wheel_to_center_dist;
-}
+Drive::Drive() = default;
 
 /*
 moves the left side of the drive
@@ -88,8 +84,8 @@ center is not the center of the robot/mass
 */
 void Drive::arc_turn(float radians, float radius, int speed)
 {
-    move_left(radians / (2 * M_PI) * radius - wheel_to_center_dist);
-    move_right(radians / (2 * M_PI) * radius + wheel_to_wheel_dist);
+    move_left(radians / (2 * M_PI) * radius - Robot::WHEEL_TO_WHEEL_DIST);
+    move_right(radians / (2 * M_PI) * radius + Robot::WHEEL_TO_WHEEL_DIST);
 }
 
 /*
@@ -166,11 +162,12 @@ void Drive::arcade()
 
 float Drive::ticks_to_inches(float ticks)
 {
-    return (ticks / 360.0f) * this->wheel_diameter * M_PI;
+    return (ticks / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
 }
 
-float Drive::inches_to_ticks(float inches){
-    return (inches / (this->wheel_diameter * M_PI)) * 360.0f;
+float Drive::inches_to_ticks(float inches)
+{
+    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0f;
 }
 
 void move_forward(float speed)
@@ -186,19 +183,15 @@ float get_bot_y_pos()
     return driveLF->get_position();
 }
 
-
-PD* pdInstance;
 /*
 updates the motors action
 */
 void Drive::update()
 {
-    /*if (this->driveMode == TANK)
+    if (this->driveMode == TANK)
         tank();
     else if (this->driveMode == ARCADE)
-        arcade();*/
-
-    pdInstance->update();
+        arcade();
 }
 
 /*
@@ -212,8 +205,9 @@ void Drive::initialize()
     driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
 
-    pdInstance = new PD(get_bot_y_pos, inches_to_ticks(24*4), move_forward);
+    //pdInstance = new PD(0.5, 0.01, get_bot_y_pos, inches_to_ticks(24*4), move_forward);
     driveLF->set_encoder_units(MOTOR_ENCODER_DEGREES);
+    driveRF->set_encoder_units(MOTOR_ENCODER_DEGREES);
 
     driveLF->set_brake_mode(MOTOR_BRAKE_COAST);
     driveLB->set_brake_mode(MOTOR_BRAKE_COAST);

@@ -9,21 +9,18 @@
 const int MIN_ERROR_FOR_INTEGRAL = 500;
 const int MIN_ERROR_RANGE = 10;
 
-// Not constants as we may want to write a program to tune PID and change values
-extern float Kp;
-extern float Ki;
-extern float Kd;
-
 class P
 {
 public:
-    P(float (*get_sensor_value)(), float end, void (*callback)(float speed));
+    P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float speed));
 
     void update();
 
     bool finished();
 
 private:
+    float Kp;
+
     // Error is the distance to target
     float error;
     float speed;
@@ -38,13 +35,16 @@ private:
 class PI
 {
 public:
-    PI(float (*get_sensor_value)(), float end, void (*callback)(float speed));
+    PI(float Kp, float Ki, float (*get_sensor_value)(), float end, void (*callback)(float speed));
 
     void update();
 
     bool finished();
 
 private:
+    float Kp;
+    float Ki;
+
     // Error is the distance to target
     float error;
     float speed;
@@ -63,18 +63,53 @@ private:
 class PD
 {
 public:
-    PD(float (*get_sensor_value)(), float end, void (*callback)(float speed));
+    PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float speed));
 
     void update();
 
     bool finished();
 
 private:
+    float Kp;
+    float Kd;
+
     // Error is the distance to target
     float error;
     float speed;
 
     // Predicts the future value for the error/distance, then adjust speed accordingly
+    float derivative;
+
+    float previous_error;
+
+    float dT = 0;
+    float last_frame_time = pros::millis();
+
+    float (*get_sensor_value)();
+
+    float end;
+
+    void (*callback)(float speed);
+};
+
+class PID
+{
+public:
+    PID(float Kp, float Ki, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float speed));
+
+    void update();
+
+    bool finished();
+
+private:
+    float Kp;
+    float Ki;
+    float Kd;
+
+    float error;
+    float speed;
+
+    float integral;
     float derivative;
 
     float previous_error;

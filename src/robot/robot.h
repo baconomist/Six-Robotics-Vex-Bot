@@ -19,12 +19,17 @@ enum RobotMode
 class Robot
 {
 public:
+    // In inches
+    constexpr static const float WHEEL_DIAMETER = 4.125f;
+    constexpr static const float WHEEL_TO_WHEEL_DIST = 13.5f;
+    constexpr static const float WHEEL_TO_CENTER_DIST = 7.75f;
+
     Drive* drive;
     Mechanisms* mechanisms;
     MotionTracker* motionTracker;
     RobotMode robotMode = AUTONOMOUS;
     bool runningMainloop = false;
-    Robot(float wheel_diameter,float wheel_to_wheel_dist, float wheel_to_center_dist);
+    Robot();
 
     void initialize();
 

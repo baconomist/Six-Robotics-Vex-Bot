@@ -10,16 +10,18 @@
 class MotionTracker
 {
 public:
-  ADIEncoder* leftEncoder;
-  ADIEncoder* rightEncoder;
-  ADIEncoder* centerEncoder;
+    MotionTracker();
 
-  MotionTracker(float wheel_to_wheel_dist, float wheel_to_center_dist);
+    ADIEncoder *leftEncoder;
+    ADIEncoder *rightEncoder;
+    ADIEncoder *centerEncoder;
 
-  void initialize();
-  void update();
+    void initialize();
 
-  float calculate_rotation_from_motion();
+    void update();
+
+    float calculate_rotation_from_motion();
+
 private:
     float wheel_to_wheel_dist;
     float wheel_to_center_dist;

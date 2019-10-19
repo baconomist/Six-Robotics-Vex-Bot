@@ -3,11 +3,12 @@
 //
 
 #include "robot.h"
-Robot::Robot(float wheel_diameter, float wheel_to_wheel_dist, float wheel_to_center_dist)
+
+Robot::Robot()
 {
-    this->drive = new Drive(wheel_diameter,wheel_to_wheel_dist, wheel_to_center_dist);
+    this->drive = new Drive();
     this->mechanisms = new Mechanisms();
-    this->motionTracker = new MotionTracker(wheel_to_wheel_dist, wheel_to_center_dist);
+    this->motionTracker = new MotionTracker();
 }
 
 /**
@@ -15,9 +16,9 @@ Robot::Robot(float wheel_diameter, float wheel_to_wheel_dist, float wheel_to_cen
 * **/
 void Robot::initialize()
 {
-    this->motionTracker->initialize();
     this->drive->initialize();
-    this->mechanisms->initialize();
+    // this->mechanisms->initialize();
+    this->motionTracker->initialize();
 }
 
 
@@ -28,7 +29,8 @@ void Robot::start_mainloop()
     {
 
         this->drive->update();
-        this->mechanisms->update();
+        //this->mechanisms->update();
+        this->motionTracker->update();
     }
 }
 
@@ -39,8 +41,9 @@ void Robot::end_mainloop()
 
 void Robot::update()
 {
-    this->drive->update();
-    this->mechanisms->update();
+    //this->drive->update();
+    //this->mechanisms->update();
+    this->motionTracker->update();
 }
 
 void Robot::execute_next()

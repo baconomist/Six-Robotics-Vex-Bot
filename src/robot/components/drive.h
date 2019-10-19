@@ -18,10 +18,10 @@ public:
     DriveMode driveMode = ARCADE;
 
     //constructor
-    Drive(float wheel_diameter,float wheel_to_wheel_dist, float wheel_to_center_dist);
+    Drive();
 
-    float ticks_to_inches(float ticks);
-    float inches_to_ticks(float inches);
+    static float ticks_to_inches(float ticks);
+    static float inches_to_ticks(float inches);
     
     void move_left(int speed);
     void move_right(int speed);
@@ -39,11 +39,6 @@ public:
     void initialize();
 
     void stop_motors();
-
-private:
-    float wheel_diameter;
-    float wheel_to_wheel_dist;
-    float wheel_to_center_dist;
 };
 
 
