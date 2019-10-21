@@ -7,15 +7,15 @@
 
 struct Vector2
 {
-  int x;
-  int y;
+  float x;
+  float y;
   Vector2 operator - (Vector2 obj) {
     Vector2 res;
     res.x = x - obj.x;
     res.y = y - obj.y;
     return res;
   }
-  Vector2 (int xpos = 0, int ypos = 0) {
+  Vector2 (float xpos = 0, float ypos = 0) {
     x = xpos;
     y = ypos;
   }

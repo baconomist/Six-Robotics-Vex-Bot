@@ -8,58 +8,40 @@
 #include "stdlib.h"
 
 // nlohmann::json data;
-AutonPathParser::AutonPathParser (char* file_path) {
-  std::string STRING;
-  std::ifstream infile;
-  infile.open("/usd/path.json");
-  while(!infile.eof())
-  {
-    getline(infile, STRING);
-    std::cout << STRING;
-  }
-  infile.close();
-
-  /*FILE * readfile;
-  readfile = fopen("/usd/path.json", "r");
-  fseek(readfile, 0, SEEK_END);
-  int filesize = ftell(readfile);
-  char buf[filesize];
-  fread(buf, filesize, 1, readfile);
-
-  // std::cout << filesize << "\n";
-  // printf("%s", buf);
-
-  char c = fgetc(readfile);
-  while (c != EOF)
-  {
-  printf("%u\n", c);
-  c = fgetc(readfile);
-}
-
-fclose(readfile);*/
-
-
-// data = nlohmann::json::parse(readfile);
-// parseFile();
+AutonPathParser::AutonPathParser (std::string file_path) {
+    std::ifstream pathFile;
+    pathFile.open(file_path);
+    std::string data((std::istreambuf_iterator<char>(pathFile)),
+               std::istreambuf_iterator<char>());
+    pathFile.close();
+    parseFile(nlohmann::json::parse(data));
 }
 
 /**
 * Turns JSON data into a vector of points
 */
-void AutonPathParser::parseFile () {
-  // std::cout << data[0];
+void AutonPathParser::parseFile (nlohmann::json pathJSON) {
+    std::vector<Vector2> points;
+    for(int i = 0; i < pathJSON.size(); i++) {
+          points.push_back(Vector2(pathJSON[i]["x_in"], pathJSON[i]["y_in"]));
+      }
+    dataToInstructions(points);
 }
 
 /**
 * Turns vector of points into bot drive instructions
+*
+* Example usage:
+* bot.move_distance(lengths[i]);
+* bot.rotate_degrees(turns[i]);
 */
 void AutonPathParser::dataToInstructions(std::vector<Vector2> points) {
-  std::vector<double> lengths;
-  std::vector<double> turns;
-
   for(int i = 0; i < points.size(); i++) {
     lengths.push_back(getDistance(points[i], points[i + 1]));
     turns.push_back(getAngle(points[i], points[i + 1 ], points[i + 2]));
+  }
+  for(int i = 0; i < lengths.size(); i++) {
+      printf("forward %f and turn %f", lengths[i], turns[i]);
   }
 }
 
