@@ -18,6 +18,25 @@ AutonPathParser::AutonPathParser (std::string file_path) {
 }
 
 /**
+* Gets the turn angle on the middle point of given points
+*/
+double AutonPathParser::getAngle(Vector2 p1, Vector2 p2, Vector2 p3) {
+    Vector2 v1 = p1 - p2;
+    Vector2 v2 = p3 - p2;
+    double angle = -(180/M_PI)*atan2(v1.x*v2.y - v1.y*v2.x,
+    v1.x*v2.x + v1.y*v2.y);
+    return angle;
+}
+
+double AutonPathParser::getDistance(Vector2 p1, Vector2 p2) {
+    double a = abs(p1.x - p2.x);
+    double b = abs(p1.y - p2.y);
+    double c = sqrt(a*a + b*b);
+    return c;
+}
+
+
+/**
 * Turns JSON data into a vector of points
 */
 void AutonPathParser::parseFile (nlohmann::json pathJSON) {
@@ -41,24 +60,6 @@ void AutonPathParser::dataToInstructions(std::vector<Vector2> points) {
     turns.push_back(getAngle(points[i], points[i + 1 ], points[i + 2]));
   }
   for(int i = 0; i < lengths.size(); i++) {
-      printf("forward %f and turn %f", lengths[i], turns[i]);
+      printf("forward %f and turn %f\n", lengths[i], turns[i]);
   }
 }
-
-/**
-* Gets the turn angle on the middle point of given points
-*/
-double getAngle(Vector2 p1, Vector2 p2, Vector2 p3) {
-  Vector2 v1 = p1 - p2;
-  Vector2 v2 = p3 - p2;
-  double angle = -(180/M_PI)*atan2(v1.x*v2.y - v1.y*v2.x,
-    v1.x*v2.x + v1.y*v2.y);
-    return angle;
-  }
-
-  double getDistance(Vector2 p1, Vector2 p2) {
-    double a = abs(p1.x - p2.x);
-    double b = abs(p1.y - p2.y);
-    double c = sqrt(a*a + b*b);
-    return c;
-  }
