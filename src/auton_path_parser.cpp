@@ -18,7 +18,7 @@ AutonPathParser::AutonPathParser (std::string file_path) {
 }
 
 /**
-* Gets the turn angle on the middle point of given points
+* Returns the turn angle on the middle point of given points
 */
 double AutonPathParser::getAngle(Vector2 p1, Vector2 p2, Vector2 p3) {
     Vector2 v1 = p1 - p2;
@@ -28,6 +28,9 @@ double AutonPathParser::getAngle(Vector2 p1, Vector2 p2, Vector2 p3) {
     return angle;
 }
 
+/**
+* Returns the distance between two points
+*/
 double AutonPathParser::getDistance(Vector2 p1, Vector2 p2) {
     double a = abs(p1.x - p2.x);
     double b = abs(p1.y - p2.y);
