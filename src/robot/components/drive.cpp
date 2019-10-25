@@ -22,11 +22,6 @@ pros::Motor *intakeR;
 /*
 scales the motor value by the motors gearing
 */
-int scale(int speed, Motor motor)
-{
-    return speed * get_gearset_rpm(motor.get_gearing()) / 127.0f;
-}
-
 int scale(int speed, Motor *motor)
 {
     return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
