@@ -17,7 +17,7 @@ Robot::Robot()
 void Robot::initialize()
 {
     this->drive->initialize();
-    // this->mechanisms->initialize();
+    this->mechanisms->initialize();
     this->motionTracker->initialize();
 }
 
@@ -29,7 +29,7 @@ void Robot::start_mainloop()
     {
 
         this->drive->update();
-        //this->mechanisms->update();
+        this->mechanisms->update();
         this->motionTracker->update();
     }
 }

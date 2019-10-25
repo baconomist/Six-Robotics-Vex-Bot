@@ -13,10 +13,7 @@ pros::Motor *driveLB;
 pros::Motor *driveLF;
 pros::Motor *driveRB;
 pros::Motor *driveRF;
-pros::Motor *transT;
-pros::Motor *transB;
-pros::Motor *intakeL;
-pros::Motor *intakeR;
+
 
 // TODO: refactor the arc_turn
 /*
