@@ -33,8 +33,8 @@ void Mechanisms::intake(int speed) {
 initializes all the motor's brake states
 */
 void Mechanisms::initialize(){
-    transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_06, false);
-    transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_06, true);
+    transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
+    transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);
     intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_18, true);//reserved
     intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_18, false);//reversed
 
