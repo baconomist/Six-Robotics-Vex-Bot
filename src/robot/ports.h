@@ -4,19 +4,19 @@
 //Vision Sensor
 #define VISION_PORT 5
 
-// Drive
-#define LEFT_FRONT 20
-#define LEFT_BACK 10
-#define RIGHT_FRONT 11
-#define RIGHT_BACK 1
+// Drive 
+#define LEFT_FRONT 11
+#define LEFT_BACK 12
+#define RIGHT_FRONT 14
+#define RIGHT_BACK 15
 
 //Transmission
-#define TRANSMISSION_BOTTOM 9
-#define TRANSMISSION_TOP 2
+#define TRANSMISSION_BOTTOM 19
+#define TRANSMISSION_TOP 20
 
 //Intake
-#define INTAKE_LEFT 5
-#define INTAKE_RIGHT 4
+#define INTAKE_LEFT 10
+#define INTAKE_RIGHT 1
 
 // Legacy Ports (A=1, B=2...)
 #define LEFT_X_ENCODER_TOP 1
