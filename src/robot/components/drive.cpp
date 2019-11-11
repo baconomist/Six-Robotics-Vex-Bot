@@ -114,6 +114,7 @@ void Drive::tank()
 
     // scale all velocities to Left-Back drive(all drives will be same gearset)
     move_left(scale(velLY, driveLB));
+    move_left(scale(velLY, driveLB));
     move_right(scale(velRY, driveLB));
     strafe(scale(velStrafe, driveLB));
 }
