@@ -14,7 +14,7 @@ void opcontrol()
     robot->robotMode = REMOTE_CONTROLLED;
     // robot->start_mainloop();
 
-    initialize_mtp(50, 50);
+    initialize_mtp(20, 20);
 
     while (true)
     {
