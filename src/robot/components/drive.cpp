@@ -157,10 +157,15 @@ float Drive::ticks_to_inches(float ticks)
     return (ticks / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
 }
 
-float Drive::inches_to_ticks(float inches)
+int operator""_in(long double inches)
 {
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0f;
+    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
 }
+int operator""_in(unsigned long long inches)
+{
+    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
+}
+
 
 void move_forward(float speed)
 {
@@ -197,7 +202,7 @@ void Drive::initialize()
     driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
 
-    //pdInstance = new PD(0.5, 0.01, get_bot_y_pos, inches_to_ticks(24*4), move_forward);
+    //pdInstance = new PD(0.5, 0.01, get_bot_y_pos, 24*4_in, move_forward);
     driveLF->set_encoder_units(MOTOR_ENCODER_DEGREES);
     driveRF->set_encoder_units(MOTOR_ENCODER_DEGREES);
 

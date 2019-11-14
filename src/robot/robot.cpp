@@ -1,7 +1,7 @@
 //
 // Created by Lucas on 9/27/2019.
 //
-
+#include "main.h"
 #include "robot.h"
 
 Robot::Robot()

@@ -1,3 +1,4 @@
+#include "main.h"
 #include "mechanisms.h"
 #include "../controllers.h"
 #include "../motors.h"
