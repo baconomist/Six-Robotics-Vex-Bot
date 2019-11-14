@@ -14,11 +14,14 @@ pros::Motor *driveLF;
 pros::Motor *driveRB;
 pros::Motor *driveRF;
 
+P *rotateLeftPID;
+P *rotateRightPID;
 
 // TODO: refactor the arc_turn
 /*
 scales the motor value by the motors gearing
 */
+
 int scale(int speed, Motor *motor)
 {
     return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
@@ -31,10 +34,10 @@ moves the left side of the drive
 \param speed
 the scaled speed at which the left side of the drive will move
 */
-void Drive::move_left(int speed)
+void Drive::move_left(float speed)
 {
-    driveLB->move_velocity(speed);
-    driveLF->move_velocity(speed);
+    driveLF->move_velocity((int) speed);
+    driveLB->move_velocity((int) speed);
 }
 
 /*
@@ -42,10 +45,10 @@ moves the right side of the drive
 \param speed
 the scaled speed at which the right side of the drive will move
 */
-void Drive::move_right(int speed)
+void Drive::move_right(float speed)
 {
-    driveLB->move_velocity(speed);
-    driveLF->move_velocity(speed);
+    driveRF->move_velocity((int) speed);
+    driveRB->move_velocity((int) speed);
 }
 
 /*
@@ -53,10 +56,10 @@ drives straight either forwards or backwards
 \param speed
 the scaled speed at which the drive will move
 */
-void Drive::move(int speed)
+void Drive::move(float speed)
 {
-    move_left(speed);
-    move_right(speed);
+    move_left((int) speed);
+    move_right((int) speed);
 }
 
 /*
@@ -64,10 +67,12 @@ turns on point around the center of mass
 \param speed
 the scaled speed at which the drive will turn
 */
-void Drive::turn_on_point(int speed)
+void Drive::turn_on_point(float speed)
 {
     move_left(speed);
     move_right(-speed);
+
+    printf("%f", speed);
 }
 
 /*
@@ -108,6 +113,7 @@ void Drive::tank()
     // driveRF->move_velocity(velRY - strafe);
 
     // scale all velocities to Left-Back drive(all drives will be same gearset)
+    move_left(scale(velLY, driveLB));
     move_left(scale(velLY, driveLB));
     move_right(scale(velRY, driveLB));
     strafe(scale(velStrafe, driveLB));
@@ -175,9 +181,14 @@ void move_forward(float speed)
     driveRB->move_velocity((int) speed);
 }
 
-float get_bot_y_pos()
+float get_bot_l_pos()
 {
     return driveLF->get_position();
+}
+
+float get_bot_r_pos()
+{
+    return driveRF->get_position();
 }
 
 /*
@@ -185,10 +196,16 @@ updates the motors action
 */
 void Drive::update()
 {
-    if (this->driveMode == TANK)
-        tank();
-    else if (this->driveMode == ARCADE)
-        arcade();
+    rotateLeftPID->update();
+    rotateRightPID->update();
+
+    //if (rotateRightPID->finished());
+    //    stop_motors();
+
+    /* if (this->driveMode == TANK)
+         tank();
+     else if (this->driveMode == ARCADE)
+         arcade();8?*/
 }
 
 /*
@@ -202,9 +219,22 @@ void Drive::initialize()
     driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
 
-    //pdInstance = new PD(0.5, 0.01, get_bot_y_pos, 24*4_in, move_forward);
+    float degrees = 360;
+    float arc_center = 7.75f*2;
+    // Distance from center of robot to corresponding side
+    float l = arc_center + Robot::WHEEL_TO_CENTER_DIST;
+    float r = arc_center - Robot::WHEEL_TO_CENTER_DIST;
+
+    float deltaL = (degrees * (M_PI / 180)) * l;
+    float deltaR = (degrees * (M_PI / 180)) * r;
+    rotateLeftPID = new P(0.5, get_bot_l_pos, inches_to_ticks(deltaL), move_left);
+    rotateRightPID = new P(0.5 * (r / l), get_bot_r_pos, inches_to_ticks(deltaR), move_right);
+    pros::lcd::print(5, "deltaL start: %f deltaR start: %f", deltaL, deltaR);
+
     driveLF->set_encoder_units(MOTOR_ENCODER_DEGREES);
     driveRF->set_encoder_units(MOTOR_ENCODER_DEGREES);
+    driveLB->set_encoder_units(MOTOR_ENCODER_DEGREES);
+    driveRB->set_encoder_units(MOTOR_ENCODER_DEGREES);
 
     driveLF->set_brake_mode(MOTOR_BRAKE_COAST);
     driveLB->set_brake_mode(MOTOR_BRAKE_COAST);

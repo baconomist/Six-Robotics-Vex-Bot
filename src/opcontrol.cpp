@@ -7,16 +7,19 @@
 #include "robot/motors.h"
 #include "robot/controllers.h"
 #include "robot/motion_control/PID.h"
+#include "robot/components/move_to_point.h"
 
 void opcontrol()
 {
     robot->robotMode = REMOTE_CONTROLLED;
     // robot->start_mainloop();
 
+    initialize_mtp(20, 20);
+
     while (true)
     {
-        robot->update();
-        
+        //robot->update();
+        update_mtp();
         pros::delay(20);
     }
 }

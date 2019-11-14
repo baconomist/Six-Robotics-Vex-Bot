@@ -42,7 +42,7 @@ void Robot::end_mainloop()
 void Robot::update()
 {
     this->drive->update();
-    this->mechanisms->update();
+    //this->mechanisms->update();
     this->motionTracker->update();
 }
 
