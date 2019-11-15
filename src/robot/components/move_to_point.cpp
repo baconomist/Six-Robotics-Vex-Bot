@@ -10,6 +10,7 @@
 #include "drive.h"
 #include "motor_gearsets.h"
 
+/*
 float clamp(float a, float min, float max)
 {
     if (a < min)
@@ -123,7 +124,7 @@ void initialize_mtp(float target_x, float target_y)
             //rot_speed_left = max_motor_speed * (1 - (fabs(calculate_rotation_from_motion()) / rotation_radians));
             rot_speed_left = 100;
         //rot_speed_right = -rot_speed_left * (y_diff / x_diff);
-        rot_speed_right = -rot_speed_left;*/
+        rot_speed_right = -rot_speed_left;
 
         if(!turnP->finished())
             turnP->update();
@@ -139,3 +140,5 @@ void initialize_mtp(float target_x, float target_y)
         pros::lcd::print(7, "L: %2.2f, R: %2.2f", get_l_pos(), get_r_pos());
     });
 }
+
+ */

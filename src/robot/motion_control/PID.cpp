@@ -14,13 +14,14 @@
 /**
  * P class
  * **/
-P::P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float))
+P::P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float), float error_range)
 {
     this->Kp = Kp;
 
     this->get_sensor_value = get_sensor_value;
     this->end = end;
     this->callback = callback;
+    this->error_range = error_range;
 
     // Error is the distance to target
     error = end - get_sensor_value();
@@ -36,7 +37,7 @@ void P::update()
 
 bool P::finished()
 {
-    return std::abs(error) < MIN_ERROR_RANGE;
+    return std::abs(error) < error_range;
 }
 
 /**
@@ -100,7 +101,7 @@ PD::PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callba
     this->callback = callback;
 
     error = end - get_sensor_value();
-         previous_error = error;
+    previous_error = error;
 
     // Integral is used for small error calculation, keep the motors moving to fix small errors
     derivative = 0;

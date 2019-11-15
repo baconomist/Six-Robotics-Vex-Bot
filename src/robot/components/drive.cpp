@@ -9,6 +9,9 @@
 #include "../controllers.h"
 #include "../motion_control/PID.h"
 
+const float TTI = (1 / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
+const float ITT = (1 / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0; // OR 1/TTI
+
 pros::Motor *driveLB;
 pros::Motor *driveLF;
 pros::Motor *driveRB;
@@ -75,6 +78,13 @@ void Drive::strafe(int speed)
     driveRF->move_velocity(-speed);
 }
 
+
+void Drive::stop()
+{
+    move_left(0);
+    move_right(0);
+}
+
 /**
  * Runs tank control scheme
  * **/
@@ -135,15 +145,6 @@ void Drive::arcade()
     }
 }
 
-int operator""_ticks(long double inches)
-{
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
-}
-int operator""_in(unsigned long long ticks)
-{
-    return (ticks / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
-}
-
 /*
 updates the motors action
 */
@@ -167,10 +168,10 @@ Initializes all motors to their brake settings
 void Drive::initialize()
 {
 
-    driveLF = new pros::Motor(LEFT_FRONT, E_MOTOR_GEARSET_18, false);
-    driveLB = new pros::Motor(LEFT_BACK, E_MOTOR_GEARSET_18, false);
-    driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
-    driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
+    driveLF = new pros::Motor(LEFT_FRONT, MOTOR_GEARSET_GREEN, false);
+    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, true);
+    driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true);//reserved
+    driveRB = new pros::Motor(RIGHT_BACK, MOTOR_GEARSET_GREEN, true);//reversed
 
     //
     // float degrees = 360;
@@ -195,3 +196,4 @@ void Drive::initialize()
     driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
     driveRB->set_brake_mode(MOTOR_BRAKE_COAST);
 }
+

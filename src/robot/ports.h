@@ -5,10 +5,10 @@
 #define VISION_PORT 5
 
 // Drive
-#define LEFT_FRONT 11
-#define LEFT_BACK 12
-#define RIGHT_FRONT 14
-#define RIGHT_BACK 15
+#define LEFT_FRONT 1
+#define LEFT_BACK 11
+#define RIGHT_FRONT 10
+#define RIGHT_BACK 20
 
 //Transmission
 #define TRANSMISSION_BOTTOM 19

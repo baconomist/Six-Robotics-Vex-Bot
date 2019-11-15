@@ -12,18 +12,18 @@ const int MIN_ERROR_RANGE = 10 ;
 class P
 {
 public:
-    P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float speed));
+    P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float speed), float error_range = MIN_ERROR_RANGE);
 
     void update();
 
     bool finished();
 
-private:
     float Kp;
 
     // Error is the distance to target
     float error;
     float speed;
+    float error_range;
 
     float (*get_sensor_value)();
 

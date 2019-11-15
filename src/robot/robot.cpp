@@ -6,9 +6,8 @@
 
 Robot::Robot()
 {
-    //this->drive = new Drive();
+    this->drive = new Drive();
     this->mechanisms = new Mechanisms();
-    //this->motionTracker = new MotionTracker();
 }
 
 /**
@@ -16,21 +15,20 @@ Robot::Robot()
 * **/
 void Robot::initialize()
 {
-    //this->drive->initialize();
-    this->mechanisms->initialize();
-    //this->motionTracker->initialize();
+    drive->initialize();
+    mechanisms->initialize();
+    Auton::initialize();
 }
 
 
 void Robot::start_mainloop()
 {
-    this->runningMainloop = true;
-    while(this->runningMainloop)
+    runningMainloop = true;
+    while(runningMainloop)
     {
 
         //this->drive->update();
-        this->mechanisms->update();
-        //this->motionTracker->update();
+        mechanisms->update();
     }
 }
 
@@ -41,9 +39,9 @@ void Robot::end_mainloop()
 
 void Robot::update()
 {
-    //this->drive->update();
-    this->mechanisms->update();
-    //this->motionTracker->update();
+    //drive->update();
+    //mechanisms->update();
+    Auton::update();
 }
 
 void Robot::execute_next()

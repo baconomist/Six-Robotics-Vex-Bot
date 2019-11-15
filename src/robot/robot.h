@@ -7,7 +7,7 @@
 
 #include "components/drive.h"
 #include "components/mechanisms.h"
-#include "motion_control/motion_tracker.h"
+#include "motion_control/auton.h"
 
 enum RobotMode
 {
@@ -26,7 +26,7 @@ public:
 
     Drive* drive;
     Mechanisms* mechanisms;
-    MotionTracker* motionTracker;
+    Auton* auton;
     RobotMode robotMode = AUTONOMOUS;
     bool runningMainloop = false;
     Robot();

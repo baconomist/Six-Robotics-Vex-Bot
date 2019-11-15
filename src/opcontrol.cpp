@@ -16,9 +16,15 @@ void opcontrol()
 
     //initialize_mtp(20, 20);
 
+    Auton::goto_pos(0, 20);
+    Auton::goto_pos(20, 20);
+    Auton::goto_pos(20, 0);
+    Auton::goto_pos(0, 0);
+
     while (true)
     {
         robot->update();
+        Auton::print_debug();
         //update_mtp();
         pros::delay(20);
     }
