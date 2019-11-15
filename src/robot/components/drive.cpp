@@ -14,8 +14,8 @@ pros::Motor *driveLF;
 pros::Motor *driveRB;
 pros::Motor *driveRF;
 
-P *rotateLeftPID;
-P *rotateRightPID;
+//P *rotateLeftPID;
+//P *rotateRightPID;
 
 // TODO: refactor the arc_turn
 /*
@@ -162,7 +162,9 @@ float Drive::ticks_to_inches(float ticks)
 {
     return (ticks / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
 }
-
+float Drive::inches_to_ticks(float inches){
+    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
+};
 int operator""_in(long double inches)
 {
     return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
@@ -196,16 +198,16 @@ updates the motors action
 */
 void Drive::update()
 {
-    rotateLeftPID->update();
-    rotateRightPID->update();
+//    rotateLeftPID->update();
+//    rotateRightPID->update();
 
     //if (rotateRightPID->finished());
     //    stop_motors();
 
-    /* if (this->driveMode == TANK)
+     if (this->driveMode == TANK)
          tank();
      else if (this->driveMode == ARCADE)
-         arcade();8?*/
+         arcade();
 }
 
 /*
@@ -219,17 +221,18 @@ void Drive::initialize()
     driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
 
-    float degrees = 360;
-    float arc_center = 7.75f*2;
-    // Distance from center of robot to corresponding side
-    float l = arc_center + Robot::WHEEL_TO_CENTER_DIST;
-    float r = arc_center - Robot::WHEEL_TO_CENTER_DIST;
-
-    float deltaL = (degrees * (M_PI / 180)) * l;
-    float deltaR = (degrees * (M_PI / 180)) * r;
-    rotateLeftPID = new P(0.5, get_bot_l_pos, inches_to_ticks(deltaL), move_left);
-    rotateRightPID = new P(0.5 * (r / l), get_bot_r_pos, inches_to_ticks(deltaR), move_right);
-    pros::lcd::print(5, "deltaL start: %f deltaR start: %f", deltaL, deltaR);
+    //
+    // float degrees = 360;
+    // float arc_center = 7.75f*2;
+    // // Distance from center of robot to corresponding side
+    // float l = arc_center + Robot::WHEEL_TO_CENTER_DIST;
+    // float r = arc_center - Robot::WHEEL_TO_CENTER_DIST;
+    //
+    // float deltaL = (degrees * (M_PI / 180)) * l;
+    // float deltaR = (degrees * (M_PI / 180)) * r;
+    // rotateLeftPID = new P(0.5, get_bot_l_pos, inches_to_ticks(deltaL), move_left);
+    // rotateRightPID = new P(0.5 * (r / l), get_bot_r_pos, inches_to_ticks(deltaR), move_right);
+    // pros::lcd::print(5, "deltaL start: %f deltaR start: %f", deltaL, deltaR);
 
     driveLF->set_encoder_units(MOTOR_ENCODER_DEGREES);
     driveRF->set_encoder_units(MOTOR_ENCODER_DEGREES);
@@ -242,7 +245,7 @@ void Drive::initialize()
     driveRB->set_brake_mode(MOTOR_BRAKE_COAST);
 }
 
-void Drive::stop_motors()
+void Drive::hold_motors()
 {
     driveLF->move_velocity(0);
     driveLB->move_velocity(0);

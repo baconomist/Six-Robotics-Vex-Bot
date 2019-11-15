@@ -145,5 +145,3 @@ void initialize_mtp(float target_x, float target_y)
         pros::lcd::print(7, "L: %2.2f, R: %2.2f", get_l_pos(), get_r_pos());
     });
 }
-
-

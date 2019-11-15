@@ -22,7 +22,7 @@ public:
 
     static float ticks_to_inches(float ticks);
     static float inches_to_ticks(float inches);
-    
+
     static void move_left(float speed);
     static void move_right(float speed);
     static void move(float speed);
@@ -38,7 +38,7 @@ public:
     void update();
     void initialize();
 
-    void stop_motors();
+    void hold_motors();
 };
 
 

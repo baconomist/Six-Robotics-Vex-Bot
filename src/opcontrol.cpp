@@ -14,12 +14,12 @@ void opcontrol()
     robot->robotMode = REMOTE_CONTROLLED;
     // robot->start_mainloop();
 
-    initialize_mtp(20, 20);
+    //initialize_mtp(20, 20);
 
     while (true)
     {
-        //robot->update();
-        update_mtp();
+        robot->update();
+        //update_mtp();
         pros::delay(20);
     }
 }
