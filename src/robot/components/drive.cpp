@@ -62,8 +62,6 @@ void Drive::turn(float speed)
 {
     move_left(speed);
     move_right(-speed);
-
-    printf("%f", speed);
 }
 
 /**
@@ -137,19 +135,13 @@ void Drive::arcade()
     }
 }
 
-float Drive::ticks_to_inches(float ticks){
+int operator""_ticks(long double inches)
+{
+    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
+}
+int operator""_in(unsigned long long ticks)
+{
     return (ticks / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
-}
-float Drive::inches_to_ticks(float inches){
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
-};
-int operator""_in(long double inches)
-{
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
-}
-int operator""_in(unsigned long long inches)
-{
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
 }
 
 /*
@@ -163,7 +155,7 @@ void Drive::update()
     //if (rotateRightPID->finished());
     //    stop_motors();
 
-     if (this->driveMode == TANK)
+     /*if (this->driveMode == TANK)
          tank();
      else if (this->driveMode == ARCADE)
          arcade();*/
@@ -202,12 +194,4 @@ void Drive::initialize()
     driveLB->set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
     driveRB->set_brake_mode(MOTOR_BRAKE_COAST);
-}
-
-void Drive::hold_motors()
-{
-    driveLF->move_velocity(0);
-    driveLB->move_velocity(0);
-    driveRF->move_velocity(0);
-    driveRB->move_velocity(0);
 }

@@ -5,12 +5,14 @@
 #ifndef VEXROBOT_DRIVE_H
 #define VEXROBOT_DRIVE_H
 
+int operator""_ticks(long double inches);
+int operator""_in(unsigned long long ticks);
+
 enum DriveMode
 {
     TANK,
     ARCADE
 };
-
 
 class Drive
 {
@@ -34,8 +36,6 @@ public:
 
     void update();
     void initialize();
-
-    void hold_motors();
 };
 
 
