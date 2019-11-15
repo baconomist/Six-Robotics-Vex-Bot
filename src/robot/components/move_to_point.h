@@ -7,7 +7,7 @@
 
 #include "../motion_control/PID.h"
 
-extern float rotation_radians;
+extern float rot_target_radians;
 extern float move_distance;
 extern float turn_distance;
 extern P* moveP;
