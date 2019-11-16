@@ -38,9 +38,9 @@ initializes all the motor's brake states
 */
 void Mechanisms::initialize(){
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
-    transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);
+    transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
     intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_36, true);//reserved
-    intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_36, false);//reversed
+    intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_36, false);
 
     transT->set_brake_mode(MOTOR_BRAKE_HOLD);
     transB->set_brake_mode(MOTOR_BRAKE_HOLD);

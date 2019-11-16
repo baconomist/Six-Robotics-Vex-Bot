@@ -90,6 +90,8 @@ void Auton::goto_pos(float target_x, float target_y)
 
     // Turn to match heading
     goto_heading((float) atan(x_diff / (y_diff == 0 ? 1 : y_diff)) * RAD2DEG);
+    Auton::x = target_x;
+    Auton::y = target_y;
 
     // Move to point
     actionQueue->queue_action(new AutonAction([](AutonAction *autonAction) {
@@ -98,8 +100,9 @@ void Auton::goto_pos(float target_x, float target_y)
         expectedRPos = expectedLPos;
 
 
-        Auton::y += expectedLPos * TTI * sin(Auton::heading * DEG2RAD);
-        Auton::x += expectedLPos * TTI * cos(Auton::heading * DEG2RAD);
+        // Auton::y += expectedLPos * TTI * sin(Auton::heading * DEG2RAD);
+        // Auton::x += expectedLPos * TTI * cos(Auton::heading * DEG2RAD);
+
 
         Auton::set_algorithm(new P(Auton::kP_straight, get_l_pos, autonAction->distance * ITT, [](float speed) {
             Drive::move_straight(speed);
