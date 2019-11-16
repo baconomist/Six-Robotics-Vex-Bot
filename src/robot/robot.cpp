@@ -6,9 +6,9 @@
 
 Robot::Robot()
 {
-    //this->drive = new Drive();
+    this->drive = new Drive();
     this->mechanisms = new Mechanisms();
-    //this->motionTracker = new MotionTracker();
+    //this->auton = new Auton();
 }
 
 /**
@@ -16,34 +16,23 @@ Robot::Robot()
 * **/
 void Robot::initialize()
 {
-    //this->drive->initialize();
-    this->mechanisms->initialize();
-    //this->motionTracker->initialize();
+    drive->initialize();
+    mechanisms->initialize();
+    Auton::initialize();
 }
 
 
-void Robot::start_mainloop()
-{
-    this->runningMainloop = true;
-    while(this->runningMainloop)
-    {
-
-        //this->drive->update();
-        this->mechanisms->update();
-        //this->motionTracker->update();
-    }
-}
-
-void Robot::end_mainloop()
-{
-    this->runningMainloop = false;
-}
 
 void Robot::update()
 {
-    //this->drive->update();
-    this->mechanisms->update();
-    //this->motionTracker->update();
+    if(this->robotMode==REMOTE_CONTROLLED){
+        drive->update();
+        mechanisms->update();
+    }
+    else if(this->robotMode==REMOTE_CONTROLLED)
+        Auton::update();
+    else
+        lcd::print(1, "Something went horribly wrong");
 }
 
 void Robot::execute_next()

@@ -5,18 +5,18 @@
 #define VISION_PORT 5
 
 // Drive
-#define LEFT_FRONT 11
-#define LEFT_BACK 12
-#define RIGHT_FRONT 14
-#define RIGHT_BACK 15
+#define LEFT_FRONT 1
+#define LEFT_BACK 10
+#define RIGHT_FRONT 2
+#define RIGHT_BACK 4
 
 //Transmission
-#define TRANSMISSION_BOTTOM 19
-#define TRANSMISSION_TOP 20
+#define TRANSMISSION_BOTTOM 7
+#define TRANSMISSION_TOP 8
 
 //Intake
-#define INTAKE_LEFT 1
-#define INTAKE_RIGHT 10
+#define INTAKE_LEFT 9
+#define INTAKE_RIGHT 3
 
 // Legacy Ports (A=1, B=2...)
 #define LEFT_X_ENCODER_TOP 1

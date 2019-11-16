@@ -9,6 +9,9 @@
 #include "../controllers.h"
 #include "../motion_control/PID.h"
 
+const float TTI = Robot::WHEEL_DIAMETER / 360.0 * M_PI;
+const float ITT = 1.0/TTI;
+
 pros::Motor *driveLB;
 pros::Motor *driveLF;
 pros::Motor *driveRB;
@@ -17,79 +20,56 @@ pros::Motor *driveRF;
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
-// TODO: refactor the arc_turn
-/*
-scales the motor value by the motors gearing
-*/
 
-int scale(int speed, Motor *motor)
+int scale_motor_val(int speed, Motor *motor)
 {
     return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
 }
 
 Drive::Drive() = default;
+Drive::~Drive() = default;
 
-/*
-moves the left side of the drive
-\param speed
-the scaled speed at which the left side of the drive will move
-*/
+/**
+ * Moves the left side of the drive
+ * **/
 void Drive::move_left(float speed)
 {
     driveLF->move_velocity((int) speed);
     driveLB->move_velocity((int) speed);
 }
 
-/*
-moves the right side of the drive
-\param speed
-the scaled speed at which the right side of the drive will move
-*/
+/**
+ * Moves the right side of the drive
+ * **/
 void Drive::move_right(float speed)
 {
     driveRF->move_velocity((int) speed);
     driveRB->move_velocity((int) speed);
 }
 
-/*
-drives straight either forwards or backwards
-\param speed
-the scaled speed at which the drive will move
-*/
-void Drive::move(float speed)
+/**
+ * Moves the left and right side of the drive
+ * at the given speed parameter
+ * **/
+void Drive::move_straight(float speed)
 {
-    move_left((int) speed);
-    move_right((int) speed);
+    Drive::move_left(speed);
+    Drive::move_right(speed);
 }
 
-/*
-turns on point around the center of mass
-\param speed
-the scaled speed at which the drive will turn
-*/
-void Drive::turn_on_point(float speed)
+/**
+ * Turns the drive by setting left and right
+ * side to opposite values
+ * **/
+void Drive::turn(float speed)
 {
     move_left(speed);
     move_right(-speed);
-
-    printf("%f", speed);
 }
 
-/*
-turns around an arc,
-center is not the center of the robot/mass
-*/
-void Drive::arc_turn(float radians, float radius, int speed)
-{
-    move_left(radians / (2 * M_PI) * radius - Robot::WHEEL_TO_WHEEL_DIST);
-    move_right(radians / (2 * M_PI) * radius + Robot::WHEEL_TO_WHEEL_DIST);
-}
-
-/*
-strafes to the side
-\param speed
-the scaled speed at which the drive will strafe
-*/
+/**
+ * Strafes the drive
+ * **/
 void Drive::strafe(int speed)
 {
     driveLB->move_velocity(-speed);
@@ -98,9 +78,16 @@ void Drive::strafe(int speed)
     driveRF->move_velocity(-speed);
 }
 
-/*
-tank joystick control + strafe
-*/
+
+void Drive::stop()
+{
+    move_left(0);
+    move_right(0);
+}
+
+/**
+ * Runs tank control scheme
+ * **/
 void Drive::tank()
 {
     int deadZone = 15;
@@ -113,15 +100,15 @@ void Drive::tank()
     // driveRF->move_velocity(velRY - strafe);
 
     // scale all velocities to Left-Back drive(all drives will be same gearset)
-    move_left(scale(velLY, driveLB));
-    move_left(scale(velLY, driveLB));
-    move_right(scale(velRY, driveLB));
-    strafe(scale(velStrafe, driveLB));
+    move_left(scale_motor_val(velLY, driveLB));
+    move_left(scale_motor_val(velLY, driveLB));
+    move_right(scale_motor_val(velRY, driveLB));
+    strafe(scale_motor_val(velStrafe, driveLB));
 }
 
-/*
-arcade joystick control + strafe
-*/
+/**
+ * Runs arcade control scheme
+ * **/
 void Drive::arcade()
 {
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
@@ -129,10 +116,10 @@ void Drive::arcade()
     scaling the values to 200 to match the internal gearset for move_velocity
     Since the all the motors on the drive have the same gearing anyone can be used to scale them
     */
-    int velLY = scale(master.get_analog(ANALOG_LEFT_Y), driveLB);
-    int velRY = scale(master.get_analog(ANALOG_RIGHT_Y), driveLB);
-    int velLX = scale(master.get_analog(ANALOG_LEFT_X), driveLB);
-    int velRX = scale(master.get_analog(ANALOG_RIGHT_X), driveLB);
+    int velLY = scale_motor_val(master.get_analog(ANALOG_LEFT_Y), driveLB);
+    int velRY = scale_motor_val(master.get_analog(ANALOG_RIGHT_Y), driveLB);
+    int velLX = scale_motor_val(master.get_analog(ANALOG_LEFT_X), driveLB);
+    int velRX = scale_motor_val(master.get_analog(ANALOG_RIGHT_X), driveLB);
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
     {
@@ -158,43 +145,6 @@ void Drive::arcade()
     }
 }
 
-float Drive::ticks_to_inches(float ticks)
-{
-    return (ticks / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
-}
-float Drive::inches_to_ticks(float inches){
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
-};
-int operator""_in(long double inches)
-{
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
-}
-int operator""_in(unsigned long long inches)
-{
-    return (inches / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0;
-}
-
-
-void move_forward(float speed)
-{
-    int x;
-    x =
-    driveLF->move_velocity((int) speed);
-    driveLB->move_velocity((int) speed);
-    driveRF->move_velocity((int) speed);
-    driveRB->move_velocity((int) speed);
-}
-
-float get_bot_l_pos()
-{
-    return driveLF->get_position();
-}
-
-float get_bot_r_pos()
-{
-    return driveRF->get_position();
-}
-
 /*
 updates the motors action
 */
@@ -218,10 +168,10 @@ Initializes all motors to their brake settings
 void Drive::initialize()
 {
 
-    driveLF = new pros::Motor(LEFT_FRONT, E_MOTOR_GEARSET_18, false);
-    driveLB = new pros::Motor(LEFT_BACK, E_MOTOR_GEARSET_18, false);
-    driveRF = new pros::Motor(RIGHT_FRONT, E_MOTOR_GEARSET_18, true);//reserved
-    driveRB = new pros::Motor(RIGHT_BACK, E_MOTOR_GEARSET_18, true);//reversed
+    driveLF = new pros::Motor(LEFT_FRONT, MOTOR_GEARSET_GREEN, false);
+    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, true);
+    driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true);//reserved
+    driveRB = new pros::Motor(RIGHT_BACK, MOTOR_GEARSET_GREEN, true);//reversed
 
     //
     // float degrees = 360;
@@ -245,12 +195,4 @@ void Drive::initialize()
     driveLB->set_brake_mode(MOTOR_BRAKE_COAST);
     driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
     driveRB->set_brake_mode(MOTOR_BRAKE_COAST);
-}
-
-void Drive::hold_motors()
-{
-    driveLF->move_velocity(0);
-    driveLB->move_velocity(0);
-    driveRF->move_velocity(0);
-    driveRB->move_velocity(0);
 }

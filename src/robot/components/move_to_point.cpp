@@ -10,6 +10,7 @@
 #include "drive.h"
 #include "motor_gearsets.h"
 
+/*
 float clamp(float a, float min, float max)
 {
     if (a < min)
@@ -30,11 +31,11 @@ float lerp(float a, float min, float max)
 }
 
 float get_l_pos()
-{ return driveLF->get_position(); }
+{ return driveLB->get_position(); }
 
 
 float get_r_pos()
-{ return driveRF->get_position(); }
+{ return driveRB->get_position(); }
 
 void move_left(float speed)
 {
@@ -68,7 +69,7 @@ float calculate_rotation_from_motion()
     return delta_theta;
 }
 
-float rotation_radians = 0;
+float rot_target_radians = 0;
 float move_distance = 0;
 float turn_distance = 0;
 
@@ -89,13 +90,6 @@ void update_mtp()
         move_left(0);
         move_right(0);
     }
-
-    move_left(500);
-    move_right(500);
-
-    pros::lcd::print(5, "robot rotation: %2.2f", fabs(calculate_rotation_from_motion()) * (180 / M_PI), rotation_radians * (180 / M_PI));
-    pros::lcd::print(6, "expected rotation: %2.2f", rotation_radians * (180 / M_PI));
-    pros::lcd::print(7, "L: %2.2f, R: %2.2f", get_l_pos(), get_r_pos());
 }
 
 float x_diff = 0;
@@ -108,10 +102,11 @@ void initialize_mtp(float target_x, float target_y)
     // 0 being the robot position for now
     x_diff = target_x - 0;
     y_diff = target_y - 0;
-    rotation_radians = (float) atan(x_diff / y_diff);
+    rot_target_radians = (float) atan(x_diff / y_diff);
     move_distance = (float) sqrt(x_diff * x_diff + y_diff * y_diff);
-    turn_distance = Robot::WHEEL_TO_CENTER_DIST * rotation_radians;
+    turn_distance = Robot::WHEEL_TO_CENTER_DIST * rot_target_radians;
 
+    // TODO: TAKE INTO ACCOUNT THAT THIS PID DOESN"T KNOW ABOUT MOVEMENT FORWARD
     turnP = new P(kP, get_l_pos, Drive::inches_to_ticks(turn_distance), [](float speed){
         rot_speed = speed;
     });
@@ -127,21 +122,23 @@ void initialize_mtp(float target_x, float target_y)
             rot_speed_left = 0;
         else
             //rot_speed_left = max_motor_speed * (1 - (fabs(calculate_rotation_from_motion()) / rotation_radians));
-            rot_speed_left = 50;
+            rot_speed_left = 100;
         //rot_speed_right = -rot_speed_left * (y_diff / x_diff);
-        rot_speed_right = -rot_speed_left;*/
+        rot_speed_right = -rot_speed_left;
 
         if(!turnP->finished())
             turnP->update();
         else
             rot_speed = 0;
 
-        //move_left(speed);
-        //move_right(speed);
+        move_left(speed + rot_speed);
+        move_right(speed + rot_speed);
 
-        pros::lcd::print(5, "robot rotation: %2.2f", fabs(calculate_rotation_from_motion()) * (180 / M_PI), rotation_radians * (180 / M_PI));
-        pros::lcd::print(6, "expected rotation: %2.2f", rotation_radians * (180 / M_PI));
+        pros::lcd::print(5, "robot rotation: %2.2f", fabs(calculate_rotation_from_motion()) * (180 / M_PI), rot_target_radians * (180 / M_PI));
+        pros::lcd::print(6, "expected rotation: %2.2f", rot_target_radians * (180 / M_PI));
 
         pros::lcd::print(7, "L: %2.2f, R: %2.2f", get_l_pos(), get_r_pos());
     });
 }
+
+ */
