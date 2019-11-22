@@ -169,7 +169,7 @@ void Drive::initialize()
 {
 
     driveLF = new pros::Motor(LEFT_FRONT, MOTOR_GEARSET_GREEN, false);
-    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, true);
+    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, false);
     driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, MOTOR_GEARSET_GREEN, true);//reversed
 
