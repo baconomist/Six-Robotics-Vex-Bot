@@ -33,10 +33,6 @@ public:
 
     void initialize();
 
-    void start_mainloop();
-
-    void end_mainloop();
-
     void update();
 
     void execute_next();

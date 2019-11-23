@@ -16,7 +16,7 @@ public:
     float heading = 0;
 
     AutonAction(void (*execute_func)(AutonAction*), bool(*finished_func)(),
-            float distance = 0, float heading = 0);
+    float distance = 0, float heading = 0);
 
     virtual void execute() override;
 
@@ -40,7 +40,8 @@ public:
     static float expectedDistance;
     static float expectedHeadingDeg;
 
-    static constexpr const float kP = 0.5f;
+    static constexpr const float kP_turn = 0.5f;
+    static constexpr const float kP_straight = 0.5f;
 
     static void (*action_complete_callback)();
 

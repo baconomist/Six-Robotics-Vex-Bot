@@ -21,16 +21,16 @@ void Mechanisms::tilter(int speed){
 moves the lift up or down
 */
 void Mechanisms::lifter(int speed){
-    transB->move_velocity(speed);
-    transT->move_velocity(-speed);
+    transB->move_velocity(-speed);
+    transT->move_velocity(speed);
 }
 
 /*
 controls the intake
 */
 void Mechanisms::intake(int speed) {
-    intakeL->move_velocity(-speed);
-    intakeR->move_velocity(-speed);
+    intakeL->move_velocity(speed);
+    intakeR->move_velocity(speed);
 }
 
 /*
@@ -38,9 +38,9 @@ initializes all the motor's brake states
 */
 void Mechanisms::initialize(){
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
-    transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);
-    intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_36, true);//reserved
-    intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_36, false);//reversed
+    transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
+    intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_36, false);
+    intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_36, true);//reversed
 
     transT->set_brake_mode(MOTOR_BRAKE_HOLD);
     transB->set_brake_mode(MOTOR_BRAKE_HOLD);

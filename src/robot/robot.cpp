@@ -8,6 +8,7 @@ Robot::Robot()
 {
     this->drive = new Drive();
     this->mechanisms = new Mechanisms();
+    //this->auton = new Auton();
 }
 
 /**
@@ -21,27 +22,17 @@ void Robot::initialize()
 }
 
 
-void Robot::start_mainloop()
-{
-    runningMainloop = true;
-    while(runningMainloop)
-    {
-
-        //this->drive->update();
-        mechanisms->update();
-    }
-}
-
-void Robot::end_mainloop()
-{
-    this->runningMainloop = false;
-}
 
 void Robot::update()
 {
-    //drive->update();
-    //mechanisms->update();
-    Auton::update();
+    if(this->robotMode==REMOTE_CONTROLLED){
+        drive->update();
+        mechanisms->update();
+    }
+    else if(this->robotMode==REMOTE_CONTROLLED)
+        Auton::update();
+    else
+        lcd::print(1, "Something went horribly wrong");
 }
 
 void Robot::execute_next()

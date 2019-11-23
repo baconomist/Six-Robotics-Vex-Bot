@@ -9,8 +9,8 @@
 #include "../controllers.h"
 #include "../motion_control/PID.h"
 
-const float TTI = (1 / 360.0f) * Robot::WHEEL_DIAMETER * M_PI;
-const float ITT = (1 / (Robot::WHEEL_DIAMETER * M_PI)) * 360.0; // OR 1/TTI
+const float TTI = Robot::WHEEL_DIAMETER / 360.0 * M_PI;
+const float ITT = 1.0/TTI;
 
 pros::Motor *driveLB;
 pros::Motor *driveLF;
@@ -156,10 +156,10 @@ void Drive::update()
     //if (rotateRightPID->finished());
     //    stop_motors();
 
-     /*if (this->driveMode == TANK)
+     if (this->driveMode == TANK)
          tank();
      else if (this->driveMode == ARCADE)
-         arcade();*/
+         arcade();
 }
 
 /*
@@ -169,7 +169,7 @@ void Drive::initialize()
 {
 
     driveLF = new pros::Motor(LEFT_FRONT, MOTOR_GEARSET_GREEN, false);
-    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, true);
+    driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, false);
     driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, MOTOR_GEARSET_GREEN, true);//reversed
 
@@ -196,4 +196,3 @@ void Drive::initialize()
     driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
     driveRB->set_brake_mode(MOTOR_BRAKE_COAST);
 }
-
