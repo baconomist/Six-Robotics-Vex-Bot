@@ -31,9 +31,9 @@ private:
 class Auton
 {
 public:
-    static float x;
-    static float y;
-    static float heading;
+    static float x_position;
+    static float y_position;
+    static float heading_deg;
 
     static float expectedLPos;
     static float expectedRPos;
@@ -58,24 +58,25 @@ public:
 
     static void goto_pos(float x, float y, float final_heading);
 
-    static float get_x();
-
-    static float get_y();
-
     static void goto_heading(float heading_degrees);
 
-    static float get_heading();
 
     static void register_action_complete_callback(void (*callback)());
 
     static void print_debug();
 
 private:
+    static float x_pos_before_action_start;
+    static float y_pos_before_action_start;
+    static float heading_deg_before_action_start;
+
     static ActionQueue *actionQueue;
 
     static void reset_encoders();
 
     static float calculate_rotation_from_motion();
+    static float calculate_delta_x_from_motion();
+    static float calculate_delta_y_from_motion();
 
     static float get_l_pos();
 
