@@ -5,4 +5,6 @@
 extern pros::ADIEncoder LeftXEncoder;
 extern pros::ADIEncoder RightXEncoder;
 extern pros::ADIEncoder YEncoder;
+extern pros::ADIEncoder LiftEncoder;
+extern pros::ADIEncoder TrayEncoder;
 #endif
