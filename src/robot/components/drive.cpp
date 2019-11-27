@@ -31,8 +31,6 @@ int scale_motor_val(int speed, Motor *motor)
 Drive::Drive() = default;
 Drive::~Drive() = default;
 
-DriveMode driveMode(ARCADE);
-
 /**
  * Moves the left side of the drive
  * **/
