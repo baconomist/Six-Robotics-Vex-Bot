@@ -5,7 +5,6 @@
 #include "../ports.h"
 #include "../motion_control/encoders.h"
 #include "motor_gearsets.h"
-#include "../motion_control/PID.h"
 pros::Motor *transT;
 pros::Motor *transB;
 pros::Motor *intakeL;
@@ -13,6 +12,7 @@ pros::Motor *intakeR;
 
 pros::ADIEncoder *trayEncoder;
 
+PD *trayPD;
 
 /*
 moves the tray forwards and backwards
@@ -76,9 +76,13 @@ void Mechanisms::update(){
         lifter(0);
     }
     intake(intakeSpeed);
-    // if(master.get_digital(DIGITAL_A)) {
-    //     PD trayPD(1.0f, 1.0f, get_tray_pos(), 30.0f, [](float speed) {
-    //         tilter((int)speed);
-    //     });
-    // }
+
+    if(master.get_digital(DIGITAL_A) && trayPD->finished()) {
+        trayPD = new PD(1.f, 1.f, get_tray_pos, 40.f, [](float speed) {
+          tilter((int)speed);
+        });
+    }
+    else if(!trayPD->finished()) {
+      trayPD->update();
+    }
 }
