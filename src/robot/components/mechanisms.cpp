@@ -2,11 +2,16 @@
 #include "mechanisms.h"
 #include "../controllers.h"
 #include "../motors.h"
+#include "../ports.h"
+#include "../motion_control/encoders.h"
 #include "motor_gearsets.h"
+#include "../motion_control/PID.h"
 pros::Motor *transT;
 pros::Motor *transB;
 pros::Motor *intakeL;
 pros::Motor *intakeR;
+
+pros::ADIEncoder *trayEncoder;
 
 
 /*
@@ -46,6 +51,13 @@ void Mechanisms::initialize(){
     transB->set_brake_mode(MOTOR_BRAKE_HOLD);
     intakeL->set_brake_mode(MOTOR_BRAKE_HOLD);
     intakeR->set_brake_mode(MOTOR_BRAKE_HOLD);
+
+    trayEncoder = new pros::ADIEncoder(TRAY_ENCODER_TOP, TRAY_ENCODER_BOTTOM);
+}
+
+float Mechanisms::get_tray_pos()
+{
+  return (float)trayEncoder->get_value();
 }
 /*
 
@@ -64,4 +76,9 @@ void Mechanisms::update(){
         lifter(0);
     }
     intake(intakeSpeed);
+    // if(master.get_digital(DIGITAL_A)) {
+    //     PD trayPD(1.0f, 1.0f, get_tray_pos(), 30.0f, [](float speed) {
+    //         tilter((int)speed);
+    //     });
+    // }
 }
