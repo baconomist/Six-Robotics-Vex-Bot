@@ -2,9 +2,9 @@
 
 #ifndef VEXBOT_ENCODERS_H
 #define VEXBOT_ENCODERS_H
-extern pros::ADIEncoder LeftXEncoder;
-extern pros::ADIEncoder RightXEncoder;
-extern pros::ADIEncoder YEncoder;
-extern pros::ADIEncoder LiftEncoder;
-extern pros::ADIEncoder TrayEncoder;
-#endif
+extern pros::ADIEncoder* leftXEncoder;
+extern pros::ADIEncoder* rightXEncoder;
+extern pros::ADIEncoder* YEncoder;
+extern pros::ADIEncoder* liftEncoder;
+extern pros::ADIEncoder* trayEncoder;
+#endif //VEXBOT_ENCODERS_H
