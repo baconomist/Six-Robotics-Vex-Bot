@@ -6,6 +6,8 @@
 // without this the robot may overshoot its target
 #ifndef PID_H
 #define PID_H
+
+#include "main.h"
 const int MIN_ERROR_FOR_INTEGRAL = 500;
 const int MIN_ERROR_RANGE = 10 ;
 

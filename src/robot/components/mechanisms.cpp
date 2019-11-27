@@ -12,7 +12,7 @@ pros::Motor *intakeR;
 
 pros::ADIEncoder *trayEncoder;
 
-PD *trayPD;
+PD *Mechanisms::trayPD;
 
 /*
 moves the tray forwards and backwards
