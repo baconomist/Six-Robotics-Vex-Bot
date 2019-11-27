@@ -3,7 +3,6 @@
 //
 
 #include "main.h"
-#include "ports.h"
 
 #ifndef VEXROBOT_MOTORS_H // Only compile if this macro is not yet defined
 #define VEXROBOT_MOTORS_H

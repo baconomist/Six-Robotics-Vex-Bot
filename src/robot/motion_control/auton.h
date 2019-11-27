@@ -40,6 +40,10 @@ public:
     static float expectedDistance;
     static float expectedHeadingDeg;
 
+    static float x, y;
+
+    static float kP;
+
     static constexpr const float kP_turn = 0.5f;
     static constexpr const float kP_straight = 0.5f;
 
