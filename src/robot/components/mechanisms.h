@@ -4,15 +4,17 @@
 class Mechanisms
 {
 public:
-    void tilter(int speed);
+    static void tilter(int speed);
 
-    void lifter(int speed);
+    static void lifter(int speed);
 
-    void intake(int speed);
+    static void intake(int speed);
 
-    void update();
+    static float get_tray_pos();
 
-    void initialize();
+    static void update();
+
+    static void initialize();
 };
 
 #endif

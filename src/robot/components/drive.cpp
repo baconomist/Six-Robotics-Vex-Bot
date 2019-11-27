@@ -5,6 +5,7 @@
 #include "main.h"
 #include "drive.h"
 #include "../motors.h"
+#include "../ports.h"
 #include "motor_gearsets.h"
 #include "../controllers.h"
 #include "../motion_control/PID.h"
@@ -20,6 +21,7 @@ pros::Motor *driveRF;
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
+DriveMode Drive::driveMode = ARCADE;
 
 int scale_motor_val(int speed, Motor *motor)
 {
@@ -28,6 +30,8 @@ int scale_motor_val(int speed, Motor *motor)
 
 Drive::Drive() = default;
 Drive::~Drive() = default;
+
+DriveMode driveMode(ARCADE);
 
 /**
  * Moves the left side of the drive
@@ -155,10 +159,9 @@ void Drive::update()
 
     //if (rotateRightPID->finished());
     //    stop_motors();
-
-     if (this->driveMode == TANK)
+     if (driveMode == TANK)
          tank();
-     else if (this->driveMode == ARCADE)
+     else if (driveMode == ARCADE)
          arcade();
 }
 

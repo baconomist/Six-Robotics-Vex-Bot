@@ -26,11 +26,7 @@ enum DriveMode
 class Drive
 {
 public:
-    DriveMode driveMode = ARCADE;
-
-    //constructor
-    Drive();
-    ~Drive();
+    static DriveMode driveMode;
 
     static void move_left(float speed);
     static void move_right(float speed);
@@ -41,8 +37,11 @@ public:
     static void tank();
     static void arcade();
 
-    void update();
-    void initialize();
+    static void update();
+    static void initialize();
+private:
+    Drive();
+    ~Drive();
 };
 
 

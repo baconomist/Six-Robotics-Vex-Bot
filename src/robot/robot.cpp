@@ -6,9 +6,6 @@
 
 Robot::Robot()
 {
-    this->drive = new Drive();
-    this->mechanisms = new Mechanisms();
-    //this->auton = new Auton();
 }
 
 /**
@@ -16,8 +13,8 @@ Robot::Robot()
 * **/
 void Robot::initialize()
 {
-    drive->initialize();
-    mechanisms->initialize();
+    Drive::initialize();
+    Mechanisms::initialize();
     Auton::initialize();
 }
 
@@ -26,7 +23,7 @@ void Robot::initialize()
 void Robot::update()
 {
     if(this->robotMode==REMOTE_CONTROLLED){
-        drive->update();
+        Drive::update();
         mechanisms->update();
     }
     else if(this->robotMode==REMOTE_CONTROLLED)

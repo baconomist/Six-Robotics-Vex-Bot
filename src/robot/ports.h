@@ -25,5 +25,7 @@
 #define RIGHT_X_ENCODER_BOTTOM 4
 #define Y_ENCODER_TOP 5
 #define Y_ENCODER_BOTTOM 6
+#define TRAY_ENCODER_TOP 7
+#define TRAY_ENCODER_BOTTOM 8
 
 #endif
