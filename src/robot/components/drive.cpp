@@ -31,8 +31,6 @@ int scale_motor_val(int speed, Motor *motor)
 Drive::Drive() = default;
 Drive::~Drive() = default;
 
-DriveMode driveMode(ARCADE);
-
 /**
  * Moves the left side of the drive
  * **/
@@ -73,6 +71,8 @@ void Drive::turn(float speed)
 
 /**
  * Strafes the drive
+ *
+ * Positive speed is left
  * **/
 void Drive::strafe(int speed)
 {
@@ -128,24 +128,24 @@ void Drive::arcade()
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
     {
         //drives straight if the Y dir is greater than dead zone and X dir is within dead zone
-        driveLF->move_velocity(velLY + velRX);
-        driveLB->move_velocity(velLY - velRX);
-        driveRF->move_velocity(velLY - velRX);
-        driveRB->move_velocity(velLY + velRX);
+        driveLF->move_velocity(velLY);
+        driveLB->move_velocity(velLY);
+        driveRF->move_velocity(velLY);
+        driveRB->move_velocity(velLY);
     } else if (abs(velLY) < deadZone && abs(velLX) > deadZone)
     {
-        //turns on point if the X dir is greater than dead zone and Y dir is within dead zone
-        driveLF->move_velocity(velLX + velRX);
-        driveLB->move_velocity(velLX - velRX);
-        driveRF->move_velocity(-velLX - velRX);
-        driveRB->move_velocity(-velLX + velRX);
+        //strafes if the X dir is greater than dead zone and Y dir is within dead zone
+        driveLF->move_velocity(+velLX);
+        driveLB->move_velocity(-velLX);
+        driveRF->move_velocity(-velLX);
+        driveRB->move_velocity(+velLX);
     } else
     {
-        //arcade control + strafe
+        //point turning + strafe
         driveLF->move_velocity(velLY + velLX + velRX);
-        driveLB->move_velocity(velLY + velLX - velRX);
+        driveLB->move_velocity(velLY - velLX + velRX);
         driveRF->move_velocity(velLY - velLX - velRX);
-        driveRB->move_velocity(velLY - velLX + velRX);
+        driveRB->move_velocity(velLY + velLX - velRX);
     }
 }
 
