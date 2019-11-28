@@ -194,8 +194,8 @@ void Drive::initialize()
     driveLB->set_encoder_units(MOTOR_ENCODER_DEGREES);
     driveRB->set_encoder_units(MOTOR_ENCODER_DEGREES);
 
-    driveLF->set_brake_mode(MOTOR_BRAKE_COAST);
-    driveLB->set_brake_mode(MOTOR_BRAKE_COAST);
-    driveRF->set_brake_mode(MOTOR_BRAKE_COAST);
-    driveRB->set_brake_mode(MOTOR_BRAKE_COAST);
+    driveLF->set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveLB->set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRF->set_brake_mode(MOTOR_BRAKE_HOLD);
+    driveRB->set_brake_mode(MOTOR_BRAKE_HOLD);
 }
