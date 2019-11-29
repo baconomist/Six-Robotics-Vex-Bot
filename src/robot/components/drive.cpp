@@ -4,11 +4,11 @@
 #include "../robot.h"
 #include "main.h"
 #include "drive.h"
-#include "../ports.h"
 #include "../motors.h"
 #include "motor_gearsets.h"
 #include "../controllers.h"
 #include "../motion_control/PID.h"
+#include "../ports.h"
 
 const float TTI = Robot::WHEEL_DIAMETER / 360.0 * M_PI;
 const float ITT = 1.0/TTI;
@@ -106,6 +106,45 @@ void Drive::tank()
     move_right(scale_motor_val(velRY, driveLB));
     strafe(scale_motor_val(velStrafe, driveLB));
 }
+
+/**
+ * Runs arcade control scheme
+ * **/
+void Drive::arcade()
+{
+    int deadZone = 15;//motors wont move if abs(joystick) is within this range
+    /*
+    scaling the values to 200 to match the internal gearset for move_velocity
+    Since the all the motors on the drive have the same gearing anyone can be used to scale them
+    */
+    int velLY = scale_motor_val(master.get_analog(ANALOG_LEFT_Y), driveLB);
+    int velRY = scale_motor_val(master.get_analog(ANALOG_RIGHT_Y), driveLB);
+    int velLX = scale_motor_val(master.get_analog(ANALOG_LEFT_X), driveLB);
+    int velRX = scale_motor_val(master.get_analog(ANALOG_RIGHT_X), driveLB);
+
+    if (abs(velLX) < deadZone && abs(velLY) > deadZone)
+    {
+        //drives straight if the Y dir is greater than dead zone and X dir is within dead zone
+        driveLF->move_velocity(velLY + velRX);
+        driveLB->move_velocity(velLY - velRX);
+        driveRF->move_velocity(velLY - velRX);
+        driveRB->move_velocity(velLY + velRX);
+    } else if (abs(velLY) < deadZone && abs(velLX) > deadZone)
+    {
+        //turns on point if the X dir is greater than dead zone and Y dir is within dead zone
+        driveLF->move_velocity(velLX + velRX);
+        driveLB->move_velocity(velLX - velRX);
+        driveRF->move_velocity(-velLX - velRX);
+        driveRB->move_velocity(-velLX + velRX);
+    } else
+    {
+        //arcade control + strafe
+        driveLF->move_velocity(velLY + velLX + velRX);
+        driveLB->move_velocity(velLY + velLX - velRX);
+        driveRF->move_velocity(velLY - velLX - velRX);
+        driveRB->move_velocity(velLY - velLX + velRX);
+    }
+}
 void Drive::arcade2()
 {
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
@@ -142,49 +181,11 @@ void Drive::arcade2()
     }
 }
 
-/**
- * Runs arcade control scheme
- * **/
-void Drive::arcade()
-{
-    int deadZone = 15;//motors wont move if abs(joystick) is within this range
-    /*
-    scaling the values to 200 to match the internal gearset for move_velocity
-    Since the all the motors on the drive have the same gearing anyone can be used to scale them
-    */
-    int velLY = scale_motor_val(master.get_analog(ANALOG_LEFT_Y), driveLB);
-    int velRY = scale_motor_val(master.get_analog(ANALOG_RIGHT_Y), driveLB);
-    int velLX = scale_motor_val(master.get_analog(ANALOG_LEFT_X), driveLB);
-    int velRX = 90*scale_motor_val(master.get_analog(ANALOG_RIGHT_X), driveLB)/100;
 
-    if (abs(velLX) < deadZone && abs(velLY) > deadZone)
-    {
-        //drives straight if the Y dir is greater than dead zone and X dir is within dead zone
-        driveLF->move_velocity(velLY);
-        driveLB->move_velocity(velLY);
-        driveRF->move_velocity(velLY);
-        driveRB->move_velocity(velLY);
-    } else if (abs(velLY) < deadZone && abs(velLX) > deadZone)
-    {
-        //strafes on point if the X dir is greater than dead zone and Y dir is within dead zone
-        driveLF->move_velocity(velLX);
-        driveLB->move_velocity(-velLX);
-        driveRF->move_velocity(-velLX);
-        driveRB->move_velocity(+velLX);
-    } else
-    {
-        //arcade control + strafe
-        driveLF->move_velocity(velLY + velLX + velRX);
-        driveLB->move_velocity(velLY - velLX + velRX);
-        driveRF->move_velocity(velLY - velLX - velRX);
-        driveRB->move_velocity(velLY + velLX - velRX);
-    }
-}
 
 /*
 updates the motors action
 */
-
 void Drive::update()
 {
 //    rotateLeftPID->update();
@@ -192,11 +193,11 @@ void Drive::update()
 
     //if (rotateRightPID->finished());
     //    stop_motors();
-    //TODO fix this
-//      if (this->driveMode == TANK)
-//          tank();
-//      else if (this->driveMode == ARCADE)
-//          arcade2();
+
+     if (this->driveMode == TANK)
+         tank();
+     else if (this->driveMode == ARCADE)
+         arcade();
 }
 
 /*
@@ -228,8 +229,13 @@ void Drive::initialize()
     driveLB->set_encoder_units(MOTOR_ENCODER_DEGREES);
     driveRB->set_encoder_units(MOTOR_ENCODER_DEGREES);
 
-    driveLF->set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveLB->set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRF->set_brake_mode(MOTOR_BRAKE_HOLD);
-    driveRB->set_brake_mode(MOTOR_BRAKE_HOLD);
+    set_brake_all(MOTOR_BRAKE_COAST);
+
+}
+
+void Drive::set_brake_all(motor_brake_mode_e brake_mode){
+    driveLF->set_brake_mode(brake_mode);
+    driveLB->set_brake_mode(brake_mode);
+    driveRF->set_brake_mode(brake_mode);
+    driveRB->set_brake_mode(brake_mode);
 }

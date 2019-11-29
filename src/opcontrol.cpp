@@ -17,7 +17,7 @@ void opcontrol()
     // robot->start_mainloop();
     tray.calibrate();
     lift.calibrate();
-    pros::delay(1000);
+    pros::delay(500);
 
     //initialize_mtp(20, 20);
 
@@ -29,7 +29,7 @@ void opcontrol()
     while (true)
     {
         robot->update();
-        printf("%d %d\n",tray.get_value_calibrated(),lift.get_value_calibrated());
+        printf("%d %d\n",tray.get_value_calibrated_HR(),lift.get_value_calibrated_HR());
         //Auton::print_debug();
         //update_mtp();
         pros::delay(20);

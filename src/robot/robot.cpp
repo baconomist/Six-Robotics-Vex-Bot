@@ -6,6 +6,9 @@
 
 Robot::Robot()
 {
+    this->drive = new Drive();
+    this->mechanisms = new Mechanisms();
+    //this->auton = new Auton();
 }
 
 /**
@@ -14,10 +17,8 @@ Robot::Robot()
 void Robot::initialize()
 {
     drive->initialize();
-    //drive->driveMode = ARCADE;
-    auton->initialize();
     mechanisms->initialize();
-    mechanisms->calibrate_sensors();
+    Auton::initialize();
 }
 
 

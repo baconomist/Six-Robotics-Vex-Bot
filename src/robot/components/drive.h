@@ -6,7 +6,7 @@
 #define VEXROBOT_DRIVE_H
 
 #include <math.h>
-
+#include "main.h"
 /**
  * TTI: Ticks to inches
  * ITT: Inches to ticks
@@ -26,8 +26,11 @@ enum DriveMode
 class Drive
 {
 public:
-    static DriveMode driveMode;
+    DriveMode driveMode = ARCADE;
 
+    //constructor
+    Drive();
+    ~Drive();
 
     static void move_left(float speed);
     static void move_right(float speed);
@@ -38,12 +41,9 @@ public:
     static void tank();
     static void arcade();
     static void arcade2();
-
-    static void update();
-    static void initialize();
-private:
-    Drive();
-    ~Drive();
+    static void set_brake_all(motor_brake_mode_e brake_mode);
+    void update();
+    void initialize();
 };
 
 
