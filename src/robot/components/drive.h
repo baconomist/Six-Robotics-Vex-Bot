@@ -36,6 +36,7 @@ public:
     static void turn(float speed);
     static void tank();
     static void arcade();
+    static void arcade2();
 
     static void update();
     static void initialize();

@@ -103,8 +103,8 @@ void Auton::goto_pos(float target_x, float target_y)
 
     // Turn to match heading
     goto_heading((float) atan(x_diff / (y_diff == 0 ? 1 : y_diff)) * RAD2DEG);
-    Auton::x = target_x;
-    Auton::y = target_y;
+    Auton::x_position = target_x;
+    Auton::y_position = target_y;
 
     x_pos_before_action_start = x_position;
     y_pos_before_action_start = y_position;
