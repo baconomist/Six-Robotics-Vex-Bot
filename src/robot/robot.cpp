@@ -13,9 +13,11 @@ Robot::Robot()
 * **/
 void Robot::initialize()
 {
-    Drive::initialize();
-    Mechanisms::initialize();
-    Auton::initialize();
+    drive->initialize();
+    //drive->driveMode = ARCADE;
+    auton->initialize();
+    mechanisms->initialize();
+    mechanisms->calibrate_sensors();
 }
 
 
@@ -23,7 +25,7 @@ void Robot::initialize()
 void Robot::update()
 {
     if(this->robotMode==REMOTE_CONTROLLED){
-        Drive::update();
+        drive->update();
         mechanisms->update();
     }
     else if(this->robotMode==REMOTE_CONTROLLED)

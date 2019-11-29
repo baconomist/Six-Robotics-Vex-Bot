@@ -11,12 +11,19 @@ public:
     static void intake(int speed);
 
     static PD *trayPD;
-
-    static float get_tray_pos();
+    static PD *liftPD;
+    static float tilter_get_pos();
+    static float lift_get_pos();
+    static void tilter_go_to_pos(const float *end);
+    static void lifter_go_to_pos(const float *end);
+    static bool calibrate_sensors();
 
     static void update();
 
     static void initialize();
+private:
+    static Task task;
+
 };
 
 #endif

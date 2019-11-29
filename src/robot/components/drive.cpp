@@ -4,6 +4,7 @@
 #include "../robot.h"
 #include "main.h"
 #include "drive.h"
+#include "../ports.h"
 #include "../motors.h"
 #include "motor_gearsets.h"
 #include "../controllers.h"
@@ -183,6 +184,7 @@ void Drive::arcade()
 /*
 updates the motors action
 */
+
 void Drive::update()
 {
 //    rotateLeftPID->update();
@@ -190,11 +192,11 @@ void Drive::update()
 
     //if (rotateRightPID->finished());
     //    stop_motors();
-
-     if (this->driveMode == TANK)
-         tank();
-     else if (this->driveMode == ARCADE)
-         arcade2();
+    //TODO fix this
+//      if (this->driveMode == TANK)
+//          tank();
+//      else if (this->driveMode == ARCADE)
+//          arcade2();
 }
 
 /*

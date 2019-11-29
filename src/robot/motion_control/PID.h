@@ -75,6 +75,8 @@ private:
     float Kp;
     float Kd;
 
+    bool maxPoint;
+
     // Error is the distance to target
     float error;
     float speed;

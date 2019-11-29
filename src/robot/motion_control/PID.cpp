@@ -83,6 +83,7 @@ void PI::update()
 
 bool PI::finished()
 {
+
     return std::abs(error) < MIN_ERROR_RANGE;
 }
 
@@ -129,6 +130,9 @@ void PD::update()
 
 bool PD::finished()
 {
+    if(this->maxPoint)
+        return std::abs(error) < 0;
+
     return std::abs(error) < MIN_ERROR_RANGE;
 }
 

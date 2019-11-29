@@ -10,26 +10,50 @@ pros::Motor *transB;
 pros::Motor *intakeL;
 pros::Motor *intakeR;
 
-pros::ADIEncoder *trayEncoder;
-
+pros::ADIPotentiometer *trayPot;
+pros::ADIPotentiometer *liftPot;
 PD *Mechanisms::trayPD;
+PD *Mechanisms::liftPD;
 
 /*
 moves the tray forwards and backwards
 */
-void Mechanisms::tilter(int speed){
+void Mechanisms::tilter(int speed) {
     transB->move_velocity(speed);
     transT->move_velocity(speed);
 }
 
+float Mechanisms::tilter_get_pos() {
+    return (float) trayPot->get_value_calibrated();
+}
+
+void Mechanisms::tilter_go_to_pos(const float *end) {
+    trayPD = new PD(1.f, 1.f, tilter_get_pos, *end, [](float speed) {
+      tilter((int) speed);
+    });
+
+    while (!trayPD->finished()) {
+        trayPD->update();
+    }
+}
 /*
 moves the lift up or down
 */
-void Mechanisms::lifter(int speed){
+void Mechanisms::lifter(int speed) {
     transB->move_velocity(-speed);
     transT->move_velocity(speed);
 }
-
+float Mechanisms::lift_get_pos() {
+    return (float) liftPot->get_value_calibrated();
+}
+void Mechanisms::lifter_go_to_pos(const float *end) {
+    liftPD = new PD(1.f, 1.f, lift_get_pos, *end, [](float speed) {
+      lifter((int) speed);
+    });
+    while (liftPD->finished()) {
+        liftPD->update();
+    }
+}
 /*
 controls the intake
 */
@@ -41,7 +65,7 @@ void Mechanisms::intake(int speed) {
 /*
 initializes all the motor's brake states
 */
-void Mechanisms::initialize(){
+void Mechanisms::initialize() {
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
     transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
     intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_36, false);
@@ -52,37 +76,63 @@ void Mechanisms::initialize(){
     intakeL->set_brake_mode(MOTOR_BRAKE_HOLD);
     intakeR->set_brake_mode(MOTOR_BRAKE_HOLD);
 
-    trayEncoder = new pros::ADIEncoder(TRAY_ENCODER_TOP, TRAY_ENCODER_BOTTOM);
+    trayPot = new pros::ADIPotentiometer(TRAY_POT);
+    liftPot = new pros::ADIPotentiometer(TRAY_POT);
+
 }
 
-float Mechanisms::get_tray_pos()
-{
-  return (float)trayEncoder->get_value();
+bool Mechanisms::calibrate_sensors() {
+    trayPot->calibrate();
+    liftPot->calibrate();
+    pros::delay(500);
+    return true;
 }
+
 /*
 
 updates the motors action
 */
-void Mechanisms::update(){
-    int tilt = 100 * (master.get_digital(DIGITAL_R1) - master.get_digital(DIGITAL_R2));//sets tilit speed to 100 * the direction, scaled to match internal gearset
-    int lift = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));//sets lift speed to 100 * the direction, scaled to match internal gearset
-    int intakeSpeed = 100*(master.get_digital(DIGITAL_X) - master.get_digital(DIGITAL_B));
-    if(tilt)
+void Mechanisms::update() {
+    float tiltPoint;
+    int tilt = 100*(master.get_digital(DIGITAL_R1)
+        - master.get_digital(DIGITAL_R2));//sets tilit speed to 100 * the direction, scaled to match internal gearset
+    int lift = 100*(master.get_digital(DIGITAL_X)
+        - master.get_digital(DIGITAL_B));//sets lift speed to 100 * the direction, scaled to match internal gearset
+    int intakeSpeed = 100*(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+
+    if(task.get_state() != TASK_STATE_RUNNING ) {
+        if (master.get_digital_new_press(DIGITAL_L1)) {
+            tiltPoint = 1500;
+            task =
+                pros::c::task_create(reinterpret_cast<task_fn_t>(tilter_go_to_pos), &tiltPoint, TASK_PRIORITY_DEFAULT,
+                                     TASK_STACK_DEPTH_DEFAULT, "tray move up");
+        }
+        else if (master.get_digital_new_press(DIGITAL_L2)) {
+            tiltPoint = 0;
+            task =
+                pros::c::task_create(reinterpret_cast<task_fn_t>(tilter_go_to_pos), &tiltPoint, TASK_PRIORITY_DEFAULT,
+                                     TASK_STACK_DEPTH_DEFAULT, "tray move down");
+        }
+    }
+
+    if (master.get_digital_new_press(DIGITAL_UP) && task.get_state() == TASK_STATE_RUNNING) {
+        free(task);
+        task.remove();
+    }
+
+    if (tilt)
         tilter(tilt);
-    else if(lift && !tilt)
+    else if (lift)
         lifter(lift);
-    else{
+    else {
         tilter(0);
         lifter(0);
     }
     intake(intakeSpeed);
 
-    if(master.get_digital(DIGITAL_A) && trayPD->finished()) {
-        trayPD = new PD(1.f, 1.f, get_tray_pos, 40.f, [](float speed) {
-          tilter((int)speed);
-        });
-    }
-    else if(!trayPD->finished()) {
-      trayPD->update();
-    }
+    //    if (master.get_digital(DIGITAL_A) && trayPD->finished()) {
+    //
+    //    } else if (!trayPD->finished()) {
+    //        trayPD->update();
+    //    }
 }
