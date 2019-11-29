@@ -15,7 +15,8 @@ ADIPotentiometer lift(LIFT_POT);
 
 void opcontrol()
 {
-    Robot::robotMode = ROBOT_MODE_AUTON;
+    Robot::robotMode = ROBOT_MODE_RC;
+    Drive::driveMode = DRIVE_MODE_ARCADE;
     // robot->start_mainloop();
     tray.calibrate();
     lift.calibrate();

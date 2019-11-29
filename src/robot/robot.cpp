@@ -23,7 +23,7 @@ void Robot::update()
     {
         Drive::update();
         Mechanisms::update();
-    } else if (robotMode == ROBOT_MODE_RC)
+    } else if (robotMode == ROBOT_MODE_AUTON)
         Auton::update();
     else
         lcd::print(1, "Something went horribly wrong");
