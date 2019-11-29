@@ -102,23 +102,6 @@ void Mechanisms::update() {
         - master.get_digital(DIGITAL_B));//sets lift speed to 100 * the direction, scaled to match internal gearset
     int intakeSpeed = 100*(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
-//    if(task->get_state() != TASK_STATE_RUNNING ) {
-//        if (master.get_digital_new_press(DIGITAL_L1)) {
-//            tiltPoint = 1500;
-//            task = new Task(reinterpret_cast<task_fn_t>(tilter_go_to_pos), &tiltPoint, TASK_PRIORITY_DEFAULT,
-//                                     TASK_STACK_DEPTH_DEFAULT, "tray move up");
-//        }
-//        else if (master.get_digital_new_press(DIGITAL_L2)) {
-//            tiltPoint = 0;
-//            task = new Task(reinterpret_cast<task_fn_t>(tilter_go_to_pos), &tiltPoint, TASK_PRIORITY_DEFAULT,
-//                                     TASK_STACK_DEPTH_DEFAULT, "tray move down");
-//        }
-//    }
-//
-//    if (master.get_digital_new_press(DIGITAL_UP) && task->get_state() == TASK_STATE_RUNNING) {
-//        free(task);
-//        task->remove();
-//    }
 
     if (tilt) {
         tilter(tilt);

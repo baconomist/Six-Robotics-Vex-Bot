@@ -29,7 +29,7 @@ void Robot::update()
         drive->update();
         mechanisms->update();
     }
-    else if(this->robotMode==REMOTE_CONTROLLED)
+    else if(this->robotMode==AUTONOMOUS)
         Auton::update();
     else
         lcd::print(1, "Something went horribly wrong");
