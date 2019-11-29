@@ -103,8 +103,8 @@ void Auton::goto_pos(float target_x, float target_y)
 
     // Turn to match heading
     goto_heading((float) atan(x_diff / (y_diff == 0 ? 1 : y_diff)) * RAD2DEG);
-    Auton::x = target_x;
-    Auton::y = target_y;
+    Auton::x_position = target_x;
+    Auton::y_position = target_y;
 
     x_pos_before_action_start = x_position;
     y_pos_before_action_start = y_position;
@@ -115,7 +115,7 @@ void Auton::goto_pos(float target_x, float target_y)
         expectedLPos = autonAction->distance * ITT;
         expectedRPos = expectedLPos;
 
-        Auton::set_algorithm(new P(Auton::kP, get_l_pos, autonAction->distance * ITT, [](float speed) {
+        Auton::set_algorithm(new P(Auton::kP_straight, get_l_pos, autonAction->distance * ITT, [](float speed) {
             Auton::x_position = x_pos_before_action_start + calculate_delta_x_from_motion();
             Auton::y_position = y_pos_before_action_start + calculate_delta_y_from_motion();
 
@@ -146,7 +146,7 @@ void Auton::goto_heading(float heading_degrees)
                                 float turn_distance = Robot::WHEEL_TO_CENTER_DIST * autonAction->heading * DEG2RAD;
 
                                 heading_direction = (autonAction->heading > 0 ? 1 : -1);
-                                Auton::set_algorithm(new P(Auton::kP, get_l_pos, turn_distance * ITT, [](float speed) {
+                                Auton::set_algorithm(new P(Auton::kP_straight, get_l_pos, turn_distance * ITT, [](float speed) {
                                     Auton::heading_deg = heading_deg_before_action_start + calculate_rotation_from_motion() * RAD2DEG;
                                     Drive::turn(speed * heading_direction);
                                 }));
