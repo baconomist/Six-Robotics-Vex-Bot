@@ -120,7 +120,7 @@ void Auton::goto_pos(float target_x, float target_y)
 
             Drive::move_straight(speed);
         }));
-     }, [] { return Auton::currentMoveAlgorithm->finished(); }, distance));
+    }, [] { return Auton::currentMoveAlgorithm->finished(); }, distance));
 
 
 }

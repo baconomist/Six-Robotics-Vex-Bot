@@ -8,9 +8,9 @@
 #include "../motion_control/PID.h"
 #include "../robot.h"
 #include "../motors.h"
-#include "drive.h"
+#include "../components/drive.h"
 
-P* currentP;
+P *currentP;
 float kP = 0.5f;
 
 float x_diff, y_diff = 0;

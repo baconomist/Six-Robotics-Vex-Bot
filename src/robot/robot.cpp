@@ -4,39 +4,27 @@
 #include "main.h"
 #include "robot.h"
 
-Robot::Robot()
-{
-    this->drive = new Drive();
-    this->mechanisms = new Mechanisms();
-    //this->auton = new Auton();
-}
+RobotMode Robot::robotMode = ROBOT_MODE_RC;
 
 /**
 * This must be called on the pros initialize() function in initialize.cpp
 * **/
 void Robot::initialize()
 {
-    drive->initialize();
-    mechanisms->initialize();
+    Drive::initialize();
+    Mechanisms::initialize();
     Auton::initialize();
 }
 
 
-
 void Robot::update()
 {
-    if(this->robotMode==REMOTE_CONTROLLED){
-        drive->update();
-        mechanisms->update();
-    }
-    else if(this->robotMode==REMOTE_CONTROLLED)
+    if (robotMode == ROBOT_MODE_RC)
+    {
+        Drive::update();
+        Mechanisms::update();
+    } else if (robotMode == ROBOT_MODE_RC)
         Auton::update();
     else
         lcd::print(1, "Something went horribly wrong");
 }
-
-void Robot::execute_next()
-{}
-
-void Robot::queue_action()
-{}

@@ -11,7 +11,7 @@
 #include "../ports.h"
 
 const float TTI = Robot::WHEEL_DIAMETER / 360.0 * M_PI;
-const float ITT = 1.0/TTI;
+const float ITT = 1.0 / TTI;
 
 pros::Motor *driveLB;
 pros::Motor *driveLF;
@@ -21,14 +21,12 @@ pros::Motor *driveRF;
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
+DriveMode Drive::driveMode = DRIVE_MODE_TANK;
 
 int scale_motor_val(int speed, Motor *motor)
 {
     return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
 }
-
-Drive::Drive() = default;
-Drive::~Drive() = default;
 
 /**
  * Moves the left side of the drive
@@ -145,6 +143,7 @@ void Drive::arcade()
         driveRB->move_velocity(velLY - velLX + velRX);
     }
 }
+
 void Drive::arcade2()
 {
     int deadZone = 15;//motors wont move if abs(joystick) is within this range
@@ -182,7 +181,6 @@ void Drive::arcade2()
 }
 
 
-
 /*
 updates the motors action
 */
@@ -194,10 +192,10 @@ void Drive::update()
     //if (rotateRightPID->finished());
     //    stop_motors();
 
-     if (this->driveMode == TANK)
-         tank();
-     else if (this->driveMode == ARCADE)
-         arcade();
+    if (driveMode == DRIVE_MODE_TANK)
+        tank();
+    else if (driveMode == DRIVE_MODE_ARCADE)
+        arcade();
 }
 
 /*
@@ -233,7 +231,8 @@ void Drive::initialize()
 
 }
 
-void Drive::set_brake_all(motor_brake_mode_e brake_mode){
+void Drive::set_brake_all(motor_brake_mode_e brake_mode)
+{
     driveLF->set_brake_mode(brake_mode);
     driveLB->set_brake_mode(brake_mode);
     driveRF->set_brake_mode(brake_mode);

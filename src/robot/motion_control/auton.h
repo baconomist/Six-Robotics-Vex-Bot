@@ -7,7 +7,7 @@
 
 #include "main.h"
 #include "PID.h"
-#include "action_queue.h"
+#include "../../utils/action_queue.h"
 
 class AutonAction : public QueueableAction
 {
@@ -15,15 +15,16 @@ public:
     float distance = 0;
     float heading = 0;
 
-    AutonAction(void (*execute_func)(AutonAction*), bool(*finished_func)(),
-    float distance = 0, float heading = 0);
+    AutonAction(void (*execute_func)(AutonAction *), bool(*finished_func)(),
+                float distance = 0, float heading = 0);
 
     virtual void execute() override;
 
     virtual bool finished() override;
 
 private:
-    void (*execute_func)(AutonAction*);
+    void (*execute_func)(AutonAction *);
+
     bool (*finished_func)();
 
 };
@@ -53,20 +54,19 @@ public:
     static ADIEncoder *rightEncoder;
     static ADIEncoder *centerEncoder;
 
-    static void initialize();
-
-    static void update();
-
     static void goto_pos(float x, float y);
 
     static void goto_pos(float x, float y, float final_heading);
 
     static void goto_heading(float heading_degrees);
 
-
     static void register_action_complete_callback(void (*callback)());
 
     static void print_debug();
+
+    static void initialize();
+
+    static void update();
 
 private:
     static float x_pos_before_action_start;
@@ -78,14 +78,16 @@ private:
     static void reset_encoders();
 
     static float calculate_rotation_from_motion();
+
     static float calculate_delta_x_from_motion();
+
     static float calculate_delta_y_from_motion();
 
     static float get_l_pos();
 
     static float get_r_pos();
 
-    static void set_algorithm(P* algorithm);
+    static void set_algorithm(P *algorithm);
 };
 
 #endif //VEXROBOT_MOTION_TRACKER_H

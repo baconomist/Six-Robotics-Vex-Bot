@@ -8,13 +8,15 @@
 #define PID_H
 
 #include "main.h"
+
 const int MIN_ERROR_FOR_INTEGRAL = 500;
-const int MIN_ERROR_RANGE = 10 ;
+const int MIN_ERROR_RANGE = 10;
 
 class P
 {
 public:
-    P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float speed), float error_range = MIN_ERROR_RANGE);
+    P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float speed),
+      float error_range = MIN_ERROR_RANGE);
 
     void update();
 

@@ -8,12 +8,14 @@
 #include "robot/ports.h"
 #include "robot/controllers.h"
 #include "robot/motion_control/PID.h"
-#include "robot/components/move_to_point.h"
+#include "robot/old/move_to_point.h"
+
 ADIPotentiometer tray(TRAY_POT);
 ADIPotentiometer lift(LIFT_POT);
+
 void opcontrol()
 {
-    robot->robotMode = REMOTE_CONTROLLED;
+    Robot::robotMode = ROBOT_MODE_AUTON;
     // robot->start_mainloop();
     tray.calibrate();
     lift.calibrate();
@@ -28,8 +30,8 @@ void opcontrol()
 
     while (true)
     {
-        robot->update();
-        printf("%d %d\n",tray.get_value_calibrated_HR(),lift.get_value_calibrated_HR());
+        Robot::update();
+        printf("%d %d\n", tray.get_value_calibrated_HR(), lift.get_value_calibrated_HR());
         //Auton::print_debug();
         //update_mtp();
         pros::delay(20);

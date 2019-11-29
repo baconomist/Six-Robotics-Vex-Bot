@@ -2,8 +2,6 @@
 #include "main.h"
 #include "robot/robot.h"
 
-Robot *robot;
-
 void on_center_button()
 {
     static bool pressed = false;
@@ -27,8 +25,7 @@ void on_center_button()
 void initialize()
 {
     pros::lcd::initialize();
-    robot = new Robot();
-    robot->initialize();
+    Robot::initialize();
 }
 
 /**

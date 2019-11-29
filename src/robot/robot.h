@@ -11,8 +11,8 @@
 
 enum RobotMode
 {
-    AUTONOMOUS,
-    REMOTE_CONTROLLED
+    ROBOT_MODE_AUTON,
+    ROBOT_MODE_RC
 };
 
 //TODO: create an auton class
@@ -23,23 +23,12 @@ public:
     constexpr static const float WHEEL_DIAMETER = 4.125f;
     constexpr static const float WHEEL_TO_WHEEL_DIST = 13.5f;
     constexpr static const float WHEEL_TO_CENTER_DIST = 7.75f;
+    
+    static RobotMode robotMode;
 
-    Drive* drive;
-    Mechanisms* mechanisms;
-    Auton* auton;
-    RobotMode robotMode = AUTONOMOUS;
-    bool runningMainloop = false;
-    Robot();
+    static void update();
 
-    void initialize();
-
-    void update();
-
-    void execute_next();
-
-    void queue_action();
+    static void initialize();
 };
-
-extern Robot* robot;
 
 #endif //VEXROBOT_ROBOT_H
