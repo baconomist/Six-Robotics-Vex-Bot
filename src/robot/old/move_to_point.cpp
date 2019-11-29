@@ -7,8 +7,8 @@
 #include "../motors.h"
 #include "move_to_point.h"
 #include "../motion_control/PID.h"
-#include "drive.h"
-#include "motor_gearsets.h"
+#include "../components/drive.h"
+#include "../components/motor_gearsets.h"
 
 /*
 float clamp(float a, float min, float max)
@@ -118,27 +118,27 @@ void initialize_mtp(float target_x, float target_y)
         move_left(percentage_complete_pid * max_motor_speed + rot_speed_left);
         move_left(percentage_complete_pid * max_motor_speed + rot_speed_right);*/
 
-        /*if ((float) fabs(calculate_rotation_from_motion()) >= rotation_radians)
-            rot_speed_left = 0;
-        else
-            //rot_speed_left = max_motor_speed * (1 - (fabs(calculate_rotation_from_motion()) / rotation_radians));
-            rot_speed_left = 100;
-        //rot_speed_right = -rot_speed_left * (y_diff / x_diff);
-        rot_speed_right = -rot_speed_left;
+/*if ((float) fabs(calculate_rotation_from_motion()) >= rotation_radians)
+    rot_speed_left = 0;
+else
+    //rot_speed_left = max_motor_speed * (1 - (fabs(calculate_rotation_from_motion()) / rotation_radians));
+    rot_speed_left = 100;
+//rot_speed_right = -rot_speed_left * (y_diff / x_diff);
+rot_speed_right = -rot_speed_left;
 
-        if(!turnP->finished())
-            turnP->update();
-        else
-            rot_speed = 0;
+if(!turnP->finished())
+    turnP->update();
+else
+    rot_speed = 0;
 
-        move_left(speed + rot_speed);
-        move_right(speed + rot_speed);
+move_left(speed + rot_speed);
+move_right(speed + rot_speed);
 
-        pros::lcd::print(5, "robot rotation: %2.2f", fabs(calculate_rotation_from_motion()) * (180 / M_PI), rot_target_radians * (180 / M_PI));
-        pros::lcd::print(6, "expected rotation: %2.2f", rot_target_radians * (180 / M_PI));
+pros::lcd::print(5, "robot rotation: %2.2f", fabs(calculate_rotation_from_motion()) * (180 / M_PI), rot_target_radians * (180 / M_PI));
+pros::lcd::print(6, "expected rotation: %2.2f", rot_target_radians * (180 / M_PI));
 
-        pros::lcd::print(7, "L: %2.2f, R: %2.2f", get_l_pos(), get_r_pos());
-    });
+pros::lcd::print(7, "L: %2.2f, R: %2.2f", get_l_pos(), get_r_pos());
+});
 }
 
- */
+*/

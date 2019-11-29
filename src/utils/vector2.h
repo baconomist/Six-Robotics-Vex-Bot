@@ -7,18 +7,22 @@
 
 struct Vector2
 {
-  float x;
-  float y;
-  Vector2 operator - (Vector2 obj) {
-    Vector2 res;
-    res.x = x - obj.x;
-    res.y = y - obj.y;
-    return res;
-  }
-  Vector2 (float xpos = 0, float ypos = 0) {
-    x = xpos;
-    y = ypos;
-  }
+    float x;
+    float y;
+
+    Vector2 operator-(Vector2 obj)
+    {
+        Vector2 res;
+        res.x = x - obj.x;
+        res.y = y - obj.y;
+        return res;
+    }
+
+    Vector2(float xpos = 0, float ypos = 0)
+    {
+        x = xpos;
+        y = ypos;
+    }
 };
 
 #endif //VEXROBOT_VECTOR2_H

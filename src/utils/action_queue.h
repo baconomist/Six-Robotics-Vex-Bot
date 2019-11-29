@@ -11,6 +11,7 @@ public:
     QueueableAction();
 
     virtual void execute();
+
     virtual bool finished();
 
     QueueableAction *next = nullptr;
@@ -22,6 +23,7 @@ public:
     DefaultQueueableAction(void (*action)(), bool (*finished)());
 
     virtual void execute() override;
+
     virtual bool finished() override;
 
 private:

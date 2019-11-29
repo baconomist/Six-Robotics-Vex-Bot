@@ -3,9 +3,10 @@
 #include "../controllers.h"
 #include "../motors.h"
 #include "../ports.h"
-#include "../motion_control/encoders.h"
+#include "../encoders.h"
 #include "motor_gearsets.h"
 #include "drive.h"
+
 pros::Motor *transT;
 pros::Motor *transB;
 pros::Motor *intakeL;
@@ -20,16 +21,19 @@ pros::Motor *intakeR;
 /*
 moves the tray forwards and backwards
 */
-void Mechanisms::tilter(int speed) {
+void Mechanisms::tilter(int speed)
+{
     transB->move_velocity(speed);
     transT->move_velocity(speed);
 }
 
-float Mechanisms::tilter_get_pos() {
+float Mechanisms::tilter_get_pos()
+{
     return (float) trayPot->get_value_calibrated();
 }
 
-void Mechanisms::tilter_go_to_pos(const float *end) {
+void Mechanisms::tilter_go_to_pos(const float *end)
+{
 //    trayPD = new PD(1.f, 1.f, tilter_get_pos, *end, [](float speed) {
 //      tilter((int) speed);
 //    });
@@ -38,17 +42,23 @@ void Mechanisms::tilter_go_to_pos(const float *end) {
 //        trayPD->update();
 //    }
 }
+
 /*
 moves the lift up or down
 */
-void Mechanisms::lifter(int speed) {
+void Mechanisms::lifter(int speed)
+{
     transB->move_velocity(-speed);
     transT->move_velocity(speed);
 }
-float Mechanisms::lift_get_pos() {
+
+float Mechanisms::lift_get_pos()
+{
     return (float) liftPot->get_value_calibrated();
 }
-void Mechanisms::lifter_go_to_pos(const float *end) {
+
+void Mechanisms::lifter_go_to_pos(const float *end)
+{
 //    liftPD = new PD(1.f, 1.f, lift_get_pos, *end, [](float speed) {
 //      lifter((int) speed);
 //    });
@@ -56,10 +66,12 @@ void Mechanisms::lifter_go_to_pos(const float *end) {
 //        liftPD->update();
 //    }
 }
+
 /*
 controls the intake
 */
-void Mechanisms::intake(int speed) {
+void Mechanisms::intake(int speed)
+{
     intakeL->move_velocity(speed);
     intakeR->move_velocity(speed);
 }
@@ -67,7 +79,8 @@ void Mechanisms::intake(int speed) {
 /*
 initializes all the motor's brake states
 */
-void Mechanisms::initialize() {
+void Mechanisms::initialize()
+{
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
     transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
     intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_36, false);
@@ -83,7 +96,8 @@ void Mechanisms::initialize() {
 
 }
 
-bool Mechanisms::calibrate_sensors() {
+bool Mechanisms::calibrate_sensors()
+{
     trayPot->calibrate();
     liftPot->calibrate();
     pros::delay(500);
@@ -94,24 +108,28 @@ bool Mechanisms::calibrate_sensors() {
 
 updates the motors action
 */
-void Mechanisms::update() {
+void Mechanisms::update()
+{
     float tiltPoint;
-    int tilt = 100*(master.get_digital(DIGITAL_R1)
-        - master.get_digital(DIGITAL_R2));//sets tilit speed to 100 * the direction, scaled to match internal gearset
-    int lift = 100*(master.get_digital(DIGITAL_X)
-        - master.get_digital(DIGITAL_B));//sets lift speed to 100 * the direction, scaled to match internal gearset
-    int intakeSpeed = 100*(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+    int tilt = 100 * (master.get_digital(DIGITAL_R1)
+                      - master.get_digital(
+            DIGITAL_R2));//sets tilit speed to 100 * the direction, scaled to match internal gearset
+    int lift = 100 * (master.get_digital(DIGITAL_X)
+                      - master.get_digital(
+            DIGITAL_B));//sets lift speed to 100 * the direction, scaled to match internal gearset
+    int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
 
-    if (tilt) {
+    if (tilt)
+    {
         tilter(tilt);
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
-    }
-    else if (lift) {
+    } else if (lift)
+    {
         lifter(lift);
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
-    }
-    else {
+    } else
+    {
         tilter(0);
         lifter(0);
         Drive::set_brake_all(MOTOR_BRAKE_COAST);

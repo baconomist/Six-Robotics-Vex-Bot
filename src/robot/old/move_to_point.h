@@ -10,11 +10,12 @@
 extern float rot_target_radians;
 extern float move_distance;
 extern float turn_distance;
-extern P* moveP;
-extern P* turnP;
+extern P *moveP;
+extern P *turnP;
 
 
 void update_mtp();
+
 void initialize_mtp(float target_x, float target_y);
 
 #endif //VEXROBOT_ARC_TURNER_H
