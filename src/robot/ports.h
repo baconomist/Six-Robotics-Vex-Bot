@@ -23,7 +23,9 @@
 #define LEFT_X_ENCODER_BOTTOM 2
 #define RIGHT_X_ENCODER_TOP 3
 #define RIGHT_X_ENCODER_BOTTOM 4
-#define Y_ENCODER_TOP 5
-#define Y_ENCODER_BOTTOM 6
+#define Y_ENCODER_TOP 6
+#define Y_ENCODER_BOTTOM 7
+#define LIFT_POT 5
+#define TRAY_POT 8
 
 #endif

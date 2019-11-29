@@ -83,6 +83,7 @@ void PI::update()
 
 bool PI::finished()
 {
+
     return std::abs(error) < MIN_ERROR_RANGE;
 }
 
@@ -90,7 +91,7 @@ bool PI::finished()
  * PD class
  * **/
 
-PD::PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float))
+PD::PD(float Kp, float Kd, float (*get_sensor_value)(), float end,void (*callback)(float))
 {
     this->Kp = Kp;
     this->Kd = Kd;
@@ -129,6 +130,9 @@ void PD::update()
 
 bool PD::finished()
 {
+    if(this->maxPoint)
+        return std::abs(error) < 0;
+
     return std::abs(error) < MIN_ERROR_RANGE;
 }
 

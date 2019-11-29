@@ -9,12 +9,36 @@
 
 // nlohmann::json data;
 AutonPathParser::AutonPathParser (std::string file_path) {
-    std::ifstream pathFile;
-    pathFile.open(file_path);
-    std::string data((std::istreambuf_iterator<char>(pathFile)),
+    std::ifstream file;
+    file.open(file_path);
+    std::string data((std::istreambuf_iterator<char>(file)),
                std::istreambuf_iterator<char>());
-    pathFile.close();
+    file.close();
     parseFile(nlohmann::json::parse(data));
+}
+
+/**
+* Turns JSON data into a vector of points
+*/
+void AutonPathParser::parseFile (nlohmann::json pathJSON) {
+    std::vector<Vector2> points;
+    for(int i = 0; i < pathJSON.size(); i++) {
+          points.push_back(Vector2(pathJSON[i]["x_in"], pathJSON[i]["y_in"]));
+      }
+    dataToInstructions(points);
+}
+
+/**
+* Turns vector of points into bot drive instructions
+*/
+void AutonPathParser::dataToInstructions(std::vector<Vector2> points) {
+  for(int i = 0; i < points.size(); i++) {
+    lengths.push_back(getDistance(points[i], points[i + 1]));
+    turns.push_back(getAngle(points[i], points[i + 1 ], points[i + 2]));
+  }
+  for(int i = 0; i < lengths.size(); i++) {
+      printf("auton_path_parser:40 - forward %f and turn %f\n", lengths[i], turns[i]);
+  }
 }
 
 /**
@@ -36,33 +60,4 @@ double AutonPathParser::getDistance(Vector2 p1, Vector2 p2) {
     double b = abs(p1.y - p2.y);
     double c = sqrt(a*a + b*b);
     return c;
-}
-
-
-/**
-* Turns JSON data into a vector of points
-*/
-void AutonPathParser::parseFile (nlohmann::json pathJSON) {
-    std::vector<Vector2> points;
-    for(int i = 0; i < pathJSON.size(); i++) {
-          points.push_back(Vector2(pathJSON[i]["x_in"], pathJSON[i]["y_in"]));
-      }
-    dataToInstructions(points);
-}
-
-/**
-* Turns vector of points into bot drive instructions
-*
-* Example usage:
-* bot.move_distance(lengths[i]);
-* bot.rotate_degrees(turns[i]);
-*/
-void AutonPathParser::dataToInstructions(std::vector<Vector2> points) {
-  for(int i = 0; i < points.size(); i++) {
-    lengths.push_back(getDistance(points[i], points[i + 1]));
-    turns.push_back(getAngle(points[i], points[i + 1 ], points[i + 2]));
-  }
-  for(int i = 0; i < lengths.size(); i++) {
-      printf("forward %f and turn %f\n", lengths[i], turns[i]);
-  }
 }
