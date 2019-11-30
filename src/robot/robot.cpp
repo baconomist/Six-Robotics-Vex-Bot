@@ -27,4 +27,6 @@ void Robot::update()
         Auton::update();
     else
         lcd::print(1, "Something went horribly wrong");
+    lcd::printf(1,"Tray: %f", Mechanisms::tilter_get_pos());
+    lcd::printf(2,"Lift: %f", Mechanisms::lift_get_pos());
 }
