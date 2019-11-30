@@ -12,7 +12,7 @@ RobotMode Robot::robotMode = ROBOT_MODE_RC;
 void Robot::initialize()
 {
     Drive::initialize();
-    //Mechanisms::initialize();
+    Mechanisms::initialize();
     Auton::initialize();
 }
 
@@ -22,7 +22,7 @@ void Robot::update()
     if (robotMode == ROBOT_MODE_RC)
     {
         Drive::update();
-        //Mechanisms::update();
+        Mechanisms::update();
     } else if (robotMode == ROBOT_MODE_AUTON)
         Auton::update();
     else
