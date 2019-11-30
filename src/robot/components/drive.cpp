@@ -10,7 +10,7 @@
 #include "../motion_control/PID.h"
 #include "../ports.h"
 
-const float TTI = Robot::WHEEL_DIAMETER / 360.0 * M_PI;
+const float TTI = Robot::TRACKING_WHEEL_DIAMETER / 360.0 * M_PI;
 const float ITT = 1.0 / TTI;
 
 pros::Motor *driveLB;

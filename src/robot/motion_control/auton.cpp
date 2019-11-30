@@ -24,6 +24,11 @@ ADIEncoder *Auton::leftEncoder = nullptr;
 ADIEncoder *Auton::rightEncoder = nullptr;
 ADIEncoder *Auton::centerEncoder = nullptr;
 
+
+float Auton::x_pos_before_action_start = 0;
+float Auton::y_pos_before_action_start = 0;
+float Auton::heading_deg_before_action_start = 0;
+
 float Auton::x_position = 0;
 float Auton::y_position = 0;
 float Auton::heading_deg = 0;
@@ -32,14 +37,16 @@ ActionQueue *Auton::actionQueue = nullptr;
 void Auton::initialize()
 {
     // TODO: fix ports
-    leftEncoder = new ADIEncoder(LEFT_X_ENCODER_TOP, LEFT_X_ENCODER_BOTTOM, false);
-    rightEncoder = new ADIEncoder(RIGHT_X_ENCODER_TOP, RIGHT_X_ENCODER_BOTTOM, false);
-    centerEncoder = new ADIEncoder(Y_ENCODER_TOP, Y_ENCODER_BOTTOM, false);
+    leftEncoder = new ADIEncoder(LEFT_Y_ENCODER_BOTTOM, LEFT_Y_ENCODER_TOP, false);
+    rightEncoder = new ADIEncoder(RIGHT_Y_ENCODER_BOTTOM, RIGHT_Y_ENCODER_TOP, false);
+    centerEncoder = new ADIEncoder(X_ENCODER_BOTTOM, X_ENCODER_TOP, false);
+
     actionQueue = new ActionQueue();
 }
 
 void Auton::update()
 {
+    printf("Encoder Values: %f %f %f\n", (float)leftEncoder->get_value(), (float)rightEncoder->get_value(), (float)centerEncoder->get_value());
     actionQueue->update();
     if (currentMoveAlgorithm != nullptr)
     {
@@ -59,8 +66,8 @@ float Auton::calculate_rotation_from_motion()
     float arc_length = 0;
 
     // Distance from center of robot to corresponding side
-    float s_r = Robot::WHEEL_TO_CENTER_DIST;
-    float s_l = Robot::WHEEL_TO_CENTER_DIST;
+    float s_r = Robot::TRACKING_WHEEL_TO_CENTER_DIST;
+    float s_l = Robot::TRACKING_WHEEL_TO_CENTER_DIST;
 
     // Distances/radii from center of arc to respective sides of robot
     float r_left = arc_length + s_l;
@@ -85,12 +92,12 @@ float Auton::calculate_delta_y_from_motion()
 
 float Auton::get_l_pos()
 {
-    return driveLF->get_position();
+    return leftEncoder->get_value();
 }
 
 float Auton::get_r_pos()
 {
-    return driveRF->get_position();
+    return rightEncoder->get_value();
 }
 
 void Auton::goto_pos(float target_x, float target_y)
@@ -142,7 +149,7 @@ void Auton::goto_heading(float heading_degrees)
             new AutonAction([](AutonAction *autonAction) {
                                 expectedHeadingDeg = autonAction->heading;
 
-                                float turn_distance = Robot::WHEEL_TO_CENTER_DIST * autonAction->heading * DEG2RAD;
+                                float turn_distance = Robot::TRACKING_WHEEL_TO_CENTER_DIST * autonAction->heading * DEG2RAD;
 
                                 heading_direction = (autonAction->heading > 0 ? 1 : -1);
                                 Auton::set_algorithm(new P(Auton::kP_straight, get_l_pos, turn_distance * ITT, [](float speed) {

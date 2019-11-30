@@ -20,9 +20,12 @@ class Robot
 {
 public:
     // In inches
-    constexpr static const float WHEEL_DIAMETER = 4.125f;
-    constexpr static const float WHEEL_TO_WHEEL_DIST = 13.5f;
-    constexpr static const float WHEEL_TO_CENTER_DIST = 7.75f;
+    //constexpr static const float WHEEL_DIAMETER = 4.125f;
+    //constexpr static const float TRACKING_WHEEL_TO_WHEEL_DIST = 13.5f;
+    //constexpr static const float TRACKING_WHEEL_TO_CENTER_DIST = 7.75f;
+    constexpr static const float TRACKING_WHEEL_DIAMETER = 3.25f;
+    constexpr static const float TRACKING_WHEEL_TO_CENTER_DIST = 6.0f;
+
     
     static RobotMode robotMode;
 
