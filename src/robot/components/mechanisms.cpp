@@ -14,6 +14,9 @@ pros::Motor *intakeR;
 
 pros::ADIPotentiometer *trayPot;
 pros::ADIPotentiometer *liftPot;
+
+PD *Mechanisms::trayPD = nullptr;
+PD *Mechanisms::liftPD = nullptr;
 //PD *Mechanisms::trayPD = nullptr;
 //PD *Mechanisms::liftPD = nullptr;
 //Task *Mechanisms::task = nullptr;
@@ -65,10 +68,10 @@ void Mechanisms::initialize() {
     intakeR->set_brake_mode(MOTOR_BRAKE_HOLD);
 
     trayPot = new pros::ADIPotentiometer(TRAY_POT);
-    liftPot = new pros::ADIPotentiometer(TRAY_POT);
+    liftPot = new pros::ADIPotentiometer(LIFT_POT);
     trayPot->calibrate();
     liftPot->calibrate();
-    trayPD = new PD(0.1, 0.1, tilter_get_pos, 0, [](float speed) { tilter(speed); }, true);
+    //trayPD = new PD(0.1, 0.1, tilter_get_pos, 0, [](float speed) { tilter(speed); }, true);
 }
 
 /*
