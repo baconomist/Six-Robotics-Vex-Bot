@@ -14,8 +14,7 @@
 /**
  * P class
  * **/
-P::P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float), float error_range)
-{
+P::P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float), float error_range) {
     this->Kp = Kp;
 
     this->get_sensor_value = get_sensor_value;
@@ -27,16 +26,14 @@ P::P(float Kp, float (*get_sensor_value)(), float end, void (*callback)(float), 
     error = end - get_sensor_value();
 }
 
-void P::update()
-{
+void P::update() {
     error = end - get_sensor_value();
-    speed = error * Kp;
+    speed = error*Kp;
 
     callback(speed);
 }
 
-bool P::finished()
-{
+bool P::finished() {
     return std::abs(error) < error_range;
 }
 
@@ -44,8 +41,7 @@ bool P::finished()
  * PI class
  * **/
 
-PI::PI(float Kp, float Ki, float (*get_sensor_value)(), float end, void (*callback)(float))
-{
+PI::PI(float Kp, float Ki, float (*get_sensor_value)(), float end, void (*callback)(float)) {
     this->Kp = Kp;
     this->Ki = Ki;
 
@@ -62,27 +58,25 @@ PI::PI(float Kp, float Ki, float (*get_sensor_value)(), float end, void (*callba
     last_frame_time = pros::millis();
 }
 
-void PI::update()
-{
+void PI::update() {
     dT = pros::millis() - last_frame_time;
 
     error = end - get_sensor_value();
     if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
-        integral = integral + error * dT;
+        integral = integral + error*dT;
 
     // When we've reached our destination, reset the integral to prevent from continuing to accumalate
     if (error < 0)
         integral = 0;
 
-    speed = error * Kp + integral * Ki;
+    speed = error*Kp + integral*Ki;
 
     callback(speed);
 
     last_frame_time = pros::millis();
 }
 
-bool PI::finished()
-{
+bool PI::finished() {
 
     return std::abs(error) < MIN_ERROR_RANGE;
 }
@@ -91,12 +85,11 @@ bool PI::finished()
  * PD class
  * **/
 
-PD::PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float))
-{
+PD::PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float), bool maxPoint) {
     this->Kp = Kp;
     this->Kd = Kd;
 
-
+    this->maxPoint = maxPoint;
     this->get_sensor_value = get_sensor_value;
     this->end = end;
     this->callback = callback;
@@ -111,16 +104,19 @@ PD::PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callba
     last_frame_time = pros::millis();
 }
 
-void PD::update()
-{
+void PD::reset(float newEnd) {
+    this->end = newEnd;
+}
+
+void PD::update() {
     dT = pros::millis() - last_frame_time;
 
     error = end - get_sensor_value();
 
     // derivative == the next error
-    derivative = (error - previous_error) / dT;
+    derivative = (error - previous_error)/dT;
 
-    speed = error * Kp + derivative * Kd;
+    speed = error*Kp + derivative*Kd;
 
     callback(speed);
 
@@ -128,8 +124,7 @@ void PD::update()
     previous_error = error;
 }
 
-bool PD::finished()
-{
+bool PD::finished() {
     if (this->maxPoint)
         return std::abs(error) < 0;
 
@@ -139,8 +134,7 @@ bool PD::finished()
 /**
  * PID class
  * **/
-PID::PID(float Kp, float Ki, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float))
-{
+PID::PID(float Kp, float Ki, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float)) {
     this->Kp = Kp;
     this->Ki = Ki;
     this->Kd = Kd;
@@ -159,23 +153,22 @@ PID::PID(float Kp, float Ki, float Kd, float (*get_sensor_value)(), float end, v
     last_frame_time = pros::millis();
 }
 
-void PID::update()
-{
+void PID::update() {
     dT = pros::millis() - last_frame_time;
 
     error = end - get_sensor_value();
 
     // derivative == the next error
-    derivative = (error - previous_error) / dT;
+    derivative = (error - previous_error)/dT;
 
     if (std::abs(error) < MIN_ERROR_FOR_INTEGRAL)
-        integral = integral + error * dT;
+        integral = integral + error*dT;
 
     // When we've reached our destination, reset the integral to prevent from continuing to move
-    if (error == 0)
+    if (error==0)
         integral = 0;
 
-    speed = error * Kp + integral * Ki + derivative * Kd;
+    speed = error*Kp + integral*Ki + derivative*Kd;
 
     callback(speed);
 
@@ -183,7 +176,6 @@ void PID::update()
     previous_error = error;
 }
 
-bool PID::finished()
-{
+bool PID::finished() {
     return std::abs(error) < MIN_ERROR_RANGE;
 }
