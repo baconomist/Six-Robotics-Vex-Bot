@@ -15,8 +15,9 @@ pros::Motor *intakeR;
 pros::ADIPotentiometer *trayPot;
 pros::ADIPotentiometer *liftPot;
 
-PD *Mechanisms::trayPD = nullptr;
-PD *Mechanisms::liftPD = nullptr;
+PD* Mechanisms::trayPD = nullptr;
+PD* Mechanisms::liftPD = nullptr;
+
 //PD *Mechanisms::trayPD = nullptr;
 //PD *Mechanisms::liftPD = nullptr;
 //Task *Mechanisms::task = nullptr;
