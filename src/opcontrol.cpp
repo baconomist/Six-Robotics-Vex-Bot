@@ -22,12 +22,13 @@ void opcontrol()
     lift.calibrate();
     pros::delay(500);
 
-    Robot::robotMode = ROBOT_MODE_AUTON;
+    //Robot::robotMode = ROBOT_MODE_AUTON;
 
     //initialize_mtp(20, 20);
 
     //Auton::goto_pos(0, 20);
-    Auton::goto_pos(0, -20);
+    //Auton::goto_pos(0, -20);
+    //Auton::goto_pos(20, 0);
     // Auton::goto_pos(20, 20);
     // Auton::goto_pos(20, 0);
     // Auton::goto_pos(0, 0);
