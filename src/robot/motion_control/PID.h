@@ -67,11 +67,13 @@ private:
 class PD
 {
 public:
-    PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float speed));
+    PD(float Kp, float Kd, float (*get_sensor_value)(), float end, void (*callback)(float speed),bool maxPoint = false);
 
     void update();
 
     bool finished();
+
+    void reset(float newEnd);
 
 private:
     float Kp;

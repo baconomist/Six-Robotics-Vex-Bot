@@ -3,7 +3,7 @@
 //
 
 #include <float.h>
-
+#include "main.h"
 #include "../components/drive.h"
 #include "../robot.h"
 #include "../motors.h"
@@ -20,9 +20,9 @@ float Auton::expectedDistance = 0;
 float Auton::expectedHeadingDeg = 0;
 
 P *Auton::currentMoveAlgorithm = nullptr;
-ADIEncoder *Auton::leftEncoder = nullptr;
-ADIEncoder *Auton::rightEncoder = nullptr;
-ADIEncoder *Auton::centerEncoder = nullptr;
+pros::ADIEncoder *Auton::leftEncoder = nullptr;
+pros::ADIEncoder *Auton::rightEncoder = nullptr;
+pros::ADIEncoder *Auton::centerEncoder = nullptr;
 
 float Auton::x_position = 0;
 float Auton::y_position = 0;
