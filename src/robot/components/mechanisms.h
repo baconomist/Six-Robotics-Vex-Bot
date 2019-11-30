@@ -6,8 +6,8 @@
 class Mechanisms
 {
 public:
-    static PD *trayPD;
-    static PD *liftPD;
+//    static PD *trayPD;
+//    static PD *liftPD;
 
     static float tilter_get_pos();
 
