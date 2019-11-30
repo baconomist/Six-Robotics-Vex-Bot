@@ -112,7 +112,6 @@ void Auton::goto_pos(float target_x, float target_y)
     else if(y_diff == 0)
         distance *= (x_diff > 0 ? 1 : -1);
 
-
     // Turn to match heading
     goto_heading((float) atan(x_diff / (y_diff == 0 ? 1 : y_diff)) * RAD2DEG);
     Auton::x_position = target_x;
