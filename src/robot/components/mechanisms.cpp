@@ -56,17 +56,17 @@ void Mechanisms::intake(int speed)
 
 void Mechanisms::set_tray_position(TrayPosition trayPosition)
 {
-    if(trayPosition == TRAY_POSITION_UP)
+    if (trayPosition == TRAY_POSITION_UP)
         trayP = new P(0.5f, get_tilter_pos, 50, [](float speed) { tilter(-(int) speed); }, 100);
-    else if(trayPosition == TRAY_POSITION_DOWN)
+    else if (trayPosition == TRAY_POSITION_DOWN)
         trayP = new P(0.5f, get_tilter_pos, 1900, [](float speed) { tilter(-(int) speed); }, 100);
 }
 
 void Mechanisms::set_lift_position(LiftPosition liftPosition)
 {
-    if(liftPosition == LIFT_POSITION_UP)
+    if (liftPosition == LIFT_POSITION_UP)
         liftP = new P(0.5f, get_lift_pos, 2900, [](float speed) { lifter(-(int) speed); }, 100);
-    else if(liftPosition == LIFT_POSITION_DOWN)
+    else if (liftPosition == LIFT_POSITION_DOWN)
         liftP = new P(10.0f, get_lift_pos, 3900, [](float speed) { lifter(-(int) speed); }, 100);
 }
 
@@ -93,7 +93,6 @@ void Mechanisms::initialize()
 }
 
 
-
 /*
 
 updates the motors action
@@ -106,7 +105,17 @@ void Mechanisms::update()
     int lift = 100 * (master.get_digital(DIGITAL_X)
                       - master.get_digital(
             DIGITAL_B));//sets lift speed to 100 * the direction, scaled to match internal gearset
-    int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+
+    if (master.get_digital(DIGITAL_L1))
+    {
+        intake(100);
+    } else if (master.get_digital(DIGITAL_L2))
+    {
+        intake(-50);
+    } else
+    {
+        intake(0);
+    }
 
     if (tilt)
     {
@@ -122,24 +131,23 @@ void Mechanisms::update()
         lifter(0);
         Drive::set_brake_all(MOTOR_BRAKE_COAST);
     }
-    intake(intakeSpeed);
 
-   /* // Lift flipout automation
-    if (flipout_sequence_index >= 1 && trayP->finished())
-    {
-        if (flipout_sequence_index == 2)
-            liftP = new P(0.1f, get_lift_pos, INSERT_LIFT_MID_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
-        else if (flipout_sequence_index == 3)
-            liftP = new P(0.5f, get_lift_pos, INSERT_LIFT_BOTTOM_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
-        flipout_sequence_index++;
-    }
-    if (liftP != nullptr && !liftP->finished())
-    {
-        liftP->update();
-    } else
-    {
-        lifter(0);
-    }*/
+    /* // Lift flipout automation
+     if (flipout_sequence_index >= 1 && trayP->finished())
+     {
+         if (flipout_sequence_index == 2)
+             liftP = new P(0.1f, get_lift_pos, INSERT_LIFT_MID_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
+         else if (flipout_sequence_index == 3)
+             liftP = new P(0.5f, get_lift_pos, INSERT_LIFT_BOTTOM_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
+         flipout_sequence_index++;
+     }
+     if (liftP != nullptr && !liftP->finished())
+     {
+         liftP->update();
+     } else
+     {
+         lifter(0);
+     }*/
 
     printf("%f\n", (float) trayPot->get_value());
 }
