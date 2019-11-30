@@ -16,7 +16,7 @@
 
 //Intake
 #define INTAKE_LEFT 9
-#define INTAKE_RIGHT 32
+#define INTAKE_RIGHT 3
 
 // Legacy Ports (A=1, B=2...)
 #define LEFT_Y_ENCODER_TOP 5

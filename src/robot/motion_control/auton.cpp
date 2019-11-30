@@ -47,6 +47,7 @@ void Auton::initialize()
 void Auton::update()
 {
     printf("Encoder Values: %f %f %f\n", (float)leftEncoder->get_value(), (float)rightEncoder->get_value(), (float)centerEncoder->get_value());
+    Auton::print_debug();
     actionQueue->update();
     if (currentMoveAlgorithm != nullptr)
     {
@@ -187,7 +188,6 @@ void Auton::print_debug()
     pros::lcd::print(4, "EH: %f, AH: %f", expectedHeadingDeg, calculate_rotation_from_motion() * RAD2DEG);
     pros::lcd::print(5, "X: %f, Y: %f", x_position, y_position);
     pros::lcd::print(6, "Heading: %f", heading_deg);
-    pros::lcd::print(7, "Finished: %d", currentMoveAlgorithm->finished());
 }
 
 void Auton::set_algorithm(P *algorithm)
