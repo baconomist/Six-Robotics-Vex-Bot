@@ -10,17 +10,11 @@
 #include "robot/motion_control/PID.h"
 #include "robot/old/move_to_point.h"
 
-ADIPotentiometer tray(TRAY_POT);
-ADIPotentiometer lift(LIFT_POT);
-
 void opcontrol()
 {
     Robot::robotMode = ROBOT_MODE_RC;
     Drive::driveMode = DRIVE_MODE_ARCADE;
     // robot->start_mainloop();
-    tray.calibrate();
-    lift.calibrate();
-    pros::delay(500);
 
     //Robot::robotMode = ROBOT_MODE_AUTON;
 
@@ -36,7 +30,6 @@ void opcontrol()
     while (true)
     {
         Robot::update();
-        Auton::print_debug();
         //update_mtp();
         pros::delay(20);
     }
