@@ -1,6 +1,7 @@
-
 #include "main.h"
 #include "robot/motors.h"
+#include "robot/components/mechanisms.h"
+#include "robot/robot.h"
 
 
 /**
@@ -17,52 +18,61 @@
 
 using namespace pros::c;
 
-float get_measurement()
+int flipout_sequence_index = 0;
+
+void run_flipout()
 {
-    return motor_get_position(1);
+    if (flipout_sequence_index >= 1 && flipout_sequence_index < 3 && ((Mechanisms::trayP != nullptr && Mechanisms::trayP->finished()) || Mechanisms::trayP ==
+                                                                                                                nullptr))
+    {
+        if (flipout_sequence_index == 1)
+            Mechanisms::set_tray_position(TRAY_POSITION_UP);
+        else if (flipout_sequence_index == 2)
+            Mechanisms::set_tray_position(TRAY_POSITION_DOWN);
+
+        flipout_sequence_index++;
+    }
+    if (Mechanisms::trayP != nullptr && !Mechanisms::trayP->finished())
+    {
+        Mechanisms::trayP->update();
+    } else
+    {
+        Mechanisms::tilter(0);
+    }
+
+    if(flipout_sequence_index >= 3 && Mechanisms::trayP->finished())
+    {
+        if (((Mechanisms::liftP != nullptr && Mechanisms::liftP->finished()) || Mechanisms::liftP ==
+                                                                                nullptr))
+        {
+            if (flipout_sequence_index == 3)
+                Mechanisms::set_lift_position(LIFT_POSITION_UP);
+            if (flipout_sequence_index == 4)
+                Mechanisms::set_lift_position(LIFT_POSITION_DOWN);
+
+            flipout_sequence_index++;
+        }
+        if (Mechanisms::liftP != nullptr && !Mechanisms::liftP->finished())
+        {
+            Mechanisms::liftP->update();
+        } else
+        {
+            Mechanisms::lifter(0);
+        }
+    }
 }
 
 void autonomous()
 {
-    // motor_set_gearing(1, MOTOR_GEARSET_BLUE);
-    //
-    // motor_set_encoder_units(1, E_MOTOR_ENCODER_DEGREES);
-    //
-    // /*while(1)
-    //  {
-    //      motor_move_absolute (1, 360, 127);
-    //      motor_set_zero_position(1, 0);
-    //      delay(1000);
-    //  }*/
-    //
-    //
-    // double speed = 20;
-    //
-    // double start = millis();
-    //
-    // char buffer[50];
-    //
-    // pros::Controller master(pros::E_CONTROLLER_MASTER);
-    //
-    // std::cout << kalmanFilter(get_measurement(), 1, &get_measurement, 1, 2);
-    //
-    // while (1) {
-    //     motor_move(1, speed);
-    //
-    //     if (millis() - start >= 100) {
-    //         start = millis();
-    //         speed++;
-    //
-    //         //pros::lcd::clear();
-    //         //pros::lcd::set_text(0, "HIHIHIIHIIH");
-    //          //pros::lcd::set_text(7, buffer);
-    //
-    //
-    //         sprintf(buffer, "%f", motor_get_temperature(1));
-    //         master.set_text(2, 2, buffer);
-    //
-    //     }
-    //
-    //     printf("%f \n", motor_get_temperature(1));
-    // }
+    Robot::robotMode = ROBOT_MODE_AUTON;
+    while(true)
+    {
+        run_flipout();
+        if(flipout_sequence_index == 0){
+            Auton::goto_pos(0, 18);
+            flipout_sequence_index++;
+        }
+        Robot::update();
+        delay(20);
+    }
 }
