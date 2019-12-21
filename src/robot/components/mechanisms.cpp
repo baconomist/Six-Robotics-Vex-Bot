@@ -109,19 +109,24 @@ void Mechanisms::update()
             DIGITAL_B));//sets lift speed to 100 * the direction, scaled to match internal gearset
     int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
+    // Brake if tray or lift is in use, otherwise coast
+    if (get_tilter_pos() < 1900 || get_lift_pos() < 3900) {
+        Drive::set_brake_all(MOTOR_BRAKE_HOLD);
+    }
+    else {
+        Drive::set_brake_all(MOTOR_BRAKE_COAST);
+    }
+    
     if (tilt)
     {
         tilter(tilt);
-        Drive::set_brake_all(MOTOR_BRAKE_HOLD);
     } else if (lift)
     {
         lifter(lift);
-        Drive::set_brake_all(MOTOR_BRAKE_HOLD);
     } else
     {
         tilter(0);
         lifter(0);
-        Drive::set_brake_all(MOTOR_BRAKE_COAST);
     }
 
    /* // Lift flipout automation
