@@ -11,8 +11,9 @@ enum TrayPosition
 
 enum LiftPosition
 {
-    LIFT_POSITION_UP,
-    LIFT_POSITION_DOWN
+    LIFT_POSITION_UP = 2,
+    LIFT_POSITION_MIDDLE = 1,
+    LIFT_POSITION_DOWN = 0
 };
 
 class Mechanisms

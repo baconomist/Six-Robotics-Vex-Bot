@@ -1,4 +1,3 @@
-
 #include "main.h"
 #include "robot/motors.h"
 #include "robot/components/mechanisms.h"

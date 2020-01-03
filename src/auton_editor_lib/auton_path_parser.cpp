@@ -41,10 +41,10 @@ void AutonPathParser::dataToInstructions(std::vector<Vector2> points)
         lengths.push_back(getDistance(points[i], points[i + 1]));
         turns.push_back(getAngle(points[i], points[i + 1], points[i + 2]));
     }
-    for (int i = 0; i < lengths.size(); i++)
-    {
-        printf("auton_path_parser:40 - forward %f and turn %f\n", lengths[i], turns[i]);
-    }
+//    for (int i = 0; i < lengths.size(); i++)
+//    {
+//         printf("auton_path_parser:46 - forward %f and turn %f\n", lengths[i], turns[i]);
+//    }
 }
 
 /**
