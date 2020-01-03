@@ -124,10 +124,9 @@ void Mechanisms::update()
     if (tilt)
     {
         tilter(tilt);
-    } else if (lift && get_tilter_pos() < 1500) // Tray must move out of way to allow lift
+    } else if (lift && get_tilter_pos() < 1650) // Tray must move out of way to allow lift
     {
       lifter(lift);
-
     } else
     {
         tilter(0);

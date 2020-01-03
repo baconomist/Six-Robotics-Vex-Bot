@@ -13,8 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8d3371f8-95e3-4cea-8164-c6642e047b61" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +87,7 @@
       <workItem from="1576955496367" duration="1241000" />
       <workItem from="1577560831222" duration="1877000" />
       <workItem from="1578066933140" duration="1845000" />
-      <workItem from="1578068840080" duration="1414000" />
+      <workItem from="1578068840080" duration="4090000" />
     </task>
     <servers />
   </component>
