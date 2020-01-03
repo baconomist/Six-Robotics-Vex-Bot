@@ -57,9 +57,9 @@ void Mechanisms::intake(int speed)
 void Mechanisms::set_tray_position(TrayPosition trayPosition)
 {
     if(trayPosition == TRAY_POSITION_UP)
-        trayP = new P(0.5f, get_tilter_pos, 50, [](float speed) { tilter(-(int) speed); }, 100);
+        trayP = new P(0.5f, get_tilter_pos, 10, [](float speed) { tilter(-(int) speed); }, 100);
     else if(trayPosition == TRAY_POSITION_DOWN)
-        trayP = new P(0.5f, get_tilter_pos, 1900, [](float speed) { tilter(-(int) speed); }, 100);
+        trayP = new P(0.5f, get_tilter_pos, 1950, [](float speed) { tilter(-(int) speed); }, 100);
 }
 
 void Mechanisms::set_lift_position(LiftPosition liftPosition)
@@ -106,7 +106,7 @@ void Mechanisms::update()
 {
     int tilt = 40 * (master.get_digital(DIGITAL_R1)
                       - master.get_digital(
-            DIGITAL_R2));//sets tilit speed to 100 * the direction, scaled to match internal gearset
+            DIGITAL_R2));//sets tilt speed to 100 * the direction, scaled to match internal gearset
     int lift = 100 * (master.get_digital(DIGITAL_X)
                       - master.get_digital(
             DIGITAL_B));
@@ -114,7 +114,7 @@ void Mechanisms::update()
 
     intake(intakeSpeed);
     // Brake if tray or lift is in use, otherwise coast
-    if (get_tilter_pos() < 1800) {
+    if (get_tilter_pos() < 1650) {
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
     }
     else {

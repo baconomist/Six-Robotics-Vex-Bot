@@ -13,7 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8d3371f8-95e3-4cea-8164-c6642e047b61" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VexRobot" TARGET_NAME="VexRobot" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VexRobot" RUN_TARGET_NAME="VexRobot">
@@ -86,6 +87,9 @@
       <workItem from="1575082970116" duration="3845000" />
       <workItem from="1575301785967" duration="273000" />
       <workItem from="1576955496367" duration="1241000" />
+      <workItem from="1577560831222" duration="1877000" />
+      <workItem from="1578066933140" duration="1845000" />
+      <workItem from="1578068840080" duration="1414000" />
     </task>
     <servers />
   </component>
@@ -110,9 +114,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="the drive has some issues but, i have made the tilter auto control" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="535" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1576955495372">
+    <state x="341" y="151" key="SettingsEditor" timestamp="1578068655946">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1576955495372" />
+    <state x="341" y="151" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578068655946" />
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1578068842357">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578068842357" />
   </component>
 </project>

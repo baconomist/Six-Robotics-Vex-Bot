@@ -26,9 +26,9 @@ private:
 
     void dataToInstructions(std::vector<Vector2> points);
 
-    double getAngle(Vector2, Vector2, Vector2);
+    static double getAngle(Vector2, Vector2, Vector2);
 
-    double getDistance(Vector2, Vector2);
+    static double getDistance(Vector2, Vector2);
 };
 
 #endif //VEXROBOT_AUTON_PATH_PARSER_H
