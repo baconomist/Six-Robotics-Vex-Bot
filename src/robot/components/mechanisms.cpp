@@ -6,7 +6,7 @@
 #include "../encoders.h"
 #include "motor_gearsets.h"
 #include "drive.h"
-
+using namespace std;
 pros::Motor *transT;
 pros::Motor *transB;
 pros::Motor *intakeL;
@@ -17,6 +17,13 @@ pros::ADIPotentiometer *liftPot;
 P *Mechanisms::trayP = nullptr;
 P *Mechanisms::liftP = nullptr;
 
+
+/*
+maps th
+*/
+float map(float val, float curr_min, float curr_max, float tar_min, float tar_max){
+    return (val - curr_min) * (tar_max - tar_min) / (curr_max - curr_min) + tar_min;
+}
 /*
 moves the tray forwards and backwards
 */
@@ -105,8 +112,8 @@ int liftState = 0;
 
 void Mechanisms::update()
 {
-    int tilt = 40 * (master.get_digital(DIGITAL_R1)
-                     - master.get_digital(
+    int tilt =  map(get_tilter_pos(),  10, 1950, 15, 40)*(master.get_digital(DIGITAL_R1)
+                      - master.get_digital(
             DIGITAL_R2));//sets tilt speed to 100 * the direction, scaled to match internal gearset
     int lift = 100 * (master.get_digital(DIGITAL_X)
                       - master.get_digital(
@@ -126,9 +133,9 @@ void Mechanisms::update()
     if (tilt)
     {
         tilter(tilt);
-    } else if (lift && get_tilter_pos() < 1500) // Tray must move out of way to allow lift
+    } else if (lift && get_tilter_pos() < 1650) // Tray must move out of way to allow lift
     {
-        lifter(lift);
+      lifter(lift);
     } else
     {
         tilter(0);
