@@ -6,8 +6,8 @@
 #define VEXROBOT_AUTON_PATH_PARSER_H
 
 #include "main.h"
+#include "rapidjson/document.h"
 #include "../utils/vector2.h" //points for angle calculation
-#include "json.h"
 #include <vector>
 #include <stdio.h>
 #include <fstream>
@@ -16,13 +16,15 @@
 class AutonPathParser
 {
 public:
-    AutonPathParser(std::string file_path);
+    rapidjson::Document jsonDocument;
+    AutonPathParser(std::string data);
+    static AutonPathParser* FromFile(std::string file_path);
 
     std::vector<double> lengths;
     std::vector<double> turns;
 
 private:
-    void parseFile(nlohmann::json pathJSON);
+    void parseFile();
 
     void dataToInstructions(std::vector<Vector2> points);
 

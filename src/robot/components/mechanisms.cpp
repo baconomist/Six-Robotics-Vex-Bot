@@ -56,9 +56,9 @@ void Mechanisms::intake(int speed)
 
 void Mechanisms::set_tray_position(TrayPosition trayPosition)
 {
-    if(trayPosition == TRAY_POSITION_UP)
+    if (trayPosition == TRAY_POSITION_UP)
         trayP = new P(0.5f, get_tilter_pos, 10, [](float speed) { tilter(-(int) speed); }, 100);
-    else if(trayPosition == TRAY_POSITION_DOWN)
+    else if (trayPosition == TRAY_POSITION_DOWN)
         trayP = new P(0.5f, get_tilter_pos, 1950, [](float speed) { tilter(-(int) speed); }, 100);
 }
 
@@ -66,9 +66,9 @@ void Mechanisms::set_lift_position(LiftPosition liftPosition)
 {
     if (liftPosition == LIFT_POSITION_UP)
         liftP = new P(0.5f, get_lift_pos, 2900, [](float speed) { lifter(-(int) speed); }, 100);
-    else if(liftPosition == LIFT_POSITION_MIDDLE)
+    else if (liftPosition == LIFT_POSITION_MIDDLE)
         liftP = new P(0.5f, get_lift_pos, 3200, [](float speed) { lifter(-(int) speed); }, 100);
-    else if(liftPosition == LIFT_POSITION_DOWN)
+    else if (liftPosition == LIFT_POSITION_DOWN)
         liftP = new P(10.0f, get_lift_pos, 3850, [](float speed) { lifter(-(int) speed); }, 100);
 }
 
@@ -102,10 +102,11 @@ void Mechanisms::initialize()
 updates the motors action
 */
 int liftState = 0;
+
 void Mechanisms::update()
 {
     int tilt = 40 * (master.get_digital(DIGITAL_R1)
-                      - master.get_digital(
+                     - master.get_digital(
             DIGITAL_R2));//sets tilt speed to 100 * the direction, scaled to match internal gearset
     int lift = 100 * (master.get_digital(DIGITAL_X)
                       - master.get_digital(
@@ -114,10 +115,11 @@ void Mechanisms::update()
 
     intake(intakeSpeed);
     // Brake if tray or lift is in use, otherwise coast
-    if (get_tilter_pos() < 1650) {
+    if (get_tilter_pos() < 1650)
+    {
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
-    }
-    else {
+    } else
+    {
         Drive::set_brake_all(MOTOR_BRAKE_COAST);
     }
 
@@ -126,31 +128,41 @@ void Mechanisms::update()
         tilter(tilt);
     } else if (lift && get_tilter_pos() < 1500) // Tray must move out of way to allow lift
     {
-      lifter(lift);
-
+        lifter(lift);
     } else
     {
         tilter(0);
         lifter(0);
     }
 
-    lcd::print(1,"Tray: %f", Mechanisms::get_tilter_pos());
-    lcd::print(2,"Lift: %f", Mechanisms::get_lift_pos());
-    lcd::print(3,"Lift State: %d",liftState);
-   /* // Lift flipout automation
-    if (flipout_sequence_index >= 1 && trayP->finished())
+    lcd::print(1, "Tray: %f", Mechanisms::get_tilter_pos());
+    lcd::print(2, "Lift: %f", Mechanisms::get_lift_pos());
+    lcd::print(3, "Lift State: %d", liftState);
+
+    if (trayP->finished())
     {
-        if (flipout_sequence_index == 2)
-            liftP = new P(0.1f, get_lift_pos, INSERT_LIFT_MID_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
-        else if (flipout_sequence_index == 3)
-            liftP = new P(0.5f, get_lift_pos, INSERT_LIFT_BOTTOM_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
-        flipout_sequence_index++;
-    }
-    if (liftP != nullptr && !liftP->finished())
-    {
-        liftP->update();
+        if (!liftP->finished())
+            liftP->update();
     } else
     {
-        lifter(0);
-    }*/
+        trayP->update();
+    }
+
+
+    /* // Lift flipout automation
+     if (flipout_sequence_index >= 1 && trayP->finished())
+     {
+         if (flipout_sequence_index == 2)
+             liftP = new P(0.1f, get_lift_pos, INSERT_LIFT_MID_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
+         else if (flipout_sequence_index == 3)
+             liftP = new P(0.5f, get_lift_pos, INSERT_LIFT_BOTTOM_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
+         flipout_sequence_index++;
+     }
+     if (liftP != nullptr && !liftP->finished())
+     {
+         liftP->update();
+     } else
+     {
+         lifter(0);
+     }*/
 }

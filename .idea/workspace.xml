@@ -12,14 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/auton_path_calc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/json.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/autonomous.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/autonomous.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/opcontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/opcontrol.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/robot/motion_control/auton.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/motion_control/auton.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+            <state relative-caret-position="429">
+              <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
               <folding>
                 <element signature="e#40#57#0" expanded="true" />
               </folding>
@@ -46,44 +44,35 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+              <folding>
+                <element signature="e#116#133#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/autonomous.cpp">
+        <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1254">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="334">
+              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
               <folding>
-                <element signature="e#1#18#0" expanded="true" />
+                <element signature="e#41#72#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/robot/components/drive.cpp">
+        <entry file="file://$PROJECT_DIR$/include/rapidjson/document.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2244">
-              <caret line="132" selection-start-line="132" selection-end-line="135" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-              <folding>
-                <element signature="e#110#127#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="206">
+              <caret line="548" column="78" selection-start-line="548" selection-start-column="78" selection-end-line="548" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -92,11 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Auton</find>
-      <find>revers</find>
-      <find>atan</find>
-      <find>Auton::</find>
-      <find>= 0</find>
       <find>currentMoveAlgorithm =</find>
       <find>MIN</find>
       <find>pri</find>
@@ -122,6 +106,11 @@
       <find>intake`</find>
       <find>action_complete_callback</find>
       <find>printf</find>
+      <find>set</find>
+      <find>iftP-&gt;</find>
+      <find>finish</find>
+      <find>listener</find>
+      <find>json</find>
     </findStrings>
     <replaceStrings>
       <replace>-&gt;</replace>
@@ -136,6 +125,7 @@
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src</dir>
+      <dir>C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\auton_editor_lib</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -189,17 +179,17 @@
         <option value="$PROJECT_DIR$/src/robot/components/mechanisms.h" />
         <option value="$PROJECT_DIR$/src/robot/robot.cpp" />
         <option value="$PROJECT_DIR$/src/robot/motion_control/auton.h" />
-        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" />
-        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" />
-        <option value="$PROJECT_DIR$/src/opcontrol.cpp" />
         <option value="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" />
         <option value="$PROJECT_DIR$/src/autonomous.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" />
+        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" />
+        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" />
+        <option value="$PROJECT_DIR$/src/opcontrol.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="960" />
     <option name="height" value="1080" />
   </component>
@@ -214,6 +204,11 @@
             <path>
               <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
               <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
@@ -348,23 +343,23 @@
       <workItem from="1573960486845" duration="18000" />
       <workItem from="1574367968002" duration="5043000" />
       <workItem from="1575062890313" duration="41223000" />
-      <workItem from="1578070698084" duration="249000" />
+      <workItem from="1578070698084" duration="404000" />
+      <workItem from="1578071122305" duration="9510000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210148000" />
+    <option name="totallyTimeSpent" value="219813000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18123667" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33125648" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33125648" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -408,24 +403,18 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp</url>
+          <line>113</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="17" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/main.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -628,16 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="93" column="1" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding>
-            <element signature="e#181#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -659,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/action_queue.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -683,61 +655,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
-          <folding>
-            <element signature="e#41#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/robot.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="e#40#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="e#40#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/robot/components/drive.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
           <caret line="132" selection-start-line="132" selection-end-line="135" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -753,10 +674,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/autonomous.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1254">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="1456">
+          <caret line="124" column="48" selection-start-line="124" selection-start-column="48" selection-end-line="124" selection-end-column="48" />
           <folding>
             <element signature="e#1#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/robot.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding>
+            <element signature="e#181#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="138" column="55" selection-start-line="138" selection-start-column="55" selection-end-line="138" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/json.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20560" column="22" selection-start-line="20560" selection-start-column="22" selection-end-line="20560" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="e#116#133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/rapidjson/document.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="548" column="78" selection-start-line="548" selection-start-column="78" selection-end-line="548" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+          <folding>
+            <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding>
+            <element signature="e#41#72#0" expanded="true" />
           </folding>
         </state>
       </provider>
