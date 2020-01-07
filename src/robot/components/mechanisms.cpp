@@ -6,7 +6,6 @@
 #include "../encoders.h"
 #include "motor_gearsets.h"
 #include "drive.h"
-using namespace std;
 pros::Motor *transT;
 pros::Motor *transB;
 pros::Motor *intakeL;
@@ -96,12 +95,12 @@ void Mechanisms::initialize()
 
     trayPot = new pros::ADIPotentiometer(TRAY_POT);
     liftPot = new pros::ADIPotentiometer(LIFT_POT);
-    trayPot->calibrate();
-    liftPot->calibrate();
+    /*
+        // Potentiometer calibration (currently using raw values so not needed)
+        trayPot->calibrate();
+        liftPot->calibrate();
+     */
     //trayPD = new PD(0.1, 0.1, tilter_get_pos, 0, [](float speed) { tilter(speed); }, true);
-
-    trayPot->calibrate();
-    liftPot->calibrate();
 }
 
 /*
@@ -112,9 +111,9 @@ int liftState = 0;
 
 void Mechanisms::update()
 {
-    int tilt =  map(get_tilter_pos(),  10, 1950, 15, 40)*(master.get_digital(DIGITAL_R1)
-                      - master.get_digital(
-            DIGITAL_R2));//sets tilt speed to 100 * the direction, scaled to match internal gearset
+     int tilt =  map(get_tilter_pos(),  10, 1950, 15, 40)*(master.get_digital(DIGITAL_R1)
+                       - master.get_digital(
+             DIGITAL_R2));//sets tilt speed to 100 * the direction, scaled to match internal gearset
     int lift = 100 * (master.get_digital(DIGITAL_X)
                       - master.get_digital(
             DIGITAL_B));
@@ -146,14 +145,14 @@ void Mechanisms::update()
     lcd::print(2, "Lift: %f", Mechanisms::get_lift_pos());
     lcd::print(3, "Lift State: %d", liftState);
 
-    if (trayP->finished())
-    {
-        if (!liftP->finished())
-            liftP->update();
-    } else
-    {
-        trayP->update();
-    }
+    // if (trayP->finished())
+    // {
+    //     if (!liftP->finished())
+    //         liftP->update();
+    // } else
+    // {
+    //     trayP->update();
+    // }
 
 
     /* // Lift flipout automation
