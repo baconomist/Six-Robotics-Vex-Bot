@@ -21,6 +21,7 @@ P *Mechanisms::liftP = nullptr;
 
 /*
 maps the value from the range [curr_min, curr_max] to a value in the range [tar_min, tar_max]
+and scales it depending on the power
 */
 float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power=1){
     float x = (val - curr_min) * (tar_max - tar_min) / (curr_max - curr_min);

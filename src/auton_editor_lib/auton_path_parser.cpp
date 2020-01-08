@@ -2,32 +2,39 @@
 // Created by Lucas on 9/20/2019.
 //
 
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+
 #include "main.h"
 #include "auton_path_parser.h"
 #include <stdio.h>
+#include <sstream>
 #include "stdlib.h"
 
-// nlohmann::json data;
-AutonPathParser::AutonPathParser(std::string file_path)
+AutonPathParser::AutonPathParser(std::string data)
 {
-    std::ifstream file;
-    file.open(file_path);
-    std::string data((std::istreambuf_iterator<char>(file)),
-                     std::istreambuf_iterator<char>());
-    file.close();
-    parseFile(nlohmann::json::parse(data));
+    // https://miloyip.github.io/rapidjson/md_doc_tutorial.html
+    rapidjson::ParseResult result = jsonDocument.Parse(data.c_str());
+    if(!result)
+        std::cout << "Error in json data!" << "\n";
+
+    parseFile();
 }
 
 /**
 * Turns JSON data into a vector of points
 */
-void AutonPathParser::parseFile(nlohmann::json pathJSON)
+void AutonPathParser::parseFile()
 {
     std::vector<Vector2> points;
-    for (int i = 0; i < pathJSON.size(); i++)
+
+    for (rapidjson::Value::MemberIterator itr = jsonDocument.MemberBegin();
+         itr != jsonDocument.MemberEnd(); ++itr)
     {
-        points.push_back(Vector2(pathJSON[i]["x_in"], pathJSON[i]["y_in"]));
+        printf("%s", itr->name.GetString());
+        //points.push_back(Vector2(pathJSON[i]["x_in"], pathJSON[i]["y_in"]));
     }
+
     dataToInstructions(points);
 }
 
@@ -68,4 +75,41 @@ double AutonPathParser::getDistance(Vector2 p1, Vector2 p2)
     double b = abs(p1.y - p2.y);
     double c = sqrt(a * a + b * b);
     return c;
+}
+
+AutonPathParser *AutonPathParser::FromFile(std::string file_path)
+{
+    /*std::ifstream file;
+
+    file.open(file_path);
+    std::string data((std::istreambuf_iterator<char>(file)),
+                     std::istreambuf_iterator<char>());
+
+    std::string file_data;
+    std::string line;
+    while (std::getline(file, line))
+    {
+        //file_data.append(line);
+        std::cout << line << "1" << "\n";
+    }
+
+    std::cout << file.rdbuf();
+
+    char cstr[file_data.size() + 1];
+    strcpy(cstr, file_data.c_str());
+
+    printf("\n");
+    printf("Got this far");
+    printf(cstr);
+    printf("%d", file_data.size());
+    printf("\n");
+
+    jsonDocument = new rapidjson::Document();
+    jsonDocument->Parse(cstr);
+
+    printf("Got this far aaaaaaaaaaaaaaaaaaaaaaaaaa");
+    //parseFile(nlohmann::json::parse(data));
+
+    file.close();*/
+    return NULL;
 }

@@ -11,118 +11,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d3371f8-95e3-4cea-8164-c6642e047b61" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/serialmonitor_settings.xml" afterDir="false" />
+    <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/VexRobot.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/VexRobot.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/VexRobot.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firmware/okapilib.a" beforeDir="false" afterPath="$PROJECT_DIR$/firmware/okapilib.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisControllerIntegrated.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisControllerIntegrated.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisControllerPid.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisControllerPid.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisScales.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/controller/chassisScales.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/model/chassisModel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/model/chassisModel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/model/readOnlyChassisModel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/model/readOnlyChassisModel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/model/skidSteerModel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/model/skidSteerModel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/model/threeEncoderSkidSteerModel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/model/threeEncoderSkidSteerModel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/chassis/model/xDriveModel.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/chassis/model/xDriveModel.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncLinearMotionProfileController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncLinearMotionProfileController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncMotionProfileController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncMotionProfileController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncPosIntegratedController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncPosIntegratedController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncPosPidController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncPosPidController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncPositionController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncPositionController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncVelIntegratedController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncVelIntegratedController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncVelPidController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncVelPidController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncVelocityController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncVelocityController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/async/asyncWrapper.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/async/asyncWrapper.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/closedLoopController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/closedLoopController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/controllerInput.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/controllerInput.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/controllerOutput.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/controllerOutput.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeMotorVelocityController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeMotorVelocityController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativePosPidController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativePosPidController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativePositionController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativePositionController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeVelPidController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeVelPidController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeVelocityController.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/iterative/iterativeVelocityController.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/util/controllerRunner.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/util/controllerRunner.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/util/flywheelSimulator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/util/flywheelSimulator.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/util/pidTuner.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/util/pidTuner.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/control/util/settledUtil.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/control/util/settledUtil.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/coreProsAPI.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/coreProsAPI.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/device/button/abstractButton.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/device/button/abstractButton.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/device/button/buttonBase.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/device/button/buttonBase.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/device/motor/abstractMotor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/device/motor/abstractMotor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/device/rotarysensor/continuousRotarySensor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/device/rotarysensor/continuousRotarySensor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/device/rotarysensor/rotarySensor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/device/rotarysensor/rotarySensor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/averageFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/averageFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/composableFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/composableFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/demaFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/demaFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/ekfFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/ekfFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/emaFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/emaFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/filter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/filter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/filteredControllerInput.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/filteredControllerInput.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/medianFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/medianFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/passthroughFilter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/passthroughFilter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/filter/velMath.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/filter/velMath.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QAcceleration.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QAcceleration.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QAngle.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QAngle.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QAngularAcceleration.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QAngularAcceleration.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QAngularJerk.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QAngularJerk.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QAngularSpeed.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QAngularSpeed.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QArea.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QArea.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QForce.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QForce.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QFrequency.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QFrequency.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QJerk.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QJerk.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QLength.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QLength.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QMass.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QMass.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QPressure.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QPressure.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QSpeed.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QSpeed.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QTime.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QTime.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QTorque.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QTorque.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/QVolume.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/QVolume.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/units/RQuantity.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/units/RQuantity.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/util/abstractRate.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/util/abstractRate.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/util/abstractTimer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/util/abstractTimer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/util/logging.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/util/logging.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/util/mathUtil.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/util/mathUtil.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/util/supplier.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/util/supplier.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/api/util/timeUtil.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/api/util/timeUtil.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/chassis/controller/chassisControllerFactory.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/chassis/model/chassisModelFactory.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/control/async/asyncControllerFactory.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/control/iterative/iterativeControllerFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/control/iterative/iterativeControllerFactory.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/control/util/controllerRunnerFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/control/util/controllerRunnerFactory.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/control/util/pidTunerFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/control/util/pidTunerFactory.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/control/util/settledUtilFactory.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/adiUltrasonic.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/adiUltrasonic.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/button/adiButton.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/button/adiButton.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/button/controllerButton.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/button/controllerButton.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/controller.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/controller.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/controllerUtil.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/controllerUtil.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/motor/adiMotor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/motor/adiMotor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/motor/motor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/motor/motor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/motor/motorGroup.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/motor/motorGroup.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/adiEncoder.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/adiEncoder.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/adiGyro.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/adiGyro.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/integratedEncoder.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/integratedEncoder.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/potentiometer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/device/rotarysensor/potentiometer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/device/vision.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/filter/velMathFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/filter/velMathFactory.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/util/rate.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/util/rate.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/util/timeUtilFactory.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/util/timeUtilFactory.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/okapi/impl/util/timer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/okapi/impl/util/timer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.pros" beforeDir="false" afterPath="$PROJECT_DIR$/project.pros" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/json.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/opcontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/opcontrol.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,26 +30,259 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+              <folding>
+                <element signature="e#40#57#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+              <folding>
+                <element signature="e#116#133#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+              <folding>
+                <element signature="e#41#72#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/rapidjson/document.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="548" column="78" selection-start-line="548" selection-start-column="78" selection-end-line="548" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>currentMoveAlgorithm =</find>
+      <find>MIN</find>
+      <find>pri</find>
+      <find>expectedLPos =</find>
+      <find>heading = 0</find>
+      <find>expectedHeading</find>
+      <find>expectedHeadingDeg =</find>
+      <find>calcula</find>
+      <find>reset_enco</find>
+      <find>`</find>
+      <find>this-&gt;</find>
+      <find>robot</find>
+      <find>this-&gt;drive</find>
+      <find>ro</find>
+      <find>robotMde</find>
+      <find>5</find>
+      <find>analog</find>
+      <find>okap</find>
+      <find>digital_up</find>
+      <find>tilter</find>
+      <find>delay</find>
+      <find>intake</find>
+      <find>intake`</find>
+      <find>action_complete_callback</find>
+      <find>printf</find>
+      <find>set</find>
+      <find>iftP-&gt;</find>
+      <find>finish</find>
+      <find>listener</find>
+      <find>json</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>-&gt;</replace>
+      <replace>.</replace>
+      <replace>yield_pid</replace>
+      <replace>driveLF-&gt;</replace>
+      <replace>driveLB-&gt;</replace>
+      <replace>driveRF-&gt;</replace>
+      <replace>driveRB-&gt;</replace>
+      <replace>@param</replace>
+      <replace>tray</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src</dir>
+      <dir>C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\auton_editor_lib</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MacroExpansionManager">
-    <option name="directoryName" value="ojRmJsTK" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/robot/components/motion_tracker.cpp" />
+        <option value="$PROJECT_DIR$/src/auton_path_parser.cpp" />
+        <option value="$PROJECT_DIR$/src/opcontrol_old.cpp" />
+        <option value="$PROJECT_DIR$/src/motor_gearsets.h" />
+        <option value="$PROJECT_DIR$/src/PID.h" />
+        <option value="$PROJECT_DIR$/src/PID.cpp" />
+        <option value="$PROJECT_DIR$/src/tests/pid_test.h" />
+        <option value="$PROJECT_DIR$/src/tests/pid_test.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/components/arc_turner.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/arc_turner.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/components/move_to_point.h" />
+        <option value="$PROJECT_DIR$/src/tests/PID.cpp" />
+        <option value="$PROJECT_DIR$/src/main.h" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/robot/components/move_to_point_simple.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/drive_new.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/drive_new.cpp" />
+        <option value="$PROJECT_DIR$/src/utils/math.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/motion_tracker.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/components/move_to_point.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/motion_tracker.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/move_to_point_simple.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/motors.h" />
+        <option value="$PROJECT_DIR$/include/pros/motors.hpp" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/Queue.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/queue.h" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/action_queue.h" />
+        <option value="$PROJECT_DIR$/src/utils/math.h" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/action_queue.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/old/move_to_point.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/encoders.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/drive.h" />
+        <option value="$PROJECT_DIR$/src/utils/action_queue.cpp" />
+        <option value="$PROJECT_DIR$/src/utils/stack_trace.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/drive.cpp" />
+        <option value="$PROJECT_DIR$/src/initialize.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/robot.h" />
+        <option value="$PROJECT_DIR$/src/robot/ports.h" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/PID.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/PID.h" />
+        <option value="$PROJECT_DIR$/src/robot/components/mechanisms.h" />
+        <option value="$PROJECT_DIR$/src/robot/robot.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/auton.h" />
+        <option value="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" />
+        <option value="$PROJECT_DIR$/src/autonomous.cpp" />
+        <option value="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" />
+        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" />
+        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" />
+        <option value="$PROJECT_DIR$/src/opcontrol.cpp" />
+      </list>
+    </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectId" id="1SQanTk1Ucn8EFqFJU90jrmJWwb" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="width" value="960" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="auton_editor_lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="motion_control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot\old" />
+      <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\auton_editor_lib" />
+      <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot" />
+      <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\utils" />
+      <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot\components" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VexRobot" TARGET_NAME="VexRobot" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VexRobot" RUN_TARGET_NAME="VexRobot">
@@ -160,82 +291,481 @@
       </method>
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8d3371f8-95e3-4cea-8164-c6642e047b61" name="Default Changelist" comment="" />
-      <created>1571498439205</created>
+      <changelist id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="" />
+      <created>1554467164765</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1571498439205</updated>
-      <workItem from="1571498440658" duration="790000" />
-      <workItem from="1572961167651" duration="1019000" />
-      <workItem from="1573068666096" duration="1236000" />
-      <workItem from="1573235748727" duration="110000" />
-      <workItem from="1573831226834" duration="2774000" />
-      <workItem from="1574981205115" duration="7582000" />
-      <workItem from="1575050765621" duration="4686000" />
-      <workItem from="1575059285546" duration="1541000" />
-      <workItem from="1575060991799" duration="2993000" />
-      <workItem from="1575070205106" duration="5074000" />
-      <workItem from="1575080125198" duration="1223000" />
-      <workItem from="1575081771220" duration="999000" />
-      <workItem from="1575082970116" duration="3845000" />
-      <workItem from="1575301785967" duration="273000" />
-      <workItem from="1576955496367" duration="1241000" />
-      <workItem from="1577560831222" duration="1877000" />
-      <workItem from="1578066933140" duration="1845000" />
-      <workItem from="1578068840080" duration="4090000" />
-      <workItem from="1578442537096" duration="3825000" />
+      <updated>1554467164765</updated>
+      <workItem from="1554467168362" duration="304000" />
+      <workItem from="1554468407381" duration="1428000" />
+      <workItem from="1554497043409" duration="1116000" />
+      <workItem from="1554498270902" duration="1453000" />
+      <workItem from="1554499859800" duration="826000" />
+      <workItem from="1555091683349" duration="53000" />
+      <workItem from="1563039208442" duration="575000" />
+      <workItem from="1566235382755" duration="38000" />
+      <workItem from="1567010837250" duration="4526000" />
+      <workItem from="1567267200257" duration="9253000" />
+      <workItem from="1567528682223" duration="9822000" />
+      <workItem from="1568231192529" duration="5711000" />
+      <workItem from="1568511533016" duration="53000" />
+      <workItem from="1569010668460" duration="3145000" />
+      <workItem from="1569328143819" duration="70000" />
+      <workItem from="1569328817053" duration="3202000" />
+      <workItem from="1569612353573" duration="8579000" />
+      <workItem from="1570326944137" duration="9000" />
+      <workItem from="1570648710443" duration="4896000" />
+      <workItem from="1570809430115" duration="9320000" />
+      <workItem from="1571253337854" duration="6370000" />
+      <workItem from="1571339377331" duration="6555000" />
+      <workItem from="1571427474202" duration="3628000" />
+      <workItem from="1571433283821" duration="4033000" />
+      <workItem from="1571684716623" duration="4422000" />
+      <workItem from="1571860593978" duration="2478000" />
+      <workItem from="1571945391591" duration="2127000" />
+      <workItem from="1572031435573" duration="6490000" />
+      <workItem from="1572290642624" duration="3729000" />
+      <workItem from="1572904801675" duration="2034000" />
+      <workItem from="1573050976342" duration="19000" />
+      <workItem from="1573072869536" duration="6295000" />
+      <workItem from="1573158264757" duration="5568000" />
+      <workItem from="1573244741715" duration="3368000" />
+      <workItem from="1573248500699" duration="4797000" />
+      <workItem from="1573417950906" duration="1471000" />
+      <workItem from="1573486674172" duration="8278000" />
+      <workItem from="1573763128398" duration="1901000" />
+      <workItem from="1573765059852" duration="25673000" />
+      <workItem from="1573960486845" duration="18000" />
+      <workItem from="1574367968002" duration="5043000" />
+      <workItem from="1575062890313" duration="41223000" />
+      <workItem from="1578070698084" duration="404000" />
+      <workItem from="1578071122305" duration="9510000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="219813000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33125648" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.19314642" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3281412" />
+      <window_info anchor="bottom" id="Arduino Support" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16257995" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32917964" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.19314642" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3281412" />
+      <window_info anchor="bottom" id="Arduino Support" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp</url>
+          <line>113</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="the drive has some issues but, i have made the tilter auto control" />
-    <option name="LAST_COMMIT_MESSAGE" value="the drive has some issues but, i have made the tilter auto control" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="341" y="151" key="SettingsEditor" timestamp="1578068655946">
-      <screen x="0" y="0" width="1680" height="1020" />
-    </state>
-    <state x="341" y="151" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578068655946" />
-    <state x="535" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1578068842357">
-      <screen x="0" y="0" width="1680" height="1020" />
-    </state>
-    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578068842357" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1578442643520">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1578442643520" />
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/include/main.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/drive_new.h" />
+    <entry file="file://$PROJECT_DIR$/src/robot/components/drive_new.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/utils/math.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding>
+            <element signature="e#42#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/vector2.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point_simple.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point_simple.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding>
+            <element signature="e#42#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/algorithmfwd.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="510" column="10" lean-forward="true" selection-start-line="510" selection-start-column="10" selection-end-line="510" selection-end-column="10" />
+          <folding>
+            <element signature="e#12599#12637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pros/llemu.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/float.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="120" column="15" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/math.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/action_queue.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/controllers.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/motor_gearsets.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-320">
+          <caret line="95" column="17" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+          <folding>
+            <element signature="e#41#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/motor_gearsets.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/PID.cpp" />
+    <entry file="file://$PROJECT_DIR$/src/tests/pid_test.h" />
+    <entry file="file://$PROJECT_DIR$/src/robot/old/motion_tracker.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-422" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/stack_trace.h" />
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/stack">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#2317#2333#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pros/api_legacy.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pros/adi.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1785" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pros/apix.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1224" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pros/motors.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="396" column="19" selection-start-line="396" selection-start-column="19" selection-end-line="396" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/robot.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+          <folding>
+            <element signature="e#92#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.pros">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="128" column="29" lean-forward="true" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motors.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/ports.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/pros/adi.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/encoders.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/drive.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/initialize.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/action_queue.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+          <folding>
+            <element signature="e#42#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/stl_vector.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="804" column="6" selection-start-line="804" selection-start-column="6" selection-end-line="804" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/drive.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="132" selection-start-line="132" selection-end-line="135" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
+          <folding>
+            <element signature="e#110#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/autonomous.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1456">
+          <caret line="124" column="48" selection-start-line="124" selection-start-column="48" selection-end-line="124" selection-end-column="48" />
+          <folding>
+            <element signature="e#1#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/robot.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+          <folding>
+            <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding>
+            <element signature="e#181#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="138" column="55" selection-start-line="138" selection-start-column="55" selection-end-line="138" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/json.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20560" column="22" selection-start-line="20560" selection-start-column="22" selection-end-line="20560" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="e#116#133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/rapidjson/document.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="548" column="78" selection-start-line="548" selection-start-column="78" selection-end-line="548" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
+          <folding>
+            <element signature="e#40#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding>
+            <element signature="e#41#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

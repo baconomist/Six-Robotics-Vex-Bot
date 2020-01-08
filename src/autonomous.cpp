@@ -18,29 +18,33 @@
 
 using namespace pros::c;
 
-int flipout_sequence_index = 0;
+int flipout_sequence_index = 1;
 
-void run_flipout()
+void run_flipout_sequence()
 {
-    if (flipout_sequence_index >= 1 && flipout_sequence_index < 3 && ((Mechanisms::trayP != nullptr && Mechanisms::trayP->finished()) || Mechanisms::trayP ==
-                                                                                                                nullptr))
+    if (flipout_sequence_index >= 1 && flipout_sequence_index < 3)
     {
-        if (flipout_sequence_index == 1)
-            Mechanisms::set_tray_position(TRAY_POSITION_UP);
-        else if (flipout_sequence_index == 2)
-            Mechanisms::set_tray_position(TRAY_POSITION_DOWN);
+        if ((Mechanisms::trayP != nullptr && Mechanisms::trayP->finished()) || Mechanisms::trayP == nullptr)
+        {
+            if (flipout_sequence_index == 1)
+                Mechanisms::set_tray_position(TRAY_POSITION_UP);
+            else if (flipout_sequence_index == 2)
+                Mechanisms::set_tray_position(TRAY_POSITION_DOWN);
 
-        flipout_sequence_index++;
-    }
-    if (Mechanisms::trayP != nullptr && !Mechanisms::trayP->finished())
-    {
-        Mechanisms::trayP->update();
-    } else
-    {
-        Mechanisms::tilter(0);
+            flipout_sequence_index++;
+        }
+        if (Mechanisms::trayP != nullptr && !Mechanisms::trayP->finished())
+        {
+            Mechanisms::trayP->update();
+            Mechanisms::intake(-100);
+        } else
+        {
+            Mechanisms::tilter(0);
+            Mechanisms::intake(0);
+        }
     }
 
-    if(flipout_sequence_index >= 3 && Mechanisms::trayP->finished())
+    /*if(flipout_sequence_index >= 3)
     {
         if (((Mechanisms::liftP != nullptr && Mechanisms::liftP->finished()) || Mechanisms::liftP ==
                                                                                 nullptr))
@@ -55,24 +59,33 @@ void run_flipout()
         if (Mechanisms::liftP != nullptr && !Mechanisms::liftP->finished())
         {
             Mechanisms::liftP->update();
+            Mechanisms::intake(-100);
         } else
         {
             Mechanisms::lifter(0);
+            Mechanisms::intake(0);
         }
-    }
+    }*/
+}
+
+void skills_run_setup()
+{
+    Auton::goto_pos(4.93, 7.92);
+}
+void skills_run_update()
+{
+    Robot::update();
+    Mechanisms::intake(100);
 }
 
 void autonomous()
 {
     Robot::robotMode = ROBOT_MODE_AUTON;
-    while(true)
+    Auton::goto_pos(0, 18);
+    while (true)
     {
-        run_flipout();
-        if(flipout_sequence_index == 0){
-            Auton::goto_pos(0, 18);
-            flipout_sequence_index++;
-        }
         Robot::update();
+        run_flipout_sequence();
         delay(20);
     }
 }
