@@ -82,10 +82,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/auton_path_parser.cpp">
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/auton_editor_lib/auton_path_parser.cpp">
 			<Option target="VexRobot"/>
 		</Unit>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/auton_path_parser.h">
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/auton_editor_lib/auton_path_parser.h">
 			<Option target="VexRobot"/>
 		</Unit>
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/autonomous.cpp">
@@ -115,16 +115,16 @@
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/components/motor_gearsets.h">
 			<Option target="VexRobot"/>
 		</Unit>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/components/move_to_point.cpp">
-			<Option target="VexRobot"/>
-		</Unit>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/components/move_to_point.h">
-			<Option target="VexRobot"/>
-		</Unit>
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/PID.cpp">
 			<Option target="VexRobot"/>
 		</Unit>
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/PID.h">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/auton.cpp">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/auton.h">
 			<Option target="VexRobot"/>
 		</Unit>
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/kalman_filter.cpp">
@@ -133,10 +133,19 @@
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/kalman_filter.h">
 			<Option target="VexRobot"/>
 		</Unit>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/motion_tracker.cpp">
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/old/motion_tracker.cpp">
 			<Option target="VexRobot"/>
 		</Unit>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/motion_control/motion_tracker.h">
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/old/move_to_point.cpp">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/old/move_to_point.h">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/old/move_to_point_simple.cpp">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/old/move_to_point_simple.h">
 			<Option target="VexRobot"/>
 		</Unit>
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/robot.cpp">
@@ -145,7 +154,16 @@
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/robot/robot.h">
 			<Option target="VexRobot"/>
 		</Unit>
-		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/tests/PID.cpp">
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/utils/action_queue.cpp">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/utils/action_queue.h">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/utils/math.cpp">
+			<Option target="VexRobot"/>
+		</Unit>
+		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/utils/math.h">
 			<Option target="VexRobot"/>
 		</Unit>
 		<Unit filename="D:/Vex/PROS/Six-Vex-Robot/src/utils/vector2.cpp">

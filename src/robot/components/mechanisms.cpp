@@ -6,6 +6,7 @@
 #include "../encoders.h"
 #include "motor_gearsets.h"
 #include "drive.h"
+#include <cmath>
 using namespace std;
 pros::Motor *transT;
 pros::Motor *transB;
@@ -19,10 +20,12 @@ P *Mechanisms::liftP = nullptr;
 
 
 /*
-maps th
+maps the value from the range [curr_min, curr_max] to a value in the range [tar_min, tar_max]
 */
-float map(float val, float curr_min, float curr_max, float tar_min, float tar_max){
-    return (val - curr_min) * (tar_max - tar_min) / (curr_max - curr_min) + tar_min;
+float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power=1){
+    float x = (val - curr_min) * (tar_max - tar_min) / (curr_max - curr_min);
+    return tar_min + (power > 1 ? x * (float)pow(x/(tar_max-tar_min),power-1): x);
+    // y = ax^2 + bx + c
 }
 /*
 moves the tray forwards and backwards
@@ -105,21 +108,19 @@ void Mechanisms::initialize()
 }
 
 /*
-
 updates the motors action
 */
 int liftState = 0;
 void Mechanisms::update()
 {
-    int tilt =  map(get_tilter_pos(),  10, 1950, 15, 40)*(master.get_digital(DIGITAL_R1)
-                      - master.get_digital(
-            DIGITAL_R2));//sets tilt speed to 100 * the direction, scaled to match internal gearset
+    int tilt =  (int) map(get_tilter_pos(),  10, 1950, 15, 40)*(master.get_digital(DIGITAL_R1)
+                      - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
     int lift = 100 * (master.get_digital(DIGITAL_X)
-                      - master.get_digital(
-            DIGITAL_B));
+                      - master.get_digital(DIGITAL_B));
     int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
     intake(intakeSpeed);
+
     // Brake if tray or lift is in use, otherwise coast
     if (get_tilter_pos() < 1650) {
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
@@ -133,7 +134,7 @@ void Mechanisms::update()
         tilter(tilt);
     } else if (lift && get_tilter_pos() < 1650) // Tray must move out of way to allow lift
     {
-      lifter(lift);
+        lifter(lift);
     } else
     {
         tilter(0);

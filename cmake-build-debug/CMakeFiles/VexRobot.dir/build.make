@@ -56,19 +56,19 @@ include CMakeFiles/VexRobot.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/VexRobot.dir/flags.make
 
-CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
-CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
-CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj: ../src/auton_path_parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\auton_path_parser.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\auton_path_parser.cpp
+CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj: ../src/auton_editor_lib/auton_path_parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\auton_editor_lib\auton_path_parser.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\auton_editor_lib\auton_path_parser.cpp
 
-CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\auton_path_parser.cpp > CMakeFiles\VexRobot.dir\src\auton_path_parser.cpp.i
+CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\auton_editor_lib\auton_path_parser.cpp > CMakeFiles\VexRobot.dir\src\auton_editor_lib\auton_path_parser.cpp.i
 
-CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\auton_path_parser.cpp -o CMakeFiles\VexRobot.dir\src\auton_path_parser.cpp.s
+CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\auton_editor_lib\auton_path_parser.cpp -o CMakeFiles\VexRobot.dir\src\auton_editor_lib\auton_path_parser.cpp.s
 
 CMakeFiles/VexRobot.dir/src/autonomous.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
 CMakeFiles/VexRobot.dir/src/autonomous.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
@@ -154,24 +154,10 @@ CMakeFiles/VexRobot.dir/src/robot/components/motor_gearsets.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/components/motor_gearsets.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\components\motor_gearsets.cpp -o CMakeFiles\VexRobot.dir\src\robot\components\motor_gearsets.cpp.s
 
-CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
-CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
-CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj: ../src/robot/components/move_to_point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\components\move_to_point.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\components\move_to_point.cpp
-
-CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\robot\components\move_to_point.cpp > CMakeFiles\VexRobot.dir\src\robot\components\move_to_point.cpp.i
-
-CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\components\move_to_point.cpp -o CMakeFiles\VexRobot.dir\src\robot\components\move_to_point.cpp.s
-
 CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
 CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
 CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj: ../src/robot/motion_control/PID.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\motion_control\PID.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\PID.cpp
 
 CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.i: cmake_force
@@ -181,6 +167,20 @@ CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.i: cmake_force
 CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\PID.cpp -o CMakeFiles\VexRobot.dir\src\robot\motion_control\PID.cpp.s
+
+CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj: ../src/robot/motion_control/auton.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\motion_control\auton.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\auton.cpp
+
+CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\auton.cpp > CMakeFiles\VexRobot.dir\src\robot\motion_control\auton.cpp.i
+
+CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\auton.cpp -o CMakeFiles\VexRobot.dir\src\robot\motion_control\auton.cpp.s
 
 CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
 CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
@@ -196,24 +196,52 @@ CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\kalman_filter.cpp -o CMakeFiles\VexRobot.dir\src\robot\motion_control\kalman_filter.cpp.s
 
-CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
-CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
-CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj: ../src/robot/motion_control/motion_tracker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\motion_control\motion_tracker.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\motion_tracker.cpp
+CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj: ../src/robot/old/motion_tracker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\old\motion_tracker.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\old\motion_tracker.cpp
 
-CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\motion_tracker.cpp > CMakeFiles\VexRobot.dir\src\robot\motion_control\motion_tracker.cpp.i
+CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\robot\old\motion_tracker.cpp > CMakeFiles\VexRobot.dir\src\robot\old\motion_tracker.cpp.i
 
-CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\motion_control\motion_tracker.cpp -o CMakeFiles\VexRobot.dir\src\robot\motion_control\motion_tracker.cpp.s
+CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\old\motion_tracker.cpp -o CMakeFiles\VexRobot.dir\src\robot\old\motion_tracker.cpp.s
+
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj: ../src/robot/old/move_to_point.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\old\move_to_point.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\old\move_to_point.cpp
+
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\robot\old\move_to_point.cpp > CMakeFiles\VexRobot.dir\src\robot\old\move_to_point.cpp.i
+
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\old\move_to_point.cpp -o CMakeFiles\VexRobot.dir\src\robot\old\move_to_point.cpp.s
+
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj: ../src/robot/old/move_to_point_simple.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\old\move_to_point_simple.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\old\move_to_point_simple.cpp
+
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\robot\old\move_to_point_simple.cpp > CMakeFiles\VexRobot.dir\src\robot\old\move_to_point_simple.cpp.i
+
+CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\old\move_to_point_simple.cpp -o CMakeFiles\VexRobot.dir\src\robot\old\move_to_point_simple.cpp.s
 
 CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
 CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
 CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj: ../src/robot/robot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\robot\robot.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\robot\robot.cpp
 
 CMakeFiles/VexRobot.dir/src/robot/robot.cpp.i: cmake_force
@@ -224,24 +252,38 @@ CMakeFiles/VexRobot.dir/src/robot/robot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/robot/robot.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\robot\robot.cpp -o CMakeFiles\VexRobot.dir\src\robot\robot.cpp.s
 
-CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
-CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
-CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj: ../src/tests/PID.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\tests\PID.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\tests\PID.cpp
+CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj: ../src/utils/action_queue.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\utils\action_queue.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\utils\action_queue.cpp
 
-CMakeFiles/VexRobot.dir/src/tests/PID.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/tests/PID.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\tests\PID.cpp > CMakeFiles\VexRobot.dir\src\tests\PID.cpp.i
+CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\utils\action_queue.cpp > CMakeFiles\VexRobot.dir\src\utils\action_queue.cpp.i
 
-CMakeFiles/VexRobot.dir/src/tests/PID.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/tests/PID.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\tests\PID.cpp -o CMakeFiles\VexRobot.dir\src\tests\PID.cpp.s
+CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\utils\action_queue.cpp -o CMakeFiles\VexRobot.dir\src\utils\action_queue.cpp.s
+
+CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
+CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
+CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj: ../src/utils/math.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\utils\math.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\utils\math.cpp
+
+CMakeFiles/VexRobot.dir/src/utils/math.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VexRobot.dir/src/utils/math.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Vex\PROS\Six-Vex-Robot\src\utils\math.cpp > CMakeFiles\VexRobot.dir\src\utils\math.cpp.i
+
+CMakeFiles/VexRobot.dir/src/utils/math.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VexRobot.dir/src/utils/math.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Vex\PROS\Six-Vex-Robot\src\utils\math.cpp -o CMakeFiles\VexRobot.dir\src\utils\math.cpp.s
 
 CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj: CMakeFiles/VexRobot.dir/flags.make
 CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj: CMakeFiles/VexRobot.dir/includes_CXX.rsp
 CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj: ../src/utils/vector2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\VexRobot.dir\src\utils\vector2.cpp.obj -c D:\Vex\PROS\Six-Vex-Robot\src\utils\vector2.cpp
 
 CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.i: cmake_force
@@ -254,43 +296,49 @@ CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.s: cmake_force
 
 # Object files for target VexRobot
 VexRobot_OBJECTS = \
-"CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/autonomous.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/initialize.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/opcontrol.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/robot/components/drive.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/robot/components/mechanisms.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/robot/components/motor_gearsets.cpp.obj" \
-"CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.obj" \
-"CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj" \
-"CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj" \
+"CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj" \
 "CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj"
 
 # External object files for target VexRobot
 VexRobot_EXTERNAL_OBJECTS =
 
-VexRobot.exe: CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/autonomous.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/initialize.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/opcontrol.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/components/drive.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/components/mechanisms.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/components/motor_gearsets.cpp.obj
-VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.obj
-VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/robot/robot.cpp.obj
-VexRobot.exe: CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj
+VexRobot.exe: CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/src/utils/vector2.cpp.obj
 VexRobot.exe: CMakeFiles/VexRobot.dir/build.make
 VexRobot.exe: CMakeFiles/VexRobot.dir/linklibs.rsp
 VexRobot.exe: CMakeFiles/VexRobot.dir/objects1.rsp
 VexRobot.exe: CMakeFiles/VexRobot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable VexRobot.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\Vex\PROS\Six-Vex-Robot\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable VexRobot.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\VexRobot.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

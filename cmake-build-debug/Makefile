@@ -122,32 +122,32 @@ VexRobot/fast:
 	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/build
 .PHONY : VexRobot/fast
 
-src/auton_path_parser.obj: src/auton_path_parser.cpp.obj
+src/auton_editor_lib/auton_path_parser.obj: src/auton_editor_lib/auton_path_parser.cpp.obj
 
-.PHONY : src/auton_path_parser.obj
+.PHONY : src/auton_editor_lib/auton_path_parser.obj
 
 # target to build an object file
-src/auton_path_parser.cpp.obj:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.obj
-.PHONY : src/auton_path_parser.cpp.obj
+src/auton_editor_lib/auton_path_parser.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.obj
+.PHONY : src/auton_editor_lib/auton_path_parser.cpp.obj
 
-src/auton_path_parser.i: src/auton_path_parser.cpp.i
+src/auton_editor_lib/auton_path_parser.i: src/auton_editor_lib/auton_path_parser.cpp.i
 
-.PHONY : src/auton_path_parser.i
+.PHONY : src/auton_editor_lib/auton_path_parser.i
 
 # target to preprocess a source file
-src/auton_path_parser.cpp.i:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.i
-.PHONY : src/auton_path_parser.cpp.i
+src/auton_editor_lib/auton_path_parser.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.i
+.PHONY : src/auton_editor_lib/auton_path_parser.cpp.i
 
-src/auton_path_parser.s: src/auton_path_parser.cpp.s
+src/auton_editor_lib/auton_path_parser.s: src/auton_editor_lib/auton_path_parser.cpp.s
 
-.PHONY : src/auton_path_parser.s
+.PHONY : src/auton_editor_lib/auton_path_parser.s
 
 # target to generate assembly for a file
-src/auton_path_parser.cpp.s:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/auton_path_parser.cpp.s
-.PHONY : src/auton_path_parser.cpp.s
+src/auton_editor_lib/auton_path_parser.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/auton_editor_lib/auton_path_parser.cpp.s
+.PHONY : src/auton_editor_lib/auton_path_parser.cpp.s
 
 src/autonomous.obj: src/autonomous.cpp.obj
 
@@ -311,33 +311,6 @@ src/robot/components/motor_gearsets.cpp.s:
 	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/components/motor_gearsets.cpp.s
 .PHONY : src/robot/components/motor_gearsets.cpp.s
 
-src/robot/components/move_to_point.obj: src/robot/components/move_to_point.cpp.obj
-
-.PHONY : src/robot/components/move_to_point.obj
-
-# target to build an object file
-src/robot/components/move_to_point.cpp.obj:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.obj
-.PHONY : src/robot/components/move_to_point.cpp.obj
-
-src/robot/components/move_to_point.i: src/robot/components/move_to_point.cpp.i
-
-.PHONY : src/robot/components/move_to_point.i
-
-# target to preprocess a source file
-src/robot/components/move_to_point.cpp.i:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.i
-.PHONY : src/robot/components/move_to_point.cpp.i
-
-src/robot/components/move_to_point.s: src/robot/components/move_to_point.cpp.s
-
-.PHONY : src/robot/components/move_to_point.s
-
-# target to generate assembly for a file
-src/robot/components/move_to_point.cpp.s:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/components/move_to_point.cpp.s
-.PHONY : src/robot/components/move_to_point.cpp.s
-
 src/robot/motion_control/PID.obj: src/robot/motion_control/PID.cpp.obj
 
 .PHONY : src/robot/motion_control/PID.obj
@@ -364,6 +337,33 @@ src/robot/motion_control/PID.s: src/robot/motion_control/PID.cpp.s
 src/robot/motion_control/PID.cpp.s:
 	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.s
 .PHONY : src/robot/motion_control/PID.cpp.s
+
+src/robot/motion_control/auton.obj: src/robot/motion_control/auton.cpp.obj
+
+.PHONY : src/robot/motion_control/auton.obj
+
+# target to build an object file
+src/robot/motion_control/auton.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj
+.PHONY : src/robot/motion_control/auton.cpp.obj
+
+src/robot/motion_control/auton.i: src/robot/motion_control/auton.cpp.i
+
+.PHONY : src/robot/motion_control/auton.i
+
+# target to preprocess a source file
+src/robot/motion_control/auton.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.i
+.PHONY : src/robot/motion_control/auton.cpp.i
+
+src/robot/motion_control/auton.s: src/robot/motion_control/auton.cpp.s
+
+.PHONY : src/robot/motion_control/auton.s
+
+# target to generate assembly for a file
+src/robot/motion_control/auton.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.s
+.PHONY : src/robot/motion_control/auton.cpp.s
 
 src/robot/motion_control/kalman_filter.obj: src/robot/motion_control/kalman_filter.cpp.obj
 
@@ -392,32 +392,86 @@ src/robot/motion_control/kalman_filter.cpp.s:
 	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.s
 .PHONY : src/robot/motion_control/kalman_filter.cpp.s
 
-src/robot/motion_control/motion_tracker.obj: src/robot/motion_control/motion_tracker.cpp.obj
+src/robot/old/motion_tracker.obj: src/robot/old/motion_tracker.cpp.obj
 
-.PHONY : src/robot/motion_control/motion_tracker.obj
+.PHONY : src/robot/old/motion_tracker.obj
 
 # target to build an object file
-src/robot/motion_control/motion_tracker.cpp.obj:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.obj
-.PHONY : src/robot/motion_control/motion_tracker.cpp.obj
+src/robot/old/motion_tracker.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.obj
+.PHONY : src/robot/old/motion_tracker.cpp.obj
 
-src/robot/motion_control/motion_tracker.i: src/robot/motion_control/motion_tracker.cpp.i
+src/robot/old/motion_tracker.i: src/robot/old/motion_tracker.cpp.i
 
-.PHONY : src/robot/motion_control/motion_tracker.i
+.PHONY : src/robot/old/motion_tracker.i
 
 # target to preprocess a source file
-src/robot/motion_control/motion_tracker.cpp.i:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.i
-.PHONY : src/robot/motion_control/motion_tracker.cpp.i
+src/robot/old/motion_tracker.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.i
+.PHONY : src/robot/old/motion_tracker.cpp.i
 
-src/robot/motion_control/motion_tracker.s: src/robot/motion_control/motion_tracker.cpp.s
+src/robot/old/motion_tracker.s: src/robot/old/motion_tracker.cpp.s
 
-.PHONY : src/robot/motion_control/motion_tracker.s
+.PHONY : src/robot/old/motion_tracker.s
 
 # target to generate assembly for a file
-src/robot/motion_control/motion_tracker.cpp.s:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/motion_control/motion_tracker.cpp.s
-.PHONY : src/robot/motion_control/motion_tracker.cpp.s
+src/robot/old/motion_tracker.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/motion_tracker.cpp.s
+.PHONY : src/robot/old/motion_tracker.cpp.s
+
+src/robot/old/move_to_point.obj: src/robot/old/move_to_point.cpp.obj
+
+.PHONY : src/robot/old/move_to_point.obj
+
+# target to build an object file
+src/robot/old/move_to_point.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.obj
+.PHONY : src/robot/old/move_to_point.cpp.obj
+
+src/robot/old/move_to_point.i: src/robot/old/move_to_point.cpp.i
+
+.PHONY : src/robot/old/move_to_point.i
+
+# target to preprocess a source file
+src/robot/old/move_to_point.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.i
+.PHONY : src/robot/old/move_to_point.cpp.i
+
+src/robot/old/move_to_point.s: src/robot/old/move_to_point.cpp.s
+
+.PHONY : src/robot/old/move_to_point.s
+
+# target to generate assembly for a file
+src/robot/old/move_to_point.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/move_to_point.cpp.s
+.PHONY : src/robot/old/move_to_point.cpp.s
+
+src/robot/old/move_to_point_simple.obj: src/robot/old/move_to_point_simple.cpp.obj
+
+.PHONY : src/robot/old/move_to_point_simple.obj
+
+# target to build an object file
+src/robot/old/move_to_point_simple.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.obj
+.PHONY : src/robot/old/move_to_point_simple.cpp.obj
+
+src/robot/old/move_to_point_simple.i: src/robot/old/move_to_point_simple.cpp.i
+
+.PHONY : src/robot/old/move_to_point_simple.i
+
+# target to preprocess a source file
+src/robot/old/move_to_point_simple.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.i
+.PHONY : src/robot/old/move_to_point_simple.cpp.i
+
+src/robot/old/move_to_point_simple.s: src/robot/old/move_to_point_simple.cpp.s
+
+.PHONY : src/robot/old/move_to_point_simple.s
+
+# target to generate assembly for a file
+src/robot/old/move_to_point_simple.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/old/move_to_point_simple.cpp.s
+.PHONY : src/robot/old/move_to_point_simple.cpp.s
 
 src/robot/robot.obj: src/robot/robot.cpp.obj
 
@@ -446,32 +500,59 @@ src/robot/robot.cpp.s:
 	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/robot/robot.cpp.s
 .PHONY : src/robot/robot.cpp.s
 
-src/tests/PID.obj: src/tests/PID.cpp.obj
+src/utils/action_queue.obj: src/utils/action_queue.cpp.obj
 
-.PHONY : src/tests/PID.obj
+.PHONY : src/utils/action_queue.obj
 
 # target to build an object file
-src/tests/PID.cpp.obj:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/tests/PID.cpp.obj
-.PHONY : src/tests/PID.cpp.obj
+src/utils/action_queue.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.obj
+.PHONY : src/utils/action_queue.cpp.obj
 
-src/tests/PID.i: src/tests/PID.cpp.i
+src/utils/action_queue.i: src/utils/action_queue.cpp.i
 
-.PHONY : src/tests/PID.i
+.PHONY : src/utils/action_queue.i
 
 # target to preprocess a source file
-src/tests/PID.cpp.i:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/tests/PID.cpp.i
-.PHONY : src/tests/PID.cpp.i
+src/utils/action_queue.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.i
+.PHONY : src/utils/action_queue.cpp.i
 
-src/tests/PID.s: src/tests/PID.cpp.s
+src/utils/action_queue.s: src/utils/action_queue.cpp.s
 
-.PHONY : src/tests/PID.s
+.PHONY : src/utils/action_queue.s
 
 # target to generate assembly for a file
-src/tests/PID.cpp.s:
-	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/tests/PID.cpp.s
-.PHONY : src/tests/PID.cpp.s
+src/utils/action_queue.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/utils/action_queue.cpp.s
+.PHONY : src/utils/action_queue.cpp.s
+
+src/utils/math.obj: src/utils/math.cpp.obj
+
+.PHONY : src/utils/math.obj
+
+# target to build an object file
+src/utils/math.cpp.obj:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/utils/math.cpp.obj
+.PHONY : src/utils/math.cpp.obj
+
+src/utils/math.i: src/utils/math.cpp.i
+
+.PHONY : src/utils/math.i
+
+# target to preprocess a source file
+src/utils/math.cpp.i:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/utils/math.cpp.i
+.PHONY : src/utils/math.cpp.i
+
+src/utils/math.s: src/utils/math.cpp.s
+
+.PHONY : src/utils/math.s
+
+# target to generate assembly for a file
+src/utils/math.cpp.s:
+	$(MAKE) -f CMakeFiles\VexRobot.dir\build.make CMakeFiles/VexRobot.dir/src/utils/math.cpp.s
+.PHONY : src/utils/math.cpp.s
 
 src/utils/vector2.obj: src/utils/vector2.cpp.obj
 
@@ -509,9 +590,9 @@ help:
 	@echo ... VexRobot
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... src/auton_path_parser.obj
-	@echo ... src/auton_path_parser.i
-	@echo ... src/auton_path_parser.s
+	@echo ... src/auton_editor_lib/auton_path_parser.obj
+	@echo ... src/auton_editor_lib/auton_path_parser.i
+	@echo ... src/auton_editor_lib/auton_path_parser.s
 	@echo ... src/autonomous.obj
 	@echo ... src/autonomous.i
 	@echo ... src/autonomous.s
@@ -530,24 +611,33 @@ help:
 	@echo ... src/robot/components/motor_gearsets.obj
 	@echo ... src/robot/components/motor_gearsets.i
 	@echo ... src/robot/components/motor_gearsets.s
-	@echo ... src/robot/components/move_to_point.obj
-	@echo ... src/robot/components/move_to_point.i
-	@echo ... src/robot/components/move_to_point.s
 	@echo ... src/robot/motion_control/PID.obj
 	@echo ... src/robot/motion_control/PID.i
 	@echo ... src/robot/motion_control/PID.s
+	@echo ... src/robot/motion_control/auton.obj
+	@echo ... src/robot/motion_control/auton.i
+	@echo ... src/robot/motion_control/auton.s
 	@echo ... src/robot/motion_control/kalman_filter.obj
 	@echo ... src/robot/motion_control/kalman_filter.i
 	@echo ... src/robot/motion_control/kalman_filter.s
-	@echo ... src/robot/motion_control/motion_tracker.obj
-	@echo ... src/robot/motion_control/motion_tracker.i
-	@echo ... src/robot/motion_control/motion_tracker.s
+	@echo ... src/robot/old/motion_tracker.obj
+	@echo ... src/robot/old/motion_tracker.i
+	@echo ... src/robot/old/motion_tracker.s
+	@echo ... src/robot/old/move_to_point.obj
+	@echo ... src/robot/old/move_to_point.i
+	@echo ... src/robot/old/move_to_point.s
+	@echo ... src/robot/old/move_to_point_simple.obj
+	@echo ... src/robot/old/move_to_point_simple.i
+	@echo ... src/robot/old/move_to_point_simple.s
 	@echo ... src/robot/robot.obj
 	@echo ... src/robot/robot.i
 	@echo ... src/robot/robot.s
-	@echo ... src/tests/PID.obj
-	@echo ... src/tests/PID.i
-	@echo ... src/tests/PID.s
+	@echo ... src/utils/action_queue.obj
+	@echo ... src/utils/action_queue.i
+	@echo ... src/utils/action_queue.s
+	@echo ... src/utils/math.obj
+	@echo ... src/utils/math.i
+	@echo ... src/utils/math.s
 	@echo ... src/utils/vector2.obj
 	@echo ... src/utils/vector2.i
 	@echo ... src/utils/vector2.s
