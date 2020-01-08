@@ -13,14 +13,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/json.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/opcontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/opcontrol.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,55 +24,6 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
-              <folding>
-                <element signature="e#40#57#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-              <folding>
-                <element signature="e#116#133#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-              <folding>
-                <element signature="e#41#72#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/rapidjson/document.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="548" column="78" selection-start-line="548" selection-start-column="78" selection-end-line="548" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>currentMoveAlgorithm =</find>
@@ -131,128 +76,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/robot/components/motion_tracker.cpp" />
-        <option value="$PROJECT_DIR$/src/auton_path_parser.cpp" />
-        <option value="$PROJECT_DIR$/src/opcontrol_old.cpp" />
-        <option value="$PROJECT_DIR$/src/motor_gearsets.h" />
-        <option value="$PROJECT_DIR$/src/PID.h" />
-        <option value="$PROJECT_DIR$/src/PID.cpp" />
-        <option value="$PROJECT_DIR$/src/tests/pid_test.h" />
-        <option value="$PROJECT_DIR$/src/tests/pid_test.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/components/arc_turner.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/arc_turner.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/components/move_to_point.h" />
-        <option value="$PROJECT_DIR$/src/tests/PID.cpp" />
-        <option value="$PROJECT_DIR$/src/main.h" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/robot/components/move_to_point_simple.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/drive_new.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/drive_new.cpp" />
-        <option value="$PROJECT_DIR$/src/utils/math.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/motion_tracker.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/components/move_to_point.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/motion_tracker.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/move_to_point_simple.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/motors.h" />
-        <option value="$PROJECT_DIR$/include/pros/motors.hpp" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/Queue.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/queue.h" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/action_queue.h" />
-        <option value="$PROJECT_DIR$/src/utils/math.h" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/action_queue.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/old/move_to_point.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/encoders.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/drive.h" />
-        <option value="$PROJECT_DIR$/src/utils/action_queue.cpp" />
-        <option value="$PROJECT_DIR$/src/utils/stack_trace.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/drive.cpp" />
-        <option value="$PROJECT_DIR$/src/initialize.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/robot.h" />
-        <option value="$PROJECT_DIR$/src/robot/ports.h" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/PID.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/PID.h" />
-        <option value="$PROJECT_DIR$/src/robot/components/mechanisms.h" />
-        <option value="$PROJECT_DIR$/src/robot/robot.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/auton.h" />
-        <option value="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" />
-        <option value="$PROJECT_DIR$/src/autonomous.cpp" />
-        <option value="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" />
-        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h" />
-        <option value="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" />
-        <option value="$PROJECT_DIR$/src/opcontrol.cpp" />
-      </list>
-    </option>
-  </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="960" />
     <option name="height" value="1080" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="auton_editor_lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="robot" type="462c0819:PsiDirectoryNode" />
-              <item name="motion_control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VexRobot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Six-Robotics-Vex-Bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectId" id="1W5O93Yz0Wpa7Cp5vQvR8qjeMyv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -261,7 +94,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -272,24 +105,29 @@
       <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot\components" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VexRobot" TARGET_NAME="VexRobot" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VexRobot" RUN_TARGET_NAME="VexRobot">
       <method v="2">
-        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_PROS" />
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Pros" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VexRobot" TARGET_NAME="VexRobot" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VexRobot" RUN_TARGET_NAME="VexRobot">
+      <method v="2">
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Pros" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -345,427 +183,58 @@
       <workItem from="1575062890313" duration="41223000" />
       <workItem from="1578070698084" duration="404000" />
       <workItem from="1578071122305" duration="9510000" />
+      <workItem from="1578435836158" duration="1792000" />
+      <workItem from="1578437713222" duration="359000" />
+      <workItem from="1578438300534" duration="602000" />
+      <workItem from="1578493193908" duration="1837000" />
+      <workItem from="1578495079502" duration="1858000" />
+      <workItem from="1578497393585" duration="1125000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219813000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18283582" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33125648" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.19314642" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3281412" />
-      <window_info anchor="bottom" id="Arduino Support" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16257995" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32917964" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32917964" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="CMake" order="11" weight="0.19314642" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3281412" />
-      <window_info anchor="bottom" id="Arduino Support" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp</url>
-          <line>113</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/include/main.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/drive_new.h" />
-    <entry file="file://$PROJECT_DIR$/src/robot/components/drive_new.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/utils/math.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="e#42#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/vector2.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point_simple.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point_simple.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-          <folding>
-            <element signature="e#42#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/algorithmfwd.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="510" column="10" lean-forward="true" selection-start-line="510" selection-start-column="10" selection-end-line="510" selection-end-column="10" />
-          <folding>
-            <element signature="e#12599#12637#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/pros/llemu.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="94" column="5" selection-start-line="94" selection-start-column="5" selection-end-line="94" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/float.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="120" column="15" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/math.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/action_queue.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/controllers.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/motor_gearsets.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/old/move_to_point.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="95" column="17" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
-          <folding>
-            <element signature="e#41#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/motor_gearsets.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/PID.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/tests/pid_test.h" />
-    <entry file="file://$PROJECT_DIR$/src/robot/old/motion_tracker.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-422" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/stack_trace.h" />
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/stack">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#2317#2333#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/pros/api_legacy.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-561" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/pros/adi.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1785" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/pros/apix.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1224" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/pros/motors.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="396" column="19" selection-start-line="396" selection-start-column="19" selection-end-line="396" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/robot.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
-          <folding>
-            <element signature="e#92#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.pros">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="128" column="29" lean-forward="true" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motors.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/ports.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/pros/adi.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/encoders.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/drive.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/initialize.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/action_queue.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-          <folding>
-            <element signature="e#42#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++/bits/stl_vector.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="804" column="6" selection-start-line="804" selection-start-column="6" selection-end-line="804" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/drive.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="132" selection-start-line="132" selection-end-line="135" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="23" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-          <folding>
-            <element signature="e#110#127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/autonomous.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1456">
-          <caret line="124" column="48" selection-start-line="124" selection-start-column="48" selection-end-line="124" selection-end-column="48" />
-          <folding>
-            <element signature="e#1#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/robot.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-          <folding>
-            <element signature="e#40#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/auton.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/motion_control/PID.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-          <folding>
-            <element signature="e#181#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/robot/components/mechanisms.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="138" column="55" selection-start-line="138" selection-start-column="55" selection-end-line="138" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/json.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20560" column="22" selection-start-line="20560" selection-start-column="22" selection-end-line="20560" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="e#116#133#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/rapidjson/document.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="548" column="78" selection-start-line="548" selection-start-column="78" selection-end-line="548" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/opcontrol.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="37" column="52" lean-forward="true" selection-start-line="37" selection-start-column="52" selection-end-line="37" selection-end-column="52" />
-          <folding>
-            <element signature="e#40#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="33" column="39" lean-forward="true" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-          <folding>
-            <element signature="e#41#72#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578496304975">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496304975" />
+    <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog" timestamp="1578496294968">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496294968" />
+    <state x="646" y="318" key="FileChooserDialogImpl" timestamp="1578436970598">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="646" y="318" key="FileChooserDialogImpl/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578436970598" />
+    <state width="1637" height="276" key="GridCell.Tab.0.bottom" timestamp="1578498472101">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1637" height="276" key="GridCell.Tab.0.bottom/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472101" />
+    <state width="1637" height="276" key="GridCell.Tab.0.center" timestamp="1578498472101">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1637" height="276" key="GridCell.Tab.0.center/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472101" />
+    <state width="1637" height="276" key="GridCell.Tab.0.left" timestamp="1578498472100">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1637" height="276" key="GridCell.Tab.0.left/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472100" />
+    <state width="1637" height="276" key="GridCell.Tab.0.right" timestamp="1578498472101">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state width="1637" height="276" key="GridCell.Tab.0.right/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472101" />
+    <state x="367" y="234" key="SettingsEditor" timestamp="1578496274903">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="367" y="234" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496274903" />
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1578493213449">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578493213449" />
+    <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1578496296143">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496296143" />
   </component>
 </project>
