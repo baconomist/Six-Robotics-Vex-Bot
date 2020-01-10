@@ -147,8 +147,7 @@ void Mechanisms::update() {
         } else if (lift) // Checks lift is not going past the bottom
         {
             lifter(lift);
-        }
-        else {
+        } else {
             tilter(0);
             lifter(0);
         }
