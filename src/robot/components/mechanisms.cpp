@@ -8,7 +8,6 @@
 #include "drive.h"
 #include <cmath>
 
-using namespace std;
 pros::Motor *transT;
 pros::Motor *transB;
 pros::Motor *intakeL;
@@ -20,6 +19,7 @@ P *Mechanisms::trayP = nullptr;
 P *Mechanisms::liftP = nullptr;
 
 bool override; // "Shift" key to allow tray and lift to spin past the auto stop
+
 /*
 maps the value from the range [curr_min, curr_max] to a value in the range [tar_min, tar_max]
 and scales it depending on the power
@@ -51,13 +51,15 @@ float Mechanisms::get_tilter_pos() {
 moves the lift up or down
 */
 void Mechanisms::lifter(int speed) {
+//    Mapping-based tray lift
 //    if (get_tilter_pos() > 1900 || get_tilter_pos() < 1400) {
 //        transB->move_velocity(-speed);
 //    } else
 //        transB->move_velocity(-speed * map(get_lift_pos(), 4000, 2800, 0.2, 0.6));
-    if (speed < 0 && get_lift_pos() > 4050) {
+
+    if (speed < 0 && get_lift_pos() > 4050) {   // When the lift is at the bottom but the tray isn't
         tilter(-60);
-    } else if (speed > 0 && get_tilter_pos() > 1850) {
+    } else if (speed > 0 && get_tilter_pos() > 1850) {  // When the lift is going up and the tilter hasn't moved
         tilter(60);
     } else {
         if ((get_lift_pos() < 3900 && get_lift_pos() > 3000 && get_tilter_pos() > 1400) ||
@@ -104,9 +106,6 @@ void Mechanisms::set_lift_position(LiftPosition liftPosition) {
         liftP = new P(10.0f, get_lift_pos, 3850, [](float speed) { lifter(-(int) speed); }, 100);
 }
 
-/*
-initializes all the motor's brake states
-*/
 void Mechanisms::initialize() {
     override = false;
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
@@ -121,20 +120,12 @@ void Mechanisms::initialize() {
 
     trayPot = new pros::ADIPotentiometer(TRAY_POT);
     liftPot = new pros::ADIPotentiometer(LIFT_POT);
-//    trayPot->calibrate();
+
     liftPot->calibrate();
-//    //trayPD = new PD(0.1, 0.1, tilter_get_pos, 0, [](float speed) { tilter(speed); }, true);
-//
-//    trayPot->calibrate();
-//    liftPot->calibrate();
 }
 
-/*
-updates the motors action
-*/
-int liftState = 0;
-
 void Mechanisms::update() {
+    // Button inputs
     int tilt = (master.get_digital(DIGITAL_R1)
                 - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
     int lift = 100 * (master.get_digital(DIGITAL_X)
@@ -149,40 +140,24 @@ void Mechanisms::update() {
         Drive::set_brake_all(MOTOR_BRAKE_COAST);
     }
 
-    if (tilt > 0) {
+    if (tilt > 0) { // Tray going up
         tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
         intake((int)map(get_tilter_pos(), 10, 1950, -5, -30));
-    } else {
+    }
+    else {
         intake(intakeSpeed);
-        if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
+        if (tilt < 0) {     // Tray going down doesn't need to be smooth
             tilter(-60);
-        } else if (override || lift < 0 && get_lift_pos() < 4040 || lift > 0) // Checks lift is not going past the bottom
-        {
+        } else if (override || lift > 0 || get_lift_pos() < 4040) {
             lifter(lift);
-        } else {
+        }
+        else {
             tilter(0);
             lifter(0);
         }
     }
 
-
     lcd::print(1, "Tray: %f", Mechanisms::get_tilter_pos());
     lcd::print(2, "Lift: %f", Mechanisms::get_lift_pos());
     lcd::print(3, "Power: %f", map(get_tilter_pos(), 10, 1950, 8, 40, 2));
-    /* // Lift flipout automation
-     if (flipout_sequence_index >= 1 && trayP->finished())
-     {
-         if (flipout_sequence_index == 2)
-             liftP = new P(0.1f, get_lift_pos, INSERT_LIFT_MID_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
-         else if (flipout_sequence_index == 3)
-             liftP = new P(0.5f, get_lift_pos, INSERT_LIFT_BOTTOM_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
-         flipout_sequence_index++;
-     }
-     if (liftP != nullptr && !liftP->finished())
-     {
-         liftP->update();
-     } else
-     {
-         lifter(0);
-     }*/
 }

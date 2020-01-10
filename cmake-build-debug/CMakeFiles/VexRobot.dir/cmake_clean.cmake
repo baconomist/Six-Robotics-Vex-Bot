@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/VexRobot.dir/src/robot/components/drive.cpp.obj"
   "CMakeFiles/VexRobot.dir/src/robot/components/mechanisms.cpp.obj"
   "CMakeFiles/VexRobot.dir/src/robot/components/motor_gearsets.cpp.obj"
+  "CMakeFiles/VexRobot.dir/src/robot/components/old_mechanisms.cpp.obj"
   "CMakeFiles/VexRobot.dir/src/robot/motion_control/PID.cpp.obj"
   "CMakeFiles/VexRobot.dir/src/robot/motion_control/auton.cpp.obj"
   "CMakeFiles/VexRobot.dir/src/robot/motion_control/kalman_filter.cpp.obj"
