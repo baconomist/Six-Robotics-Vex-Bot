@@ -23,6 +23,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FindInProjectRecents">
     <findStrings>
       <find>currentMoveAlgorithm =</find>

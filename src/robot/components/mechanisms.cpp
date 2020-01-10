@@ -26,7 +26,7 @@ P *Mechanisms::liftP = nullptr;
 moves the tray forwards and backwards
 */
 void Mechanisms::tilter(int speed) {
-    if (speed < 0 && get_tilter_pos() > 1970) {
+    if (speed < 0 && get_tilter_pos() > 1970 && !override) {
         transB->move_velocity(0);
         transT->move_velocity(0);
     } else {
@@ -102,6 +102,7 @@ void Mechanisms::set_lift_position(LiftPosition liftPosition) {
 initializes all the motor's brake states
 */
 void Mechanisms::initialize() {
+    override = false;
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
     transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
     intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_18, false);
@@ -127,11 +128,11 @@ updates the motors action
 */
 
 void Mechanisms::update() {
-    int tilt = (master.get_digital(DIGITAL_R1) - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
-    int lift = (master.get_digital(DIGITAL_X) - master.get_digital(DIGITAL_B));
-    int intakeSpeed = (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
-
-
+    int tilt = (master.get_digital(DIGITAL_R1)
+                - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
+    int lift = 100 * (master.get_digital(DIGITAL_X)
+                      - master.get_digital(DIGITAL_B));
+    int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
     // Brake if tray or lift is in use, otherwise coast
     if (get_tilter_pos() < 1650)
