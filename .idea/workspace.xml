@@ -11,10 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +20,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FindInProjectRecents">
     <findStrings>
       <find>currentMoveAlgorithm =</find>
@@ -76,6 +72,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="uZbZRiTT" />
+  </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="960" />
@@ -88,6 +87,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -189,6 +189,7 @@
       <workItem from="1578493193908" duration="1837000" />
       <workItem from="1578495079502" duration="1858000" />
       <workItem from="1578497393585" duration="1125000" />
+      <workItem from="1578590418715" duration="40000" />
     </task>
     <servers />
   </component>
@@ -228,10 +229,11 @@
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="367" y="234" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496274903" />
-    <state x="535" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1578493213449">
-      <screen x="0" y="0" width="1680" height="1020" />
+    <state x="489" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1578590440835">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578493213449" />
+    <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578590440835" />
     <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1578496296143">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
