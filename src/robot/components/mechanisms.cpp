@@ -19,7 +19,7 @@ pros::ADIPotentiometer *liftPot;
 P *Mechanisms::trayP = nullptr;
 P *Mechanisms::liftP = nullptr;
 
-
+bool override; // "Shift" key to allow tray and lift to spin past the auto stop
 /*
 maps the value from the range [curr_min, curr_max] to a value in the range [tar_min, tar_max]
 and scales it depending on the power
@@ -34,7 +34,7 @@ float map(float val, float curr_min, float curr_max, float tar_min, float tar_ma
 moves the tray forwards and backwards
 */
 void Mechanisms::tilter(int speed) {
-    if (speed < 0 && get_tilter_pos() > 1970) {
+    if (speed < 0 && get_tilter_pos() > 1970 && !override) {
         transB->move_velocity(0);
         transT->move_velocity(0);
     } else {
@@ -108,6 +108,7 @@ void Mechanisms::set_lift_position(LiftPosition liftPosition) {
 initializes all the motor's brake states
 */
 void Mechanisms::initialize() {
+    override = false;
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
     transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
     intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_18, false);
@@ -139,8 +140,7 @@ void Mechanisms::update() {
     int lift = 100 * (master.get_digital(DIGITAL_X)
                       - master.get_digital(DIGITAL_B));
     int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
-
-
+    override = master.get_digital(DIGITAL_Y);
 
     // Brake if tray or lift is in use, otherwise coast
     if (get_tilter_pos() < 1650) {
@@ -151,12 +151,12 @@ void Mechanisms::update() {
 
     if (tilt > 0) {
         tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
-        intake(-5);
+        intake((int)map(get_tilter_pos(), 10, 1950, -5, -30));
     } else {
         intake(intakeSpeed);
         if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
             tilter(-60);
-        } else if (lift < 0 && get_lift_pos() < 4040 || lift > 0) // Checks lift is not going past the bottom
+        } else if (override || lift < 0 && get_lift_pos() < 4040 || lift > 0) // Checks lift is not going past the bottom
         {
             lifter(lift);
         } else {
