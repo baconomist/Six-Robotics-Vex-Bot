@@ -57,23 +57,26 @@ void Mechanisms::lifter(int speed) {
 //    } else
 //        transB->move_velocity(-speed * map(get_lift_pos(), 4000, 2800, 0.2, 0.6));
 
-    if (speed < 0 && get_lift_pos() > 4050) {   // When the lift is at the bottom but the tray isn't
-        tilter(-60);
-    } else if (speed > 0 && get_tilter_pos() > 1850) {  // When the lift is going up and the tilter hasn't moved
-        tilter(60);
+    if (get_lift_pos() < 4050 || speed > 0) {    // Make sure we can't break the tray when its at the bottom
+        if (speed > 0 && get_tilter_pos() > 1850) {  // When the lift is going up and the tilter hasn't moved
+            tilter(60);
+        } else {
+            if ((get_lift_pos() > 3000 && get_tilter_pos() > 1200) &&
+                (get_lift_pos() < 3900 || speed < 0)) {   // If lift is up and the tray is down
+                if (speed > 0)
+                    transB->move_velocity(-speed * 0.1); // The lower the transB velocity, the faster the tray
+                else if (speed < 0)
+                    transB->move_velocity(-speed * 0.5);
+                else {
+                    transB->move_velocity(0);
+                }
+            } else
+                transB->move_velocity(-speed);
+            transT->move_velocity(speed);
+        }
+
     } else {
-        if ((get_lift_pos() < 3900 && get_lift_pos() > 3000 && get_tilter_pos() > 1400) ||
-            (speed < 0 && get_tilter_pos() > 1200 && get_lift_pos() > 3000)) {
-            if (speed > 0 && get_tilter_pos() > 1250)
-                transB->move_velocity(-speed * 0.1);
-            else if (speed < 0)
-                transB->move_velocity(-speed * 0.5);
-            else {
-                transB->move_velocity(0);
-            }
-        } else
-            transB->move_velocity(-speed);
-        transT->move_velocity(speed);
+        tilter(-60);
     }
 }
 
@@ -142,16 +145,14 @@ void Mechanisms::update() {
 
     if (tilt > 0) { // Tray going up
         tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
-        intake((int)map(get_tilter_pos(), 10, 1950, -5, -30));
-    }
-    else {
+        intake((int) map(get_tilter_pos(), 10, 1950, -5, -30));
+    } else {
         intake(intakeSpeed);
         if (tilt < 0) {     // Tray going down doesn't need to be smooth
             tilter(-60);
         } else if (override || lift > 0 || get_lift_pos() < 4040) {
             lifter(lift);
-        }
-        else {
+        } else {
             tilter(0);
             lifter(0);
         }
