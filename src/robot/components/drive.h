@@ -15,6 +15,8 @@
 extern const float TTI;
 extern const float ITT;
 
+int scale_motor_val(int speed, Motor *motor);
+
 enum DriveMode
 {
     DRIVE_MODE_TANK,

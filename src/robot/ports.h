@@ -15,7 +15,7 @@
 #define TRANSMISSION_TOP 8
 
 //Intake
-#define INTAKE_LEFT 9
+#define INTAKE_LEFT 6
 #define INTAKE_RIGHT 5
 
 // Legacy Ports (A=1, B=2...)

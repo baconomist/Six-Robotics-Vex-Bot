@@ -34,8 +34,13 @@ float map(float val, float curr_min, float curr_max, float tar_min, float tar_ma
 moves the tray forwards and backwards
 */
 void Mechanisms::tilter(int speed) {
-    transB->move_velocity(speed);
-    transT->move_velocity(speed);
+    if (speed < 0 && get_tilter_pos() > 1970) {
+        transB->move_velocity(0);
+        transT->move_velocity(0);
+    } else {
+        transB->move_velocity(speed);
+        transT->move_velocity(speed);
+    }
 }
 
 float Mechanisms::get_tilter_pos() {
@@ -46,18 +51,39 @@ float Mechanisms::get_tilter_pos() {
 moves the lift up or down
 */
 void Mechanisms::lifter(int speed) {
-    transB->move_velocity(-speed);
-    transT->move_velocity(speed);
+//    if (get_tilter_pos() > 1900 || get_tilter_pos() < 1400) {
+//        transB->move_velocity(-speed);
+//    } else
+//        transB->move_velocity(-speed * map(get_lift_pos(), 4000, 2800, 0.2, 0.6));
+    if (speed < 0 && get_lift_pos() > 4050) {
+        tilter(-60);
+    } else if (speed > 0 && get_tilter_pos() > 1850) {
+        tilter(60);
+    } else {
+        if ((get_lift_pos() < 3900 && get_lift_pos() > 3000 && get_tilter_pos() > 1400) ||
+            (speed < 0 && get_tilter_pos() > 1200 && get_lift_pos() > 3000)) {
+            if (speed > 0 && get_tilter_pos() > 1250)
+                transB->move_velocity(-speed * 0.1);
+            else if (speed < 0)
+                transB->move_velocity(-speed * 0.5);
+            else {
+                transB->move_velocity(0);
+            }
+        } else
+            transB->move_velocity(-speed);
+        transT->move_velocity(speed);
+    }
 }
 
 float Mechanisms::get_lift_pos() {
-    return (float) liftPot->get_value();
+    return (float) liftPot->get_value_calibrated();
 }
 
 /*
 controls the intake
 */
 void Mechanisms::intake(int speed) {
+    speed = scale_motor_val(speed, intakeL);
     intakeL->move_velocity(speed);
     intakeR->move_velocity(speed);
 }
@@ -84,8 +110,8 @@ initializes all the motor's brake states
 void Mechanisms::initialize() {
     transT = new pros::Motor(TRANSMISSION_TOP, E_MOTOR_GEARSET_36, false);
     transB = new pros::Motor(TRANSMISSION_BOTTOM, E_MOTOR_GEARSET_36, true);//reversed
-    intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_36, false);
-    intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_36, true);//reversed
+    intakeL = new pros::Motor(INTAKE_LEFT, E_MOTOR_GEARSET_18, false);
+    intakeR = new pros::Motor(INTAKE_RIGHT, E_MOTOR_GEARSET_18, true);//reversed
 
     transT->set_brake_mode(MOTOR_BRAKE_HOLD);
     transB->set_brake_mode(MOTOR_BRAKE_HOLD);
@@ -95,7 +121,7 @@ void Mechanisms::initialize() {
     trayPot = new pros::ADIPotentiometer(TRAY_POT);
     liftPot = new pros::ADIPotentiometer(LIFT_POT);
 //    trayPot->calibrate();
-//    liftPot->calibrate();
+    liftPot->calibrate();
 //    //trayPD = new PD(0.1, 0.1, tilter_get_pos, 0, [](float speed) { tilter(speed); }, true);
 //
 //    trayPot->calibrate();
@@ -128,9 +154,9 @@ void Mechanisms::update() {
         intake(-5);
     } else {
         intake(intakeSpeed);
-        if (tilt < 0) {
+        if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
             tilter(-60);
-        } else if (lift && get_tilter_pos() < 1700) // Tray must move out of way to allow lift
+        } else if (lift < 0 && get_lift_pos() < 4040 || lift > 0) // Checks lift is not going past the bottom
         {
             lifter(lift);
         } else {
