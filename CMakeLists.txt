@@ -24,7 +24,7 @@ endforeach()
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-add_executable(VexRobot ${SOURCES} ${HEADERS})
+add_executable(VexRobot ${SOURCES} ${HEADERS} "src/robot/components/old mechanisms.txt")
 
 #[[
 # Headers/include path
