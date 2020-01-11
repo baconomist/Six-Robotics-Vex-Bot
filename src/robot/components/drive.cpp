@@ -18,14 +18,19 @@ pros::Motor *driveLF;
 pros::Motor *driveRB;
 pros::Motor *driveRF;
 
+float power(int val, int p, Motor motor, int deadzone = 0){
+    float max_speed = get_gearset_rpm(motor.get_gearing());
+    return ((val>0)-(val<0)) * powf((abs(val)-deadzone)/max_speed,p)*max_speed;
+}
+
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
 DriveMode Drive::driveMode = DRIVE_MODE_TANK;
 
-int scale_motor_val(int speed, Motor *motor)
+int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1)
 {
-    return speed * get_gearset_rpm(motor->get_gearing()) / 127.0f;
+    return ((speed>0) - (speed<0))*powf((abs(speed)-deadzone)/127,p) * get_gearset_rpm(motor->get_gearing()) * 127;
 }
 
 /**
@@ -115,10 +120,10 @@ void Drive::arcade()
     scaling the values to 200 to match the internal gearset for move_velocity
     Since the all the motors on the drive have the same gearing anyone can be used to scale them
     */
-    int velLY = scale_motor_val(master.get_analog(ANALOG_LEFT_Y), driveLB);
-    int velRY = scale_motor_val(master.get_analog(ANALOG_RIGHT_Y), driveLB);
-    int velLX = scale_motor_val(master.get_analog(ANALOG_LEFT_X), driveLB);
-    int velRX = scale_motor_val(master.get_analog(ANALOG_RIGHT_X), driveLB);
+    int velLY = scale_motor_val(master.get_analog(ANALOG_LEFT_Y), driveLB, deadZone, 2);
+    int velRY = scale_motor_val(master.get_analog(ANALOG_RIGHT_Y), driveLB, deadZone, 2);
+    int velLX = scale_motor_val(master.get_analog(ANALOG_LEFT_X), driveLB, deadZone, 2);
+    int velRX = scale_motor_val(master.get_analog(ANALOG_RIGHT_X), driveLB, deadZone, 2);
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
     {
