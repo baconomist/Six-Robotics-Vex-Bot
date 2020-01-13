@@ -16,7 +16,7 @@
 extern const float TTI;
 extern const float ITT;
 
-int scale_motor_val(int speed, Motor *motor);
+float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power=1);
 
 enum DriveMode
 {

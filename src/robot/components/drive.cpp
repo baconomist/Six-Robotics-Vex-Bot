@@ -18,15 +18,27 @@ pros::Motor *driveLF;
 pros::Motor *driveRB;
 pros::Motor *driveRF;
 
-float power(int val, int p, Motor motor, int deadzone = 0){
-    float max_speed = get_gearset_rpm(motor.get_gearing());
-    return ((val>0)-(val<0)) * powf((abs(val)-deadzone)/max_speed,p)*max_speed;
-}
+// float power(int val, int p, Motor motor, int deadzone = 0){
+//     float max_speed = get_gearset_rpm(motor.get_gearing());
+//     return ((val>0)-(val<0)) * powf((abs(val)-deadzone)/max_speed,p)*max_speed;
+// }
 
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
 DriveMode Drive::driveMode = DRIVE_MODE_TANK;
+
+/*
+maps the value from the range [curr_min, curr_max] to a value in the range [tar_min, tar_max]
+and scales it depending on the power
+*/
+
+float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power) {
+    int sgn = (val>0) - (val<0);
+    float x = (fabsf(val) - curr_min)*(tar_max - tar_min)/(curr_max - curr_min);
+    return (tar_min + (power > 1 ? (float) pow((x)/(tar_max - tar_min), power - 1)*x : x))*sgn;
+    // y = ax^2 + bx + c
+}
 
 int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1)
 {
@@ -120,10 +132,10 @@ void Drive::arcade()
     scaling the values to 200 to match the internal gearset for move_velocity
     Since the all the motors on the drive have the same gearing anyone can be used to scale them
     */
-    int velLY = scale_motor_val(master.get_analog(ANALOG_LEFT_Y), driveLB, deadZone, 2);
-    int velRY = scale_motor_val(master.get_analog(ANALOG_RIGHT_Y), driveLB, deadZone, 2);
-    int velLX = scale_motor_val(master.get_analog(ANALOG_LEFT_X), driveLB, deadZone, 2);
-    int velRX = scale_motor_val(master.get_analog(ANALOG_RIGHT_X), driveLB, deadZone, 2);
+    int velLY = map(master.get_analog(ANALOG_LEFT_Y),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
+    // int velRY = map(master.get_analog(ANALOG_RIGHT_Y),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
+    int velLX = map(master.get_analog(ANALOG_LEFT_X),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
+    int velRX = map(master.get_analog(ANALOG_RIGHT_X),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),1);
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
     {
@@ -211,8 +223,8 @@ void Drive::initialize()
 
     driveLF = new pros::Motor(LEFT_FRONT, MOTOR_GEARSET_GREEN, false);
     driveLB = new pros::Motor(LEFT_BACK, MOTOR_GEARSET_GREEN, false);
-    driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true);//reserved
     driveRB = new pros::Motor(RIGHT_BACK, MOTOR_GEARSET_GREEN, true);//reversed
+    driveRF = new pros::Motor(RIGHT_FRONT, MOTOR_GEARSET_GREEN, true);//reserved
 
     //
     // float degrees = 360;
