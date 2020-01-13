@@ -197,14 +197,18 @@ void Mechanisms::update() {
     }
 
 
+    // Brake if tray or lift is in use, otherwise coast
+    if (get_tilter_pos() < 1650) {
+        Drive::set_brake_all(MOTOR_BRAKE_HOLD);
+    } else {
+        Drive::set_brake_all(MOTOR_BRAKE_COAST);
+    }
+
     if (tilt > 0) {
         tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
         intake(-5);
-    }
-    else if(intakeSpeed < 0 && get_tilter_pos() < 1650 && get_tilter_pos() > 1000)
-        intake(-fabs(Auton::get_drive_velocity()));
-    else {
-        intake(intakeSpeed * 200);
+    } else {
+        intake(intakeSpeed);
         if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
             tilter(-60);
         } else if (lift) // Checks lift is not going past the bottom
@@ -227,6 +231,10 @@ liftP = new P(0.1f, get_lift_pos, INSERT_LIFT_MID_VAL_HERE, [](float speed) { ti
 else if (flipout_sequence_index == 3)
 liftP = new P(0.5f, get_lift_pos, INSERT_LIFT_BOTTOM_VAL_HERE, [](float speed) { tilter((int) speed); }, 100);
 flipout_sequence_index++;
+	lcd::print(1, "Tray: %f", Mechanisms::get_tilter_pos());
+	lcd::print(2, "Lift: %f", Mechanisms::get_lift_pos());
+	lcd::print(3, "Power: %f", map(get_tilter_pos(), 10, 1950, 8, 40, 2));
+    
 }
 if (liftP != nullptr && !liftP->finished())
 {

@@ -12,13 +12,19 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
+=======
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
     </list>
+<<<<<<< refs/remotes/origin/master
 =======
     <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="" />
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,10 +108,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/Six-Vex-Robot.iml" />
 =======
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/Six-Vex-Robot.iml" />
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -122,10 +132,14 @@
   </component>
   <component name="RunManager">
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" RUN_PATH="$PROJECT_DIR$/.idea/Six-Vex-Robot.iml" EXPLICIT_BUILD_TARGET_NAME="all">
 =======
     <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VexRobot" TARGET_NAME="VexRobot" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VexRobot" RUN_TARGET_NAME="VexRobot">
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+    <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" RUN_PATH="$PROJECT_DIR$/.idea/Six-Vex-Robot.iml" EXPLICIT_BUILD_TARGET_NAME="all">
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
       <method v="2">
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Pros" />
       </method>
@@ -210,10 +224,15 @@
       <workItem from="1578497393585" duration="1125000" />
       <workItem from="1578590418715" duration="40000" />
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
       <workItem from="1578688102279" duration="1393000" />
       <workItem from="1578692023965" duration="3734000" />
 =======
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+      <workItem from="1578755682909" duration="407000" />
+      <workItem from="1578756418020" duration="1380000" />
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     </task>
     <servers />
   </component>
@@ -221,6 +240,7 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
     <state x="248" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578756639712">
       <screen x="0" y="0" width="1536" height="864" />
@@ -237,10 +257,22 @@
     </state>
     <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496304975" />
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+    <state x="248" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578756639712">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496304975" />
+    <state x="248" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1578756639712" />
+    <state x="449" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578756065797">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="449" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.864@0.0.1536.864" timestamp="1578756065797" />
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog" timestamp="1578496294968">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496294968" />
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
     <state x="591" y="269" key="FileChooserDialogImpl" timestamp="1578756636590">
       <screen x="0" y="0" width="1536" height="864" />
@@ -253,6 +285,13 @@
     </state>
     <state x="646" y="318" key="FileChooserDialogImpl/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578436970598" />
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+    <state x="591" y="269" key="FileChooserDialogImpl" timestamp="1578756636590">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="646" y="318" key="FileChooserDialogImpl/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578436970598" />
+    <state x="591" y="269" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1578756636590" />
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     <state width="1637" height="276" key="GridCell.Tab.0.bottom" timestamp="1578498472101">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
@@ -274,6 +313,7 @@
     </state>
     <state x="367" y="234" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496274903" />
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     <state x="489" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1578756421289">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -286,6 +326,13 @@
     <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578493213449" />
     <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578590440835" />
 >>>>>>> Auto stash before merge of "master" and "origin/master"
+=======
+    <state x="489" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1578756421289">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578493213449" />
+    <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578756421289" />
+>>>>>>> the map function can be now used to scale motor values inside the drive function. NOW the drive should run with more precision at lower speeds and still be able to reach high speeds at the ends of the scale. It handles negative values as long as it is in the range [-curr_max,curr_max]
     <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1578496296143">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
