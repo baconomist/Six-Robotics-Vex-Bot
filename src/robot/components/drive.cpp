@@ -10,6 +10,8 @@
 #include "../motion_control/PID.h"
 #include "../ports.h"
 
+DriveMode Drive::driveMode = DRIVE_MODE_TANK;
+
 const float TTI = Robot::TRACKING_WHEEL_DIAMETER / 360.0 * M_PI;
 const float ITT = 1.0 / TTI;
 
@@ -18,19 +20,19 @@ pros::Motor *driveLF;
 pros::Motor *driveRB;
 pros::Motor *driveRF;
 
-float power(int val, int p, Motor motor, int deadzone = 0){
+float power(int val, int p, Motor motor, int deadzone = 0)
+{
     float max_speed = get_gearset_rpm(motor.get_gearing());
-    return ((val>0)-(val<0)) * powf((abs(val)-deadzone)/max_speed,p)*max_speed;
+    return ((val > 0) - (val < 0)) * powf((abs(val) - deadzone) / max_speed, p) * max_speed;
 }
 
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
-DriveMode Drive::driveMode = DRIVE_MODE_TANK;
-
-int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1)
+int scale_motor_val(int speed, Motor *motor, int deadzone, int p)
 {
-    return ((speed>0) - (speed<0))*powf((abs(speed)-deadzone)/127,p) * get_gearset_rpm(motor->get_gearing()) * 127;
+    return ((speed > 0) - (speed < 0)) * powf((abs(speed) - deadzone) / 127, p) *
+           get_gearset_rpm(motor->get_gearing()) * 127;
 }
 
 /**
