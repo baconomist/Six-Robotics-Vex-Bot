@@ -64,9 +64,9 @@ void Mechanisms::lifter(int speed) {
             if ((get_lift_pos() > 3000 && get_tilter_pos() > 1200) &&
                 (get_lift_pos() < 3900 || speed < 0)) {   // If lift is up and the tray is down
                 if (speed > 0)
-                    transB->move_velocity(-speed * 0.1); // The lower the transB velocity, the faster the tray
+                    transB->move_velocity(-speed * 0.1);    // Move quickly on the way up
                 else if (speed < 0)
-                    transB->move_velocity(-speed * 0.5);
+                    transB->move_velocity(-speed * 0.5);    // Move slowly on the way down
                 else {
                     transB->move_velocity(0);
                 }
