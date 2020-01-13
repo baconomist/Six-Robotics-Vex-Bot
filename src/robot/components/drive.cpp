@@ -13,6 +13,8 @@
 
 DriveMode Drive::driveMode = DRIVE_MODE_TANK;
 
+DriveMode Drive::driveMode = DRIVE_MODE_TANK;
+
 const float TTI = Robot::TRACKING_WHEEL_DIAMETER / 360.0 * M_PI;
 const float ITT = 1.0 / TTI;
 
