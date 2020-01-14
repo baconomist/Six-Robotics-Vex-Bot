@@ -41,7 +41,7 @@ and scales it depending on the power
 float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power) {
     int sgn = (val>0) - (val<0);
     float x = (fabsf(val) - curr_min)*(tar_max - tar_min)/(curr_max - curr_min);
-    return fabsf(val) <=curr_min? 0:(tar_min + (power > 1 ? (float) pow((x)/(tar_max - tar_min), power - 1)*x : x))*sgn;
+    return fabsf(val) <=curr_min? tar_min:(tar_min + (power > 1 ? (float) powf((x)/(tar_max - tar_min), power - 1)*x : x))*sgn;
     // y = ax^2 + bx + c
 }
 int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1)
