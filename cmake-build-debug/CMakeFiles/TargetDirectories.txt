@@ -1,3 +1,0 @@
-D:/Vex/PROS/Six-Vex-Robot/cmake-build-debug/CMakeFiles/VexRobot.dir
-D:/Vex/PROS/Six-Vex-Robot/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Vex/PROS/Six-Vex-Robot/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -11,6 +11,8 @@
 #include "../ports.h"
 #include <cmath>
 
+DriveMode Drive::driveMode = DRIVE_MODE_TANK;
+
 const float TTI = Robot::TRACKING_WHEEL_DIAMETER / 360.0 * M_PI;
 const float ITT = 1.0 / TTI;
 
@@ -27,7 +29,7 @@ pros::Motor *driveRF;
 //P *rotateLeftPID;
 //P *rotateRightPID;
 
-DriveMode Drive::driveMode = DRIVE_MODE_TANK;
+DriveMode driveMode = DRIVE_MODE_ARCADE;
 
 /*
 maps the value from the range [curr_min, curr_max] to a value in the range [tar_min, tar_max]
@@ -42,7 +44,8 @@ float map(float val, float curr_min, float curr_max, float tar_min, float tar_ma
 }
 int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1)
 {
-    return ((speed>0) - (speed<0))*powf((abs(speed)-deadzone)/127,p) * get_gearset_rpm(motor->get_gearing()) * 127;
+    return ((speed > 0) - (speed < 0)) * powf((abs(speed) - deadzone) / 127, p) *
+           get_gearset_rpm(motor->get_gearing()) * 127;
 }
 
 /**
