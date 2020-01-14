@@ -9,6 +9,7 @@
 #include "../controllers.h"
 #include "../motion_control/PID.h"
 #include "../ports.h"
+#include <cmath>
 
 const float TTI = Robot::TRACKING_WHEEL_DIAMETER / 360.0 * M_PI;
 const float ITT = 1.0 / TTI;
@@ -36,7 +37,7 @@ and scales it depending on the power
 float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power) {
     int sgn = (val>0) - (val<0);
     float x = (fabsf(val) - curr_min)*(tar_max - tar_min)/(curr_max - curr_min);
-    return fabsf(val) <=curr_min? 0:(tar_min + (power > 1 ? (float) pow((x)/(tar_max - tar_min), power - 1)*x : x))*sgn;
+    return fabsf(val) <=curr_min? tar_min:(tar_min + (power > 1 ? (float) powf((x)/(tar_max - tar_min), power - 1)*x : x))*sgn;
     // y = ax^2 + bx + c
 }
 int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1)
@@ -116,7 +117,6 @@ void Drive::tank()
 
     // scale all velocities to Left-Back drive(all drives will be same gearset)
     move_left(scale_motor_val(velLY, driveLB));
-    move_left(scale_motor_val(velLY, driveLB));
     move_right(scale_motor_val(velRY, driveLB));
     strafe(scale_motor_val(velStrafe, driveLB));
 }
@@ -134,7 +134,7 @@ void Drive::arcade()
     int velLY = map(master.get_analog(ANALOG_LEFT_Y),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
     // int velRY = map(master.get_analog(ANALOG_RIGHT_Y),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
     int velLX = map(master.get_analog(ANALOG_LEFT_X),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
-    int velRX = map(master.get_analog(ANALOG_RIGHT_X),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),1);
+    int velRX = map(master.get_analog(ANALOG_RIGHT_X),deadZone,127,0, get_gearset_rpm(driveLB->get_gearing()),2);
 
     if (abs(velLX) < deadZone && abs(velLY) > deadZone)
     {

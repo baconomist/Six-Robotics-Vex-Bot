@@ -5,7 +5,6 @@
 #ifndef VEXROBOT_DRIVE_H
 #define VEXROBOT_DRIVE_H
 
-#include <math.h>
 #include "main.h"
 
 
