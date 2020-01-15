@@ -6,6 +6,7 @@
 #include "../encoders.h"
 #include "motor_gearsets.h"
 #include "drive.h"
+#include "../motion_control/auton.h"
 #include <cmath>
 
 using namespace std;
@@ -72,9 +73,11 @@ float Mechanisms::get_lift_pos() {
 
 /*
 controls the intake
+@param:
+    -200 <= speed <= 200
 */
 void Mechanisms::intake(int speed) {
-    speed = map(master.get_analog(ANALOG_LEFT_Y),0,127,0, get_gearset_rpm(intakeR->get_gearing()));
+    //speed = map(speed,0,200,0, get_gearset_rpm(intakeR->get_gearing()));
     intakeL->move_velocity(speed);
     intakeR->move_velocity(speed);
 }
@@ -122,29 +125,29 @@ void Mechanisms::initialize() {
 /*
 updates the motors action
 */
-int liftState = 0;
 
 void Mechanisms::update() {
-    int tilt = (master.get_digital(DIGITAL_R1)
-                - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
-    int lift = 100*(master.get_digital(DIGITAL_X)
-                    - master.get_digital(DIGITAL_B));
-    int intakeSpeed = 100*(master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+    int tilt = (master.get_digital(DIGITAL_R1) - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
+    int lift = (master.get_digital(DIGITAL_X) - master.get_digital(DIGITAL_B));
+    int intakeSpeed = (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
 
 
     // Brake if tray or lift is in use, otherwise coast
-    if (get_tilter_pos() < 1650) {
+    if (get_tilter_pos() < 1650)
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
-    } else {
+    else
         Drive::set_brake_all(MOTOR_BRAKE_COAST);
-    }
+
 
     if (tilt > 0) {
         tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
         intake(-5);
-    } else {
-        intake(intakeSpeed);
+    }
+    else if(intakeSpeed < 0 && get_tilter_pos() < 1650 && get_tilter_pos() > 1000)
+        intake(-fabs(Auton::get_drive_velocity()));
+    else {
+        intake(intakeSpeed * 200);
         if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
             tilter(-60);
         } else if (lift) // Checks lift is not going past the bottom
@@ -158,7 +161,7 @@ void Mechanisms::update() {
 
     lcd::print(1, "Tray: %f", Mechanisms::get_tilter_pos());
     lcd::print(2, "Lift: %f", Mechanisms::get_lift_pos());
-    lcd::print(3, "Power: %f", map(get_tilter_pos(), 10, 1950, 8, 40, 2));
+    lcd::print(3, "Drive velocity: %f", Auton::get_drive_velocity());
 /* // Lift flipout automation
 if (flipout_sequence_index >= 1 && trayP->finished())
 {

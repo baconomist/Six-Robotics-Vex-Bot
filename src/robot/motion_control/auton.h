@@ -68,6 +68,8 @@ public:
 
     static void update();
 
+    static float get_drive_velocity();
+
 private:
     static float x_pos_before_action_start;
     static float y_pos_before_action_start;

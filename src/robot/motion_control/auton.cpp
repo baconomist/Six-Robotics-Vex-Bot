@@ -61,6 +61,23 @@ void Auton::update()
     }
 }
 
+
+
+
+/*
+calculates linear velocity of robot in inches/s
+*/
+int prev_time = 0;
+float prev_avg_pos = 0;
+float Auton::get_drive_velocity(){
+    int curr_time = pros::millis();
+    float curr_avg_pos = (get_l_pos()+get_r_pos())/2;
+    float vel = (curr_avg_pos-prev_avg_pos)/((curr_time-prev_time)/1000);
+    prev_avg_pos = curr_avg_pos;
+    prev_time = curr_time;
+    return vel;
+
+}
 float Auton::calculate_rotation_from_motion()
 {
     // Distance from robot center to arc center
@@ -106,7 +123,7 @@ void Auton::goto_pos(float target_x, float target_y)
     float x_diff = target_x - x_position;
     float y_diff = target_y - y_position;
 
-    float distance = (float) sqrt(x_diff * x_diff + y_diff * y_diff);
+    float distance = (float) std::hypotf(x_diff,y_diff);
 
     if(x_diff == 0)
         distance *= (y_diff > 0 ? 1 : -1);
