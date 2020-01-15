@@ -182,12 +182,9 @@ updates the motors action
 */
 
 void Mechanisms::update() {
-    // Button inputs
-    int tilt = (master.get_digital(DIGITAL_R1)
-                - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
-    int lift = 100 * (master.get_digital(DIGITAL_X)
-                      - master.get_digital(DIGITAL_B));
-    int intakeSpeed = 100 * (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
+    int tilt = (master.get_digital(DIGITAL_R1) - master.get_digital(DIGITAL_R2));//slows down tilt speed as the tray goes up
+    int lift = (master.get_digital(DIGITAL_X) - master.get_digital(DIGITAL_B));
+    int intakeSpeed = (master.get_digital(DIGITAL_L1) - master.get_digital(DIGITAL_L2));
 
     // Brake if tray or lift is in use, otherwise coast
     if (get_tilter_pos() < 1650) {
@@ -198,17 +195,20 @@ void Mechanisms::update() {
 
 
     // Brake if tray or lift is in use, otherwise coast
-    if (get_tilter_pos() < 1650) {
+    if (get_tilter_pos() < 1650)
         Drive::set_brake_all(MOTOR_BRAKE_HOLD);
-    } else {
+    else
         Drive::set_brake_all(MOTOR_BRAKE_COAST);
-    }
+
 
     if (tilt > 0) {
         tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
         intake(-5);
-    } else {
-        intake(intakeSpeed);
+    }
+    else if(intakeSpeed < 0 && get_tilter_pos() < 1650 && get_tilter_pos() > 1000)
+        intake(-fabs(Auton::get_drive_velocity()));
+    else {
+        intake(intakeSpeed * 200);
         if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
             tilter(-60);
         } else if (lift) // Checks lift is not going past the bottom
