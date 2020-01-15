@@ -15,7 +15,9 @@
 extern const float TTI;
 extern const float ITT;
 
-int scale_motor_val(int speed, Motor *motor);
+using namespace pros;
+
+int scale_motor_val(int speed, pros::Motor *motor);
 
 enum DriveMode
 {

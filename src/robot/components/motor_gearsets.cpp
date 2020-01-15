@@ -3,7 +3,7 @@
 //
 
 #include "motor_gearsets.h"
-
+using namespace pros;
 int get_gearset_rpm(motor_gearset_e gearset)
 {
     switch (gearset)

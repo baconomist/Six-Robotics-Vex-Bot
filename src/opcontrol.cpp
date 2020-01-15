@@ -15,6 +15,7 @@ void opcontrol()
 {
     Robot::robotMode = ROBOT_MODE_RC;
     Drive::driveMode = DRIVE_MODE_ARCADE;
+	pros::Imu InertialSensor(15);
     // robot->start_mainloop();
 
     //Robot::robotMode = ROBOT_MODE_AUTON;
@@ -33,6 +34,8 @@ void opcontrol()
         Robot::update();
         //update_mtp();
         pros::delay(20);
+
+		pros::lcd::print(5, "Heading: %f", InertialSensor.get_heading());
     }
 
     //AutonPathParser *autonPathParser = new AutonPathParser(R"({"x":[[{"x_in":0,"y_in":0,"actions":[]},{"x_in":-48.08664259927798,"y_in":0.5198555956678632,"actions":[]},{"x_in":-49.64620938628159,"y_in":-36.90974729241877,"actions":[]}],[{"x_in":-23.263537906137174,"y_in":-0.2599277978339245},{"x_in":-48.086642599277965,"y_in":-18.714801444043317}]]})");
