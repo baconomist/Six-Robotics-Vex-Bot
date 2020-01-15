@@ -17,6 +17,8 @@ extern const float ITT;
 
 float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power=1);
 
+int scale_motor_val(int speed, pros::Motor *motor);
+
 enum DriveMode
 {
     DRIVE_MODE_TANK,

@@ -50,9 +50,9 @@ public:
 
     static P *currentMoveAlgorithm;
 
-    static ADIEncoder *leftEncoder;
-    static ADIEncoder *rightEncoder;
-    static ADIEncoder *centerEncoder;
+    static pros::ADIEncoder *leftEncoder;
+    static pros::ADIEncoder *rightEncoder;
+    static pros::ADIEncoder *centerEncoder;
 
     static void goto_pos(float x, float y);
 
