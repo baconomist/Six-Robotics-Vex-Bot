@@ -52,7 +52,7 @@ void Mechanisms::lifter(int speed) {
         transT->move_velocity(speed);
     } else if (speed > 0 && get_tilter_pos() > 1850) {
         tilter(60);
-    } else {
+    } else if (get_lift_pos() < 4000 || speed > 0){
         if (((get_lift_pos() < 3900 && get_tilter_pos() > 1400) || (speed < 0 && get_tilter_pos() > 1200))
             && get_lift_pos() > 3000) {
             if (speed > 0 && get_tilter_pos() > 1250)
@@ -141,18 +141,19 @@ void Mechanisms::update() {
 
 
     if (tilt > 0) {
-        tilter((int) map(get_tilter_pos(), 10, 1950, 8, 40, 2));
+        tilter((int) map(get_tilter_pos(), 10, 1950, 15, 40, 2));
         intake(-5);
     }
     else if(intakeSpeed < 0 && get_tilter_pos() < 1650 && get_tilter_pos() > 1000)
-        intake(-fabs(Auton::get_drive_velocity()));
+//        intake((int)-fabs(Auton::get_drive_velocity()));
+    	intake((int)-driveLB->get_actual_velocity());
     else {
         intake(intakeSpeed * 200);
         if (tilt < 0) {         // Tray speed going down doesn't need to be smooth, no cubes
             tilter(-60);
         } else if (lift) // Checks lift is not going past the bottom
         {
-            lifter(lift);
+            lifter(lift * 100);
         } else {
             tilter(0);
             lifter(0);
@@ -161,7 +162,7 @@ void Mechanisms::update() {
 
     lcd::print(1, "Tray: %f", Mechanisms::get_tilter_pos());
     lcd::print(2, "Lift: %f", Mechanisms::get_lift_pos());
-    lcd::print(3, "Drive velocity: %f", Auton::get_drive_velocity());
+    lcd::print(3, "Drive velocity: %f", (float)driveLB->get_actual_velocity());
 /* // Lift flipout automation
 if (flipout_sequence_index >= 1 && trayP->finished())
 {

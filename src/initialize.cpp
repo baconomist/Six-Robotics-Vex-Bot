@@ -26,6 +26,7 @@ void initialize()
 {
     pros::lcd::initialize();
     Robot::initialize();
+    Auton::initialize();
 }
 
 /**
