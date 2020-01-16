@@ -13,6 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/opcontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/opcontrol.cpp" afterDir="false" />
@@ -22,6 +23,8 @@
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
 =======
+=======
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/src/initialize.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/initialize.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
     </list>
@@ -35,6 +38,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -106,6 +110,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
 =======
+=======
+>>>>>>> master
   <component name="FindInProjectRecents">
     <findStrings>
       <find>currentMoveAlgorithm =</find>
@@ -178,11 +184,14 @@
     <option name="directoryName" value="uZbZRiTT" />
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="960" />
     <option name="height" value="1080" />
   </component>
+=======
+>>>>>>> master
   <component name="ProjectId" id="1W5O93Yz0Wpa7Cp5vQvR8qjeMyv" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -240,14 +249,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/Six-Vex-Robot.iml" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/include/pros" />
+>>>>>>> master
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
   </component>
   <component name="RecentsManager">
+<<<<<<< HEAD
 =======
     <property name="last_opened_file_path" value="$PROJECT_DIR$/include/pros" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -260,6 +274,11 @@
       <recent name="D:\My Stuff\6IX\Code\Six-Robotics-Vex-Bot\include\pros" />
     </key>
 >>>>>>> Stashed changes
+=======
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\My Stuff\6IX\Code\Six-Robotics-Vex-Bot\include\pros" />
+    </key>
+>>>>>>> master
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot\old" />
       <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\auton_editor_lib" />
@@ -368,11 +387,17 @@
       <workItem from="1578495079502" duration="1858000" />
       <workItem from="1578497393585" duration="1125000" />
       <workItem from="1578590418715" duration="40000" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       <workItem from="1578755682909" duration="407000" />
       <workItem from="1578756418020" duration="1380000" />
       <workItem from="1579182512047" duration="4208000" />
       <workItem from="1579207844764" duration="2957000" />
+=======
+      <workItem from="1578947074010" duration="10328000" />
+      <workItem from="1579121122100" duration="7133000" />
+      <workItem from="1579207171970" duration="567000" />
+>>>>>>> master
     </task>
     <servers />
   </component>
@@ -441,6 +466,7 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <state x="248" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578756639712">
       <screen x="0" y="0" width="1536" height="864" />
@@ -457,39 +483,54 @@
     </state>
     <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496304975" />
 >>>>>>> Stashed changes
+=======
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578496304975">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496304975" />
+>>>>>>> master
     <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog" timestamp="1578496294968">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496294968" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <state x="591" y="269" key="FileChooserDialogImpl" timestamp="1578756636590">
       <screen x="0" y="0" width="1536" height="864" />
+=======
+    <state x="646" y="318" key="FileChooserDialogImpl" timestamp="1578436970598">
+      <screen x="0" y="0" width="1680" height="1020" />
+>>>>>>> master
     </state>
     <state x="646" y="318" key="FileChooserDialogImpl/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578436970598" />
-    <state x="591" y="269" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1578756636590" />
-    <state width="1637" height="276" key="GridCell.Tab.0.bottom" timestamp="1578498472101">
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.bottom/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.center/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.center/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.left/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.left/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.right/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.right/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state x="367" y="234" key="SettingsEditor" timestamp="1578948762699">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
-    <state width="1637" height="276" key="GridCell.Tab.0.bottom/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472101" />
-    <state width="1637" height="276" key="GridCell.Tab.0.center" timestamp="1578498472101">
-      <screen x="0" y="0" width="1680" height="1020" />
+    <state x="367" y="234" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578948762699" />
+    <state x="-659" y="-807" key="com.intellij.ide.util.TipDialog" timestamp="1579207492923">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
     </state>
-    <state width="1637" height="276" key="GridCell.Tab.0.center/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472101" />
-    <state width="1637" height="276" key="GridCell.Tab.0.left" timestamp="1578498472100">
-      <screen x="0" y="0" width="1680" height="1020" />
-    </state>
-    <state width="1637" height="276" key="GridCell.Tab.0.left/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472100" />
-    <state width="1637" height="276" key="GridCell.Tab.0.right" timestamp="1578498472101">
-      <screen x="0" y="0" width="1680" height="1020" />
-    </state>
-    <state width="1637" height="276" key="GridCell.Tab.0.right/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578498472101" />
-    <state x="367" y="234" key="SettingsEditor" timestamp="1578496274903">
-      <screen x="0" y="0" width="1680" height="1020" />
-    </state>
-    <state x="367" y="234" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496274903" />
-    <state x="489" y="281" key="com.intellij.ide.util.TipDialog" timestamp="1578756421289">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
+<<<<<<< HEAD
     <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578493213449" />
     <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578756421289" />
 =======
@@ -528,10 +569,16 @@
     <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1579121275490" />
     <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578590440835" />
 >>>>>>> Stashed changes
+=======
+    <state x="-659" y="-807" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579207492923" />
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1579121275490" />
+    <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578590440835" />
+>>>>>>> master
     <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1578496296143">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496296143" />
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   </component>
   <component name="editorHistoryManager">
@@ -585,10 +632,15 @@
       </provider>
     </entry>
 =======
+=======
+>>>>>>> master
     <state x="92" y="92" width="1496" height="836" key="dock-window-2" timestamp="1578947152227">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="92" y="92" width="1496" height="836" key="dock-window-2/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578947152227" />
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> master
   </component>
 </project>
