@@ -13,6 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4e0d9bea-ed72-441e-b4b9-74ec867a4b29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/auton_editor_lib/auton_path_parser.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/opcontrol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/opcontrol.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/motion_control/auton.cpp" afterDir="false" />
@@ -20,6 +21,11 @@
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/initialize.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/initialize.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot/components/mechanisms.cpp" afterDir="false" />
+    </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +35,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+<<<<<<< Updated upstream
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -98,6 +105,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+=======
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>currentMoveAlgorithm =</find>
+>>>>>>> Stashed changes
       <find>MIN</find>
       <find>pri</find>
       <find>expectedLPos =</find>
@@ -127,7 +139,10 @@
       <find>finish</find>
       <find>listener</find>
       <find>json</find>
+<<<<<<< Updated upstream
       <find>turn</find>
+=======
+>>>>>>> Stashed changes
     </findStrings>
     <replaceStrings>
       <replace>-&gt;</replace>
@@ -148,6 +163,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< Updated upstream
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -156,10 +172,13 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="MacroExpansionManager">
     <option name="directoryName" value="uZbZRiTT" />
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+<<<<<<< Updated upstream
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="960" />
     <option name="height" value="1080" />
@@ -209,6 +228,9 @@
       <pane id="Scope" />
     </panes>
   </component>
+=======
+  <component name="ProjectId" id="1W5O93Yz0Wpa7Cp5vQvR8qjeMyv" />
+>>>>>>> Stashed changes
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -218,6 +240,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/Six-Vex-Robot.iml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -225,6 +248,18 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/include/pros" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\My Stuff\6IX\Code\Six-Robotics-Vex-Bot\include\pros" />
+    </key>
+>>>>>>> Stashed changes
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot\old" />
       <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\auton_editor_lib" />
@@ -233,6 +268,7 @@
       <recent name="C:\Users\Lucas\Desktop\Projects\Six-Robotics-Vex-Bot\src\robot\components" />
     </key>
   </component>
+<<<<<<< Updated upstream
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -245,6 +281,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="RunManager">
     <configuration name="VexRobot" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="VexRobot" TARGET_NAME="VexRobot" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="VexRobot" RUN_TARGET_NAME="VexRobot">
       <method v="2">
@@ -330,6 +368,7 @@
       <workItem from="1578495079502" duration="1858000" />
       <workItem from="1578497393585" duration="1125000" />
       <workItem from="1578590418715" duration="40000" />
+<<<<<<< Updated upstream
       <workItem from="1578755682909" duration="407000" />
       <workItem from="1578756418020" duration="1380000" />
       <workItem from="1579182512047" duration="4208000" />
@@ -390,10 +429,19 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout-to-restore>
   </component>
+=======
+      <workItem from="1578947074010" duration="10328000" />
+      <workItem from="1579121122100" duration="7133000" />
+      <workItem from="1579207171970" duration="567000" />
+    </task>
+    <servers />
+  </component>
+>>>>>>> Stashed changes
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state x="248" y="119" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578756639712">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -403,10 +451,17 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="449" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.864@0.0.1536.864" timestamp="1578756065797" />
+=======
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578496304975">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="271" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496304975" />
+>>>>>>> Stashed changes
     <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog" timestamp="1578496294968">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="613" y="339" width="454" height="346" key="#com.intellij.tools.ToolEditorDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496294968" />
+<<<<<<< Updated upstream
     <state x="591" y="269" key="FileChooserDialogImpl" timestamp="1578756636590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -437,10 +492,47 @@
     </state>
     <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578493213449" />
     <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578756421289" />
+=======
+    <state x="646" y="318" key="FileChooserDialogImpl" timestamp="1578436970598">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="646" y="318" key="FileChooserDialogImpl/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578436970598" />
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.bottom/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.bottom/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.center/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.center/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.left/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.left/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1579138431865">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state width="1493" height="213" key="GridCell.Tab.0.right/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579138431865" />
+    <state width="1637" height="276" key="GridCell.Tab.0.right/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578962282896" />
+    <state x="367" y="234" key="SettingsEditor" timestamp="1578948762699">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="367" y="234" key="SettingsEditor/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578948762699" />
+    <state x="-659" y="-807" key="com.intellij.ide.util.TipDialog" timestamp="1579207492923">
+      <screen x="-1148" y="-1080" width="1536" height="840" />
+    </state>
+    <state x="-659" y="-807" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@-1148.-1080.1536.840" timestamp="1579207492923" />
+    <state x="535" y="332" key="com.intellij.ide.util.TipDialog/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1579121275490" />
+    <state x="489" y="281" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1578590440835" />
+>>>>>>> Stashed changes
     <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1578496296143">
       <screen x="0" y="0" width="1680" height="1020" />
     </state>
     <state x="735" y="244" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578496296143" />
+<<<<<<< Updated upstream
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/robot/components/drive.h">
@@ -492,5 +584,11 @@
         </state>
       </provider>
     </entry>
+=======
+    <state x="92" y="92" width="1496" height="836" key="dock-window-2" timestamp="1578947152227">
+      <screen x="0" y="0" width="1680" height="1020" />
+    </state>
+    <state x="92" y="92" width="1496" height="836" key="dock-window-2/-1148.-1080.1536.840/0.0.1680.1020@0.0.1680.1020" timestamp="1578947152227" />
+>>>>>>> Stashed changes
   </component>
 </project>
