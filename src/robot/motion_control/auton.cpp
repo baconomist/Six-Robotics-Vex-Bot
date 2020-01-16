@@ -189,7 +189,7 @@ void Auton::goto_heading(float heading_degrees)
                                 Auton::set_algorithm(new P(Auton::kP_turn, get_l_pos, turn_distance * ITT * heading_direction, [](float speed) {
                                     Auton::heading_deg = heading_deg_before_action_start - calculate_rotation_from_motion() * RAD2DEG;
 
-                                    Drive::turn(speed * heading_direction);
+                                    Drive::turn(speed);
                                 }));
                             },
                             [] { return Auton::currentMoveAlgorithm->finished(); }, 0, heading_degrees));
