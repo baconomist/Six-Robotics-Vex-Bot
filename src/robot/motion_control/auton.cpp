@@ -11,6 +11,7 @@
 #include "../ports.h"
 #include "../../utils/math.h"
 #include "PID.h"
+#include "../controllers.h"
 
 using namespace math;
 
@@ -44,10 +45,20 @@ void Auton::initialize()
     actionQueue = new ActionQueue();
 }
 
+bool debug_stop = false;
+
 void Auton::update()
 {
-    printf("Encoder Values: %f %f %f\n", (float)leftEncoder->get_value(), (float)rightEncoder->get_value(), (float)centerEncoder->get_value());
     Auton::print_debug();
+    //printf("Encoder Values: %f %f %f\n", (float)leftEncoder->get_value(), (float)rightEncoder->get_value(), (float)centerEncoder->get_value());
+    if (master.get_digital(DIGITAL_DOWN))
+        debug_stop = true;
+    if (debug_stop)
+    {
+        Drive::stop();
+        return;
+    }
+
     actionQueue->update();
     if (currentMoveAlgorithm != nullptr)
     {
@@ -62,22 +73,22 @@ void Auton::update()
 }
 
 
-
-
 /*
 calculates linear velocity of robot in inches/s
 */
 int prev_time = 0;
 float prev_avg_pos = 0;
-float Auton::get_drive_velocity(){
+
+float Auton::get_drive_velocity()
+{
     int curr_time = pros::millis();
-    float curr_avg_pos = (get_l_pos()+get_r_pos())/2;
-    float vel = (curr_avg_pos-prev_avg_pos)/((curr_time-prev_time)/1000);
+    float curr_avg_pos = (get_l_pos() + get_r_pos()) / 2;
+    float vel = (curr_avg_pos - prev_avg_pos) / ((curr_time - prev_time) / 1000);
     prev_avg_pos = curr_avg_pos;
     prev_time = curr_time;
     return vel;
-
 }
+
 float Auton::calculate_rotation_from_motion()
 {
     // Distance from robot center to arc center
@@ -123,11 +134,11 @@ void Auton::goto_pos(float target_x, float target_y)
     float x_diff = target_x - x_position;
     float y_diff = target_y - y_position;
 
-    float distance = (float) std::hypotf(x_diff,y_diff);
+    float distance = (float) std::hypotf(x_diff, y_diff);
 
-    if(x_diff == 0)
+    if (x_diff <= 0.01f)
         distance *= (y_diff > 0 ? 1 : -1);
-    else if(y_diff == 0)
+    else if (y_diff <= 0.01f)
         distance *= (x_diff > 0 ? 1 : -1);
 
     // Turn to match heading
@@ -151,8 +162,6 @@ void Auton::goto_pos(float target_x, float target_y)
             Drive::move_straight(speed);
         }));
     }, [] { return Auton::currentMoveAlgorithm->finished(); }, distance));
-
-
 }
 
 void Auton::goto_pos(float target_x, float target_y, float final_heading_degrees)
@@ -163,7 +172,6 @@ void Auton::goto_pos(float target_x, float target_y, float final_heading_degrees
 }
 
 float heading_direction = 1;
-
 void Auton::goto_heading(float heading_degrees)
 {
     heading_deg_before_action_start = Auton::heading_deg;
@@ -172,11 +180,15 @@ void Auton::goto_heading(float heading_degrees)
             new AutonAction([](AutonAction *autonAction) {
                                 expectedHeadingDeg = autonAction->heading;
 
-                                float turn_distance = Robot::TRACKING_WHEEL_TO_CENTER_DIST * autonAction->heading * DEG2RAD;
+                                float turn_distance = Robot::TRACKING_WHEEL_TO_CENTER_DIST *
+                                                      (abs(autonAction->heading - Auton::heading_deg) * DEG2RAD);
 
-                                heading_direction = (autonAction->heading > 0 ? 1 : -1);
-                                Auton::set_algorithm(new P(Auton::kP_straight, get_l_pos, turn_distance * ITT, [](float speed) {
-                                    Auton::heading_deg = heading_deg_before_action_start + calculate_rotation_from_motion() * RAD2DEG;
+                                heading_direction = (autonAction->heading < Auton::heading_deg ? -1 : 1);
+                                master.print(0, 0, "%f", turn_distance * heading_direction);
+
+                                Auton::set_algorithm(new P(Auton::kP_turn, get_l_pos, turn_distance * ITT * heading_direction, [](float speed) {
+                                    Auton::heading_deg = heading_deg_before_action_start - calculate_rotation_from_motion() * RAD2DEG;
+
                                     Drive::turn(speed * heading_direction);
                                 }));
                             },

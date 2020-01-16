@@ -28,11 +28,10 @@ void AutonPathParser::parseFile()
 {
     std::vector<Vector2> points;
 
-    for (rapidjson::Value::MemberIterator itr = jsonDocument.MemberBegin();
+    for (rapidjson::Value::MemberIterator itr = jsonDocument["path"][0].MemberBegin();
          itr != jsonDocument.MemberEnd(); ++itr)
     {
-        printf("%s", itr->name.GetString());
-        //points.push_back(Vector2(pathJSON[i]["x_in"], pathJSON[i]["y_in"]));
+        points.push_back(Vector2(itr->value["x_in"].GetFloat(), itr->value["y_in"].GetFloat()));
     }
 
     dataToInstructions(points);
