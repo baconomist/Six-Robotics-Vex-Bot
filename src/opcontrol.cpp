@@ -1,5 +1,7 @@
 #include "main.h"
+#include "okapi/api.hpp"
 #include "globals.h"
+#include "ports.h"
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -17,9 +19,6 @@
 
 void opcontrol()
 {
-    while (true)
-    {
 
-    }
 }
 
