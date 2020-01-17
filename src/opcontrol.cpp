@@ -35,6 +35,8 @@ void opcontrol()
         Robot::update();
         //update_mtp();
         pros::delay(20);
+
+		pros::lcd::print(5, "Heading: %f", InertialSensor.get_heading());
     }
 
     /*AutonPathParser *autonPathParser = new AutonPathParser(

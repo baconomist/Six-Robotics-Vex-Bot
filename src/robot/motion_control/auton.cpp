@@ -203,10 +203,12 @@ void Auton::register_action_complete_callback(void (*callback)())
 
 void Auton::reset_encoders()
 {
-    driveLF->tare_position();
-    driveRF->tare_position();
-    driveLB->tare_position();
-    driveRB->tare_position();
+//    driveLF->tare_position();
+//    driveRF->tare_position();
+//    driveLB->tare_position();
+//    driveRB->tare_position();
+    leftEncoder->reset();
+    rightEncoder->reset();
 }
 
 void Auton::print_debug()
@@ -224,7 +226,6 @@ void Auton::set_algorithm(P *algorithm)
     currentMoveAlgorithm = algorithm;
     reset_encoders();
 }
-
 
 AutonAction::AutonAction(void (*execute_func)(AutonAction *), bool (*finished_func)(), float distance,
                          float heading)
