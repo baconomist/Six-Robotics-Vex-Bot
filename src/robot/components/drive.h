@@ -15,9 +15,9 @@
 extern const float TTI;
 extern const float ITT;
 
-float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power=1);
+float map(float val, float curr_min, float curr_max, float tar_min, float tar_max, int power=1, _Bool use_sgn = true);
 
-int scale_motor_val(int speed, pros::Motor *motor);
+int scale_motor_val(int speed, Motor *motor,  int deadzone = 0, int p = 1);
 
 enum DriveMode
 {
@@ -53,6 +53,9 @@ public:
     static void update();
 
     static void initialize();
+
+    static int motor_speeds[128];
+    static int deadZone;
 };
 
 
