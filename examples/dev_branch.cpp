@@ -1,7 +1,6 @@
 #include "main.h"
 #include "okapi/api.hpp"
 #include "../src/globals.h"
-#include "../src/hardware.h"
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -19,7 +18,8 @@
 
 using namespace okapi::literals;
 using namespace okapi;
-using namespace ports;
+using namespace hardware;
+using namespace hardware::ports;
 
 void opcontrol()
 {

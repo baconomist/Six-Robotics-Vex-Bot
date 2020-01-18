@@ -1,7 +1,6 @@
 #include "main.h"
 #include "okapi/api.hpp"
 #include "../src/globals.h"
-#include "../src/ports.h"
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -19,12 +18,14 @@
 
 using namespace okapi::literals;
 using namespace okapi;
+using namespace hardware;
+using namespace hardware::ports;
 
 void opcontrol()
 {
-    okapi::ADIEncoder leftEncoder(LEFT_Y_ENCODER_TOP, LEFT_Y_ENCODER_BOTTOM);
-    okapi::ADIEncoder rightEncoder(RIGHT_Y_ENCODER_BOTTOM, RIGHT_Y_ENCODER_TOP, false);
-    okapi::ADIEncoder centerEncoder(X_ENCODER_BOTTOM, X_ENCODER_TOP, false);
+    okapi::ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
+    okapi::ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
+    okapi::ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
 
     IterativePosPIDController::Gains distanceGains;
     distanceGains.kP = 0.0005;
@@ -41,9 +42,8 @@ void opcontrol()
     angleGains.kI = 0;
     angleGains.kD = 0.00000;
 
-
     auto chassisController = ChassisControllerBuilder()
-            .withMotors(LEFT_FRONT, -RIGHT_FRONT, -RIGHT_BACK, LEFT_BACK)
+            .withMotors(drive::LEFT_FRONT, directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT, directions::drive::RIGHT_BACK * drive::RIGHT_BACK, drive::LEFT_BACK)
             .withSensors(
                     leftEncoder,
                     rightEncoder,
