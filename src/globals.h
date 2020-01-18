@@ -1,6 +1,8 @@
-//
-// Created by Lucas on 1/17/2020.
-//
+/**
+ * All of our header files are included here.
+ * Then globals is included in any necessary file.
+ * And then, namespaces are used to reference the desired function/code.
+ * **/
 
 #ifndef VEXROBOT_GLOBALS_H
 #define VEXROBOT_GLOBALS_H

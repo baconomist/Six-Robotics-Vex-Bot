@@ -29,14 +29,14 @@ than classes. This is **not** to say classes are outlawed. Instead use them wher
 split the changes up into separate commits explaining the changes.
 <br>
 
-#####Example:
+####Example:
 ```
 Added vision sensor cube alignment.
 ```
 This is simple, to the point, and starts with an UPPERCASE. 
 Almost as if someone who passed elementary school wrote it.
 
-#####If you just have minor changes that fix many things:
+####If you just have minor changes that fix many things:
 ```
 Misc bug fixes.
 ```
