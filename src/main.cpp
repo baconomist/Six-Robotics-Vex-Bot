@@ -1,4 +1,7 @@
 #include "main.h"
+#include "globals.h"
+
+pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
