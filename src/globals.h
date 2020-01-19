@@ -11,7 +11,10 @@
 #include "okapi/api.hpp"
 #include "hardware.h"
 
-extern pros::Controller master;
-extern okapi::ChassisController* chassis;
+extern okapi::Controller master;
+extern std::shared_ptr<okapi::OdomChassisController> chassisController;
+extern okapi::MotorGroup intakeMotors;
+extern okapi::Motor transB;
+extern okapi::Motor transT;
 
 #endif //VEXROBOT_GLOBALS_H

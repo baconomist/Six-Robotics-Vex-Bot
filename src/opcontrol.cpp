@@ -1,6 +1,6 @@
 #include "main.h"
 #include "okapi/api.hpp"
-#include "../src/globals.h"
+#include "globals.h"
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -23,48 +23,35 @@ using namespace hardware::ports;
 
 void opcontrol()
 {
-    okapi::ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
-    okapi::ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
-    okapi::ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
+	auto mecanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
+	while (true)
+	{
+		int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
+		int tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
+		int liftDirection = master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
 
-    IterativePosPIDController::Gains distanceGains;
-    distanceGains.kP = 0.0005;
-    distanceGains.kI = 0;
-    distanceGains.kD = 0.00000;
+		intakeMotors.moveVoltage(12000 * intakeDirection);
 
-    IterativePosPIDController::Gains turnGains;
-    turnGains.kP = 0.0005;
-    turnGains.kI = 0;
-    turnGains.kD = 0.00000;
+		if (tiltDirection)
+		{
+			transB.moveVoltage(12000 * tiltDirection);
+			transT.moveVoltage(12000 * tiltDirection);
+		}
+		else if (liftDirection)
+		{
+			transB.moveVoltage(12000 * -liftDirection);
+			transT.moveVoltage(12000 * liftDirection);
+		}
+		else
+		{
+			transB.moveVoltage(0);
+			transT.moveVoltage(0);
+		}
 
-    IterativePosPIDController::Gains angleGains;
-    angleGains.kP = 0.0005;
-    angleGains.kI = 0;
-    angleGains.kD = 0.00000;
-
-    auto chassisController = ChassisControllerBuilder()
-            .withMotors(drive::LEFT_FRONT, directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT, directions::drive::RIGHT_BACK * drive::RIGHT_BACK, drive::LEFT_BACK)
-            .withSensors(
-                    leftEncoder,
-                    rightEncoder,
-                    centerEncoder
-            )
-            .withGains(distanceGains, turnGains, angleGains)
-            .withDimensions(okapi::AbstractMotor::gearset::green, {{3.25_in, 16_in}, okapi::imev5GreenTPR})
-            .withOdometry({{3.25_in, 16_in}, okapi::quadEncoderTPR}, StateMode::CARTESIAN)
-            .buildOdometry();
-
-    Point point;
-    point.x = 0_ft;
-    point.y = 1_ft;
-    printf("aaaa");
-    //chassisController->moveDistance(12_in);
-    //chassisController->waitUntilSettled();
-    //chassisController->moveDistance(-12_in);
-    chassisController->driveToPoint(point);
-    chassisController->waitUntilSettled();
-    printf("Settled");
-    //chassisController->turnAngle(okapi::degree * 90);
-    //chassisController->moveDistance(-okapi::inch * 12);
+		mecanumDrive->xArcade(master.getAnalog(ControllerAnalog::rightX),
+			master.getAnalog(ControllerAnalog::leftY),
+			master.getAnalog(ControllerAnalog::leftX));
+		pros::delay(10);
+	}
 }
 
