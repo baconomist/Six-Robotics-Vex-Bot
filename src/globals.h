@@ -12,6 +12,6 @@
 #include "hardware.h"
 
 extern pros::Controller master;
-extern okapi::ChassisController* chassis;
+extern std::shared_ptr<okapi::OdomChassisController> chassisController;
 
 #endif //VEXROBOT_GLOBALS_H
