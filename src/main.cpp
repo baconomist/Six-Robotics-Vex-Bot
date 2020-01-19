@@ -7,21 +7,21 @@ using namespace hardware::ports;
 
 std::shared_ptr<OdomChassisController> chassisController;
 
-okapi::MotorGroup intakeMotors {ports::intake::LEFT * directions::intake::LEFT, ports::intake::RIGHT * directions::intake::RIGHT};
+MotorGroup intakeMotors {ports::intake::LEFT * directions::intake::LEFT, ports::intake::RIGHT * directions::intake::RIGHT};
 
-okapi::Motor transB(transmission::BOTTOM * directions::transmission::BOTTOM);
-okapi::Motor transT(transmission::TOP * directions::transmission::TOP);
+Motor transB(transmission::BOTTOM * directions::transmission::BOTTOM);
+Motor transT(transmission::TOP * directions::transmission::TOP);
 
-okapi::Controller master;
+Controller master;
 
 /**
  * Builds the chassisController
  */
 void initializeDrive()
 {
-	okapi::ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
-	okapi::ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
-	okapi::ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
+	ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
+	ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
+	ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
 
 	IterativePosPIDController::Gains distanceGains;
 	distanceGains.kP = 0.0005;
@@ -39,16 +39,35 @@ void initializeDrive()
 	angleGains.kD = 0.00000;
 
 	chassisController = ChassisControllerBuilder()
-		.withMotors(drive::LEFT_FRONT,
-			directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT, directions::drive::RIGHT_BACK * drive::RIGHT_BACK, drive::LEFT_BACK)
+		.withMotors(
+			drive::LEFT_FRONT,
+			directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT,
+			directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
+			drive::LEFT_BACK
+		)
 		.withSensors(
 			leftEncoder,
 			rightEncoder,
 			centerEncoder
 		)
-		.withGains(distanceGains, turnGains, angleGains)
-		.withDimensions(okapi::AbstractMotor::gearset::green, {{ 3.25_in, 16_in }, okapi::imev5GreenTPR })
-		.withOdometry({{ 3.25_in, 16_in }, okapi::quadEncoderTPR }, StateMode::CARTESIAN)
+		.withGains(
+			distanceGains,
+			turnGains,
+			angleGains
+		)
+		.withOdometry(
+			{
+				//dimensions and layout of encoders
+				{
+					3.25_in,	//encoder wheel diameter
+					12_in,		//center to center dist. of l and R encoders
+					5_in,		//dist. between middle encoder and center of bot //TODO: change this value to be accurate, it is currently not measured
+					3.25_in		//middle encoder wheel diameter
+				},
+				quadEncoderTPR	//ticks per rotation of encoder
+			},
+			StateMode::CARTESIAN
+		)
 		.buildOdometry();
 }
 

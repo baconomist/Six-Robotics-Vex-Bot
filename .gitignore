@@ -20,6 +20,7 @@ project.pros
 pros-setup.sh
 common.mk
 /docs
+CMakeLists.txt
 
 # CLION
 .idea/
