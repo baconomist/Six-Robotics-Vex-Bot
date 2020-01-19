@@ -1,6 +1,6 @@
 #include "main.h"
 #include "okapi/api.hpp"
-#include "../src/globals.h"
+#include "globals.h"
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -23,17 +23,17 @@ using namespace hardware::ports;
 
 void opcontrol()
 {
-    Point point;
-    point.x = 0_ft;
-    point.y = 1_ft;
-    printf("aaaa");
-    //chassisController->moveDistance(12_in);
-    //chassisController->waitUntilSettled();
-    //chassisController->moveDistance(-12_in);
-    chassisController->driveToPoint(point);
-    chassisController->waitUntilSettled();
-    printf("Settled");
-    //chassisController->turnAngle(okapi::degree * 90);
-    //chassisController->moveDistance(-okapi::inch * 12);
+	auto mecanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
+	while (true)
+	{
+		int intakeDirection = (int)master.getDigital(ControllerDigital::R1) - (int)master.getDigital(ControllerDigital::R2);
+
+		intakeMotors.moveVoltage(12000 * intakeDirection);
+
+		mecanumDrive->xArcade(master.getAnalog(ControllerAnalog::rightX),
+			master.getAnalog(ControllerAnalog::leftY),
+			master.getAnalog(ControllerAnalog::leftX));
+		pros::delay(10);
+	}
 }
 
