@@ -27,25 +27,25 @@ void opcontrol()
 	while (true)
 	{
 		int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
-		int tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
-		int liftDirection = master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
+		int tiltDirection	= master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
+		int liftDirection	= master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
 
-		intakeMotors.moveVoltage(12000 * intakeDirection);
+		intakeMotors.moveVelocity(gearsetRPM::GREEN * intakeDirection);
 
 		if (tiltDirection)
 		{
-			transB.moveVoltage(12000 * tiltDirection);
-			transT.moveVoltage(12000 * tiltDirection);
+			transB.moveVelocity(gearsetRPM::RED * tiltDirection);
+			transT.moveVelocity(gearsetRPM::RED * tiltDirection);
 		}
 		else if (liftDirection)
 		{
-			transB.moveVoltage(12000 * -liftDirection);
-			transT.moveVoltage(12000 * liftDirection);
+			transB.moveVelocity(gearsetRPM::RED * -liftDirection);
+			transT.moveVelocity(gearsetRPM::RED * liftDirection);
 		}
 		else
 		{
-			transB.moveVoltage(0);
-			transT.moveVoltage(0);
+			transB.moveVelocity(0);
+			transT.moveVelocity(0);
 		}
 
 		mecanumDrive->xArcade(master.getAnalog(ControllerAnalog::rightX),
@@ -54,4 +54,3 @@ void opcontrol()
 		pros::delay(10);
 	}
 }
-

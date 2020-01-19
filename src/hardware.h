@@ -68,6 +68,13 @@ namespace hardware
 			const int RIGHT = -1;
 		}
 	}
+
+	namespace gearsetRPM
+	{
+		const int RED = 100;
+		const int GREEN = 200;
+		const int BLUE = 600;
+	}
 }
 
 #endif

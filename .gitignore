@@ -17,7 +17,9 @@ temp.errors
 firmware/
 include/
 project.pros
+pros-setup.sh
 common.mk
+/docs
 
 # CLION
 .idea/

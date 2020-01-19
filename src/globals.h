@@ -7,8 +7,8 @@
 #ifndef VEXROBOT_GLOBALS_H
 #define VEXROBOT_GLOBALS_H
 
-#include "main.h"
-#include "okapi/api.hpp"
+#include "../include/main.h"
+#include "../include/okapi/api.hpp"
 #include "hardware.h"
 
 extern okapi::Controller master;
