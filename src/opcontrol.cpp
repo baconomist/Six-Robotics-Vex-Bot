@@ -1,5 +1,4 @@
 #include "main.h"
-#include "okapi/api.hpp"
 #include "globals.h"
 
 /**
@@ -16,14 +15,23 @@
  * task, not resume it from where it left off.
  */
 
-using namespace okapi::literals;
-using namespace okapi;
+
 using namespace hardware;
 using namespace hardware::ports;
 
+void move_tilter(int vel){
+    transB.moveVelocity(vel);
+    transT.moveVelocity(vel);
+}
+
+void move_lift(int vel){
+    transB.moveVelocity(vel);
+    transT.moveVelocity(-vel);
+}
+
 void opcontrol()
 {
-	auto mecanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
+	auto meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
 	while (true)
 	{
 		int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
@@ -34,13 +42,11 @@ void opcontrol()
 
 		if (tiltDirection)
 		{
-			transB.moveVelocity(gearsetRPM::RED * tiltDirection);
-			transT.moveVelocity(gearsetRPM::RED * tiltDirection);
+			move_tilter((int)transT.getGearing() * tiltDirection);
 		}
 		else if (liftDirection)
 		{
-			transB.moveVelocity(gearsetRPM::RED * -liftDirection);
-			transT.moveVelocity(gearsetRPM::RED * liftDirection);
+			move_lift((int)transT.getGearing() * tiltDirection);
 		}
 		else
 		{
@@ -48,9 +54,11 @@ void opcontrol()
 			transT.moveVelocity(0);
 		}
 
-		mecanumDrive->xArcade(master.getAnalog(ControllerAnalog::rightX),
+		meccanumDrive->xArcade(
+		    master.getAnalog(ControllerAnalog::rightX),
 			master.getAnalog(ControllerAnalog::leftY),
-			master.getAnalog(ControllerAnalog::leftX));
+			master.getAnalog(ControllerAnalog::leftX)
+		);
 		pros::delay(10);
 	}
 }

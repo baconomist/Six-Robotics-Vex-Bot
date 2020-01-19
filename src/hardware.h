@@ -12,22 +12,22 @@ namespace hardware
 
 		namespace drive
 		{
-			const int LEFT_FRONT = 1;
-			const int LEFT_BACK = 10;
-			const int RIGHT_FRONT = 2;
-			const int RIGHT_BACK = 4;
+			const uint8_t LEFT_FRONT = 1;
+			const uint8_t LEFT_BACK = 10;
+			const uint8_t RIGHT_FRONT = 2;
+			const uint8_t RIGHT_BACK = 4;
 		}
 
 		namespace transmission
 		{
-			const int BOTTOM = 7;
-			const int TOP = 8;
+			const uint8_t BOTTOM = 7;
+			const uint8_t TOP = 8;
 		}
 
 		namespace intake
 		{
-			const int LEFT = 6;
-			const int RIGHT = 5;
+			const uint8_t LEFT = 6;
+			const uint8_t RIGHT = 5;
 		}
 
 		/**
