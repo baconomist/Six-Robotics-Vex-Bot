@@ -15,16 +15,10 @@ okapi::Motor transT(transmission::TOP * directions::transmission::TOP);
 okapi::Controller master;
 
 /**
- * Runs initialization code. This occurs as soon as the program is started.
- *
- * All other competition modes are blocked by initialize; it is recommended
- * to keep execution time for this mode under a few seconds.
+ * Builds the chassisController
  */
-void initialize()
+void initializeDrive()
 {
-	pros::lcd::initialize();
-
-	// Create global OdomChassisController
 	okapi::ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
 	okapi::ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
 	okapi::ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
@@ -56,6 +50,26 @@ void initialize()
 		.withDimensions(okapi::AbstractMotor::gearset::green, {{ 3.25_in, 16_in }, okapi::imev5GreenTPR })
 		.withOdometry({{ 3.25_in, 16_in }, okapi::quadEncoderTPR }, StateMode::CARTESIAN)
 		.buildOdometry();
+}
+
+void initializeMechanisms()
+{
+	transB.setBrakeMode(AbstractMotor::brakeMode::hold);
+	transT.setBrakeMode(AbstractMotor::brakeMode::hold);
+	intakeMotors.setBrakeMode(AbstractMotor::brakeMode::hold);
+}
+
+/**
+ * Runs initialization code. This occurs as soon as the program is started.
+ *
+ * All other competition modes are blocked by initialize; it is recommended
+ * to keep execution time for this mode under a few seconds.
+ */
+void initialize()
+{
+	pros::lcd::initialize();
+	initializeDrive();
+	initializeMechanisms();
 }
 
 /**
