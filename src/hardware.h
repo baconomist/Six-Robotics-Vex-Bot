@@ -58,7 +58,7 @@ namespace hardware
 
 		namespace transmission
 		{
-			const int BOTTOM = 1;
+			const int BOTTOM = -1;
 			const int TOP = 1;
 		}
 

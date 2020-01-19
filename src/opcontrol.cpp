@@ -26,9 +26,27 @@ void opcontrol()
 	auto mecanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
 	while (true)
 	{
-		int intakeDirection = (int)master.getDigital(ControllerDigital::R1) - (int)master.getDigital(ControllerDigital::R2);
+		int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
+		int tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
+		int liftDirection = master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
 
 		intakeMotors.moveVoltage(12000 * intakeDirection);
+
+		if (tiltDirection)
+		{
+			transB.moveVoltage(12000 * tiltDirection);
+			transT.moveVoltage(12000 * tiltDirection);
+		}
+		else if (liftDirection)
+		{
+			transB.moveVoltage(12000 * -liftDirection);
+			transT.moveVoltage(12000 * liftDirection);
+		}
+		else
+		{
+			transB.moveVoltage(0);
+			transT.moveVoltage(0);
+		}
 
 		mecanumDrive->xArcade(master.getAnalog(ControllerAnalog::rightX),
 			master.getAnalog(ControllerAnalog::leftY),

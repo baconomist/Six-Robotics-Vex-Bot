@@ -6,9 +6,12 @@ using namespace hardware;
 using namespace hardware::ports;
 
 std::shared_ptr<OdomChassisController> chassisController;
-okapi::Motor intakeL(ports::intake::LEFT * directions::intake::LEFT);
-okapi::Motor intakeR(ports::intake::RIGHT * directions::intake::RIGHT);
-okapi::MotorGroup intakeMotors {intakeL, intakeR};
+
+okapi::MotorGroup intakeMotors {ports::intake::LEFT * directions::intake::LEFT, ports::intake::RIGHT * directions::intake::RIGHT};
+
+okapi::Motor transB(transmission::BOTTOM * directions::transmission::BOTTOM);
+okapi::Motor transT(transmission::TOP * directions::transmission::TOP);
+
 okapi::Controller master;
 
 /**
