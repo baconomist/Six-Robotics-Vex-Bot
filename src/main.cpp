@@ -55,6 +55,9 @@ void initializeDrive() {
             turnGains,
             angleGains
         )
+		.withDimensions(okapi::AbstractMotor::gearset::green,
+			{{ 3.25_in, 16_in },
+	        okapi::imev5GreenTPR })
         .withOdometry(
             {
                 //dimensions and layout of encoders
