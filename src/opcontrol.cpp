@@ -30,15 +30,32 @@ void opcontrol() {
         int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
         int tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
         int liftDirection = master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
+		bool override = master.getDigital(ControllerDigital::B);
 
-        intakeMotors.moveVelocity(gearsetRPM::GREEN*intakeDirection);
 
-        if(tiltDirection)
-            tray::move_tray_controlled(tiltDirection);
-        else if (liftDirection) {
-            lift::move_lift_raw((int) transT.getGearing()*tiltDirection);
-        } else {
-            hold_transmission_motors();
+
+        if(!override) {
+	        if (tiltDirection)
+		        tray::move_tray_controlled(tiltDirection);
+	        else if (liftDirection) {
+		        lift::move_lift_raw((int)transT.getGearing() * tiltDirection);
+		        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
+	        }
+	        else {
+		        hold_transmission_motors();
+		        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
+	        }
+        }
+        else{
+	        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
+	        if (tiltDirection)
+		        tray::move_tray_raw((int)transT.getGearing()*tiltDirection);
+	        else if (liftDirection) {
+		        lift::move_lift_raw((int)transT.getGearing() * tiltDirection);
+	        }
+	        else {
+		        hold_transmission_motors();
+	        }
         }
 
         meccanumDrive->xArcade(

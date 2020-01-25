@@ -19,7 +19,7 @@ namespace mechanisms {
 
 	namespace tray {
 		/**
-		 * @returns raw tray position
+//		 * @returns raw tray position
 		 * */
 		double get_tray_pos_raw();
 

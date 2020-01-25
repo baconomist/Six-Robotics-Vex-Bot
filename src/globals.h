@@ -10,5 +10,9 @@
 #include "mechanisms.h"
 extern Controller master;
 extern std::shared_ptr<okapi::OdomChassisController> chassisController;
+//extern Motor driveLF;
+//extern Motor driveLB;
+//extern Motor driveRF;
+//extern Motor driveRB;
 
 #endif //VEXROBOT_GLOBALS_H

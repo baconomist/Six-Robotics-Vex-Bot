@@ -47,7 +47,8 @@ void initializeDrive() {
 			distanceGains,
 			turnGains,
 			angleGains
-		).withDimensions(okapi::AbstractMotor::gearset::green,
+		).withDimensions(
+			okapi::AbstractMotor::gearset::green,
 			{
 			{
 				3.25_in,

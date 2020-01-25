@@ -51,22 +51,42 @@ namespace mechanisms {
 		}
 
 		void move_tray_controlled(int dir) {
-			if (dir > 0) {
-				double tray_curr_pos = get_tray_pos();
-				double slow_point = 512;
+
+			double tray_curr_pos = get_tray_pos();
+			double slow_point = 512;
+			int velocity;
+			if (!dir || tray_curr_pos < 1 || tray_curr_pos > 1023) {
+				hold_transmission_motors();
+			}
+			else if (dir > 0) {
+
+
 				/*
 				 * Moves tray up while reducing speed slowly and then drastically slowing down in the end
 				 * */
-				if(tray_curr_pos<=slow_point) {
-					int velocity = remapRange(tray_curr_pos, 0, 1024, (int)transT.getGearing(), (int)transT.getGearing()/2);
+				if (tray_curr_pos <= slow_point) {
+					velocity = remapRange(
+						tray_curr_pos,
+						0,
+						1024,
+						(int)transT.getGearing(),
+						(int)transT.getGearing() * .5
+					);
 					move_tray_raw(velocity);
 				}
-				else if(tray_curr_pos>slow_point){
+				else if (tray_curr_pos > slow_point) {
 					move_tray_raw(10);
 				}
 			}
 			else if (dir < 0) {
-				move_tray_raw(-(int)transT.getGearing());
+				velocity = remapRange(
+					tray_curr_pos,
+					0,
+					1024,
+					(int)transT.getGearing()*.5,
+					(int)transT.getGearing()
+				);
+				move_tray_raw(-velocity);
 			}
 		}
 	}
