@@ -35,12 +35,10 @@ void opcontrol() {
 
         if(tiltDirection)
             tray::move_tray_controlled(tiltDirection);
-
         else if (liftDirection) {
             lift::move_lift_raw((int) transT.getGearing()*tiltDirection);
         } else {
-            transB.moveVelocity(0);
-            transT.moveVelocity(0);
+            hold_transmission_motors();
         }
 
         meccanumDrive->xArcade(

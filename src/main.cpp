@@ -6,9 +6,6 @@ using namespace hardware::ports;
 using namespace mechanisms;
 std::shared_ptr<OdomChassisController> chassisController;
 
-
-
-
 Controller master;
 
 /**
@@ -50,7 +47,13 @@ void initializeDrive() {
 			distanceGains,
 			turnGains,
 			angleGains
-		)
+		).withDimensions(okapi::AbstractMotor::gearset::green,
+			{
+			{
+				3.25_in,
+				12_in },
+			 okapi::imev5GreenTPR
+		})
 		.withOdometry(
 			{
 				//dimensions and layout of encoders
@@ -66,8 +69,6 @@ void initializeDrive() {
 		)
 		.buildOdometry();
 }
-
-
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.

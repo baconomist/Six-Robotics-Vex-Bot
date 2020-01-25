@@ -13,9 +13,9 @@ namespace mechanisms {
 	extern Potentiometer liftPot;
 	extern Potentiometer trayPot;
 	extern MotorGroup intakeMotors;
-	extern bool motor_lock;
-	void initialize();
 
+	void initialize();
+	void hold_transmission_motors();
 
 	namespace tray {
 		/**
@@ -24,7 +24,7 @@ namespace mechanisms {
 		double get_tray_pos_raw();
 
 		/**
-		 * @returns remapped tray position between [0,100]
+		 * @returns remapped tray position between [0,1024]
 		 * */
 		double get_tray_pos();
 
