@@ -7,10 +7,8 @@
 #ifndef VEXROBOT_GLOBALS_H
 #define VEXROBOT_GLOBALS_H
 #include "hardware.h"
-extern okapi::Controller master;
+#include "mechanisms.h"
+extern Controller master;
 extern std::shared_ptr<okapi::OdomChassisController> chassisController;
-extern okapi::MotorGroup intakeMotors;
-extern okapi::Motor transB;
-extern okapi::Motor transT;
 
 #endif //VEXROBOT_GLOBALS_H

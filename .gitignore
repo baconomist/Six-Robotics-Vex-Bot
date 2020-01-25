@@ -25,4 +25,3 @@ common.mk
 # CLION
 .idea/
 cmake-build-debug/
-CMakeLists.txt

@@ -1,4 +1,4 @@
-set(VERSION "2.8.4") # Create var "VERSION"
+set(VERSION "3.15") # Create var "VERSION"
 set(SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*) # Create var "SOURCE_FILES", I guess init.c is enough cus anything linked to it is compiled?
 
 # Disable sh.exe mingw error
@@ -24,4 +24,4 @@ endforeach()
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-add_executable(VexRobot ${SOURCES} ${HEADERS} src/ examples/)
+add_executable(VexRobot ${SOURCES} ${HEADERS} ${INCLUDE_DIRS})

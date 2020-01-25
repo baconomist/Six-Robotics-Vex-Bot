@@ -18,47 +18,36 @@
 
 using namespace hardware;
 using namespace hardware::ports;
+using namespace mechanisms;
 
-void move_tilter(int vel){
-    transB.moveVelocity(vel);
-    transT.moveVelocity(vel);
-}
 
-void move_lift(int vel){
-    transB.moveVelocity(vel);
-    transT.moveVelocity(-vel);
-}
 
-void opcontrol()
-{
+
+
+void opcontrol() {
 	auto meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
-	while (true)
-	{
-		int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
-		int tiltDirection	= master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
-		int liftDirection	= master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
+    while (true) {
+        int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
+        int tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
+        int liftDirection = master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
 
-		intakeMotors.moveVelocity(gearsetRPM::GREEN * intakeDirection);
+        intakeMotors.moveVelocity(gearsetRPM::GREEN*intakeDirection);
 
-		if (tiltDirection)
-		{
-			move_tilter((int)transT.getGearing() * tiltDirection);
-		}
-		else if (liftDirection)
-		{
-			move_lift((int)transT.getGearing() * tiltDirection);
-		}
-		else
-		{
-			transB.moveVelocity(0);
-			transT.moveVelocity(0);
-		}
+        if(tiltDirection)
+            tray::move_tray_controlled(tiltDirection);
 
-		meccanumDrive->xArcade(
-		    master.getAnalog(ControllerAnalog::rightX),
-			master.getAnalog(ControllerAnalog::leftY),
-			master.getAnalog(ControllerAnalog::leftX)
-		);
-		pros::delay(10);
-	}
+        else if (liftDirection) {
+            lift::move_lift_raw((int) transT.getGearing()*tiltDirection);
+        } else {
+            transB.moveVelocity(0);
+            transT.moveVelocity(0);
+        }
+
+        meccanumDrive->xArcade(
+            master.getAnalog(ControllerAnalog::rightX),
+            master.getAnalog(ControllerAnalog::leftY),
+            master.getAnalog(ControllerAnalog::leftX)
+        );
+        pros::delay(10);
+    }
 }
