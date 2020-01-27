@@ -1,4 +1,4 @@
-set(VERSION "3.15") # Create var "VERSION"
+set(VERSION "3.13") # Create var "VERSION"
 set(SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*) # Create var "SOURCE_FILES", I guess init.c is enough cus anything linked to it is compiled?
 
 # Disable sh.exe mingw error
