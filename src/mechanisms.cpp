@@ -28,6 +28,23 @@ namespace mechanisms {
 		transT.setBrakeMode(AbstractMotor::brakeMode::hold);
 		transB.setBrakeMode(AbstractMotor::brakeMode::hold);
 		intakeMotors.setBrakeMode(AbstractMotor::brakeMode::brake);
+		lift::control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
+//		lift::lift_async = std::dynamic_pointer_cast<AsyncPosPIDController>(AsyncPosControllerBuilder()
+//			.withGearset(
+//				{
+//					AbstractMotor::gearset::red,
+//					10.0 / 3.0
+//				}
+//			).withGains(
+//				liftGains
+//			).withMotor(
+//				transT
+//			).withMotor(
+//				-1 * transmission::BOTTOM
+//				* directions::transmission::BOTTOM // inverts the motor cuz we are running the lift
+//			)
+//			.build());
+
 	}
 
 	void hold_transmission_motors() {
@@ -37,22 +54,22 @@ namespace mechanisms {
 	}
 	namespace tray {
 
-		double get_tray_pos_raw() {
+		double get_pos_raw() {
 			return trayPot.get();
 		}
 
-		double get_tray_pos() {
-			return remapRange(get_tray_pos_raw(), trayPos::DOWN_POS, trayPos::UP_POS, 0, 1024);
+		double get_pos() {
+			return remapRange(get_pos_raw(), trayPos::DOWN_POS, trayPos::UP_POS, 0, 1024);
 		}
 
-		void move_tray_raw(int vel) {
+		void move_raw(int vel) {
 			transB.moveVelocity(vel);
 			transT.moveVelocity(vel);
 		}
 
-		void move_tray_controlled(int dir) {
+		void move_controlled(int dir) {
 
-			double tray_curr_pos = get_tray_pos();
+			double tray_curr_pos = get_pos();
 			double slow_point = 512;
 			int velocity;
 //			if (!dir || tray_curr_pos < 1 || tray_curr_pos > 1023) {
@@ -72,10 +89,11 @@ namespace mechanisms {
 						(int)transT.getGearing(),
 						(int)transT.getGearing() * .2
 					);
-					move_tray_raw(velocity);
+					move_raw(velocity);
+					intakeMotors.moveVelocity(20);
 				}
 				else if (tray_curr_pos > slow_point) {
-					move_tray_raw(10);
+					move_raw(10);
 				}
 			}
 			else if (dir < 0) {
@@ -83,18 +101,46 @@ namespace mechanisms {
 					tray_curr_pos,
 					0,
 					1024,
-					(int)transT.getGearing()*.5,
+					(int)transT.getGearing() * .5,
 					(int)transT.getGearing()
 				);
-				move_tray_raw(-velocity);
+				move_raw(-velocity);
 			}
 		}
 	}
 	namespace lift {
 
-		void move_lift_raw(int vel) {
-			transT.moveVelocity(vel);
-			transB.moveVelocity(-vel);
+		int min_tray_pos_to_move_lift = 512;
+		double kP = 0.01;
+		double kI = 0.00;
+		double kD = 0.00;
+		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
+
+		double get_pos_raw() {
+			return liftPot.get();
+		}
+
+		double get_pos() {
+			return remapRange(get_pos_raw(), liftPos::DOWN_POS, liftPos::UP_POS, 0, 1024);
+		}
+
+		void move_raw(int vel) {
+			transT.moveVelocity(-vel);
+			transB.moveVelocity(vel);
+		}
+		void setTarget(liftPos pos) {
+			control.setTarget(pos);
+		}
+		bool move_controlled() {
+			if (tray::get_pos() > min_tray_pos_to_move_lift) {
+				if (!control.isSettled()) {
+					double newInput = get_pos_raw();
+					double newOutput = control.step(newInput);
+					move_raw(newOutput);
+				}
+			}
+			return control.isSettled();
+
 		}
 
 	}

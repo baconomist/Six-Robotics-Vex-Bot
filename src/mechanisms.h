@@ -21,19 +21,19 @@ namespace mechanisms {
 		/**
 //		 * @returns raw tray position
 		 * */
-		double get_tray_pos_raw();
+		double get_pos_raw();
 
 		/**
 		 * @returns remapped tray position between [0,1024]
 		 * */
-		double get_tray_pos();
+		double get_pos();
 
 		/**
 		 * Moves the tray with no restrictions
 		 * @warning DO NOT USE, UNLESS FOR OVERRIDE PURPOSES
 		 * @param vel the velocity at which the tray will move
 		 * */
-		void move_tray_raw(int vel);
+		void move_raw(int vel);
 
 		/**
 		 * Moves the tray at changing speeds to drop a stack while holding a button
@@ -42,7 +42,7 @@ namespace mechanisms {
 		 * 			  0 means dont move and hold current position,
 		 * 			  -ve means move down		 *
 		 * */
-		void move_tray_controlled(int dir);
+		void move_controlled(int dir);
 
 		/**
 		 * Tray positions
@@ -55,13 +55,46 @@ namespace mechanisms {
 
 	}
 	namespace lift {
+		extern int min_tray_pos_to_move_lift;
+		extern IterativePosPIDController control;
+
 		enum liftPos{
 			DOWN_POS = 4000,
 			MIDDLE_POS = 3000,
 			UP_POS = 2000
 		};
 
-		void move_lift_raw(int vel);
+		/**
+//		 * @returns raw lift position
+		 * */
+		double get_pos_raw();
+
+		/**
+		 * @returns remapped lift position between [0,1024]
+		 * */
+		double get_pos();
+
+		/**
+		 * sets the target the lift should move to
+		 * @param pos the position the lift should move to
+		 * */
+
+		void setTarget(liftPos pos);
+		/**
+		 * Moves the lift with no restrictions
+		 * @warning DO NOT USE, UNLESS FOR OVERRIDE PURPOSES
+		 * @param vel the velocity at which the tray will move
+		 * */
+		void move_raw(int vel);
+
+		/**
+		 * Moves the lift while holding a button, moves tray out of the way as well
+		 * @param dir the direction in which the lift should move:
+		 * 			  +ve means move up,
+		 * 			  0 means dont move and hold current position,
+		 * 			  -ve means move down		 *
+		 * */
+		bool move_controlled();
 	}
 }
 #endif //_MECHANISMS_H_

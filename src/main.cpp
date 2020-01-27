@@ -43,15 +43,11 @@ void initializeDrive() {
 			rightEncoder,
 			centerEncoder
 		)
-		.withGains(
-			distanceGains,
-			turnGains,
-			angleGains
-		).withDimensions(
+		.withDimensions(
 			okapi::AbstractMotor::gearset::green,
 			{
 			{
-				3.25_in,
+				4_in,
 				12_in },
 			 okapi::imev5GreenTPR
 		})
