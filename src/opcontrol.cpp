@@ -30,7 +30,7 @@ void opcontrol() {
         int intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
         int tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
         int liftDirection = master.getDigital(ControllerDigital::X) - master.getDigital(ControllerDigital::B);
-		bool override = master.getDigital(ControllerDigital::B);
+		bool override = master.getDigital(ControllerDigital::Y);
 
 
 
@@ -38,7 +38,7 @@ void opcontrol() {
 	        if (tiltDirection)
 		        tray::move_tray_controlled(tiltDirection);
 	        else if (liftDirection) {
-		        lift::move_lift_raw((int)transT.getGearing() * tiltDirection);
+		        lift::move_lift_raw((int)transT.getGearing() * liftDirection);
 		        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
 	        }
 	        else {
@@ -63,6 +63,10 @@ void opcontrol() {
             master.getAnalog(ControllerAnalog::leftY),
             master.getAnalog(ControllerAnalog::leftX)
         );
-        pros::delay(10);
+        pros::lcd::print(1, "Tray: %lf", tray::get_tray_pos());
+		pros::lcd::print(2, "Lift: %lf", liftPot.get());
+
+
+		pros::delay(10);
     }
 }
