@@ -68,26 +68,27 @@ namespace mechanisms {
 			double tray_curr_pos = get_pos_raw();
 			double slow_point = 1200;
 			int velocity;
-//			if (!dir || tray_curr_pos < 1 || tray_curr_pos > 1023) {
-//				hold_transmission_motors();
-//			}
-			if (dir > 0) {
+			if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0|| tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
+				hold_transmission_motors();
+			}
+			else if (dir > 0) {
 				/*
 				 * Moves tray up while reducing speed slowly and then drastically slowing down in the end
 				 * */
-				if (tray_curr_pos <= slow_point) {
+				if (tray_curr_pos >= slow_point) {
 					velocity = remapRange(
 						tray_curr_pos,
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
-						(int)transT.getGearing(),
-						(int)transT.getGearing() * .2
+						(int)transT.getGearing() * 0.7,
+						(int)transT.getGearing() * .1
 					);
 					move_raw(velocity);
 					intakeMotors.moveVelocity(20);
 				}
-				else if (tray_curr_pos > slow_point) {
+				else if (tray_curr_pos < slow_point) {
 					move_raw(10);
+					intakeMotors.moveVelocity(-10);
 				}
 			}
 			else if (dir < 0) {

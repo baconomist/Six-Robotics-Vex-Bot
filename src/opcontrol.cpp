@@ -28,13 +28,13 @@ void opcontrol() {
 	int liftState = 0;
 	bool override;
 	ControllerButton buttonX = ControllerButton(ControllerDigital::X);
-	ControllerButton buttonY = ControllerButton(ControllerDigital::Y);
+	ControllerButton buttonB = ControllerButton(ControllerDigital::B);
 	while (true) {
 
 		intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
 		tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
-		liftDirection = buttonX.changedToPressed() - buttonY.changedToPressed();
-		override = master.getDigital(ControllerDigital::B);
+		liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
+		override = master.getDigital(ControllerDigital::Y);
 
         if(!override) {
 	        if (tiltDirection)
@@ -59,7 +59,7 @@ void opcontrol() {
         }
         else{
 	        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
-	        liftDirection = buttonX.isPressed() - buttonY.isPressed();
+	        liftDirection = buttonX.isPressed() - buttonB.isPressed();
 	        if (tiltDirection)
 		        tray::move_raw((int)transT.getGearing()*tiltDirection);
 	        else if (liftDirection) {
@@ -77,7 +77,7 @@ void opcontrol() {
         );
 		pros::lcd::print(1, "Tray: %lf", tray::get_pos_raw());
 		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
-
+		pros::lcd::print(3, "Lift state: %d", liftState);
 
 		pros::delay(10);
     }
