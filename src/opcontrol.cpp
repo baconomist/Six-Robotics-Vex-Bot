@@ -36,26 +36,34 @@ void opcontrol() {
 		liftDirection = buttonX.changedToPressed() - buttonY.changedToPressed();
 		override = master.getDigital(ControllerDigital::B);
 
-		
-
         if(!override) {
 	        if (tiltDirection)
-		        tray::move_tray_controlled(tiltDirection);
-	        else if (liftDirection) {
-		        lift::move_lift_raw((int)transT.getGearing() * tiltDirection);
-		        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
-	        }
+		        tray::move_controlled(tiltDirection);
 	        else {
-		        hold_transmission_motors();
-		        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
+		        intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
+		        if (liftDirection > 0) {
+			        if (liftState < 2)
+			        	++liftState;
+			        lift::setTarget(lift::state_to_pos(liftState));
+		        }
+		        else if(liftDirection<0){
+		        	if(liftState>0)
+		        		--liftState;
+			        lift::setTarget(lift::state_to_pos(liftState));
+		        }
+		        else if(lift::move_controlled()){
+			        hold_transmission_motors();
+
+		        }
 	        }
         }
         else{
 	        intakeMotors.moveVelocity((int)intakeMotors.getGearing()*intakeDirection);
+	        liftDirection = buttonX.isPressed() - buttonY.isPressed();
 	        if (tiltDirection)
-		        tray::move_tray_raw((int)transT.getGearing()*tiltDirection);
+		        tray::move_raw((int)transT.getGearing()*tiltDirection);
 	        else if (liftDirection) {
-		        lift::move_lift_raw((int)transT.getGearing() * tiltDirection);
+		        lift::move_raw((int)transT.getGearing() * liftDirection);
 	        }
 	        else {
 		        hold_transmission_motors();
@@ -67,6 +75,10 @@ void opcontrol() {
             master.getAnalog(ControllerAnalog::leftY),
             master.getAnalog(ControllerAnalog::leftX)
         );
-        pros::delay(10);
+		pros::lcd::print(1, "Tray: %lf", tray::get_pos_raw());
+		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
+
+
+		pros::delay(10);
     }
 }

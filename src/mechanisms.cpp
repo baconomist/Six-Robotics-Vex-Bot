@@ -58,10 +58,6 @@ namespace mechanisms {
 			return trayPot.get();
 		}
 
-		double get_pos() {
-			return remapRange(get_pos_raw(), trayPos::DOWN_POS, trayPos::UP_POS, 0, 1024);
-		}
-
 		void move_raw(int vel) {
 			transB.moveVelocity(vel);
 			transT.moveVelocity(vel);
@@ -69,23 +65,21 @@ namespace mechanisms {
 
 		void move_controlled(int dir) {
 
-			double tray_curr_pos = get_pos();
-			double slow_point = 512;
+			double tray_curr_pos = get_pos_raw();
+			double slow_point = 1200;
 			int velocity;
 //			if (!dir || tray_curr_pos < 1 || tray_curr_pos > 1023) {
 //				hold_transmission_motors();
 //			}
 			if (dir > 0) {
-
-
 				/*
 				 * Moves tray up while reducing speed slowly and then drastically slowing down in the end
 				 * */
 				if (tray_curr_pos <= slow_point) {
 					velocity = remapRange(
 						tray_curr_pos,
-						0,
-						1024,
+						trayPos::DOWN_POS,
+						trayPos::UP_POS,
 						(int)transT.getGearing(),
 						(int)transT.getGearing() * .2
 					);
@@ -99,8 +93,8 @@ namespace mechanisms {
 			else if (dir < 0) {
 				velocity = remapRange(
 					tray_curr_pos,
-					0,
-					1024,
+					trayPos::DOWN_POS,
+					trayPos::UP_POS,
 					(int)transT.getGearing() * .5,
 					(int)transT.getGearing()
 				);
@@ -110,7 +104,7 @@ namespace mechanisms {
 	}
 	namespace lift {
 
-		int min_tray_pos_to_move_lift = 512;
+		int min_tray_pos_to_move_lift = 1200;
 		double kP = 0.01;
 		double kI = 0.00;
 		double kD = 0.00;
@@ -120,19 +114,27 @@ namespace mechanisms {
 			return liftPot.get();
 		}
 
-		double get_pos() {
-			return remapRange(get_pos_raw(), liftPos::DOWN_POS, liftPos::UP_POS, 0, 1024);
-		}
-
 		void move_raw(int vel) {
-			transT.moveVelocity(-vel);
-			transB.moveVelocity(vel);
+			transT.moveVelocity(vel);
+			transB.moveVelocity(-vel);
+		}
+		liftPos state_to_pos(int state){
+			switch (state){
+			case 0:
+				return liftPos::DOWN_POS;
+			case 1:
+				return liftPos::MIDDLE_POS;
+			case 2:
+				return liftPos::UP_POS;
+			default:
+				return liftPos::DOWN_POS;
+			}
 		}
 		void setTarget(liftPos pos) {
 			control.setTarget(pos);
 		}
 		bool move_controlled() {
-			if (tray::get_pos() > min_tray_pos_to_move_lift) {
+			if (tray::get_pos_raw() < min_tray_pos_to_move_lift) {
 				if (!control.isSettled()) {
 					double newInput = get_pos_raw();
 					double newOutput = control.step(newInput);

@@ -24,11 +24,6 @@ namespace mechanisms {
 		double get_pos_raw();
 
 		/**
-		 * @returns remapped tray position between [0,1024]
-		 * */
-		double get_pos();
-
-		/**
 		 * Moves the tray with no restrictions
 		 * @warning DO NOT USE, UNLESS FOR OVERRIDE PURPOSES
 		 * @param vel the velocity at which the tray will move
@@ -65,21 +60,22 @@ namespace mechanisms {
 		};
 
 		/**
-//		 * @returns raw lift position
+		 * @returns raw lift position
 		 * */
 		double get_pos_raw();
 
 		/**
-		 * @returns remapped lift position between [0,1024]
+		 * converts an int from [0,2] to lift positions
+		 * @param state an integer in the range [0,2]
+		 * @return liftPos
 		 * */
-		double get_pos();
-
+		liftPos state_to_pos(int state);
 		/**
 		 * sets the target the lift should move to
 		 * @param pos the position the lift should move to
 		 * */
-
 		void setTarget(liftPos pos);
+
 		/**
 		 * Moves the lift with no restrictions
 		 * @warning DO NOT USE, UNLESS FOR OVERRIDE PURPOSES
