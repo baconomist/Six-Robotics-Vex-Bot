@@ -25,6 +25,8 @@ using namespace mechanisms;
 
 
 void opcontrol() {
+//    autonomous();
+
 	auto meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
 	int intakeDirection;
 	int tiltDirection;
@@ -45,20 +47,26 @@ void opcontrol() {
 		        tray::move_controlled(tiltDirection);
 	        else {
 		        intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
-		        if (liftDirection > 0) {
-			        if (liftState < 2)
-			        	++liftState;
-			        lift::setTarget(lift::state_to_pos(liftState));
-		        }
-		        else if(liftDirection<0){
-		        	if(liftState>0)
-		        		--liftState;
-			        lift::setTarget(lift::state_to_pos(liftState));
-		        }
-		        else if(lift::move_controlled()){
-			        hold_transmission_motors();
-
-		        }
+//		        if (liftDirection > 0) {
+//			        if (liftState < 2)
+//			        	++liftState;
+//			        lift::setTarget(lift::state_to_pos(liftState));
+//		        }
+//		        else if(liftDirection<0){
+//		        	if(liftState>0)
+//		        		--liftState;
+//			        lift::setTarget(lift::state_to_pos(liftState));
+//		        }
+//		        else {
+//                    lift::move_controlled();
+//
+//		        }
+                liftDirection = buttonX.isPressed() - buttonB.isPressed();
+                if (liftDirection) {
+                    lift::move_raw((int)transT.getGearing() * liftDirection);
+                }
+                else
+                    hold_transmission_motors();
 	        }
         }
         else{
@@ -82,7 +90,6 @@ void opcontrol() {
 		pros::lcd::print(1, "Tray: %lf", tray::get_pos_raw());
 		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
 		pros::lcd::print(3, "Lift state: %d", liftState);
-
 
 		pros::delay(10);
     }

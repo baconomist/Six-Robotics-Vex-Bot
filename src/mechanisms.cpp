@@ -29,6 +29,7 @@ namespace mechanisms {
 		transB.setBrakeMode(AbstractMotor::brakeMode::hold);
 		intakeMotors.setBrakeMode(AbstractMotor::brakeMode::brake);
 		lift::control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
+		lift::control.setTarget(lift::liftPos::DOWN_POS);
 //		lift::lift_async = std::dynamic_pointer_cast<AsyncPosPIDController>(AsyncPosControllerBuilder()
 //			.withGearset(
 //				{
@@ -105,7 +106,7 @@ namespace mechanisms {
 	}
 	namespace lift {
 
-		int min_tray_pos_to_move_lift = 1200;
+		int min_tray_pos_to_move_lift = 1650;
 		double kP = 0.01;
 		double kI = 0.00;
 		double kD = 0.00;
@@ -116,8 +117,10 @@ namespace mechanisms {
 		}
 
 		void move_raw(int vel) {
-			transT.moveVelocity(vel);
-			transB.moveVelocity(-vel);
+            if (tray::get_pos_raw() < min_tray_pos_to_move_lift) {
+                transT.moveVelocity(vel);
+                transB.moveVelocity(-vel);
+            }
 		}
 		liftPos state_to_pos(int state){
 			switch (state){
