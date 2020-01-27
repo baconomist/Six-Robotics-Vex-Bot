@@ -55,10 +55,10 @@ namespace mechanisms {
 			double tray_curr_pos = get_tray_pos();
 			double slow_point = 512;
 			int velocity;
-			if (!dir || tray_curr_pos < 1 || tray_curr_pos > 1023) {
-				hold_transmission_motors();
-			}
-			else if (dir > 0) {
+//			if (!dir || tray_curr_pos < 1 || tray_curr_pos > 1023) {
+//				hold_transmission_motors();
+//			}
+			if (dir > 0) {
 
 
 				/*
@@ -70,7 +70,7 @@ namespace mechanisms {
 						0,
 						1024,
 						(int)transT.getGearing(),
-						(int)transT.getGearing() * .5
+						(int)transT.getGearing() * .2
 					);
 					move_tray_raw(velocity);
 				}
@@ -93,8 +93,8 @@ namespace mechanisms {
 	namespace lift {
 
 		void move_lift_raw(int vel) {
-			transT.moveVelocity(-vel);
-			transB.moveVelocity(vel);
+			transT.moveVelocity(vel);
+			transB.moveVelocity(-vel);
 		}
 
 	}

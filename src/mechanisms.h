@@ -48,7 +48,7 @@ namespace mechanisms {
 		 * Tray positions
 		 * */
 		enum trayPos{
-			DOWN_POS = 1950,
+			DOWN_POS = 2000,
 			UP_POS = 10
 		};
 
