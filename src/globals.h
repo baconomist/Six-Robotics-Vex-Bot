@@ -10,6 +10,9 @@
 #include "mechanisms.h"
 extern Controller master;
 extern std::shared_ptr<okapi::OdomChassisController> chassisController;
+extern ADIEncoder leftEncoder;
+extern ADIEncoder rightEncoder;
+extern ADIEncoder centerEncoder;
 //extern Motor driveLF;
 //extern Motor driveLB;
 //extern Motor driveRF;

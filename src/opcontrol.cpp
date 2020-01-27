@@ -20,6 +20,10 @@ using namespace hardware;
 using namespace hardware::ports;
 using namespace mechanisms;
 
+
+
+
+
 void opcontrol() {
 	auto meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
 	int intakeDirection;
@@ -71,13 +75,14 @@ void opcontrol() {
         }
 
         meccanumDrive->xArcade(
-            master.getAnalog(ControllerAnalog::rightX),
-            master.getAnalog(ControllerAnalog::leftY),
-            master.getAnalog(ControllerAnalog::leftX)
+                master.getAnalog(ControllerAnalog::rightX),
+                master.getAnalog(ControllerAnalog::leftY),
+                master.getAnalog(ControllerAnalog::leftX)
         );
 		pros::lcd::print(1, "Tray: %lf", tray::get_pos_raw());
 		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
 		pros::lcd::print(3, "Lift state: %d", liftState);
+
 
 		pros::delay(10);
     }

@@ -14,4 +14,12 @@
  */
 void autonomous() {
 
+    chassisController->driveToPoint((Point){12_in, 0_in});
+    chassisController->driveToPoint((Point){12_in, 12_in});
+    chassisController->driveToPoint((Point){0_in, 12_in});
+    chassisController->driveToPoint((Point){0_in, 0_in});
+    //chassisController->turnAngle(90_deg);
+
+    chassisController->waitUntilSettled();
+    printf("%f %f\n", leftEncoder.get(), rightEncoder.get());
 }

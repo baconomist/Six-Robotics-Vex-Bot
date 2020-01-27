@@ -7,64 +7,72 @@ using namespace mechanisms;
 std::shared_ptr<OdomChassisController> chassisController;
 
 Controller master;
+ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
+ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
+ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
 
 /**
  * Builds the chassisController
  */
 void initializeDrive() {
-	ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
-	ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
-	ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
+    IterativePosPIDController::Gains distanceGains;
+    distanceGains.kP = 0.00205;
+    distanceGains.kI = 0.001;
+    distanceGains.kD = 0.00002;
 
-	IterativePosPIDController::Gains distanceGains;
-	distanceGains.kP = 0.0005;
-	distanceGains.kI = 0;
-	distanceGains.kD = 0.00000;
+    IterativePosPIDController::Gains turnGains;
+    turnGains.kP = 0.00205;
+    turnGains.kI = 0.001;
+    turnGains.kD = 0.00002;
 
-	IterativePosPIDController::Gains turnGains;
-	turnGains.kP = 0.0005;
-	turnGains.kI = 0;
-	turnGains.kD = 0.00000;
+    IterativePosPIDController::Gains angleGains;
+    angleGains.kP = 0.0005;
+    angleGains.kI = 0;
+    angleGains.kD = 0.00000;
 
-	IterativePosPIDController::Gains angleGains;
-	angleGains.kP = 0.0005;
-	angleGains.kI = 0;
-	angleGains.kD = 0.00000;
-
-	chassisController = ChassisControllerBuilder()
-		.withMotors(
-			directions::drive::LEFT_FRONT * drive::LEFT_FRONT,
-			directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT,
-			directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
-			directions::drive::LEFT_BACK * drive::LEFT_BACK
-		)
-		.withSensors(
-			leftEncoder,
-			rightEncoder,
-			centerEncoder
-		)
-		.withDimensions(
-			okapi::AbstractMotor::gearset::green,
-			{
-			{
-				4_in,
-				12_in },
-			 okapi::imev5GreenTPR
-		})
-		.withOdometry(
-			{
-				//dimensions and layout of encoders
-				{
-					3.25_in,    //encoder wheel diameter
-					12_in,      //center to center dist. of l and R encoders
-					5_in,       //dist. between middle encoder and center of bot //TODO: change this value to be accurate, it is currently not measured
-					3.25_in     //middle encoder wheel diameter
-				},
-				quadEncoderTPR    //ticks per rotation of encoder
-			},
-			StateMode::CARTESIAN
-		)
-		.buildOdometry();
+    chassisController = ChassisControllerBuilder()
+            .withMotors(
+                    directions::drive::LEFT_FRONT * drive::LEFT_FRONT,
+                    directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT,
+                    directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
+                    directions::drive::LEFT_BACK * drive::LEFT_BACK
+            )
+            .withSensors(
+                    leftEncoder,
+                    rightEncoder,
+                    centerEncoder
+            )
+            .withGains(
+                    distanceGains,
+                    turnGains
+            ).withDimensions(
+                    okapi::AbstractMotor::gearset::green,
+                    {{
+                             4_in * 2,
+                             12_in},
+                     okapi::imev5GreenTPR
+                    })
+            .withOdometry(
+                    {
+                            //dimensions and layout of encoders
+                            {
+                                    3.25_in,    //encoder wheel diameter
+                                    12_in,      //center to center dist. of l and R encoders
+                                    0.01_in,       //dist. between middle encoder and center of bot //TODO: change this value to be accurate, it is currently not measured
+                                    3.25_in     //middle encoder wheel diameter
+                            },
+                            quadEncoderTPR    //ticks per rotation of encoder
+                    },
+                    StateMode::CARTESIAN
+            )
+            .withLogger(
+                    std::make_shared<Logger>(
+                            TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
+                            "/ser/sout", // Output to the PROS terminal
+                            Logger::LogLevel::debug // Most verbose log level
+                    )
+            )
+            .buildOdometry();
 }
 
 /**
@@ -74,9 +82,9 @@ void initializeDrive() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	initializeDrive();
-	mechanisms::initialize();
+    pros::lcd::initialize();
+    initializeDrive();
+    mechanisms::initialize();
 }
 
 /**
