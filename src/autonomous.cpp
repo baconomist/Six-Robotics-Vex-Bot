@@ -18,8 +18,39 @@ void autonomous() {
 	leftEncoder.reset();
 	rightEncoder.reset();
 	centerEncoder.reset();
-	intakeMotors.moveVelocity((int)intakeMotors.getGearing());
-	chassisController->moveDistance(4_ft);
+	lift::control.setTarget(lift::state_to_pos(1));
+	tray::control.setTarget(1500);
+	while (!tray::control.isSettled()) {
+		double newInput = tray::get_pos_raw();
+		double newOutput = tray::control.step(newInput) * (int)transT.getGearing() ;
+		tray::move_raw(-newOutput);
+		pros::delay(10);
+		printf("Tray: %f \n", tray::get_pos_raw());
+	}
+//	while (!lift::move_controlled()) {
+//		pros::delay(10);
+//		printf("Lift: %f \n", lift::get_pos_raw());
+//	}
+
+
+//
+	while (!lift::control.isSettled()) {
+		double newInput = lift::get_pos_raw();
+		double newOutput = lift::control.step(newInput) * (int)transT.getGearing();
+		lift::move_raw(-newOutput);
+		printf("Lift: %f \n", lift::get_pos_raw());
+		pros::delay(10);
+	}
+	lift::control.reset();
+	lift::control.setTarget(lift::state_to_pos(0));
+	while (!lift::control.isSettled()) {
+		double newInput = lift::get_pos_raw();
+		double newOutput = lift::control.step(newInput) * (int)transT.getGearing();
+		lift::move_raw(-newOutput);
+		printf("Lift: %f \n", lift::get_pos_raw());
+		pros::delay(10);
+	}
+//	chassisController->moveDistance(4_ft);
 
 //    chassisController->driveToPoint((Point){0_in, 2_ft});
 //	chassisController->waitUntilSettled();
@@ -39,9 +70,6 @@ void autonomous() {
 //    chassisController->moveDistance(12_in);
 //    chassisController->turnAngle(-90_deg);
 //    chassisController->moveDistance(12_in);
-
-    chassisController->waitUntilSettled();
-	intakeMotors.moveVelocity(0);
 
 //    printf("%f %f %f\n", leftEncoder.get(), rightEncoder.get(), centerEncoder.get());
 }

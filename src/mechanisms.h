@@ -18,6 +18,8 @@ namespace mechanisms {
 	void hold_transmission_motors();
 
 	namespace tray {
+		extern IterativePosPIDController control;
+
 		/**
 //		 * @returns raw tray position
 		 * */
@@ -54,9 +56,9 @@ namespace mechanisms {
 		extern IterativePosPIDController control;
 
 		enum liftPos{
-			DOWN_POS = 4000,
-			MIDDLE_POS = 3000,
-			UP_POS = 2000
+			DOWN_POS = 4095,
+			MIDDLE_POS = 2900,
+			UP_POS = 2600
 		};
 
 		/**

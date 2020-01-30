@@ -87,6 +87,11 @@ void initialize() {
     initializeDrive();
     mechanisms::initialize();
 	chassisController->setMaxVelocity(150);
+	Logger::setDefaultLogger(std::make_shared<Logger>(
+		TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
+		"/ser/sout", // Output to the PROS terminal
+		Logger::LogLevel::debug // Most verbose log level
+	));
 }
 
 /**

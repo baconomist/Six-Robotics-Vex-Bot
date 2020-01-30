@@ -11,7 +11,6 @@ using namespace hardware::ports;
 namespace mechanisms {
 	Motor transB(transmission::BOTTOM * directions::transmission::BOTTOM);
 	Motor transT(transmission::TOP * directions::transmission::TOP);
-
 	Potentiometer liftPot(legacy::LIFT_POT);
 	Potentiometer trayPot(legacy::TRAY_POT);
 
@@ -28,8 +27,12 @@ namespace mechanisms {
 		transT.setBrakeMode(AbstractMotor::brakeMode::hold);
 		transB.setBrakeMode(AbstractMotor::brakeMode::hold);
 		intakeMotors.setBrakeMode(AbstractMotor::brakeMode::brake);
-		lift::control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
-		lift::control.setTarget(lift::liftPos::DOWN_POS);
+//		lift::control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
+
+
+
+
+
 //		lift::lift_async = std::dynamic_pointer_cast<AsyncPosPIDController>(AsyncPosControllerBuilder()
 //			.withGearset(
 //				{
@@ -54,6 +57,11 @@ namespace mechanisms {
 		transB.moveVelocity(0);
 	}
 	namespace tray {
+
+		double kP = 0.0016;
+		double kI = 0.00;
+		double kD = 0.00002;
+		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
 
 		double get_pos_raw() {
 			return trayPot.get();
@@ -107,10 +115,11 @@ namespace mechanisms {
 	namespace lift {
 
 		int min_tray_pos_to_move_lift = 1650;
-		double kP = 0.01;
+		double kP = 0.001;
 		double kI = 0.00;
 		double kD = 0.00;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
+//		control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
 
 		double get_pos_raw() {
 			return liftPot.get();
@@ -141,7 +150,7 @@ namespace mechanisms {
 				if (!control.isSettled()) {
 					double newInput = get_pos_raw();
 					double newOutput = control.step(newInput);
-					move_raw(newOutput);
+					move_raw(-newOutput);
 				}
 			}
 			return control.isSettled();
