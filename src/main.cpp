@@ -21,8 +21,8 @@ void initializeDrive() {
     distanceGains.kD = 0.00002;
 
     IterativePosPIDController::Gains turnGains;
-    turnGains.kP = 0.00205;
-    turnGains.kI = 0.001;
+    turnGains.kP = 0.00105;
+    turnGains.kI = 0.0025;
     turnGains.kD = 0.00002;
 
     IterativePosPIDController::Gains angleGains;
