@@ -16,19 +16,19 @@ ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false)
  */
 void initializeDrive() {
     IterativePosPIDController::Gains distanceGains;
-    distanceGains.kP = 0.00205;
-    distanceGains.kI = 0.001;
-    distanceGains.kD = 0.00002;
+    distanceGains.kP = 0.0033;
+    distanceGains.kI = 0.00;
+    distanceGains.kD = 0.00012;
 
     IterativePosPIDController::Gains turnGains;
-    turnGains.kP = 0.00105;
-    turnGains.kI = 0.0025;
-    turnGains.kD = 0.00002;
+    turnGains.kP = 0.007;
+    turnGains.kI = 0.00;
+    turnGains.kD = 0.00015;
 
     IterativePosPIDController::Gains angleGains;
-    angleGains.kP = 0.0005;
+    angleGains.kP = 0.0056;
     angleGains.kI = 0;
-    angleGains.kD = 0.00000;
+    angleGains.kD = 0.0001;
 
     chassisController = ChassisControllerBuilder()
             .withMotors(
@@ -44,7 +44,8 @@ void initializeDrive() {
             )
             .withGains(
                     distanceGains,
-                    turnGains
+                    turnGains,
+                    angleGains
             ).withDimensions(
                     okapi::AbstractMotor::gearset::green,
                     {{
@@ -58,7 +59,7 @@ void initializeDrive() {
                             {
                                     3.25_in,    //encoder wheel diameter
                                     12_in,      //center to center dist. of l and R encoders
-                                    0.01_in,       //dist. between middle encoder and center of bot //TODO: change this value to be accurate, it is currently not measured
+                                    0.359_in,       //dist. between middle encoder and center of bot //TODO: change this value to be accurate, it is currently not measured
                                     3.25_in     //middle encoder wheel diameter
                             },
                             quadEncoderTPR    //ticks per rotation of encoder
@@ -85,6 +86,7 @@ void initialize() {
     pros::lcd::initialize();
     initializeDrive();
     mechanisms::initialize();
+	chassisController->setMaxVelocity(150);
 }
 
 /**

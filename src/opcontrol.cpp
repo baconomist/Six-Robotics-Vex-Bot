@@ -35,8 +35,11 @@ void opcontrol() {
     ControllerButton buttonX = ControllerButton(ControllerDigital::X);
     ControllerButton buttonB = ControllerButton(ControllerDigital::B);
     while (true) {
+		pros::lcd::print(4, "left: %f", leftEncoder.get());
+		pros::lcd::print(5, "right: %f", rightEncoder.get());
+		pros::lcd::print(5, "center: %f", centerEncoder.get());
 
-        intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
+		intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
         tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
         liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
         override = master.getDigital(ControllerDigital::Y);
@@ -62,7 +65,8 @@ void opcontrol() {
 //		        }
                 liftDirection = buttonX.isPressed() - buttonB.isPressed();
                 if (liftDirection) {
-                    lift::move_raw((int) transT.getGearing() * liftDirection);
+					if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift)
+                    	lift::move_raw((int) transT.getGearing() * liftDirection);
                 } else
                     hold_transmission_motors();
             }

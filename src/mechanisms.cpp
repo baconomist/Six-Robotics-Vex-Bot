@@ -117,10 +117,9 @@ namespace mechanisms {
 		}
 
 		void move_raw(int vel) {
-            if (tray::get_pos_raw() < min_tray_pos_to_move_lift) {
-                transT.moveVelocity(vel);
-                transB.moveVelocity(-vel);
-            }
+
+			transT.moveVelocity(vel);
+			transB.moveVelocity(-vel);
 		}
 		liftPos state_to_pos(int state){
 			switch (state){

@@ -1,6 +1,8 @@
 #include "main.h"
 #include "globals.h"
 
+using namespace mechanisms;
+
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -13,23 +15,33 @@
  * from where it left off.
  */
 void autonomous() {
+	leftEncoder.reset();
+	rightEncoder.reset();
+	centerEncoder.reset();
+	intakeMotors.moveVelocity((int)intakeMotors.getGearing());
+	chassisController->moveDistance(4_ft);
 
-    //chassisController->driveToPoint((Point){12_in, 0_in});
-    //chassisController->driveToPoint((Point){12_in, 12_in});
-    /*chassisController->driveToPoint((Point){0_in, 12_in});
-    chassisController->driveToPoint((Point){0_in, 0_in});*/
-    //chassisController->turnAngle(90_deg);
-    //chassisController->turnAngle(-90_deg);
+//    chassisController->driveToPoint((Point){0_in, 2_ft});
+//	chassisController->waitUntilSettled();
+//	chassisController->driveToPoint((Point){12_in, 12_in});
+//	chassisController->waitUntilSettled();
+//	chassisController->driveToPoint((Point){12_in, 0_in});
+//	chassisController->waitUntilSettled();
+//	chassisController->driveToPoint((Point){0_in, 0_in});
+//    chassisController->turnAngle(90_deg);
+//    chassisController->turnAngle(-90_deg);
 
-    chassisController->turnAngle(90_deg);
-    chassisController->moveDistance(12_in);
-    chassisController->turnAngle(-90_deg);
-    chassisController->moveDistance(12_in);
-    chassisController->turnAngle(-90_deg);
-    chassisController->moveDistance(12_in);
-    chassisController->turnAngle(-90_deg);
-    chassisController->moveDistance(12_in);
+//    chassisController->turnAngle(90_deg);
+//    chassisController->moveDistance(12_in);
+//    chassisController->turnAngle(-90_deg);
+//    chassisController->moveDistance(12_in);
+//    chassisController->turnAngle(-90_deg);
+//    chassisController->moveDistance(12_in);
+//    chassisController->turnAngle(-90_deg);
+//    chassisController->moveDistance(12_in);
 
     chassisController->waitUntilSettled();
-    printf("%f %f\n", leftEncoder.get(), rightEncoder.get());
+	intakeMotors.moveVelocity(0);
+
+//    printf("%f %f %f\n", leftEncoder.get(), rightEncoder.get(), centerEncoder.get());
 }
