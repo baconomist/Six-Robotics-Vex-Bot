@@ -21,7 +21,7 @@ namespace mechanisms {
 		extern IterativePosPIDController control;
 
 		/**
-//		 * @returns raw tray position
+		 * @returns raw tray position
 		 * */
 		double get_pos_raw();
 
@@ -45,20 +45,20 @@ namespace mechanisms {
 		 * Tray positions
 		 * */
 		enum trayPos{
-			DOWN_POS = 1950,
+			DOWN_POS = 1840,
 			UP_POS = 10
 		};
 
 
 	}
 	namespace lift {
-		extern int min_tray_pos_to_move_lift;
+		const int min_tray_pos_to_move_lift = 1500;
 		extern IterativePosPIDController control;
 
 		enum liftPos{
-			DOWN_POS = 4095,
-			MIDDLE_POS = 2900,
-			UP_POS = 2600
+			DOWN_POS = 4070,
+			MIDDLE_POS = 2850,
+			UP_POS = 2550
 		};
 
 		/**

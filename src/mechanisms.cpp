@@ -89,7 +89,7 @@ namespace mechanisms {
 						tray_curr_pos,
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
-						(int)transT.getGearing() * 0.7,
+						(int)transT.getGearing() * 0.55,
 						(int)transT.getGearing() * .1
 					);
 					move_raw(velocity);
@@ -113,8 +113,6 @@ namespace mechanisms {
 		}
 	}
 	namespace lift {
-
-		int min_tray_pos_to_move_lift = 1650;
 		double kP = 0.001;
 		double kI = 0.00;
 		double kD = 0.00;
