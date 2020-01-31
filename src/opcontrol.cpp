@@ -70,22 +70,26 @@ void opcontrol() {
 //                liftDirection = buttonX.isPressed() - buttonB.isPressed();
 				liftState += (liftState < 2 && liftDirection > 0) || (liftState > 0 && liftDirection < 0) ? liftDirection : 0;
 				if (liftDirection) {
+
+					tray::control.setTarget(lift::min_tray_pos_to_move_lift);
+					tray::control.reset();
+				}
+				else if (!tray::control.isSettled()) {
+					double newInput = tray::get_pos_raw();
+					double newOutput = tray::control.step(newInput) * (int)transT.getGearing();
+					tray::move_raw(-newOutput);
+				}
+				else if (tray::control.isSettled() && lift::control.isSettled()) {
 					lift::control.setTarget(lift::state_to_pos(liftState));
 					lift::control.reset();
-//					tray::control.setTarget(lift::min_tray_pos_to_move_lift);
-//					tray::control.reset();
 				}
-//				else if (!tray::control.isSettled()) {
-//					double newInput = tray::get_pos_raw();
-//					double newOutput = tray::control.step(newInput) * (int)transT.getGearing();
-//					tray::move_raw(-newOutput);
-//				}
 				else if (!lift::control.isSettled()) {
+
 //					if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift)
 //					{
-//						double newInput = lift::get_pos_raw();
-//						double newOutput = lift::control.step(newInput) * (int)transT.getGearing();
-//						lift::move_raw(-newOutput);
+						double newInput = lift::get_pos_raw();
+						double newOutput = lift::control.step(newInput) * (int)transT.getGearing();
+						lift::move_raw(-newOutput);
 //					}
 //					else {
 ////						tray::move_raw(30);
