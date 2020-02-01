@@ -31,10 +31,10 @@ ControllerButton buttonX = ControllerButton(ControllerDigital::X);
 ControllerButton buttonB = ControllerButton(ControllerDigital::B);
 
 void opcontrol() {
-	auto meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
-
-//	autonomous();
+	autonomous();
 	// test_vision();
+
+    meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
 	lift::control.setTarget(lift::state_to_pos(liftState));
 	lift::control.reset();
@@ -102,9 +102,7 @@ void opcontrol() {
 		pros::lcd::print(1, "LiftMoving: %d", liftMoving);
 		pros::lcd::print(3, "Lift state: %d", liftState);
 		pros::lcd::print(4, "Lift Speed?: %f", lift::control.getOutput() * (int)transT.getGearing());
-		pros::lcd::print(5, "Settle Lift: %d Tray: %d", lift::control.isSettled(), tray::control.isSettled());
-		pros::lcd::print(6, "Lift Target: %lf", lift::control.getTarget());
-		pros::lcd::print(7, "Lift Error: %lf", lift::control.getError());
+		pros::lcd::print(6, "Lift Pos: %lf", tray::get_pos_raw());
 
 		pros::delay(10);
 	}

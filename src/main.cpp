@@ -5,6 +5,7 @@ using namespace hardware;
 using namespace hardware::ports;
 using namespace mechanisms;
 std::shared_ptr<OdomChassisController> chassisController;
+std::shared_ptr<XDriveModel> meccanumDrive;
 
 Controller master;
 ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
@@ -32,6 +33,7 @@ void initializeDrive() {
 
     chassisController = ChassisControllerBuilder()
             .withMotors(
+
                     directions::drive::LEFT_FRONT * drive::LEFT_FRONT,
                     directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT,
                     directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
@@ -74,6 +76,8 @@ void initializeDrive() {
                     )
             )
             .buildOdometry();
+
+    meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
 }
 
 /**

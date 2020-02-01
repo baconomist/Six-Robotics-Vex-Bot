@@ -56,11 +56,12 @@ namespace mechanisms {
 		transT.moveVelocity(0);
 		transB.moveVelocity(0);
 	}
+
 	namespace tray {
 
-		double kP = 0.0016;
+		double kP = 0.001;
 		double kI = 0.00;
-		double kD = 0.00002;
+		double kD = 0.000025;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
 
 		double get_pos_raw() {
