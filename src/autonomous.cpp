@@ -7,7 +7,7 @@ void auton_1()
 {
     Timer timer;
     RQuantity start_timer = timer.millis();
-    while(timer.millis() - start_timer <= 250_ms)
+    while(timer.millis() - start_timer <= 350_ms)
         lift::move_raw(-100);
     lift::move_raw(0);
 
@@ -29,8 +29,8 @@ void auton_1()
     chassisController->moveDistance(-2_ft);
 
     chassisController->setMaxVelocity(150);
-    // Drive to stacking position
-    chassisController->turnToPoint({15_in, 0_in});
+    // Drive & turn to stacking position
+    chassisController->turnToPoint({8_in, 0_in});
     chassisController->moveDistance(15_in);
     chassisController->waitUntilSettled();
 
@@ -61,6 +61,33 @@ void auton_1()
     chassisController->waitUntilSettled();
 }
 
+void flipout()
+{
+    Timer timer;
+
+    // Run intakes intake
+    RQuantity start_timer = timer.millis();
+    while(timer.millis() - start_timer <= 250_ms) {
+        intakeMotors.moveVelocity(100);
+    }
+
+    // Move tray up and outtake
+    start_timer = timer.millis();
+    while(timer.millis() - start_timer <= 1000_ms) {
+        tray::move_raw(100);
+        intakeMotors.moveVelocity(-100);
+    }
+
+    // Move tray down and intake
+    while(tray::get_pos_raw() < tray::DOWN_POS) {
+        tray::move_raw(-50);
+        intakeMotors.moveVelocity(100);
+    }
+
+    tray::move_raw(0);
+    intakeMotors.moveVelocity(0);
+}
+
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -74,6 +101,7 @@ void auton_1()
  */
 void autonomous() {
 
+    flipout();
     auton_1();
 
     /*chassisController->driveToPoint({0_in, 12_in});
