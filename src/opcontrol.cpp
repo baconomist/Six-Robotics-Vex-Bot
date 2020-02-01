@@ -31,7 +31,7 @@ ControllerButton buttonX = ControllerButton(ControllerDigital::X);
 ControllerButton buttonB = ControllerButton(ControllerDigital::B);
 
 void opcontrol() {
-	autonomous();
+	//autonomous();
 	// test_vision();
 
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
