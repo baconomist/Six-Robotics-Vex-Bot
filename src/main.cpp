@@ -75,6 +75,9 @@ void initializeDrive() {
                             Logger::LogLevel::debug // Most verbose log level
                     )
             )
+            .withDerivativeFilters(std::make_unique<PassthroughFilter>())
+//            .withDerivativeFilters(std::make_unique<EmaFilter>(1))
+//            .withDerivativeFilters(std::make_unique<EKFFilter>())
             .buildOdometry();
 
     meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
@@ -90,12 +93,12 @@ void initialize() {
     pros::lcd::initialize();
     initializeDrive();
     mechanisms::initialize();
-	chassisController->setMaxVelocity(150);
-	Logger::setDefaultLogger(std::make_shared<Logger>(
-		TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
-		"/ser/sout", // Output to the PROS terminal
-		Logger::LogLevel::debug // Most verbose log level
-	));
+    chassisController->setMaxVelocity(150);
+    Logger::setDefaultLogger(std::make_shared<Logger>(
+            TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
+            "/ser/sout", // Output to the PROS terminal
+            Logger::LogLevel::debug // Most verbose log level
+    ));
 }
 
 /**
