@@ -30,6 +30,9 @@ bool liftMoving = false;
 ControllerButton buttonX = ControllerButton(ControllerDigital::X);
 ControllerButton buttonB = ControllerButton(ControllerDigital::B);
 
+/**
+ * Driver control code, handles all RC input from controller
+ */
 void opcontrol() {
 	//autonomous();
 	// test_vision();
@@ -62,7 +65,7 @@ void opcontrol() {
 
 					lift::control.flipDisable(false);
 					if (!lift::control.isSettled()) {
-						pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
+						// Lift PID iteration
 						double newOutput = lift::control.step(lift::get_pos_raw()) * (int)transT.getGearing();
 						lift::move_raw(-newOutput);
 					}
@@ -71,16 +74,19 @@ void opcontrol() {
 					}
 				}
 				else {
+					// Tray is too far down to move lift
 					tray::move_raw(30);
 					lift::control.flipDisable(true);
 				}
 			}
 			else {
+				// No desired tray or lift motion
 				hold_transmission_motors();
 				intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
 			}
 		}
 		else {
+			// Override button pressed
 			intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
 			liftDirection = buttonX.isPressed() - buttonB.isPressed();
 			if (tiltDirection)
@@ -100,6 +106,7 @@ void opcontrol() {
 		);
 
 		pros::lcd::print(1, "LiftMoving: %d", liftMoving);
+		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
 		pros::lcd::print(3, "Lift state: %d", liftState);
 		pros::lcd::print(4, "Lift Speed?: %f", lift::control.getOutput() * (int)transT.getGearing());
 		pros::lcd::print(6, "Lift Pos: %lf", tray::get_pos_raw());

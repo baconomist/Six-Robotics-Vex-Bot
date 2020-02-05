@@ -19,6 +19,9 @@ namespace mechanisms {
 		ports::intake::RIGHT * directions::intake::RIGHT
 	};
 
+	/**
+	 * Sets motor gearsets and brakemodes
+	 */
 	void initialize() {
 		transT.setGearing(AbstractMotor::gearset::red);
 		transB.setGearing(AbstractMotor::gearset::red);
@@ -78,7 +81,7 @@ namespace mechanisms {
 			double tray_curr_pos = get_pos_raw();
 			double slow_point = 1200;
 			int velocity;
-			if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0|| tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
+			if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0 || tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
 				hold_transmission_motors();
 			}
 			else if (dir > 0) {
@@ -113,6 +116,7 @@ namespace mechanisms {
 			}
 		}
 	}
+
 	namespace lift {
 		double kP = 0.001;
 		double kI = 0.00;
@@ -125,12 +129,12 @@ namespace mechanisms {
 		}
 
 		void move_raw(int vel) {
-
 			transT.moveVelocity(vel);
 			transB.moveVelocity(-vel);
 		}
-		liftPos state_to_pos(int state){
-			switch (state){
+
+		liftPos state_to_pos(int state) {
+			switch (state) {
 			case 0:
 				return liftPos::DOWN_POS;
 			case 1:
@@ -141,6 +145,7 @@ namespace mechanisms {
 				return liftPos::DOWN_POS;
 			}
 		}
+
 		void setTarget(liftPos pos) {
 			control.setTarget(pos);
 		}
@@ -153,9 +158,6 @@ namespace mechanisms {
 				}
 			}
 			return control.isSettled();
-
 		}
-
 	}
-
 }
