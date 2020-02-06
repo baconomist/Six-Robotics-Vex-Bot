@@ -30,28 +30,6 @@ namespace mechanisms {
 		transT.setBrakeMode(AbstractMotor::brakeMode::hold);
 		transB.setBrakeMode(AbstractMotor::brakeMode::hold);
 		intakeMotors.setBrakeMode(AbstractMotor::brakeMode::brake);
-//		lift::control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
-
-
-
-
-
-//		lift::lift_async = std::dynamic_pointer_cast<AsyncPosPIDController>(AsyncPosControllerBuilder()
-//			.withGearset(
-//				{
-//					AbstractMotor::gearset::red,
-//					10.0 / 3.0
-//				}
-//			).withGains(
-//				liftGains
-//			).withMotor(
-//				transT
-//			).withMotor(
-//				-1 * transmission::BOTTOM
-//				* directions::transmission::BOTTOM // inverts the motor cuz we are running the lift
-//			)
-//			.build());
-
 	}
 
 	void hold_transmission_motors() {
@@ -122,7 +100,6 @@ namespace mechanisms {
 		double kI = 0.00;
 		double kD = 0.00;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
-//		control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
 
 		double get_pos_raw() {
 			return liftPot.get();

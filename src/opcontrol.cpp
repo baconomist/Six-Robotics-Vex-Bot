@@ -34,9 +34,6 @@ ControllerButton buttonB = ControllerButton(ControllerDigital::B);
  * Driver control code, handles all RC input from controller
  */
 void opcontrol() {
-	//autonomous();
-	// test_vision();
-
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
 	lift::control.setTarget(lift::state_to_pos(liftState));
