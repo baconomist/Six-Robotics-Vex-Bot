@@ -49,7 +49,7 @@ namespace mechanisms {
 		};
 	}
 	namespace lift {
-		const int min_tray_pos_to_move_lift = 1500;
+		const int min_tray_pos_to_move_lift = 1450;
 		extern IterativePosPIDController control;
 
 		enum liftPos {
@@ -81,7 +81,7 @@ namespace mechanisms {
 		 * @warning DO NOT USE, UNLESS FOR OVERRIDE PURPOSES
 		 * @param vel The velocity at which the tray will move, from -gearsetRPM to +gearsetRPM
 		 * */
-		void move_raw(int vel);
+		void move_raw(float vel);
 
 		/**
 		 * Moves the lift while holding a button, moves tray out of the way as well

@@ -71,14 +71,14 @@ namespace mechanisms {
 						tray_curr_pos,
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
-						(int)transT.getGearing() * 0.55,
-						(int)transT.getGearing() * .1
+						(int)transT.getGearing() * 0.4,
+						(int)transT.getGearing() * .15
 					);
 					move_raw(velocity);
 					intakeMotors.moveVelocity(20);
 				}
 				else if (tray_curr_pos < slow_point) {
-					move_raw(10);
+					move_raw(15);
 					intakeMotors.moveVelocity(-10);
 				}
 			}
@@ -95,19 +95,20 @@ namespace mechanisms {
 		}
 	}
 
-	namespace lift {
-		double kP = 0.001;
-		double kI = 0.00;
-		double kD = 0.00;
+	namespace lift { 
+		double kP = 0.0012;
+		double kI = 0.0001;
+		double kD = 0.0000;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
 
 		double get_pos_raw() {
 			return liftPot.get();
 		}
 
-		void move_raw(int vel) {
-			transT.moveVelocity(vel);
-			transB.moveVelocity(-vel);
+		void move_raw(float vel) {
+		    vel = vel / (float)transB.getGearing();
+			transT.moveVoltage(vel * 12000);
+			transB.moveVoltage(-vel * 12000);
 		}
 
 		liftPos state_to_pos(int state) {
