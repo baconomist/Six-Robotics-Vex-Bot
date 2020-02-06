@@ -8,6 +8,9 @@ enum AutonSide {
     SIDE_RED = 1, SIDE_BLUE = -1
 };
 
+/**
+ * Moves lift down so it locks at the bottom
+ */
 void prep_tray_lift()
 {
     Timer timer;
@@ -50,22 +53,6 @@ void auton_1(AutonSide side) {
     chassisController->moveDistance(15_in);
     chassisController->waitUntilSettled();
 
-    // Drive forward into wall for alignment
-   /* meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
-    start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 250_ms) meccanumDrive->forward(50);
-
-    chassisController->turnAngle(-5_deg * side);
-
-    // Move back from wall
-    chassisController->setMaxVelocity(150);
-    chassisController->moveDistance(-5_in);
-    chassisController->waitUntilSettled();
-
-
-    // Move back in to stack
-    chassisController->moveDistanceAsync(2_in);
-*/
     start_timer = timer.millis();
     // Stack
     while (tray::get_pos_raw() > 150 && timer.millis() - start_timer <= 2500_ms)
