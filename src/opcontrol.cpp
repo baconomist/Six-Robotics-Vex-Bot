@@ -21,7 +21,7 @@ using namespace hardware;
 using namespace hardware::ports;
 using namespace mechanisms;
 
-int intakeDirection;
+float intakeDirection;
 int tiltDirection;
 int liftDirection;
 int liftState = 0;
@@ -38,9 +38,10 @@ void opcontrol() {
 
 	lift::control.setTarget(lift::state_to_pos(liftState));
 	lift::control.reset();
-
+    //flipout();
 	while (true) {
-		intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
+	    // Make outtaking slower for towering
+		intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6*master.getDigital(ControllerDigital::L2);
 		tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
 		liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
 		override = master.getDigital(ControllerDigital::Y);
@@ -98,15 +99,15 @@ void opcontrol() {
 
 		meccanumDrive->xArcade(
 			master.getAnalog(ControllerAnalog::rightX),
-			master.getAnalog(ControllerAnalog::leftY),
-			master.getAnalog(ControllerAnalog::leftX)
+            master.getAnalog(ControllerAnalog::leftY),
+            master.getAnalog(ControllerAnalog::leftX)
 		);
 
 		pros::lcd::print(1, "LiftMoving: %d", liftMoving);
 		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
 		pros::lcd::print(3, "Lift state: %d", liftState);
 		pros::lcd::print(4, "Lift Speed?: %f", lift::control.getOutput() * (int)transT.getGearing());
-		pros::lcd::print(6, "Lift Pos: %lf", tray::get_pos_raw());
+		pros::lcd::print(6, "Tray Pos: %lf", tray::get_pos_raw());
 
 		pros::delay(10);
 	}
