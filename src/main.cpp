@@ -74,6 +74,7 @@ void initializeDrive() {
 			std::make_unique<EKFFilter>(EKFFilter()),
 			std::make_unique<EKFFilter>(EKFFilter())
 		)
+		.withClosedLoopControllerTimeUtil()
 		.withLogger(
 			std::make_shared<Logger>(
 				TimeUtilFactory::createDefault().getTimer(), // It needs a Timer

@@ -106,9 +106,8 @@ namespace mechanisms {
 		}
 
 		void move_raw(float vel) {
-		    vel = vel / (float)transB.getGearing();
-			transT.moveVoltage(vel * 12000);
-			transB.moveVoltage(-vel * 12000);
+			transT.moveVelocity(vel);
+			transB.moveVelocity(-vel);
 		}
 
 		liftPos state_to_pos(int state) {

@@ -25,8 +25,6 @@ float intakeDirection;
 int tiltDirection;
 int liftDirection;
 int liftState = 0;
-int power = 2;
-char buf[100];
 bool override;
 bool liftMoving = false;
 ControllerButton buttonX = ControllerButton(ControllerDigital::X);
@@ -104,7 +102,7 @@ void opcontrol() {
 			}
 		}
 
-		#define drivePow(joystick) (ipow(fabsf(master.getAnalog(joystick)), power) * std::signbit(master.getAnalog(joystick))*-1)
+		#define drivePow(joystick) (ipow(fabsf(master.getAnalog(joystick)), 2) * std::signbit(master.getAnalog(joystick))*-1)
 		meccanumDrive->xArcade(
 			drivePow(ControllerAnalog::rightX),
 			drivePow(ControllerAnalog::leftY),
@@ -113,9 +111,6 @@ void opcontrol() {
 
 		pros::lcd::print(1, "Lift Pos: %lf", lift::get_pos_raw());
 		pros::lcd::print(2, "Tray Pos: %lf", tray::get_pos_raw());
-		master.clear();
-		sprintf(buf, "Lift State: %d\0", liftState);
-		master.setText(0, 0, buf);
 
 		pros::delay(10);
 	}
