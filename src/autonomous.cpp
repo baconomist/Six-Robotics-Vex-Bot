@@ -7,7 +7,21 @@ using namespace mechanisms;
 enum AutonSide {
     SIDE_RED = 1, SIDE_BLUE = -1
 };
-
+#define DEFAULT_MAX_VEL 150
+/**
+ * Wrapper function that has an option to set max velocity
+ * */
+void move_distance(QLength itarget, float max_vel = DEFAULT_MAX_VEL){
+	chassisController->setMaxVelocity(max_vel);
+	chassisController->moveDistance(itarget);
+}
+/**
+ * Wrapper function that has an option to set max velocity
+ * */
+void turnAngle(QAngle idegTarget, float max_vel = DEFAULT_MAX_VEL){
+	chassisController->setMaxVelocity(max_vel);
+	chassisController->turnAngle(idegTarget);
+}
 /**
  * Moves lift down so it locks at the bottom
  */
@@ -140,14 +154,14 @@ void flipout() {
 
     // Move tray up and outtake
     start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 1000_ms) {
+    while (tray::get_pos_raw()>1650 && timer.millis() - start_timer <= 1000_ms) {
         tray::move_raw(100);
         intakeMotors.moveVelocity(-100);
     }
 
     // Outtake more
     start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 150_ms) {
+    while (timer.millis() - start_timer <= 100_ms) {
         intakeMotors.moveVelocity(-100);
     }
 
@@ -162,6 +176,19 @@ void flipout() {
 }
 
 /**
+ * Runs the square test to check if pid is working correctly
+ * */
+void square_test(){
+	move_distance(1_ft);
+	turnAngle(90_deg);
+	move_distance(1_ft);
+	turnAngle(90_deg);
+	move_distance(1_ft);
+	turnAngle(90_deg);
+	move_distance(1_ft);
+	turnAngle(90_deg);
+}
+/**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the autonomous
@@ -173,31 +200,7 @@ void flipout() {
  * from where it left off.
  */
 void autonomous() {
-
-    /*chassisController->moveDistance(1_ft);
-    chassisController->moveDistance(-8_in);
-    chassisController->waitUntilSettled();*/
-
     flipout();
     auton_3_no_stack();
-    //auton_2_big(SIDE_BLUE);
 
-    /*chassisController->driveToPoint({0_in, 12_in});
-	chassisController->waitUntilSettled();
-	chassisController->driveToPoint({12_in, 12_in});
-	chassisController->waitUntilSettled();
-	chassisController->driveToPoint({12_in, 0_in});
-	chassisController->waitUntilSettled();
-	chassisController->driveToPoint({0_in, 0_in});*/
-
-//    chassisController->turnAngle(90_deg);
-//    chassisController->moveDistance(12_in);
-//    chassisController->turnAngle(-90_deg);
-//    chassisController->moveDistance(12_in);
-//    chassisController->turnAngle(-90_deg);
-//    chassisController->moveDistance(12_in);
-//    chassisController->turnAngle(-90_deg);
-//    chassisController->moveDistance(12_in);
-
-//    printf("%f %f %f\n", leftEncoder.get(), rightEncoder.get(), centerEncoder.get());
 }

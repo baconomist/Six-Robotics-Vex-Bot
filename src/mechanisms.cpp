@@ -57,7 +57,7 @@ namespace mechanisms {
 		void move_controlled(int dir) {
 
 			double tray_curr_pos = get_pos_raw();
-			double slow_point = 1200;
+			double slow_point = 1100;
 			int velocity;
 			if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0 || tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
 				hold_transmission_motors();
@@ -71,14 +71,14 @@ namespace mechanisms {
 						tray_curr_pos,
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
-						(int)transT.getGearing() * 0.4,
+						(int)transT.getGearing() * .43,
 						(int)transT.getGearing() * .15
 					);
 					move_raw(velocity);
-					intakeMotors.moveVelocity(20);
+					intakeMotors.moveVelocity(17);
 				}
 				else if (tray_curr_pos < slow_point) {
-					move_raw(15);
+					move_raw(17);
 					intakeMotors.moveVelocity(-10);
 				}
 			}
@@ -97,7 +97,7 @@ namespace mechanisms {
 
 	namespace lift { 
 		double kP = 0.0012;
-		double kI = 0.0001;
+		double kI = 0.000;
 		double kD = 0.0000;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
 

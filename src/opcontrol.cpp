@@ -25,6 +25,8 @@ float intakeDirection;
 int tiltDirection;
 int liftDirection;
 int liftState = 0;
+int power = 2;
+char buf[100];
 bool override;
 bool liftMoving = false;
 ControllerButton buttonX = ControllerButton(ControllerDigital::X);
@@ -34,30 +36,34 @@ ControllerButton buttonB = ControllerButton(ControllerDigital::B);
  * Driver control code, handles all RC input from controller
  */
 void opcontrol() {
-    meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
+	meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
 	lift::control.setTarget(lift::state_to_pos(liftState));
 	lift::control.reset();
-    //flipout();
+	//flipout();
 	while (true) {
-	    // Make outtaking slower for towering
-		intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6*master.getDigital(ControllerDigital::L2);
+		// Make outtaking slower for towering
+		intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6 * master.getDigital(ControllerDigital::L2);
 		tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
 		liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
 		override = master.getDigital(ControllerDigital::Y);
 
+		meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 		if (!override) {
 			if (tiltDirection && (lift::control.isSettled() || tray::get_pos_raw() > lift::min_tray_pos_to_move_lift)) {
 				tray::move_controlled(tiltDirection);
+				meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
 			}
 			else if (liftDirection) {
 				liftMoving = true;
 
-				liftState += (liftState < 2 && liftDirection > 0) || (liftState > 0 && liftDirection < 0) ? liftDirection : 0;
+				liftState +=
+					(liftState < 2 && liftDirection > 0) || (liftState > 0 && liftDirection < 0) ? liftDirection : 0;
 				lift::control.setTarget(lift::state_to_pos(liftState));
 				lift::control.reset();
 			}
 			else if (liftMoving) {
+				meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
 				if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift) {
 					intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
 
@@ -86,6 +92,7 @@ void opcontrol() {
 		else {
 			// Override button pressed
 			intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
+			meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
 			liftDirection = buttonX.isPressed() - buttonB.isPressed();
 			if (tiltDirection)
 				tray::move_raw((int)transT.getGearing() * tiltDirection);
@@ -97,17 +104,18 @@ void opcontrol() {
 			}
 		}
 
+		#define drivePow(joystick) (ipow(fabsf(master.getAnalog(joystick)), power) * std::signbit(master.getAnalog(joystick))*-1)
 		meccanumDrive->xArcade(
-			master.getAnalog(ControllerAnalog::rightX),
-            master.getAnalog(ControllerAnalog::leftY),
-            master.getAnalog(ControllerAnalog::leftX)
+			drivePow(ControllerAnalog::rightX),
+			drivePow(ControllerAnalog::leftY),
+			drivePow(ControllerAnalog::leftX)
 		);
 
-		pros::lcd::print(1, "LiftMoving: %d", liftMoving);
-		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
-		pros::lcd::print(3, "Lift state: %d", liftState);
-		pros::lcd::print(4, "Lift Speed?: %f", lift::control.getOutput() * (int)transT.getGearing());
-		pros::lcd::print(6, "Tray Pos: %lf", tray::get_pos_raw());
+		pros::lcd::print(1, "Lift Pos: %lf", lift::get_pos_raw());
+		pros::lcd::print(2, "Tray Pos: %lf", tray::get_pos_raw());
+		master.clear();
+		sprintf(buf, "Lift State: %d\0", liftState);
+		master.setText(0, 0, buf);
 
 		pros::delay(10);
 	}
