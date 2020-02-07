@@ -38,19 +38,21 @@ void opcontrol() {
 
 	lift::control.setTarget(lift::state_to_pos(liftState));
 	lift::control.reset();
-	//flipout();
+	flipout();
 	while (true) {
 		// Make outtaking slower for towering
 		intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6 * master.getDigital(ControllerDigital::L2);
 		tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
 		liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
 		override = master.getDigital(ControllerDigital::Y);
-
-		meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
+        if(tray::get_pos_raw()<1700)
+		    meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
+        else
+            meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 		if (!override) {
 			if (tiltDirection && (lift::control.isSettled() || tray::get_pos_raw() > lift::min_tray_pos_to_move_lift)) {
 				tray::move_controlled(tiltDirection);
-				meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
+
 			}
 			else if (liftDirection) {
 				liftMoving = true;
@@ -61,7 +63,7 @@ void opcontrol() {
 				lift::control.reset();
 			}
 			else if (liftMoving) {
-				meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
+
 				if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift) {
 					intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
 
@@ -90,7 +92,7 @@ void opcontrol() {
 		else {
 			// Override button pressed
 			intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
-			meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
+
 			liftDirection = buttonX.isPressed() - buttonB.isPressed();
 			if (tiltDirection)
 				tray::move_raw((int)transT.getGearing() * tiltDirection);
@@ -102,7 +104,7 @@ void opcontrol() {
 			}
 		}
 
-		#define drivePow(joystick) (ipow(fabsf(master.getAnalog(joystick)), 2) * std::signbit(master.getAnalog(joystick))*-1)
+		#define drivePow(joystick) (ipow(1.35*master.getAnalog(joystick), 3) )//* std::signbit(master.getAnalog(joystick))?-1:1)
 		meccanumDrive->xArcade(
 			drivePow(ControllerAnalog::rightX),
 			drivePow(ControllerAnalog::leftY),
