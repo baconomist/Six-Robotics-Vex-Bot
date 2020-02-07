@@ -54,7 +54,7 @@ namespace mechanisms {
 
 		enum liftPos {
 			DOWN_POS = 4070,
-			MIDDLE_POS = 2700,
+			MIDDLE_POS = 2750,
 			UP_POS = 2550
 		};
 
