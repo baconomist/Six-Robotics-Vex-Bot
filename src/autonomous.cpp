@@ -148,15 +148,8 @@ void flipout() {
 
     // Run intakes intake
     RQuantity start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 250_ms) {
-        meccanumDrive->forward(50);
-        intakeMotors.moveVelocity(100);
-    }
-    start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 50_ms) {
-        meccanumDrive->forward(-50);
-        intakeMotors.moveVelocity(100);
-    }
+    chassisController->moveDistance(2_in);
+	chassisController->moveDistance(-2_in);
 
     // Move tray up and outtake
     start_timer = timer.millis();
@@ -203,7 +196,7 @@ void skills() {
     RQuantity start_timer = timer.millis();
 
     // Drive forward and intake 4-5 starting cubes
-    intakeMotors.moveVelocity(180);
+    intakeMotors.moveVelocity(200);
     chassisController->moveDistance(3_ft + 9_in);
     chassisController->waitUntilSettled();
 
@@ -216,7 +209,7 @@ void skills() {
 
 
     //Drive and intake 3 cubes
-    intakeMotors.moveVelocity(180);
+    intakeMotors.moveVelocity(200);
     chassisController->driveToPoint({-2_ft,3_ft + 9_in});
     chassisController->waitUntilSettled();
 
@@ -261,14 +254,14 @@ void skills() {
     chassisController->setMaxVelocity(50);
     chassisController->moveDistanceAsync(-1_ft);
     start_timer = timer.millis();
-    while(timer.millis() - start_timer <= 1000_ms && tray::get_pos_raw()<1500){
+    while(timer.millis() - start_timer <= 1000_ms && tray::get_pos_raw()<1550){
         tray::move_raw(-50);
     }
-    tray::move_raw(0);
+    hold_transmission_motors();
     chassisController->waitUntilSettled();
     chassisController->setMaxVelocity(DEFAULT_MAX_VEL);
 
-    chassisController->turnToAngle(270_deg);
+    chassisController->turnToPoint({-4_ft,1.5_ft});
     chassisController->waitUntilSettled();
 
     start_timer = timer.millis();
@@ -276,13 +269,16 @@ void skills() {
         meccanumDrive->forward(-10);
     }
     pros::delay(200);
-    intakeMotors.moveVelocity(180);
+    intakeMotors.moveVelocity(200);
     chassisController->moveDistance(3_ft+5_in);
     chassisController->waitUntilSettled();
     intakeMotors.moveVelocity(0);
 
     chassisController->moveDistanceAsync(-4_in);
-    intakeMotors.moveAbsolute(-500,-60);
+	start_timer = timer.millis();
+	while (timer.millis() - start_timer <= 200_ms) {
+		intakeMotors.moveVelocity(-60);
+	}
     chassisController->waitUntilSettled();
 
 
@@ -302,8 +298,8 @@ void skills() {
  */
 void autonomous() {
 
-    skills();
-//    flipout();
+    //skills();
+    flipout();
 //    auton_3_no_stack();
     //square_test();
     // move_distance(1_ft);
