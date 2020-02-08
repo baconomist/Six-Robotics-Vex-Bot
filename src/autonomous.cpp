@@ -7,26 +7,28 @@ using namespace mechanisms;
 enum AutonSide {
     SIDE_RED = 1, SIDE_BLUE = -1
 };
-#define DEFAULT_MAX_VEL 150
+#define DEFAULT_MAX_VEL 180
+
 /**
  * Wrapper function that has an option to set max velocity
  * */
-void move_distance(QLength itarget, float max_vel = DEFAULT_MAX_VEL){
-	chassisController->setMaxVelocity(max_vel);
-	chassisController->moveDistance(itarget);
+void move_distance(QLength itarget, float max_vel = DEFAULT_MAX_VEL) {
+    chassisController->setMaxVelocity(max_vel);
+    chassisController->moveDistance(itarget);
 }
+
 /**
  * Wrapper function that has an option to set max velocity
  * */
-void turnAngle(QAngle idegTarget, float max_vel = DEFAULT_MAX_VEL){
-	chassisController->setMaxVelocity(max_vel);
-	chassisController->turnAngle(idegTarget);
+void turnAngle(QAngle idegTarget, float max_vel = DEFAULT_MAX_VEL) {
+    chassisController->setMaxVelocity(max_vel);
+    chassisController->turnAngle(idegTarget);
 }
+
 /**
  * Moves lift down so it locks at the bottom
  */
-void prep_tray_lift()
-{
+void prep_tray_lift() {
     Timer timer;
 
     // Lock lift down
@@ -42,7 +44,7 @@ void prep_tray_lift()
         tray::move_raw(-tray::control.step(tray::get_pos_raw()) * (int) transT.getGearing());
     tray::move_raw(0);
 */
-     }
+}
 
 void auton_1(AutonSide side) {
     prep_tray_lift();
@@ -79,8 +81,7 @@ void auton_1(AutonSide side) {
     chassisController->waitUntilSettled();
 }
 
-void auton_2_big(AutonSide side)
-{
+void auton_2_big(AutonSide side) {
     prep_tray_lift();
 
     Timer timer;
@@ -93,7 +94,7 @@ void auton_2_big(AutonSide side)
 
     chassisController->setMaxVelocity(150);
     // Drive & turn to stacking position
-    if(side == SIDE_RED)
+    if (side == SIDE_RED)
         chassisController->turnToPoint({-2_ft, 18_in});
     else
         chassisController->turnToPoint({8_in, 0_in});
@@ -117,8 +118,7 @@ void auton_2_big(AutonSide side)
     chassisController->waitUntilSettled();
 }
 
-void auton_3_no_stack()
-{
+void auton_3_no_stack() {
     Timer timer;
     RQuantity start_timer = timer.millis();
 
@@ -149,44 +149,144 @@ void flipout() {
     // Run intakes intake
     RQuantity start_timer = timer.millis();
     while (timer.millis() - start_timer <= 250_ms) {
+        meccanumDrive->forward(50);
+        intakeMotors.moveVelocity(100);
+    }
+    start_timer = timer.millis();
+    while (timer.millis() - start_timer <= 50_ms) {
+        meccanumDrive->forward(-50);
         intakeMotors.moveVelocity(100);
     }
 
     // Move tray up and outtake
     start_timer = timer.millis();
-    while (tray::get_pos_raw()>1650 && timer.millis() - start_timer <= 1000_ms) {
+    while (tray::get_pos_raw() > 500 && timer.millis() - start_timer <= 1000_ms) {
+
         tray::move_raw(100);
         intakeMotors.moveVelocity(-100);
     }
 
     // Outtake more
     start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 100_ms) {
+    while (timer.millis() - start_timer <= 150_ms) {
         intakeMotors.moveVelocity(-100);
     }
 
     // Move tray down and intake
-    while (tray::get_pos_raw() < tray::DOWN_POS) {
+    while (tray::get_pos_raw() < 1650) {
         tray::move_raw(-50);
-        intakeMotors.moveVelocity(-100);
+        intakeMotors.moveVelocity(100);
     }
 
     tray::move_raw(0);
     intakeMotors.moveVelocity(0);
 }
 
+
 /**
  * Runs the square test to check if pid is working correctly
  * */
-void square_test(){
-	move_distance(1_ft);
-	turnAngle(90_deg);
-	move_distance(1_ft);
-	turnAngle(90_deg);
-	move_distance(1_ft);
-	turnAngle(90_deg);
-	move_distance(1_ft);
-	turnAngle(90_deg);
+void square_test() {
+    move_distance(1_ft);
+    turnAngle(90_deg);
+    move_distance(1_ft);
+    turnAngle(90_deg);
+    move_distance(1_ft);
+    turnAngle(90_deg);
+    move_distance(1_ft);
+    turnAngle(90_deg);
+}
+
+void skills() {
+
+    Timer timer;
+    RQuantity start_timer = timer.millis();
+
+    // Drive forward and intake 4-5 starting cubes
+    intakeMotors.moveVelocity(180);
+    chassisController->moveDistance(3_ft + 9_in);
+    chassisController->waitUntilSettled();
+
+    // Drive back to the 3-cube line and turn to face them
+    intakeMotors.moveVelocity(20);
+    chassisController->driveToPoint({-2_ft, 1_ft}, true);
+    chassisController->waitUntilSettled();
+    chassisController->turnToPoint({-2_ft, 8_ft});
+    chassisController->waitUntilSettled();
+
+
+    //Drive and intake 3 cubes
+    intakeMotors.moveVelocity(180);
+    chassisController->driveToPoint({-2_ft,3_ft + 9_in});
+    chassisController->waitUntilSettled();
+
+    //turn to stacking area (unprotected zone)
+    intakeMotors.moveVelocity(20);
+    chassisController->setMaxVelocity(120);
+    chassisController->turnToAngle(140_deg);
+    chassisController->waitUntilSettled();
+
+
+    //drive to stacking area (unprotected zone)
+    chassisController->setMaxVelocity(DEFAULT_MAX_VEL);
+    chassisController->moveDistance(3_ft+10_in);
+    chassisController->waitUntilSettled();
+    chassisController->turnToAngle(145_deg);
+    chassisController->waitUntilSettled();
+
+
+    //run into wall for adjust
+    start_timer = timer.millis();
+    while (timer.millis() - start_timer <= 500_ms) {
+        meccanumDrive->forward(50);
+    }
+
+
+    chassisController->moveDistance(-2_in);
+    chassisController->waitUntilSettled();
+
+
+    start_timer = timer.millis();
+    while(timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw()>tray::UP_POS+20 ){
+        tray::move_controlled(1);
+    }
+    intakeMotors.moveVelocity(0);
+    pros::delay(100);
+
+    start_timer = timer.millis();
+    while (timer.millis() - start_timer <= 200_ms) {
+        meccanumDrive->forward(5);
+    }
+    pros::delay(100);
+    chassisController->setMaxVelocity(50);
+    chassisController->moveDistanceAsync(-1_ft);
+    start_timer = timer.millis();
+    while(timer.millis() - start_timer <= 1000_ms && tray::get_pos_raw()<1500){
+        tray::move_raw(-50);
+    }
+    tray::move_raw(0);
+    chassisController->waitUntilSettled();
+    chassisController->setMaxVelocity(DEFAULT_MAX_VEL);
+
+    chassisController->turnToAngle(270_deg);
+    chassisController->waitUntilSettled();
+
+    start_timer = timer.millis();
+    while (timer.millis() - start_timer <= 500_ms) {
+        meccanumDrive->forward(-10);
+    }
+    pros::delay(200);
+    intakeMotors.moveVelocity(180);
+    chassisController->moveDistance(3_ft+5_in);
+    chassisController->waitUntilSettled();
+    intakeMotors.moveVelocity(0);
+
+    chassisController->moveDistanceAsync(-4_in);
+    intakeMotors.moveAbsolute(-500,-60);
+    chassisController->waitUntilSettled();
+
+
+
 }
 
 /**
@@ -201,7 +301,11 @@ void square_test(){
  * from where it left off.
  */
 void autonomous() {
-    flipout();
-    auton_3_no_stack();
+
+    skills();
+//    flipout();
+//    auton_3_no_stack();
+    //square_test();
+    // move_distance(1_ft);
 
 }

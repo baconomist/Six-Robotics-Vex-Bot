@@ -30,6 +30,7 @@ namespace mechanisms {
 		transT.setBrakeMode(AbstractMotor::brakeMode::hold);
 		transB.setBrakeMode(AbstractMotor::brakeMode::hold);
 		intakeMotors.setBrakeMode(AbstractMotor::brakeMode::brake);
+
 	}
 
 	void hold_transmission_motors() {
@@ -72,10 +73,10 @@ namespace mechanisms {
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
 						(int)transT.getGearing() * .43,
-						(int)transT.getGearing() * .15
+						(int)transT.getGearing() * .14
 					);
 					move_raw(velocity);
-					intakeMotors.moveVelocity(17);
+					intakeMotors.moveVelocity(7);
 				}
 				else if (tray_curr_pos < slow_point) {
 					move_raw(17);
@@ -97,9 +98,10 @@ namespace mechanisms {
 
 	namespace lift { 
 		double kP = 0.0012;
-		double kI = 0.000;
+		double kI = 0.0001;
 		double kD = 0.0000;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
+
 
 		double get_pos_raw() {
 			return liftPot.get();
