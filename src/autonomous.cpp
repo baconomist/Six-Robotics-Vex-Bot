@@ -36,16 +36,13 @@ void prep_tray_lift() {
     while (timer.millis() - start_timer <= 350_ms)
         lift::move_raw(-100);
     lift::move_raw(0);
-
-    // Move tray up for intaking
-    /*tray::control.setTarget(1800);
-    tray::control.reset();
-    while (!tray::control.isSettled())
-        tray::move_raw(-tray::control.step(tray::get_pos_raw()) * (int) transT.getGearing());
-    tray::move_raw(0);
-*/
 }
 
+/**
+ * Four point auton for small goal
+ *
+ * @param side The AutonSide the bot is starting on
+ */
 void auton_1(AutonSide side) {
     prep_tray_lift();
 
@@ -81,6 +78,11 @@ void auton_1(AutonSide side) {
     chassisController->waitUntilSettled();
 }
 
+/**
+ * Six point auton (depending on how the stack falls) for large goal
+ *
+ * @param side The AutonSide the bot is starting on
+ */
 void auton_2_big(AutonSide side) {
     prep_tray_lift();
 
@@ -118,7 +120,10 @@ void auton_2_big(AutonSide side) {
     chassisController->waitUntilSettled();
 }
 
-void auton_3_no_stack() {
+/**
+ * Collects 8 cubes and waits
+ */
+void auton_3_no_stack(AutonSide side) {
     Timer timer;
     RQuantity start_timer = timer.millis();
 
@@ -128,11 +133,13 @@ void auton_3_no_stack() {
     chassisController->moveDistance(3_ft);
     intakeMotors.moveVelocity(0);
 
+    // Turn and drive to next line of cubes
     chassisController->setMaxVelocity(150);
-    chassisController->turnAngle(45_deg);
+    chassisController->turnAngle(45_deg * side);
     chassisController->moveDistance(-3.25_ft);
-    chassisController->turnAngle(-37_deg);
+    chassisController->turnAngle(-37_deg * side);
 
+    // Collect the next line
     chassisController->setMaxVelocity(100);
     intakeMotors.moveVelocity(200);
     chassisController->moveDistance(3_ft);
@@ -143,19 +150,16 @@ void auton_3_no_stack() {
     chassisController->waitUntilSettled();
 }
 
+/**
+ * Flips out the tray for the beginning
+ */
 void flipout() {
-    Timer timer;
-
-    // Run intakes intake
-    RQuantity start_timer = timer.millis();
-
-    // chassisController->moveDistance(0.5_in);
-
     chassisController->moveDistance(10_in);
     chassisController->moveDistance(-10_in);
 
     // Move tray up and outtake
-    start_timer = timer.millis();
+    Timer timer;
+    RQuantity start_timer = timer.millis();
     while (tray::get_pos_raw() > 500 && timer.millis() - start_timer <= 1000_ms) {
 
         tray::move_raw(100);
@@ -193,6 +197,10 @@ void square_test() {
     turnAngle(90_deg);
 }
 
+
+/**
+ * Collects ~8 cubes with no stack
+ */
 void blueAutonCollect() {
     Timer timer;
     RQuantity start_timer = timer.millis();
@@ -202,6 +210,7 @@ void blueAutonCollect() {
     chassisController->moveDistance(3_ft + 5_in);
     chassisController->waitUntilSettled();
 
+    // Turn and drive to the next line of cubes
     intakeMotors.moveVelocity(20);
     chassisController->turnToAngle(-40_deg);
     chassisController->moveDistance(-3.5_ft);
@@ -211,10 +220,31 @@ void blueAutonCollect() {
 
     //Drive and intake 3 cubes
     intakeMotors.moveVelocity(200);
-    chassisController->driveToPoint({2_ft,3_ft});
+    chassisController->driveToPoint({2_ft, 3_ft});
     chassisController->waitUntilSettled();
 }
 
+/**
+ * One point auton, moves to the right and back
+ */
+void cube() {
+    Timer timer;
+    RQuantity start_timer = timer.millis();
+    start_timer = timer.millis();
+
+    while (timer.millis() - start_timer <= 2000_ms) {
+        meccanumDrive->xArcade(0.7, 0, 0);
+    }
+    start_timer = timer.millis();
+    while (timer.millis() - start_timer <= 1000_ms) {
+        meccanumDrive->xArcade(-0.7, 0, 0);
+    }
+    meccanumDrive->stop();
+}
+
+/**
+ * Programming skills run
+ */
 void skills() {
 
     Timer timer;
@@ -235,7 +265,7 @@ void skills() {
 
     //Drive and intake 3 cubes
     intakeMotors.moveVelocity(200);
-    chassisController->driveToPoint({-2_ft,3_ft + 9_in});
+    chassisController->driveToPoint({-2_ft, 3_ft + 9_in});
     chassisController->waitUntilSettled();
 
     //turn to stacking area (unprotected zone)
@@ -247,7 +277,7 @@ void skills() {
 
     //drive to stacking area (unprotected zone)
     chassisController->setMaxVelocity(DEFAULT_MAX_VEL);
-    chassisController->moveDistance(3_ft+10_in);
+    chassisController->moveDistance(3_ft + 10_in);
     chassisController->waitUntilSettled();
     chassisController->turnToAngle(145_deg);
     chassisController->waitUntilSettled();
@@ -259,13 +289,12 @@ void skills() {
         meccanumDrive->forward(50);
     }
 
-
     chassisController->moveDistance(-2_in);
     chassisController->waitUntilSettled();
 
 
     start_timer = timer.millis();
-    while(timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw()>tray::UP_POS+20 ){
+    while (timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw() > tray::UP_POS + 20) {
         tray::move_controlled(1);
     }
     intakeMotors.moveVelocity(0);
@@ -279,14 +308,14 @@ void skills() {
     chassisController->setMaxVelocity(50);
     chassisController->moveDistanceAsync(-1_ft);
     start_timer = timer.millis();
-    while(timer.millis() - start_timer <= 1000_ms && tray::get_pos_raw()<1550){
+    while (timer.millis() - start_timer <= 1000_ms && tray::get_pos_raw() < 1550) {
         tray::move_raw(-50);
     }
     hold_transmission_motors();
     chassisController->waitUntilSettled();
     chassisController->setMaxVelocity(DEFAULT_MAX_VEL);
 
-    chassisController->turnToPoint({-4_ft,1.5_ft});
+    chassisController->turnToPoint({-4_ft, 1.5_ft});
     chassisController->waitUntilSettled();
 
     start_timer = timer.millis();
@@ -295,55 +324,29 @@ void skills() {
     }
     pros::delay(200);
     intakeMotors.moveVelocity(200);
-    chassisController->moveDistance(3_ft+5_in);
+    chassisController->moveDistance(3_ft + 5_in);
     chassisController->waitUntilSettled();
     intakeMotors.moveVelocity(0);
 
     chassisController->moveDistanceAsync(-4_in);
-	start_timer = timer.millis();
-	while (timer.millis() - start_timer <= 200_ms) {
-		intakeMotors.moveVelocity(-60);
-	}
+    start_timer = timer.millis();
+    while (timer.millis() - start_timer <= 200_ms) {
+        intakeMotors.moveVelocity(-60);
+    }
     chassisController->waitUntilSettled();
-
-
-
 }
 
 /**
- * Runs the user autonomous code. This function will be started in its own task
- * with the default priority and stack size whenever the robot is enabled via
- * the Field Management System or the VEX Competition Switch in the autonomous
- * mode. Alternatively, this function may be called in initialize or opcontrol
- * for non-competition testing purposes.
- *
- * If the robot is disabled or communications is lost, the autonomous task
- * will be stopped. Re-enabling the robot will restart the task, not re-start it
- * from where it left off.
- */
- void cube(){
-     Timer timer;
-     RQuantity start_timer = timer.millis();
-     start_timer = timer.millis();
-
-     while (timer.millis() - start_timer <= 2000_ms) {
-         meccanumDrive->xArcade(0.7, 0,0);
-     }
-     start_timer = timer.millis();
-     while (timer.millis() - start_timer <= 1000_ms) {
-         meccanumDrive->xArcade(-0.7, 0,0);
-     }
-     meccanumDrive->stop();
- }
+* Runs the user autonomous code. This function will be started in its own task
+* with the default priority and stack size whenever the robot is enabled via
+* the Field Management System or the VEX Competition Switch in the autonomous
+* mode. Alternatively, this function may be called in initialize or opcontrol
+* for non-competition testing purposes.
+*
+* If the robot is disabled or communications is lost, the autonomous task
+* will be stopped. Re-enabling the robot will restart the task, not re-start it
+* from where it left off.
+*/
 void autonomous() {
-
-    //skills();
-    flipout();
-    cube();
-    // blueAutonCollect();
-    //skills();
-//    auton_3_no_stack();
-    //square_test();
-    // move_distance(1_ft);
-
+    skills();
 }
