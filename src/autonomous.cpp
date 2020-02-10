@@ -148,15 +148,18 @@ void flipout() {
 
     // Run intakes intake
     RQuantity start_timer = timer.millis();
-    chassisController->moveDistance(2_in);
-	chassisController->moveDistance(-2_in);
+
+    // chassisController->moveDistance(0.5_in);
+
+    chassisController->moveDistance(10_in);
+    chassisController->moveDistance(-10_in);
 
     // Move tray up and outtake
     start_timer = timer.millis();
     while (tray::get_pos_raw() > 500 && timer.millis() - start_timer <= 1000_ms) {
 
         tray::move_raw(100);
-        intakeMotors.moveVelocity(-100);
+        intakeMotors.moveVelocity(100);
     }
 
     // Outtake more
@@ -188,6 +191,28 @@ void square_test() {
     turnAngle(90_deg);
     move_distance(1_ft);
     turnAngle(90_deg);
+}
+
+void blueAutonCollect() {
+    Timer timer;
+    RQuantity start_timer = timer.millis();
+    // Drive forward and intake 4-5 starting cubes
+    chassisController->setMaxVelocity(140);
+    intakeMotors.moveVelocity(200);
+    chassisController->moveDistance(3_ft + 5_in);
+    chassisController->waitUntilSettled();
+
+    intakeMotors.moveVelocity(20);
+    chassisController->turnToAngle(-40_deg);
+    chassisController->moveDistance(-3.5_ft);
+    chassisController->waitUntilSettled();
+    chassisController->turnToAngle(-0_deg);
+    chassisController->waitUntilSettled();
+
+    //Drive and intake 3 cubes
+    intakeMotors.moveVelocity(200);
+    chassisController->driveToPoint({2_ft,3_ft});
+    chassisController->waitUntilSettled();
 }
 
 void skills() {
@@ -296,10 +321,27 @@ void skills() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
+ void cube(){
+     Timer timer;
+     RQuantity start_timer = timer.millis();
+     start_timer = timer.millis();
+
+     while (timer.millis() - start_timer <= 2000_ms) {
+         meccanumDrive->xArcade(0.7, 0,0);
+     }
+     start_timer = timer.millis();
+     while (timer.millis() - start_timer <= 1000_ms) {
+         meccanumDrive->xArcade(-0.7, 0,0);
+     }
+     meccanumDrive->stop();
+ }
 void autonomous() {
 
     //skills();
     flipout();
+    cube();
+    // blueAutonCollect();
+    //skills();
 //    auton_3_no_stack();
     //square_test();
     // move_distance(1_ft);

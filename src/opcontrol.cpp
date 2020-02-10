@@ -39,7 +39,7 @@ void opcontrol() {
     lift::control.setTarget(lift::state_to_pos(liftState));
     lift::control.reset();
 
-    //flipout();
+    flipout();
     while (true) {
         // Make outtaking slower for towering
         intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6 * master.getDigital(ControllerDigital::L2);
