@@ -12,7 +12,7 @@ enum AutonSide {
 /**
  * Wrapper function that has an option to set max velocity
  * */
-void move_distance(QLength itarget, float max_vel = DEFAULT_MAX_VEL) {
+void moveDistance(QLength itarget, float max_vel = DEFAULT_MAX_VEL) {
     chassisController->setMaxVelocity(max_vel);
     chassisController->moveDistance(itarget);
 }
@@ -28,7 +28,7 @@ void turnAngle(QAngle idegTarget, float max_vel = DEFAULT_MAX_VEL) {
 /**
  * Moves lift down so it locks at the bottom
  */
-void prep_tray_lift() {
+void prepTrayLift() {
     Timer timer;
 
     // Lock lift down
@@ -43,8 +43,8 @@ void prep_tray_lift() {
  *
  * @param side The AutonSide the bot is starting on
  */
-void auton_1(AutonSide side) {
-    prep_tray_lift();
+void auton1(AutonSide side) {
+    prepTrayLift();
 
     Timer timer;
     RQuantity start_timer = timer.millis();
@@ -83,8 +83,8 @@ void auton_1(AutonSide side) {
  *
  * @param side The AutonSide the bot is starting on
  */
-void auton_2_big(AutonSide side) {
-    prep_tray_lift();
+void auton2Big(AutonSide side) {
+    prepTrayLift();
 
     Timer timer;
     RQuantity start_timer = timer.millis();
@@ -123,7 +123,7 @@ void auton_2_big(AutonSide side) {
 /**
  * Collects 8 cubes and waits
  */
-void auton_3_no_stack(AutonSide side) {
+void auton3NoStack(AutonSide side) {
     Timer timer;
     RQuantity start_timer = timer.millis();
 
@@ -186,14 +186,14 @@ void flipout() {
 /**
  * Runs the square test to check if pid is working correctly
  * */
-void square_test() {
-    move_distance(1_ft);
+void squareTest() {
+    moveDistance(1_ft);
     turnAngle(90_deg);
-    move_distance(1_ft);
+    moveDistance(1_ft);
     turnAngle(90_deg);
-    move_distance(1_ft);
+    moveDistance(1_ft);
     turnAngle(90_deg);
-    move_distance(1_ft);
+    moveDistance(1_ft);
     turnAngle(90_deg);
 }
 
@@ -201,7 +201,7 @@ void square_test() {
 /**
  * Collects ~8 cubes with no stack
  */
-void blueAutonCollect() {
+void blue8Auton() {
     Timer timer;
     RQuantity start_timer = timer.millis();
     // Drive forward and intake 4-5 starting cubes
@@ -227,7 +227,7 @@ void blueAutonCollect() {
 /**
  * One point auton, moves to the right and back
  */
-void cube() {
+void onePointAuton() {
     Timer timer;
     RQuantity start_timer = timer.millis();
     start_timer = timer.millis();
