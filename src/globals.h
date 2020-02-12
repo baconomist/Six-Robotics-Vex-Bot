@@ -8,8 +8,10 @@
 #define VEXROBOT_GLOBALS_H
 #include "hardware.h"
 #include "mechanisms.h"
+#include "autonomous.h"
 extern Controller master;
 extern std::shared_ptr<okapi::OdomChassisController> chassisController;
+
 extern std::shared_ptr<XDriveModel> meccanumDrive;
 extern ADIEncoder leftEncoder;
 extern ADIEncoder rightEncoder;

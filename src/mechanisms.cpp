@@ -30,27 +30,6 @@ namespace mechanisms {
 		transT.setBrakeMode(AbstractMotor::brakeMode::hold);
 		transB.setBrakeMode(AbstractMotor::brakeMode::hold);
 		intakeMotors.setBrakeMode(AbstractMotor::brakeMode::brake);
-//		lift::control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
-
-
-
-
-
-//		lift::lift_async = std::dynamic_pointer_cast<AsyncPosPIDController>(AsyncPosControllerBuilder()
-//			.withGearset(
-//				{
-//					AbstractMotor::gearset::red,
-//					10.0 / 3.0
-//				}
-//			).withGains(
-//				liftGains
-//			).withMotor(
-//				transT
-//			).withMotor(
-//				-1 * transmission::BOTTOM
-//				* directions::transmission::BOTTOM // inverts the motor cuz we are running the lift
-//			)
-//			.build());
 
 	}
 
@@ -79,7 +58,7 @@ namespace mechanisms {
 		void move_controlled(int dir) {
 
 			double tray_curr_pos = get_pos_raw();
-			double slow_point = 1200;
+			double slow_point = 1100;
 			int velocity;
 			if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0 || tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
 				hold_transmission_motors();
@@ -93,14 +72,14 @@ namespace mechanisms {
 						tray_curr_pos,
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
-						(int)transT.getGearing() * 0.55,
-						(int)transT.getGearing() * .1
+						(int)transT.getGearing() * .43,
+						(int)transT.getGearing() * .14
 					);
 					move_raw(velocity);
-					intakeMotors.moveVelocity(20);
+					intakeMotors.moveVelocity(7);
 				}
 				else if (tray_curr_pos < slow_point) {
-					move_raw(10);
+					move_raw(17);
 					intakeMotors.moveVelocity(-10);
 				}
 			}
@@ -117,18 +96,18 @@ namespace mechanisms {
 		}
 	}
 
-	namespace lift {
-		double kP = 0.001;
-		double kI = 0.00;
-		double kD = 0.00;
+	namespace lift { 
+		double kP = 0.0012;
+		double kI = 0.0001;
+		double kD = 0.0000;
 		IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
-//		control.setOutputLimits((int)transT.getGearing(), -(int)transT.getGearing());
+
 
 		double get_pos_raw() {
 			return liftPot.get();
 		}
 
-		void move_raw(int vel) {
+		void move_raw(float vel) {
 			transT.moveVelocity(vel);
 			transB.moveVelocity(-vel);
 		}

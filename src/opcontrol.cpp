@@ -21,7 +21,7 @@ using namespace hardware;
 using namespace hardware::ports;
 using namespace mechanisms;
 
-int intakeDirection;
+float intakeDirection;
 int tiltDirection;
 int liftDirection;
 int liftState = 0;
@@ -34,83 +34,83 @@ ControllerButton buttonB = ControllerButton(ControllerDigital::B);
  * Driver control code, handles all RC input from controller
  */
 void opcontrol() {
-	//autonomous();
-	// test_vision();
-
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
-	lift::control.setTarget(lift::state_to_pos(liftState));
-	lift::control.reset();
+    lift::control.setTarget(lift::state_to_pos(liftState));
+    lift::control.reset();
 
-	while (true) {
-		intakeDirection = master.getDigital(ControllerDigital::L1) - master.getDigital(ControllerDigital::L2);
-		tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
-		liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
-		override = master.getDigital(ControllerDigital::Y);
+    //flipout();
+    while (true) {
+        // Make outtaking slower for towering
+        intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6 * master.getDigital(ControllerDigital::L2);
+        tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
+        liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
+        override = master.getDigital(ControllerDigital::Y);
+        if (tray::get_pos_raw() < 1700)
+            meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
+        else
+            meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
+        if (!override) {
+            if (tiltDirection && lift::control.isSettled()) {
+                tray::move_controlled(tiltDirection);
+            } else if (liftDirection) {
+                liftMoving = true;
 
-		if (!override) {
-			if (tiltDirection && (lift::control.isSettled() || tray::get_pos_raw() > lift::min_tray_pos_to_move_lift)) {
-				tray::move_controlled(tiltDirection);
-			}
-			else if (liftDirection) {
-				liftMoving = true;
+                liftState +=
+                        (liftState < 2 && liftDirection > 0) || (liftState > 0 && liftDirection < 0) ? liftDirection
+                                                                                                     : 0;
+                lift::control.setTarget(lift::state_to_pos(liftState));
+                lift::control.reset();
+            } else if (liftMoving) {
 
-				liftState += (liftState < 2 && liftDirection > 0) || (liftState > 0 && liftDirection < 0) ? liftDirection : 0;
-				lift::control.setTarget(lift::state_to_pos(liftState));
-				lift::control.reset();
-			}
-			else if (liftMoving) {
-				if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift) {
-					intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
+                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled()) {
+                    intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
 
-					lift::control.flipDisable(false);
-					if (!lift::control.isSettled()) {
-						// Lift PID iteration
-						double newOutput = lift::control.step(lift::get_pos_raw()) * (int)transT.getGearing();
-						lift::move_raw(-newOutput);
-					}
-					else {
-						liftMoving = false;
-					}
-				}
-				else {
-					// Tray is too far down to move lift
-					tray::move_raw(30);
-					lift::control.flipDisable(true);
-				}
-			}
-			else {
-				// No desired tray or lift motion
-				hold_transmission_motors();
-				intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
-			}
-		}
-		else {
-			// Override button pressed
-			intakeMotors.moveVelocity((int)intakeMotors.getGearing() * intakeDirection);
-			liftDirection = buttonX.isPressed() - buttonB.isPressed();
-			if (tiltDirection)
-				tray::move_raw((int)transT.getGearing() * tiltDirection);
-			else if (liftDirection) {
-				lift::move_raw((int)transT.getGearing() * liftDirection);
-			}
-			else {
-				hold_transmission_motors();
-			}
-		}
+                    lift::control.flipDisable(false);
+                    if (!lift::control.isSettled()) {
+                        // Lift PID iteration
+                        double newOutput = lift::control.step(lift::get_pos_raw()) * (int) transT.getGearing();
+                        lift::move_raw(-newOutput);
+                    } else {
+                        liftMoving = false;
+                    }
+                } else {  // Tray is too far down to move lift
+                    intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
+                    tray::move_raw(40);
+                    lift::control.flipDisable(true);
+                }
+            } else {  // No desired tray or lift motion
+                hold_transmission_motors();
+                intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
+            }
+        } else {  // Override button pressed
+            // Reset the lift PID so it doesn't try to continue after override
+            lift::control.reset();
 
-		meccanumDrive->xArcade(
-			master.getAnalog(ControllerAnalog::rightX),
-			master.getAnalog(ControllerAnalog::leftY),
-			master.getAnalog(ControllerAnalog::leftX)
-		);
 
-		pros::lcd::print(1, "LiftMoving: %d", liftMoving);
-		pros::lcd::print(2, "Lift: %lf", lift::get_pos_raw());
-		pros::lcd::print(3, "Lift state: %d", liftState);
-		pros::lcd::print(4, "Lift Speed?: %f", lift::control.getOutput() * (int)transT.getGearing());
-		pros::lcd::print(6, "Lift Pos: %lf", tray::get_pos_raw());
+            intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
 
-		pros::delay(10);
-	}
+            liftDirection = buttonX.isPressed() - buttonB.isPressed();
+            if (tiltDirection)
+                tray::move_raw((int) transT.getGearing() * tiltDirection);
+            else if (liftDirection) {
+                lift::move_raw((int) transT.getGearing() * liftDirection);
+            } else {
+                hold_transmission_motors();
+            }
+        }
+
+#define drivePow(joystick) (ipow(1.15*master.getAnalog(joystick)-0.2, 3) )//* std::signbit(master.getAnalog(joystick))?-1:1)
+        meccanumDrive->xArcade(
+                drivePow(ControllerAnalog::rightX),
+                drivePow(ControllerAnalog::leftY),
+                drivePow(ControllerAnalog::leftX)
+        );
+
+        pros::lcd::print(1, "Lift Pos: %lf", lift::get_pos_raw());
+        pros::lcd::print(2, "Tray Pos: %lf", tray::get_pos_raw());
+//        pros::lcd::print(3, "Lift Settled?: %d", lift::control.isSettled());
+
+        pros::delay(10);
+    }
 }

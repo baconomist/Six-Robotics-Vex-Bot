@@ -7,6 +7,7 @@ using namespace mechanisms;
 std::shared_ptr<OdomChassisController> chassisController;
 std::shared_ptr<XDriveModel> meccanumDrive;
 
+std::shared_ptr<AsyncMotionProfileController> profileController;
 Controller master;
 ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
 ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
@@ -17,14 +18,16 @@ ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false)
  */
 void initializeDrive() {
     IterativePosPIDController::Gains distanceGains;
-    distanceGains.kP = 0.0033;
-    distanceGains.kI = 0.00;
-    distanceGains.kD = 0.00012;
+    distanceGains.kP = 0.003;
+    distanceGains.kI = 0.00001;
+    distanceGains.kD = 0.000;
+    distanceGains.kBias = 0.0001;
 
     IterativePosPIDController::Gains turnGains;
     turnGains.kP = 0.007;
-    turnGains.kI = 0.00;
+    turnGains.kI = 0.0001;
     turnGains.kD = 0.00015;
+    turnGains.kBias = 0.00001;
 
     IterativePosPIDController::Gains angleGains;
     angleGains.kP = 0.0056;
@@ -39,6 +42,7 @@ void initializeDrive() {
                     directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
                     directions::drive::LEFT_BACK * drive::LEFT_BACK
             )
+            .withMaxVelocity(180)
             .withSensors(
                     leftEncoder,
                     rightEncoder,
@@ -61,13 +65,18 @@ void initializeDrive() {
                             {
                                     3.25_in,    //encoder wheel diameter
                                     12_in,      //center to center dist. of l and R encoders
-                                    0.359_in,       //dist. between middle encoder and center of bot //TODO: change this value to be accurate, it is currently not measured
+                                    0.359_in,       //dist. between middle encoder and center of bot
                                     3.25_in     //middle encoder wheel diameter
                             },
                             quadEncoderTPR    //ticks per rotation of encoder
                     },
                     StateMode::CARTESIAN
             )
+            .withDerivativeFilters(
+                    std::make_unique<EKFFilter>(EKFFilter(0.0015)),
+                    std::make_unique<EKFFilter>(EKFFilter(0.0015))
+            )
+            .withClosedLoopControllerTimeUtil(50,5,350_ms)
             .withLogger(
                     std::make_shared<Logger>(
                             TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
@@ -79,7 +88,6 @@ void initializeDrive() {
 //            .withDerivativeFilters(std::make_unique<EmaFilter>(1))
 //            .withDerivativeFilters(std::make_unique<EKFFilter>())
             .buildOdometry();
-
     meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(chassisController->getModel());
 }
 
