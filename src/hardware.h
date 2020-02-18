@@ -17,7 +17,7 @@ namespace hardware {
 
 		namespace transmission {
 			const uint8_t BOTTOM = 12;
-			const uint8_t TOP = 19;
+			const uint8_t TOP = 18;
 		}
 
 		namespace intake {
