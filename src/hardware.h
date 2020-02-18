@@ -16,12 +16,12 @@ namespace hardware {
 		}
 
 		namespace transmission {
-			const uint8_t BOTTOM = 7;
-			const uint8_t TOP = 8;
+			const uint8_t BOTTOM = 12;
+			const uint8_t TOP = 19;
 		}
 
 		namespace intake {
-			const uint8_t LEFT = 19;
+			const uint8_t LEFT = 11;
 			const uint8_t RIGHT = 20;
 		}
 
