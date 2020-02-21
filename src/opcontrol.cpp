@@ -109,6 +109,9 @@ void opcontrol() {
 
         pros::lcd::print(1, "Lift Pos: %lf", lift::get_pos_raw());
         pros::lcd::print(2, "Tray Pos: %lf", tray::get_pos_raw());
+        pros::lcd::print(3,"Curr T: %d, Temp T: %f", transT.getCurrentDraw(),transT.getTemperature());
+        pros::lcd::print(4,"Curr B: %d, Temp B: %f", transB.getCurrentDraw(),transB.getTemperature());
+        pros::lcd::print(5,"Over cT: %d, cB: %d tT: %d, tB: %d", transT.isOverCurrent(),transT.isOverCurrent(),transT.isOverTemp(),transT.isOverTemp());
 //        pros::lcd::print(3, "Lift Settled?: %d", lift::control.isSettled());
 
         pros::delay(10);

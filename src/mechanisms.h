@@ -49,7 +49,7 @@ namespace mechanisms {
 		};
 	}
 	namespace lift {
-		const int min_tray_pos_to_move_lift = 1450;
+		const int min_tray_pos_to_move_lift = 1600;
 		extern IterativePosPIDController control;
 
 		enum liftPos {

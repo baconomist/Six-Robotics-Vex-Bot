@@ -72,7 +72,7 @@ namespace mechanisms {
 						tray_curr_pos,
 						trayPos::DOWN_POS,
 						trayPos::UP_POS,
-						(int)transT.getGearing() * .43,
+						(int)transT.getGearing() * .6,
 						(int)transT.getGearing() * .14
 					);
 					move_raw(velocity);
