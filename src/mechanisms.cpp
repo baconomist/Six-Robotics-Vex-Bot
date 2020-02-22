@@ -103,7 +103,7 @@ namespace mechanisms {
         double kP = 0.0011;
         double kI = 0.0001;
         double kD = 0.00001;
-        IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD);
+        IterativePosPIDController control = IterativeControllerFactory::posPID(kP, kI, kD,0.0001,std::make_unique<EKFFilter>(EKFFilter(0.00016)));
 
 
         double get_pos_raw() {

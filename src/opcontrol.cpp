@@ -65,7 +65,7 @@ void opcontrol() {
                 lift::control.reset();
             } else if (liftMoving) {
 
-                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled()) {
+                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled() ) {
                     intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
 
                     lift::control.flipDisable(false);
