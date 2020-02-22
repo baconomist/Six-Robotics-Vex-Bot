@@ -9,7 +9,7 @@ std::shared_ptr<XDriveModel> meccanumDrive;
 
 std::shared_ptr<AsyncMotionProfileController> profileController;
 Controller master;
-ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM);
+ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM,true);
 ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
 ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
 
@@ -18,19 +18,20 @@ ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false)
  */
 void initializeDrive() {
     IterativePosPIDController::Gains distanceGains;
-    distanceGains.kP = 0.003;
+    distanceGains.kP = 0.0026;
     distanceGains.kI = 0.00001;
     distanceGains.kD = 0.000;
     distanceGains.kBias = 0.0001;
 
     IterativePosPIDController::Gains turnGains;
-    turnGains.kP = 0.007;
-    turnGains.kI = 0.0001;
-    turnGains.kD = 0.00015;
-    turnGains.kBias = 0.00001;
+    turnGains.kP = 0.0073;
+    turnGains.kI = 0.00001;
+    turnGains.kD = 0.000;
+    turnGains.kBias = 0.00004;
+
 
     IterativePosPIDController::Gains angleGains;
-    angleGains.kP = 0.0056;
+    angleGains.kP = 0.0026;
     angleGains.kI = 0;
     angleGains.kD = 0.0001;
 
@@ -42,7 +43,6 @@ void initializeDrive() {
                     directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
                     directions::drive::LEFT_BACK * drive::LEFT_BACK
             )
-            .withMaxVelocity(180)
             .withSensors(
                     leftEncoder,
                     rightEncoder,
@@ -73,10 +73,10 @@ void initializeDrive() {
                     StateMode::CARTESIAN
             )
             .withDerivativeFilters(
-                    std::make_unique<EKFFilter>(EKFFilter(0.0015)),
-                    std::make_unique<EKFFilter>(EKFFilter(0.0015))
+                    std::make_unique<EKFFilter>(EKFFilter(0.0016)),
+                    std::make_unique<EKFFilter>(EKFFilter(0.0016))
             )
-            .withClosedLoopControllerTimeUtil(50,5,350_ms)
+            .withClosedLoopControllerTimeUtil(30,5,350_ms)
             .withLogger(
                     std::make_shared<Logger>(
                             TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
@@ -97,8 +97,8 @@ void initializeDrive() {
 void initialize() {
     pros::lcd::initialize();
     initializeDrive();
+    chassisController->setMaxVelocity(180);
     mechanisms::initialize();
-    chassisController->setMaxVelocity(150);
     Logger::setDefaultLogger(std::make_shared<Logger>(
             TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
             "/ser/sout", // Output to the PROS terminal

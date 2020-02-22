@@ -38,13 +38,13 @@ namespace mechanisms {
 		 * 			  0 means dont move and hold current position,
 		 * 			  -ve means move down		 *
 		 * */
-		void move_controlled(int dir);
+		void move_controlled(int dir, _Bool intakeOverride =false);
 
 		/**
 		 * Tray positions
 		 * */
 		enum trayPos {
-			DOWN_POS = 1840,
+			DOWN_POS = 1900,
 			UP_POS = 10
 		};
 	}
@@ -54,7 +54,7 @@ namespace mechanisms {
 
 		enum liftPos {
 			DOWN_POS = 4070,
-			MIDDLE_POS = 2750,
+			MIDDLE_POS = 2800,
 			UP_POS = 2550
 		};
 
