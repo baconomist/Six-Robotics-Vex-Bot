@@ -9,6 +9,7 @@
 #include "hardware.h"
 #include "mechanisms.h"
 #include "autonomous.h"
+#include "inertial.h"
 extern Controller master;
 extern std::shared_ptr<okapi::OdomChassisController> chassisController;
 
@@ -16,7 +17,7 @@ extern std::shared_ptr<XDriveModel> meccanumDrive;
 extern ADIEncoder leftEncoder;
 extern ADIEncoder rightEncoder;
 extern ADIEncoder centerEncoder;
-extern pros::Imu inertial;
+
 //extern Motor driveLF;
 //extern Motor driveLB;
 //extern Motor driveRF;
