@@ -9,20 +9,20 @@ namespace hardware {
 		const int VISION_PORT = 5;
 		const int INERTIAL_SENSOR = 15;
 		namespace drive {
-			const uint8_t LEFT_FRONT = 1;
-			const uint8_t LEFT_BACK = 10;
-			const uint8_t RIGHT_FRONT = 2;
-			const uint8_t RIGHT_BACK = 4;
+			const int LEFT_FRONT = 1;
+            const int LEFT_BACK = 10;
+			const int RIGHT_FRONT = 2;
+			const int RIGHT_BACK = 4;
 		}
 
 		namespace transmission {
-			const uint8_t BOTTOM = 12;
-			const uint8_t TOP = 18;
+			const int BOTTOM = 12;
+			const int TOP = 18;
 		}
 
 		namespace intake {
-			const uint8_t LEFT = 7;
-			const uint8_t RIGHT = 20;
+			const int LEFT = 7;
+			const int RIGHT = 20;
 		}
 
 		/**
