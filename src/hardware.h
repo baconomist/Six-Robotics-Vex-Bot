@@ -10,18 +10,18 @@ namespace hardware {
 		const int INERTIAL_SENSOR = 15;
 		namespace drive {
 			const int LEFT_FRONT = 1;
-			const int LEFT_BACK = 10;
+            const int LEFT_BACK = 10;
 			const int RIGHT_FRONT = 2;
 			const int RIGHT_BACK = 4;
 		}
 
 		namespace transmission {
-			const int BOTTOM = 7;
-			const int TOP = 8;
+			const int BOTTOM = 12;
+			const int TOP = 18;
 		}
 
 		namespace intake {
-			const int LEFT = 19;
+			const int LEFT = 7;
 			const int RIGHT = 20;
 		}
 
