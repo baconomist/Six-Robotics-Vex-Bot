@@ -38,24 +38,24 @@ namespace mechanisms {
 		 * 			  0 means dont move and hold current position,
 		 * 			  -ve means move down		 *
 		 * */
-		void move_controlled(int dir);
+		void move_controlled(int dir, _Bool intakeOverride =false);
 
 		/**
 		 * Tray positions
 		 * */
 		enum trayPos {
-			DOWN_POS = 1840,
+			DOWN_POS = 1900,
 			UP_POS = 10
 		};
 	}
 	namespace lift {
-		const int min_tray_pos_to_move_lift = 1450;
+		const int min_tray_pos_to_move_lift = 1600;
 		extern IterativePosPIDController control;
 
 		enum liftPos {
 			DOWN_POS = 4070,
-			MIDDLE_POS = 2750,
-			UP_POS = 2550
+			MIDDLE_POS = 2850,
+			UP_POS = 2650
 		};
 
 		/**

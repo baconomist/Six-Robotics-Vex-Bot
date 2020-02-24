@@ -29,11 +29,13 @@ bool override;
 bool liftMoving = false;
 ControllerButton buttonX = ControllerButton(ControllerDigital::X);
 ControllerButton buttonB = ControllerButton(ControllerDigital::B);
+ControllerButton buttonA = ControllerButton(ControllerDigital::A);
 
 /**
  * Driver control code, handles all RC input from controller
  */
 void opcontrol() {
+
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
     lift::control.setTarget(lift::state_to_pos(liftState));
@@ -44,7 +46,7 @@ void opcontrol() {
         // Make outtaking slower for towering
         intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6 * master.getDigital(ControllerDigital::L2);
         tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
-        liftDirection = buttonX.changedToPressed() - buttonB.changedToPressed();
+        liftDirection = (buttonX.changedToPressed() - buttonB.changedToPressed());
         override = master.getDigital(ControllerDigital::Y);
         if (tray::get_pos_raw() < 1700)
             meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -63,7 +65,7 @@ void opcontrol() {
                 lift::control.reset();
             } else if (liftMoving) {
 
-                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled()) {
+                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled() ) {
                     intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
 
                     lift::control.flipDisable(false);
@@ -100,7 +102,7 @@ void opcontrol() {
             }
         }
 
-#define drivePow(joystick) (ipow(1.15*master.getAnalog(joystick)-0.2, 3) )//* std::signbit(master.getAnalog(joystick))?-1:1)
+#define drivePow(joystick) (ipow(abs(master.getAnalog(joystick)), 2) * ((master.getAnalog(joystick)>0) - (master.getAnalog(joystick)<0)) )//* std::signbit(master.getAnalog(joystick))?-1:1)
         meccanumDrive->xArcade(
                 drivePow(ControllerAnalog::rightX),
                 drivePow(ControllerAnalog::leftY),
@@ -109,6 +111,10 @@ void opcontrol() {
 
         pros::lcd::print(1, "Lift Pos: %lf", lift::get_pos_raw());
         pros::lcd::print(2, "Tray Pos: %lf", tray::get_pos_raw());
+        pros::lcd::print(3, "L Encoder: %lf", leftEncoder.get());
+        pros::lcd::print(4, "R Encoder: %lf", rightEncoder.get());
+        pros::lcd::print(5, "C Encoder: %lf", centerEncoder.get());
+
 //        pros::lcd::print(3, "Lift Settled?: %d", lift::control.isSettled());
 
         pros::delay(10);

@@ -7,7 +7,7 @@
 namespace hardware {
 	namespace ports {
 		const int VISION_PORT = 5;
-
+		const int INERTIAL_SENSOR = 15;
 		namespace drive {
 			const int LEFT_FRONT = 1;
 			const int LEFT_BACK = 10;
@@ -29,8 +29,8 @@ namespace hardware {
 		 * Legacy Ports (A=1, B=2...)
 		 * **/
 		namespace legacy {
-			const int LEFT_Y_ENCODER_TOP = 5;
-			const int LEFT_Y_ENCODER_BOTTOM = 6;
+			const int LEFT_Y_ENCODER_TOP = 6;
+			const int LEFT_Y_ENCODER_BOTTOM = 5;
 			const int RIGHT_Y_ENCODER_TOP = 7;
 			const int RIGHT_Y_ENCODER_BOTTOM = 8;
 			const int X_ENCODER_TOP = 1;
