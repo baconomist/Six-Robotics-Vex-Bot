@@ -7,7 +7,7 @@
 namespace hardware {
 	namespace ports {
 		const int VISION_PORT = 5;
-
+		const int INERTIAL_SENSOR = 15;
 		namespace drive {
 			const uint8_t LEFT_FRONT = 1;
 			const uint8_t LEFT_BACK = 10;

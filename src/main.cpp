@@ -12,6 +12,7 @@ Controller master;
 ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM,true);
 ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
 ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
+pros::Imu inertial(INERTIAL_SENSOR);
 
 /**
  * Builds the chassisController
@@ -95,6 +96,7 @@ void initializeDrive() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	inertial.reset();
     pros::lcd::initialize();
     initializeDrive();
     chassisController->setMaxVelocity(180);

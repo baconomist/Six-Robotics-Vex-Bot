@@ -16,6 +16,7 @@ extern std::shared_ptr<XDriveModel> meccanumDrive;
 extern ADIEncoder leftEncoder;
 extern ADIEncoder rightEncoder;
 extern ADIEncoder centerEncoder;
+extern pros::Imu inertial;
 //extern Motor driveLF;
 //extern Motor driveLB;
 //extern Motor driveRF;
