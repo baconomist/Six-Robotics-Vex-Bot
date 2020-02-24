@@ -21,7 +21,7 @@ namespace hardware {
 		}
 
 		namespace intake {
-			const uint8_t LEFT = 11;
+			const uint8_t LEFT = 7;
 			const uint8_t RIGHT = 20;
 		}
 
