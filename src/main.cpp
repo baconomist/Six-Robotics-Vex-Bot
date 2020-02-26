@@ -6,7 +6,8 @@ using namespace hardware::ports;
 using namespace mechanisms;
 std::shared_ptr<OdomChassisController> chassisController;
 std::shared_ptr<XDriveModel> meccanumDrive;
-
+std::shared_ptr<okapi::OdomChassisController> _2_wheeled_chassisController;
+std::shared_ptr<okapi::OdomChassisController> _4_wheeled_chassisController;
 std::shared_ptr<AsyncMotionProfileController> profileController;
 Controller master;
 ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM, true);

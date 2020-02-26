@@ -23,7 +23,7 @@ extern ADIEncoder rightEncoder;
 extern ADIEncoder centerEncoder;
 
 enum driveConfig {
-    DRIVE_FOUR_WHEEL
+    DRIVE_FOUR_WHEEL,
     DRIVE_TWO_WHEEL
 };
 
