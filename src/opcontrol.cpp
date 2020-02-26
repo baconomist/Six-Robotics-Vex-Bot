@@ -36,6 +36,36 @@ ControllerButton buttonA = ControllerButton(ControllerDigital::A);
  */
 void opcontrol() {
 
+
+//    while(true) {
+//        meccanumDrive->forward(1);
+//        pros::delay(500);
+//        meccanumDrive->stop();
+//        pros::delay(250);
+//        meccanumDrive->forward(-1);
+//        pros::delay(500);
+//        meccanumDrive->stop();
+//        pros::delay(500);
+//    }
+//
+//    chassisController->moveDistance(24_in);
+//    chassisController->waitUntilSettled();
+//
+//    inertial::turnTo(90_deg);
+//    chassisController->moveDistance(12_in);
+//    inertial::turnTo(90_deg);
+//    chassisController->moveDistance(12_in);
+//    inertial::turnTo(90_deg);
+//    chassisController->moveDistance(12_in);
+//    inertial::turnTo(90_deg);
+//
+//    while (true) {
+//        pros::lcd::print(1, "%f", inertial::imu.get_heading());
+//        pros::delay(20);
+//    }
+
+    changeToDrive(DRIVE_FOUR_WHEEL);
+
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
     lift::control.setTarget(lift::state_to_pos(liftState));
@@ -65,7 +95,7 @@ void opcontrol() {
                 lift::control.reset();
             } else if (liftMoving) {
 
-                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled() ) {
+                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled()) {
                     intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
 
                     lift::control.flipDisable(false);
