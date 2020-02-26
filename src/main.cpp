@@ -151,6 +151,8 @@ void initializeDrive() {
 	initializeDrive2Wheeled();
 	initializeDrive4Wheeled();
 
+	changeToDrive(DRIVE_FOUR_WHEEL);
+
 	meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(_4_wheeled_chassisController->getModel());
 }
 
