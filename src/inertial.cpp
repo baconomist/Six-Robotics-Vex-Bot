@@ -31,10 +31,8 @@ namespace inertial {
         }
         meccanumDrive->stop();
 
-        OdomState newOdomState;
+        OdomState newOdomState = chassisController->getState();
         newOdomState.theta = (QAngle) imu.get_heading();
-        newOdomState.x = chassisController->getState().x;
-        newOdomState.y = chassisController->getState().y;
         chassisController->setState(newOdomState);
     }
 
