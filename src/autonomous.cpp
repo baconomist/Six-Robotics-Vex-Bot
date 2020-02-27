@@ -329,6 +329,7 @@ void testing(){
 	turnTo(90_deg);
 	profileController->setTarget("A");
 	profileController->waitUntilSettled();
+	profileController->removePath("A");
 }
 
 /**
