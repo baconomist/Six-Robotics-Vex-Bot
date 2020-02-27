@@ -7,20 +7,19 @@ using namespace mechanisms;
 enum AutonSide {
     SIDE_RED = 1, SIDE_BLUE = -1
 };
-#define DEFAULT_MAX_VEL 180
 
 /**
  * Wrapper function that has an option to set max velocity
  * */
-void moveDistance(QLength itarget, float max_vel = DEFAULT_MAX_VEL) {
+void moveDistance(QLength distance, float max_vel=DEFAULT_MAX_VEL) {
     chassisController->setMaxVelocity(max_vel);
-    chassisController->moveDistance(itarget);
+    chassisController->moveDistance(distance);
 }
 
 /**
  * Wrapper function that has an option to set max velocity
  * */
-void turnAngle(QAngle idegTarget, float max_vel = DEFAULT_MAX_VEL) {
+void turnAngle(QAngle idegTarget, float max_vel) {
     chassisController->setMaxVelocity(max_vel);
     chassisController->turnAngle(idegTarget);
 }

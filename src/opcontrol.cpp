@@ -36,34 +36,6 @@ ControllerButton buttonA = ControllerButton(ControllerDigital::A);
  */
 void opcontrol() {
 
-
-//    while(true) {
-//        meccanumDrive->forward(1);
-//        pros::delay(500);
-//        meccanumDrive->stop();
-//        pros::delay(250);
-//        meccanumDrive->forward(-1);
-//        pros::delay(500);
-//        meccanumDrive->stop();
-//        pros::delay(500);
-//    }
-//
-//    chassisController->moveDistance(24_in);
-//    chassisController->waitUntilSettled();
-//
-//    inertial::turnTo(90_deg);
-//    chassisController->moveDistance(12_in);
-//    inertial::turnTo(90_deg);
-//    chassisController->moveDistance(12_in);
-//    inertial::turnTo(90_deg);
-//    chassisController->moveDistance(12_in);
-//    inertial::turnTo(90_deg);
-//
-//    while (true) {
-//        pros::lcd::print(1, "%f", inertial::imu.get_heading());
-//        pros::delay(20);
-//    }
-
     changeToDrive(DRIVE_FOUR_WHEEL);
 
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);

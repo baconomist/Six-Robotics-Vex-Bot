@@ -84,9 +84,9 @@ void initializeDrive4Wheeled() {
 			centerEncoder
 		)
 		.withGains(
-			{ 0.0026, 0.00001, 0, 0.0001 },
+			{ 0.0026, 0.00001, 0.0001, 0.0001 },
 			{ 0.0073, 0.00001, 0, 0.00004 },
-			{ 0.0026, 0, 0.0001 }
+			{ 0.002, 0, 0.0001, 0.0001 }
 		).withDimensions(
 			okapi::AbstractMotor::gearset::green,
 			{{
@@ -121,33 +121,12 @@ void initializeDrive4Wheeled() {
 		)
 		.withDerivativeFilters(std::make_unique<PassthroughFilter>())
 		.buildOdometry();
-
 }
 
 /**
  * Builds the chassisController
  */
 void initializeDrive() {
-	distanceGains.kP = 0.0015;
-	distanceGains.kI = 0.0002;
-	distanceGains.kD = 0.00001;
-//    distanceGains.kBias = 0.0001;
-
-	turnGains.kP = 0.00001;
-	turnGains.kI = 0.00001;
-	turnGains.kD = 0.00001;
-//    turnGains.kP = 0.0073;
-//    turnGains.kI = 0.00001;
-//    turnGains.kD = 0.000;
-//    turnGains.kBias = 0.00004;
-
-	angleGains.kP = 0.001;
-	angleGains.kI = 0.000;
-	angleGains.kD = 0.0000;
-//    angleGains.kP = 0.0026;
-//    angleGains.kI = 0;
-//    angleGains.kD = 0.0001;
-
 	initializeDrive2Wheeled();
 	initializeDrive4Wheeled();
 
@@ -181,6 +160,8 @@ void initialize() {
 		"/ser/sout", // Output to the PROS terminal
 		Logger::LogLevel::debug // Most verbose log level
 	));
+
+    meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 }
 
 /**
