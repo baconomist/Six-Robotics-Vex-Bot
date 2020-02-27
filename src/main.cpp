@@ -4,163 +4,9 @@
 using namespace hardware;
 using namespace hardware::ports;
 using namespace mechanisms;
-std::shared_ptr<OdomChassisController> chassisController;
-std::shared_ptr<XDriveModel> meccanumDrive;
-std::shared_ptr<okapi::OdomChassisController> _2_wheeled_chassisController;
-std::shared_ptr<okapi::OdomChassisController> _4_wheeled_chassisController;
-std::shared_ptr<AsyncMotionProfileController> profileController;
+using namespace odometry;
+
 Controller master;
-ADIEncoder leftEncoder(legacy::LEFT_Y_ENCODER_TOP, legacy::LEFT_Y_ENCODER_BOTTOM, true);
-ADIEncoder rightEncoder(legacy::RIGHT_Y_ENCODER_BOTTOM, legacy::RIGHT_Y_ENCODER_TOP, false);
-ADIEncoder centerEncoder(legacy::X_ENCODER_BOTTOM, legacy::X_ENCODER_TOP, false);
-
-IterativePosPIDController::Gains distanceGains;
-IterativePosPIDController::Gains turnGains;
-IterativePosPIDController::Gains angleGains;
-
-void initializeDrive2Wheeled() {
-	_2_wheeled_chassisController = ChassisControllerBuilder()
-		.withMotors(directions::drive::LEFT_BACK * drive::LEFT_BACK,
-			directions::drive::RIGHT_BACK * drive::RIGHT_BACK)
-		.withSensors(
-			leftEncoder,
-			rightEncoder,
-			centerEncoder
-		)
-		.withGains(
-			distanceGains,
-			turnGains,
-			angleGains
-		).withDimensions(
-			okapi::AbstractMotor::gearset::green,
-			{{
-				 4_in * 2,
-				 12_in },
-			 okapi::imev5GreenTPR
-			})
-		.withOdometry(
-			{
-				//dimensions and layout of encoders
-				{
-					3.25_in,    //encoder wheel diameter
-					12_in,      //center to center dist. of l and R encoders
-					0.359_in,       //dist. between middle encoder and center of bot
-					3.25_in     //middle encoder wheel diameter
-				},
-				quadEncoderTPR    //ticks per rotation of encoder
-			},
-			StateMode::CARTESIAN
-		)
-		.withDerivativeFilters(
-			std::make_unique<EKFFilter>(EKFFilter(0.0016))
-			//std::make_unique<EKFFilter>(EKFFilter(0.0016))
-		)
-			//.withClosedLoopControllerTimeUtil(30,5,350_ms)
-		.withLogger(
-			std::make_shared<Logger>(
-				TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
-				"/ser/sout", // Output to the PROS terminal
-				Logger::LogLevel::debug // Most verbose log level
-			)
-		)
-		.withDerivativeFilters(std::make_unique<PassthroughFilter>())
-//            .withDerivativeFilters(std::make_unique<EmaFilter>(1))
-//            .withDerivativeFilters(std::make_unique<EKFFilter>())
-		.buildOdometry();
-
-}
-
-void initializeDrive4Wheeled() {
-	_4_wheeled_chassisController = ChassisControllerBuilder()
-		.withMotors(
-			directions::drive::LEFT_FRONT * drive::LEFT_FRONT,
-			directions::drive::RIGHT_FRONT * drive::RIGHT_FRONT,
-			directions::drive::RIGHT_BACK * drive::RIGHT_BACK,
-			directions::drive::LEFT_BACK * drive::LEFT_BACK
-		)
-		.withSensors(
-			leftEncoder,
-			rightEncoder,
-			centerEncoder
-		)
-		.withGains(
-			{ 0.0026, 0.00001, 0, 0.0001 },
-			{ 0.0073, 0.00001, 0, 0.00004 },
-			{ 0.0026, 0, 0.0001 }
-		).withDimensions(
-			okapi::AbstractMotor::gearset::green,
-			{{
-				 4_in * 2,
-				 12_in },
-			 okapi::imev5GreenTPR
-			})
-		.withOdometry(
-			{
-				//dimensions and layout of encoders
-				{
-					3.25_in,    //encoder wheel diameter
-					12_in,      //center to center dist. of l and R encoders
-					0.359_in,       //dist. between middle encoder and center of bot
-					3.25_in     //middle encoder wheel diameter
-				},
-				quadEncoderTPR    //ticks per rotation of encoder
-			},
-			StateMode::CARTESIAN
-		)
-		.withDerivativeFilters(
-			std::make_unique<EKFFilter>(EKFFilter(0.0016))
-			//std::make_unique<EKFFilter>(EKFFilter(0.0016))
-		)
-		.withClosedLoopControllerTimeUtil(30, 5, 350_ms)
-		.withLogger(
-			std::make_shared<Logger>(
-				TimeUtilFactory::createDefault().getTimer(), // It needs a Timer
-				"/ser/sout", // Output to the PROS terminal
-				Logger::LogLevel::debug // Most verbose log level
-			)
-		)
-		.withDerivativeFilters(std::make_unique<PassthroughFilter>())
-		.buildOdometry();
-
-}
-
-/**
- * Builds the chassisController
- */
-void initializeDrive() {
-	distanceGains.kP = 0.0015;
-	distanceGains.kI = 0.0002;
-	distanceGains.kD = 0.00001;
-//    distanceGains.kBias = 0.0001;
-
-	turnGains.kP = 0.00001;
-	turnGains.kI = 0.00001;
-	turnGains.kD = 0.00001;
-//    turnGains.kP = 0.0073;
-//    turnGains.kI = 0.00001;
-//    turnGains.kD = 0.000;
-//    turnGains.kBias = 0.00004;
-
-	angleGains.kP = 0.001;
-	angleGains.kI = 0.000;
-	angleGains.kD = 0.0000;
-//    angleGains.kP = 0.0026;
-//    angleGains.kI = 0;
-//    angleGains.kD = 0.0001;
-
-	initializeDrive2Wheeled();
-	initializeDrive4Wheeled();
-
-	meccanumDrive = std::dynamic_pointer_cast<XDriveModel>(_4_wheeled_chassisController->getModel());
-}
-
-void changeToDrive(driveConfig config) {
-	if (config == DRIVE_TWO_WHEEL)
-		chassisController = _2_wheeled_chassisController;
-	else
-		chassisController = _4_wheeled_chassisController;
-}
-
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -170,8 +16,9 @@ void changeToDrive(driveConfig config) {
 void initialize() {
 
 	pros::lcd::initialize();
-	initializeDrive();
-	chassisController->setMaxVelocity(180);
+	odometry::initialize();
+
+
 	mechanisms::initialize();
 	inertial::initialize();
 	Logger::setDefaultLogger(std::make_shared<Logger>(

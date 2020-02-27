@@ -3,28 +3,12 @@
 #include "autonomous.h"
 
 using namespace mechanisms;
-
+using namespace odometry;
+using namespace inertial;
 enum AutonSide {
     SIDE_RED = 1, SIDE_BLUE = -1
 };
 #define DEFAULT_MAX_VEL 180
-
-/**
- * Wrapper function that has an option to set max velocity
- * */
-void moveDistance(QLength itarget, float max_vel = DEFAULT_MAX_VEL) {
-    chassisController->setMaxVelocity(max_vel);
-    chassisController->moveDistance(itarget);
-}
-
-/**
- * Wrapper function that has an option to set max velocity
- * */
-void turnAngle(QAngle idegTarget, float max_vel = DEFAULT_MAX_VEL) {
-    chassisController->setMaxVelocity(max_vel);
-    chassisController->turnAngle(idegTarget);
-}
-
 /**
  * Moves lift down so it locks at the bottom
  */
@@ -334,6 +318,19 @@ void skills() {
     chassisController->waitUntilSettled();
 }
 
+void testing(){
+	profileController->generatePath(
+		{
+		{0_ft,0_ft,0_deg},
+		{2_ft,0_ft,0_deg}
+		},"A");
+	profileController->setTarget("A");
+	profileController->waitUntilSettled();
+	turnTo(90_deg);
+	profileController->setTarget("A");
+	profileController->waitUntilSettled();
+}
+
 /**
 * Runs the user autonomous code. This function will be started in its own task
 * with the default priority and stack size whenever the robot is enabled via
@@ -349,5 +346,5 @@ void autonomous() {
    // chassisController->turnAngle(90_deg);
    //square_test();
    //chassisController->moveDistance(2_ft);
-    skills();
+    testing();
 }
