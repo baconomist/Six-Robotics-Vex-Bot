@@ -170,16 +170,16 @@ void flipout() {
 /**
  * Runs the square test to check if pid is working correctly
  * */
-void squareTest() {
-    moveDistance(1_ft);
-    turnAngle(90_deg);
-    moveDistance(1_ft);
-    turnAngle(90_deg);
-    moveDistance(1_ft);
-    turnAngle(90_deg);
-    moveDistance(1_ft);
-    turnAngle(90_deg);
-}
+//void squareTest() {
+//    moveDistance(1_ft);
+//    turnAngle(90_deg);
+//    moveDistance(1_ft);
+//    turnAngle(90_deg);
+//    moveDistance(1_ft);
+//    turnAngle(90_deg);
+//    moveDistance(1_ft);
+//    turnAngle(90_deg);
+//}
 
 
 /**
