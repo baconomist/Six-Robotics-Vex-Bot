@@ -50,7 +50,8 @@ namespace mechanisms {
 	}
 	namespace lift {
 		const int min_tray_pos_to_move_lift = 1600;
-		extern IterativePosPIDController control;
+
+        const float LIFT_ERROR = 50;
 
 		enum liftPos {
 			DOWN_POS = 4070,
@@ -83,13 +84,24 @@ namespace mechanisms {
 		 * */
 		void move_raw(float vel);
 
+        /**
+         * Moves the lift to a given position
+         * @param position in encoder units
+         * */
+		void move_to(float pos_raw);
+
 		/**
-		 * Moves the lift while holding a button, moves tray out of the way as well
-		 * @param dir the direction in which the lift should move:
-		 * 			  +ve means move up,
-		 * 			  0 means dont move and hold current position,
-		 * 			  -ve means move down		 *
-		 * */
+		 * Stops the lift/all of its motors
+		 * **/
+        void stop();
+
+        /**
+         * Moves the lift while holding a button, moves tray out of the way as well
+         * @param dir the direction in which the lift should move:
+         * 			  +ve means move up,
+         * 			  0 means dont move and hold current position,
+         * 			  -ve means move down		 *
+         * */
 		bool move_controlled();
 	}
 }

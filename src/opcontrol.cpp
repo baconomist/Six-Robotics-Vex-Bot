@@ -26,10 +26,11 @@ int tiltDirection;
 int liftDirection;
 int liftState = 0;
 bool override;
-bool liftMoving = false;
 ControllerButton buttonX = ControllerButton(ControllerDigital::X);
 ControllerButton buttonB = ControllerButton(ControllerDigital::B);
 ControllerButton buttonA = ControllerButton(ControllerDigital::A);
+
+#define LIFT_SETTLED abs(lift::state_to_pos(liftState) - lift::get_pos_raw()) <= LIFT_ERROR
 
 /**
  * Driver control code, handles all RC input from controller
@@ -40,58 +41,32 @@ void opcontrol() {
 
     meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
 
-    lift::control.setTarget(lift::state_to_pos(liftState));
-    lift::control.reset();
-
     //flipout();
     while (true) {
         // Make outtaking slower for towering
-        intakeDirection = master.getDigital(ControllerDigital::L1) - 0.6 * master.getDigital(ControllerDigital::L2);
+        intakeDirection = master.getDigital(ControllerDigital::L1) - 0.4 * master.getDigital(ControllerDigital::L2);
         tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
         liftDirection = (buttonX.changedToPressed() - buttonB.changedToPressed());
         override = master.getDigital(ControllerDigital::Y);
+
         if (tray::get_pos_raw() < 1700)
             meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::hold);
         else
             meccanumDrive->setBrakeMode(AbstractMotor::brakeMode::coast);
         if (!override) {
-            if (tiltDirection && lift::control.isSettled()) {
+            if (tiltDirection) {
                 tray::move_controlled(tiltDirection);
             } else if (liftDirection) {
-                liftMoving = true;
-
                 liftState +=
                         (liftState < 2 && liftDirection > 0) || (liftState > 0 && liftDirection < 0) ? liftDirection
                                                                                                      : 0;
-                lift::control.setTarget(lift::state_to_pos(liftState));
-                lift::control.reset();
-            } else if (liftMoving) {
-
-                if (tray::get_pos_raw() < lift::min_tray_pos_to_move_lift || lift::control.isSettled()) {
-                    intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
-
-                    lift::control.flipDisable(false);
-                    if (!lift::control.isSettled()) {
-                        // Lift PID iteration
-                        double newOutput = lift::control.step(lift::get_pos_raw()) * (int) transT.getGearing();
-                        lift::move_raw(-newOutput);
-                    } else {
-                        liftMoving = false;
-                    }
-                } else {  // Tray is too far down to move lift
-                    intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
-                    tray::move_raw(40);
-                    lift::control.flipDisable(true);
-                }
-            } else {  // No desired tray or lift motion
+                lift::move_to(lift::state_to_pos(liftState));
+            }
+            else {  // No desired tray or lift motion
                 hold_transmission_motors();
                 intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
             }
         } else {  // Override button pressed
-            // Reset the lift PID so it doesn't try to continue after override
-            lift::control.reset();
-
-
             intakeMotors.moveVelocity((int) intakeMotors.getGearing() * intakeDirection);
 
             liftDirection = buttonX.isPressed() - buttonB.isPressed();

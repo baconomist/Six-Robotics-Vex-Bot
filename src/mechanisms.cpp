@@ -115,6 +115,19 @@ namespace mechanisms {
             transB.moveVelocity(-vel);
         }
 
+        void move_to(float pos_raw)
+        {
+            while(abs(get_pos_raw() - pos_raw) <= LIFT_ERROR){
+                move_raw((int) transT.getGearing() * (lift::get_pos_raw() < pos_raw ? -1 : 1));
+            }
+            stop();
+        }
+
+        void stop()
+        {
+            move_raw(0);
+        }
+
         liftPos state_to_pos(int state) {
             switch (state) {
                 case 0:
