@@ -43,6 +43,53 @@ void testing() {
 
 }
 
+void redAutonFiveStack(){
+    intakeMotors.moveVelocity(200);
+    moveDistance(3_ft + 9_in, {0.68,1.5,10});
+    turnTo(157_deg);
+    moveDistance(3_ft);
+    intakeMotors.moveVelocity(0);
+
+    // Stack
+    stack();
+}
+
+void redAutonSevenStack(){
+    intakeMotors.moveVelocity(200);
+    moveDistance(2.3_ft,{0.72,1.5,10});
+    pros::delay(100);
+    turnTo(-49_deg);
+    intakeMotors.moveVelocity(0);
+    moveDistance(-2.7_ft);
+    turnTo(359.5_deg);
+
+    intakeMotors.moveVelocity(200);
+    moveDistance(2.8_ft, {0.72,1.5,10});
+    turnTo(157_deg);
+    moveDistance(2.8_ft);
+    intakeMotors.moveVelocity(0);
+
+    // Stack
+    stack();
+
+
+}
+
+
+void blueAutonFiveStack(){
+    intakeMotors.moveVelocity(200);
+    moveDistance(3_ft + 9_in, {0.68,1.5,10});
+    turnTo(-155_deg);
+    moveDistance(3_ft);
+    intakeMotors.moveVelocity(0);
+
+    // Stack
+    stack();
+}
+void testing(){
+
+}
+
 /**
 * Runs the user autonomous code. This function will be started in its own task
 * with the default priority and stack size whenever the robot is enabled via
