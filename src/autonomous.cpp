@@ -9,177 +9,34 @@ enum AutonSide {
     SIDE_RED = 1, SIDE_BLUE = -1
 };
 #define DEFAULT_MAX_VEL 180
-/**
- * Moves lift down so it locks at the bottom
- */
-void prepTrayLift() {
-    Timer timer;
 
-    // Lock lift down
-    RQuantity start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 350_ms)
-        lift::move_raw(-100);
-    lift::move_raw(0);
-}
-
-/**
- * Four point auton for small goal
- *
- * @param side The AutonSide the bot is starting on
- */
-void auton1(AutonSide side) {
-    prepTrayLift();
-
-    Timer timer;
-    RQuantity start_timer = timer.millis();
-
-    // Drive towards cubes at a slower speed and intake
-    intakeMotors.moveVelocity(200);
-    chassisController->setMaxVelocity(125);
-    chassisController->moveDistance(3_ft + 4_in);
-    intakeMotors.moveVelocity(0);
-
-    // Move back for stacking position
-    chassisController->setMaxVelocity(150);
-    chassisController->moveDistance(-2_ft);
-
-    chassisController->setMaxVelocity(150);
-    // Drive & turn to stacking position
-    chassisController->turnToPoint({18_in * side, 0_in});
-
-    chassisController->moveDistance(15_in);
-    chassisController->waitUntilSettled();
-
+Timer timer;
+RQuantity start_timer = timer.millis();
+void stack(){
     start_timer = timer.millis();
-    // Stack
-    while (tray::get_pos_raw() > 150 && timer.millis() - start_timer <= 2500_ms)
-        tray::move_raw(30);
-    tray::move_raw(0);
+    while (timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw() > tray::UP_POS + 20) {
+        tray::move_controlled(1,true);
+        intakeMotors.moveVelocity(-35);
 
-    // Move away from stack
-    chassisController->setMaxVelocity(125);
-    chassisController->moveDistance(-1_ft);
-    chassisController->waitUntilSettled();
-}
-
-/**
- * Six point auton (depending on how the stack falls) for large goal
- *
- * @param side The AutonSide the bot is starting on
- */
-void auton2Big(AutonSide side) {
-    prepTrayLift();
-
-    Timer timer;
-    RQuantity start_timer = timer.millis();
-
-    // Drive towards cubes at a slower speed and intake
-    intakeMotors.moveVelocity(200);
-    chassisController->setMaxVelocity(100);
-    chassisController->moveDistance(4_ft);
-
-    chassisController->setMaxVelocity(150);
-    // Drive & turn to stacking position
-    if (side == SIDE_RED)
-        chassisController->turnToPoint({-2_ft, 18_in});
-    else
-        chassisController->turnToPoint({8_in, 0_in});
-
-    chassisController->moveDistance(15_in);
-    chassisController->waitUntilSettled();
-
-    chassisController->turnAngle(5_deg * side);
-
-    intakeMotors.moveVelocity(0);
-
-    start_timer = timer.millis();
-    // Stack
-    while (tray::get_pos_raw() > 100 && timer.millis() - start_timer <= 2500_ms)
-        tray::move_raw(30);
-    tray::move_raw(0);
-
-    // Move away from stack
-    chassisController->setMaxVelocity(100);
-    chassisController->moveDistance(-1_ft);
-    chassisController->waitUntilSettled();
-}
-
-/**
- * Collects 8 cubes and waits
- */
-void auton3NoStack(AutonSide side) {
-    Timer timer;
-    RQuantity start_timer = timer.millis();
-
-    // Drive towards cubes at a slower speed and intake
-    intakeMotors.moveVelocity(200);
-    chassisController->setMaxVelocity(100);
-    chassisController->moveDistance(3_ft);
-    intakeMotors.moveVelocity(0);
-
-    // Turn and drive to next line of cubes
-    chassisController->setMaxVelocity(150);
-    chassisController->turnAngle(45_deg * side);
-    chassisController->moveDistance(-3.25_ft);
-    chassisController->turnAngle(-37_deg * side);
-
-    // Collect the next line
-    chassisController->setMaxVelocity(100);
-    intakeMotors.moveVelocity(200);
-    chassisController->moveDistance(3_ft);
-    intakeMotors.moveVelocity(0);
-
-    chassisController->moveDistance(-1_ft);
-
-    chassisController->waitUntilSettled();
-}
-
-/**
- * Flips out the tray for the beginning
- */
-void flipout() {
-    chassisController->moveDistance(10_in);
-    chassisController->moveDistance(-10_in);
-
-    // Move tray up and outtake
-    Timer timer;
-    RQuantity start_timer = timer.millis();
-    while (tray::get_pos_raw() > 500 && timer.millis() - start_timer <= 1000_ms) {
-
-        tray::move_raw(100);
-        intakeMotors.moveVelocity(100);
     }
-
-    // Outtake more
-    start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 150_ms) {
-        intakeMotors.moveVelocity(-100);
-    }
-
-    // Move tray down and intake
-    while (tray::get_pos_raw() < 1650) {
-        tray::move_raw(-50);
-        intakeMotors.moveVelocity(100);
-    }
-
-    tray::move_raw(0);
     intakeMotors.moveVelocity(0);
+    intakeMotors.moveVelocity(-40);
+    moveDistance(3_in);
+    moveDistance(-10_in);
 }
-
-
 /**
  * Runs the square test to check if pid is working correctly
  * */
-//void squareTest() {
-//    moveDistance(1_ft);
-//    turnAngle(90_deg);
-//    moveDistance(1_ft);
-//    turnAngle(90_deg);
-//    moveDistance(1_ft);
-//    turnAngle(90_deg);
-//    moveDistance(1_ft);
-//    turnAngle(90_deg);
-//}
+void squareTest() {
+    moveDistance(1_ft);
+    turnTo(90_deg);
+    moveDistance(1_ft);
+    turnTo(90_deg);
+    moveDistance(1_ft);
+    turnTo(90_deg);
+    moveDistance(1_ft);
+    turnTo(90_deg);
+}
 
 
 /**
@@ -230,10 +87,6 @@ void onePointAuton() {
  * Programming skills run
  */
 void skills() {
-
-    Timer timer;
-    RQuantity start_timer = timer.millis();
-
     // Drive forward and intake 4-5 starting cubes
     intakeMotors.moveVelocity(200);
     chassisController->moveDistance(4_ft);
@@ -318,18 +171,51 @@ void skills() {
     chassisController->waitUntilSettled();
 }
 
+void redAutonFiveStack(){
+    intakeMotors.moveVelocity(200);
+    moveDistance(3_ft + 9_in, {0.68,1.5,10});
+    turnTo(157_deg);
+    moveDistance(3_ft);
+    intakeMotors.moveVelocity(0);
+
+    // Stack
+    stack();
+}
+
+void redAutonSevenStack(){
+    intakeMotors.moveVelocity(200);
+    moveDistance(2.3_ft,{0.72,1.5,10});
+    pros::delay(100);
+    turnTo(-49_deg);
+    intakeMotors.moveVelocity(0);
+    moveDistance(-2.7_ft);
+    turnTo(359.5_deg);
+
+    intakeMotors.moveVelocity(200);
+    moveDistance(2.8_ft, {0.72,1.5,10});
+    turnTo(157_deg);
+    moveDistance(2.8_ft);
+    intakeMotors.moveVelocity(0);
+
+    // Stack
+    stack();
+
+
+}
+
+
+void blueAutonFiveStack(){
+    intakeMotors.moveVelocity(200);
+    moveDistance(3_ft + 9_in, {0.68,1.5,10});
+    turnTo(-155_deg);
+    moveDistance(3_ft);
+    intakeMotors.moveVelocity(0);
+
+    // Stack
+    stack();
+}
 void testing(){
-	profileController->generatePath(
-		{
-		{0_ft,0_ft,0_deg},
-		{2_ft,0_ft,0_deg}
-		},"A");
-	profileController->setTarget("A");
-	profileController->waitUntilSettled();
-	turnTo(90_deg);
-	profileController->setTarget("A");
-	profileController->waitUntilSettled();
-	profileController->removePath("A");
+
 }
 
 /**
@@ -347,5 +233,5 @@ void autonomous() {
    // chassisController->turnAngle(90_deg);
    //square_test();
    //chassisController->moveDistance(2_ft);
-    testing();
+    redAutonSevenStack();
 }

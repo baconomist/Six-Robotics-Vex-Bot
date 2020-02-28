@@ -45,7 +45,7 @@ void opcontrol() {
     //flipout();
     while (true) {
         // Make outtaking slower for towering
-        intakeDirection = master.getDigital(ControllerDigital::L1) - 0.5 * master.getDigital(ControllerDigital::L2);
+        intakeDirection = master.getDigital(ControllerDigital::L1) - 0.4 * master.getDigital(ControllerDigital::L2);
         tiltDirection = master.getDigital(ControllerDigital::R1) - master.getDigital(ControllerDigital::R2);
         liftDirection = (buttonX.changedToPressed() - buttonB.changedToPressed());
         override = master.getDigital(ControllerDigital::Y);
