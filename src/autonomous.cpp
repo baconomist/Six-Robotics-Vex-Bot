@@ -13,12 +13,11 @@ RQuantity start_timer = timer.millis();
 
 void stack() {
     start_timer = timer.millis();
-    while (timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw() > tray::UP_POS + 20) {
-        tray::move_controlled(1, true);
+    while (timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw() > tray::UP_POS +1){
+        tray::move_controlled(1,true);
         intakeMotors.moveVelocity(-35);
 
     }
-    intakeMotors.moveVelocity(0);
     intakeMotors.moveVelocity(-40);
     moveDistance(3_in);
     moveDistance(-10_in);
@@ -55,7 +54,7 @@ void redAutonFiveStack(){
 }
 
 void redAutonSevenStack(){
-    intakeMotors.moveVelocity(200);
+	intakeMotors.moveVoltage(12000);
     moveDistance(2.3_ft,{0.72,1.5,10});
     pros::delay(100);
     turnTo(-49_deg);
@@ -63,10 +62,10 @@ void redAutonSevenStack(){
     moveDistance(-2.7_ft);
     turnTo(359.5_deg);
 
-    intakeMotors.moveVelocity(200);
-    moveDistance(2.8_ft, {0.72,1.5,10});
-    turnTo(157_deg);
+	intakeMotors.moveVoltage(12000);
     moveDistance(2.8_ft);
+    turnTo(157_deg);
+    moveDistance(2.9_ft);
     intakeMotors.moveVelocity(0);
 
     // Stack
