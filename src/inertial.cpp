@@ -3,53 +3,68 @@
 //
 
 #include "globals.h"
+
 using namespace odometry;
 namespace inertial {
-	pros::Imu imu(hardware::ports::INERTIAL_SENSOR);
-	// Accurate to 0.05 of a degree
-	TimeUtil settledStates = TimeUtilFactory::withSettledUtilParams(0.05);
-	IterativePosPIDController controller(0.01, 0.001, 0.001, 0, settledStates); // #TODO the gains need to be changed
+    pros::Imu imu(hardware::ports::INERTIAL_SENSOR);
+    // Accurate to 0.05 of a degree
+    TimeUtil settledStates = TimeUtilFactory::withSettledUtilParams(1,5,100_ms);
+    IterativePosPIDController controller(0.02, 0.0001, 0.0005, 0, settledStates); // #TODO the gains need to be changed
 
-	double zero_precision = 0.5;
-	double get_heading(){
-		if(imu.get_heading()>360-zero_precision || imu.get_heading()<zero_precision)
-			return 0;
-		return imu.get_heading();
-	}
+    double zero_precision = 0.5;
 
-	void initialize() {
-		imu.reset();
-		// Wait for inertial sensor to calibrate
-		while (inertial::imu.is_calibrating());
-	}
+    double get_heading() {
+        if (imu.get_heading() > 360 - zero_precision || imu.get_heading() < zero_precision)
+            return 0;
+        return imu.get_heading();
+    }
 
-	void turnBy(QAngle angle) {
+    void initialize() {
+        imu.reset();
+        // Wait for inertial sensor to calibrate
+        while (inertial::imu.is_calibrating());
+    }
 
-		double currAngle = imu.get_heading();
-		// To convert to a QAngle use radians->QAngle
-		turnTo(((QAngle)currAngle * degreeToRadian) + angle);
-	}
+    void turnBy(QAngle angle) {
+        double currAngle = get_heading();
+        // To convert to a QAngle use radians->QAngle
+        turnTo((QAngle) (fmod(currAngle + angle.convert(degree), 360) * degreeToRadian));
+    }
 
-	void turnTo(QAngle angle) {
+    void turnTo(QAngle signed_angle) {
 
-		double targetAngle = angle.convert(degree);
+        if (signed_angle < 0_deg) {
+            signed_angle += 360_deg;
+            turnTo(signed_angle, -1);
+            return;
+        }
+        turnTo(signed_angle, 1);
+    }
 
-		int dir = (targetAngle>0)-(targetAngle<0);
-		OdomState newOdomState = chassisController->getState();
-		controller.setTarget(targetAngle);
-		controller.reset();
-		while (!controller.isSettled()) {
-			meccanumDrive->rotate(controller.step(imu.get_heading()));
-		}
-		meccanumDrive->stop();
+    void turnTo(QAngle angle, int turn_dir) {
+        double targetAngle = angle.convert(degree);
+        OdomState newOdomState = chassisController->getState();
+        controller.setTarget(targetAngle);
+        controller.reset();
+        int direction = 1;
 
-		newOdomState.theta = (QAngle)imu.get_heading();
-		chassisController->setState(newOdomState);
-	}
+        while (!controller.isSettled()) {
+            if (targetAngle - get_heading() > 0)
+                direction = 1;
+            else
+                direction = -1;
 
-	void turnTo(Point point) {
-		QAngle targetAngle = OdomMath::computeAngleToPoint(point, chassisController->getState());
-		turnTo(targetAngle);
-	}
+            meccanumDrive->rotate(controller.step(get_heading()) * direction * turn_dir);
+        }
+        meccanumDrive->stop();
+
+        newOdomState.theta = (QAngle) imu.get_heading();
+        chassisController->setState(newOdomState);
+    }
+
+    void turnTo(Point point) {
+        QAngle targetAngle = OdomMath::computeAngleToPoint(point, chassisController->getState());
+        turnTo(targetAngle);
+    }
 
 }

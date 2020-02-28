@@ -16,9 +16,11 @@ namespace inertial {
 
     void initialize();
 
-    void turnBy(QAngle angle);
+    void turnBy(QAngle signed_angle);
 
-    void turnTo(QAngle angle);
+    void turnTo(QAngle abs_angle, int turn_dir);
+
+    void turnTo(QAngle signed_angle);
 
     void turnTo(Point point);
 }
