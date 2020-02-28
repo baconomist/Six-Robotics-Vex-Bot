@@ -215,7 +215,7 @@ void blueAutonFiveStack(){
     stack();
 }
 void testing(){
-
+    meccanumDrive->driveVector(200,30);
 }
 
 /**
@@ -233,5 +233,5 @@ void autonomous() {
    // chassisController->turnAngle(90_deg);
    //square_test();
    //chassisController->moveDistance(2_ft);
-    redAutonSevenStack();
+    testing();
 }
