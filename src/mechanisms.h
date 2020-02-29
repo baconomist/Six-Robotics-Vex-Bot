@@ -40,6 +40,8 @@ namespace mechanisms {
 		 * */
 		void move_controlled(int dir, _Bool intakeOverride =false);
 
+        void move_controlled_slow(int dir, _Bool intakeOverride =false);
+
 		/**
 		 * Tray positions
 		 * */

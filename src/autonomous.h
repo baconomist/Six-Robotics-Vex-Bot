@@ -12,5 +12,9 @@ enum AutonSide {
 
 void flipout();
 void stack();
+void drop_tray();
+void drop_lift();
+void move_lift_to(int pos);
+void tower_with_cube_in_tray(int height);
 
 #endif //VEXROBOT_AUTONOMOUS_H

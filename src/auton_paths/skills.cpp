@@ -13,87 +13,62 @@ namespace auton_paths {
     RQuantity start_timer = timer.millis();
 
     void skillsAuton() {
-        // Drive forward and intake 4-5 starting cubes
         intakeMotors.moveVelocity(200);
-        chassisController->moveDistance(4_ft);
-        chassisController->waitUntilSettled();
-
-
-        // Drive back to the 3-cube line and turn to face them
-        intakeMotors.moveVelocity(20);
-        chassisController->driveToPoint({-2_ft, 0.9_ft}, true);
-        chassisController->waitUntilSettled();
-        chassisController->turnToPoint({-2_ft, 8_ft});
-        chassisController->waitUntilSettled();
-
-
-        //Drive and intake 3 cubes
-        intakeMotors.moveVelocity(200);
-        chassisController->driveToPoint({-2_ft, 3_ft + 9_in});
-        chassisController->waitUntilSettled();
-
-        intakeMotors.moveVelocity(20);
-        chassisController->moveDistance(-1_ft);
-        chassisController->waitUntilSettled();
-        //turn to stacking area (unprotected zone)
-        intakeMotors.moveVelocity(20);
-        chassisController->setMaxVelocity(130);
-        chassisController->turnToAngle(135_deg);
-
-        chassisController->waitUntilSettled();
-
-
-        //drive to stacking area (unprotected zone)
-        chassisController->moveDistance(3_ft + 9_in);
-        start_timer = timer.millis();
-        while (timer.millis() - start_timer <= 500_ms) {
-            meccanumDrive->forward(0.2);
-        }
-        chassisController->moveDistance(-2_in);
-
-
-        start_timer = timer.millis();
-        while (timer.millis() - start_timer <= 4000_ms && tray::get_pos_raw() > tray::UP_POS + 20) {
-            tray::move_controlled(1, true);
-            intakeMotors.moveVelocity(-50);
-        }
+        moveDistance(3_ft + 9_in, {0.72, 1.5, 10});
+        pros::delay(100);
+        turnTo(-28_deg);
         intakeMotors.moveVelocity(0);
-        pros::delay(100);
+        moveDistance(-4_ft);
+        turnTo(359.5_deg);
 
-        start_timer = timer.millis();
-        while (timer.millis() - start_timer <= 200_ms) {
-            meccanumDrive->forward(0.5);
-        }
-        pros::delay(100);
-        chassisController->setMaxVelocity(50);
-        chassisController->moveDistanceAsync(-1_ft);
-        start_timer = timer.millis();
-        while (timer.millis() - start_timer <= 1000_ms && tray::get_pos_raw() < 1550) {
-            intakeMotors.moveVelocity(-30);
-            tray::move_raw(-50);
-        }
-        hold_transmission_motors();
-        chassisController->waitUntilSettled();
-        chassisController->setMaxVelocity(DEFAULT_MAX_VEL);
+        intakeMotors.moveVelocity(200);
+//        moveDistance(2.9_ft, {0.72, 1.5, 10});
+        // Intake 1 less cube
+        moveDistance(2.9_ft - 6_in, {0.72, 1.5, 10});
 
-        chassisController->turnToPoint({-4_ft, 1.5_ft});
-        chassisController->waitUntilSettled();
+        // Move in to stack
+        turnTo(150_deg);
+//        moveDistance(2.9_ft, {0.61, 1.5, 10});
+        moveDistance(2.9_ft - 6_in, {0.61, 1.5, 10});
+        intakeMotors.moveVelocity(0);
 
-        start_timer = timer.millis();
-        while (timer.millis() - start_timer <= 500_ms) {
-            meccanumDrive->forward(-10);
-        }
+        stack();
+
+        drop_tray();
+
+        // Move in a little bit, helps with wall alignment
+        moveDistance(3_in);
+        intakeMotors.moveVelocity(200);
+        turnTo(273_deg);
+
+        // Drive back into wall for alignment
+        meccanumDrive->forward(-0.25f);
+        pros::delay(1200);
+        meccanumDrive->forward(0.1f);
         pros::delay(200);
-        intakeMotors.moveVelocity(200);
-        chassisController->moveDistance(3_ft + 5_in);
-        chassisController->waitUntilSettled();
-        intakeMotors.moveVelocity(0);
+        meccanumDrive->forward(-1.0f);
+        pros::delay(500);
 
-        chassisController->moveDistanceAsync(-4_in);
-        start_timer = timer.millis();
-        while (timer.millis() - start_timer <= 200_ms) {
-            intakeMotors.moveVelocity(-60);
-        }
-        chassisController->waitUntilSettled();
+
+        // Drive to tower 1
+        moveDistance(0.8_ft, {0.2, 0.5, 10});
+        moveDistance(3_ft, {0.5, 1.5, 10});
+        pros::delay(500);
+
+        moveDistance(-7_in);
+        tower_with_cube_in_tray(2460);
+
+        // Drive to tower 2
+        intakeMotors.moveVelocity(0);
+        moveDistance(-15_in - 5_in);
+        drop_lift();
+        turnTo(359.5_deg);
+
+        intakeMotors.moveVelocity(200);
+        moveDistance(2.4_ft,{0.5, 1.5, 10});
+        pros::delay(500);
+
+        moveDistance(-7_in);
+        tower_with_cube_in_tray(2900);
     }
 }

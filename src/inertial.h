@@ -23,5 +23,7 @@ namespace inertial {
     void turnTo(QAngle signed_angle);
 
     void turnTo(Point point);
+
+    void arcTo(QAngle angle, float vx, float vy);
 }
 #endif //_INERTIAL_HPP_

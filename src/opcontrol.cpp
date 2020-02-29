@@ -21,6 +21,7 @@ using namespace hardware;
 using namespace hardware::ports;
 using namespace mechanisms;
 using namespace odometry;
+using namespace inertial;
 float intakeDirection;
 int tiltDirection;
 int liftDirection;
@@ -113,7 +114,7 @@ void opcontrol() {
         pros::lcd::print(1, "Lift Pos: %lf", lift::get_pos_raw());
         pros::lcd::print(2, "Tray Pos: %lf", tray::get_pos_raw());
 
-//        pros::lcd::print(3, "Lift Settled?: %d", lift::control.isSettled());
+        pros::lcd::print(3, "imu: %lf", imu.get_heading() );
 
         pros::delay(10);
     }

@@ -34,7 +34,6 @@ namespace mechanisms {
     }
 
     void hold_transmission_motors() {
-
         transT.moveVelocity(0);
         transB.moveVelocity(0);
     }
@@ -58,7 +57,7 @@ namespace mechanisms {
         void move_controlled(int dir, _Bool intakeOverride) {
 
             double tray_curr_pos = get_pos_raw();
-            double slow_point = 1100;
+            double slow_point = 1000;
             double intake_flip_point = 1300;
             int velocity;
             if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0 || tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
@@ -73,18 +72,61 @@ namespace mechanisms {
                             trayPos::DOWN_POS,
                             trayPos::UP_POS,
                             (int) transT.getGearing() * .65,
-                            (int) transT.getGearing() * .17
+                            (int) transT.getGearing() * .2
                     );
                     move_raw(velocity);
                 } else if (tray_curr_pos < slow_point) {
-                    move_raw(19);
+                    move_raw(21);
 
                 }
                 if (!intakeOverride)
                     if (tray_curr_pos >= intake_flip_point) {
-                        intakeMotors.moveVelocity(-15);
+                        intakeMotors.moveVelocity(-17);
                     } else if (tray_curr_pos < intake_flip_point) {
-                        intakeMotors.moveVelocity(-20);
+                        intakeMotors.moveVelocity(-27);
+                    }
+            } else if (dir < 0) {
+                velocity = remapRange(
+                        tray_curr_pos,
+                        trayPos::DOWN_POS,
+                        trayPos::UP_POS,
+                        (int) transT.getGearing() * .5,
+                        (int) transT.getGearing()
+                );
+                move_raw(-velocity);
+            }
+        }
+
+        void move_controlled_slow(int dir, _Bool intakeOverride) {
+
+            double tray_curr_pos = get_pos_raw();
+            double slow_point = 1000;
+            double intake_flip_point = 1300;
+            int velocity;
+            if (!dir || tray_curr_pos < trayPos::UP_POS && dir > 0 || tray_curr_pos > trayPos::DOWN_POS && dir < 0) {
+                hold_transmission_motors();
+            } else if (dir > 0) {
+                /*
+                 * Moves tray up while reducing speed slowly and then drastically slowing down in the end
+                 * */
+                if (tray_curr_pos >= slow_point) {
+                    velocity = remapRange(
+                            tray_curr_pos,
+                            trayPos::DOWN_POS,
+                            trayPos::UP_POS,
+                            (int) transT.getGearing() * .65,
+                            (int) transT.getGearing() * .2
+                    );
+                    move_raw(velocity);
+                } else if (tray_curr_pos < slow_point) {
+                    move_raw(15);
+
+                }
+                if (!intakeOverride)
+                    if (tray_curr_pos >= intake_flip_point) {
+                        intakeMotors.moveVelocity(-17);
+                    } else if (tray_curr_pos < intake_flip_point) {
+                        intakeMotors.moveVelocity(-27);
                     }
             } else if (dir < 0) {
                 velocity = remapRange(

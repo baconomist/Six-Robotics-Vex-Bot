@@ -8,7 +8,7 @@ using namespace odometry;
 namespace inertial {
     pros::Imu imu(hardware::ports::INERTIAL_SENSOR);
     // Accurate to 0.05 of a degree
-    TimeUtil settledStates = TimeUtilFactory::withSettledUtilParams(1,5,100_ms);
+    TimeUtil settledStates = TimeUtilFactory::withSettledUtilParams(0.5, 5, 300_ms);
     IterativePosPIDController controller(0.02, 0.0001, 0.0005, 0, settledStates); // #TODO the gains need to be changed
 
     double zero_precision = 0.5;
@@ -32,7 +32,6 @@ namespace inertial {
     }
 
     void turnTo(QAngle signed_angle) {
-
         if (signed_angle < 0_deg) {
             signed_angle += 360_deg;
             turnTo(signed_angle, -1);
@@ -43,28 +42,37 @@ namespace inertial {
 
     void turnTo(QAngle angle, int turn_dir) {
         double targetAngle = angle.convert(degree);
-        OdomState newOdomState = chassisController->getState();
         controller.setTarget(targetAngle);
         controller.reset();
         int direction = 1;
 
         while (!controller.isSettled()) {
-            if (targetAngle - get_heading() > 0)
+            // Prevent indefinite turning
+            if (targetAngle > get_heading())
                 direction = 1;
             else
                 direction = -1;
 
+
+            if(turn_dir == -1 && get_heading() <= targetAngle && abs(get_heading() - targetAngle) <= 5) {
+                break;
+            }
+
             meccanumDrive->rotate(controller.step(get_heading()) * direction * turn_dir);
         }
         meccanumDrive->stop();
-
-        newOdomState.theta = (QAngle) imu.get_heading();
-        chassisController->setState(newOdomState);
     }
 
     void turnTo(Point point) {
         QAngle targetAngle = OdomMath::computeAngleToPoint(point, chassisController->getState());
         turnTo(targetAngle);
+    }
+
+    void arcTo(QAngle angle, float vx, float vy) {
+        while (abs(imu.get_heading() - angle.convert(degree)) > 2.0f) {
+            meccanumDrive->driveVector(vx, vy);
+        }
+        meccanumDrive->stop();
     }
 
 }
